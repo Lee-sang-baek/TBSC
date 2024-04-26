@@ -1,0 +1,48 @@
+.navbar {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.nav-categories-container {
+  display: flex;
+  justify-content: center; /* 가운데 정렬 */
+}
+
+.nav-categories {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  justify-content: center; /* 리스트 항목을 가운데 정렬 */
+}
+
+.nav-categories li {
+  margin-right: 20px; /* 각 카테고리 사이의 간격 조정 */
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%); /* 드롭다운을 가운데로 이동 */
+  background-color: #f9f9f9;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  padding: 10px;
+  flex-wrap: wrap;
+}
+
+.dropdown-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 30px; /* 드롭다운 섹션 간의 간격 */
+}
+
+.submenu-list div {
+  margin-top: 5px; /* 서브메뉴 항목 간의 간격 */
+}
+
+.nav-categories-container:hover .dropdown-content {
+  display: flex; /* 드롭다운 내용을 flex로 설정하여 가로로 정렬 */
+}

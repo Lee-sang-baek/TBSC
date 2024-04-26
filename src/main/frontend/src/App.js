@@ -1,14 +1,12 @@
 // App.js
 import React from 'react';
-import Menu from './Components/Header/MenuItem';
-
+import Header from './Components/Header/Header';
 
 function App() {
   return (
       <div>
-        <Menu />
-        <div style={{ marginTop: '150px' }}> {}
-        </div>
+          <Header />
+
       </div>
   );
 }
