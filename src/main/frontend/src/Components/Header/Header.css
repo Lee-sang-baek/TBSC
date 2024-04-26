@@ -1,48 +1,73 @@
-.navbar {
-  display: flex;
-  justify-content: center;
-  position: relative;
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    background-color: #DCDCDC;
 }
 
-.nav-categories-container {
-  display: flex;
-  justify-content: center; /* 가운데 정렬 */
+.menu-item {
+    display: inline-block;
+    position: relative;
+    margin-left: 51px;
+
 }
 
-.nav-categories {
-  display: flex;
-  list-style: none;
-  padding: 0;
-  justify-content: center; /* 리스트 항목을 가운데 정렬 */
+.menu-link {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #000;
 }
 
-.nav-categories li {
-  margin-right: 20px; /* 각 카테고리 사이의 간격 조정 */
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+    border-radius: 5px; /* 모서리 둥글게 */
+
 }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%); /* 드롭다운을 가운데로 이동 */
-  background-color: #f9f9f9;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  padding: 10px;
-  flex-wrap: wrap;
+.submenu-item {
+    margin-bottom: 5px;
+    background-color: white;
+
 }
 
-.dropdown-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-right: 30px; /* 드롭다운 섹션 간의 간격 */
+
+.menu-item:hover .submenu {
+    display: block;
 }
 
-.submenu-list div {
-  margin-top: 5px; /* 서브메뉴 항목 간의 간격 */
+.submenu.show {
+    display: block;
+    color: black;
+    background-color: black;
 }
 
-.nav-categories-container:hover .dropdown-content {
-  display: flex; /* 드롭다운 내용을 flex로 설정하여 가로로 정렬 */
+
+ul{
+    list-style:none;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* 로고와 로그인 이미지를 수직 중앙 정렬 */
+    padding: 0 20px; /* 로고와 로그인 이미지 사이의 여백 조절 */
+    background-color: gray;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+}
+
+.login {
+    width: 50px;
+    height: auto;
 }
