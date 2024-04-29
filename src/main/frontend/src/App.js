@@ -1,14 +1,21 @@
 import React from 'react';
-import Header from './Components/Header/Header';
-import { BrowserRouter as Router } from 'react-router-dom';
-
+import {Routes, Route, BrowserRouter } from 'react-router-dom';
+import  NoticeList from './Components/CommonBoard/NoticeList';
+import NoticeDetail from "./Components/CommonBoard/NoticeDetail";
+import CreateNotice from "./Components/CommonBoard/CreateNotice";
+import {createRoot} from "react-dom/client";
 function App() {
+    const container = document.getElementById('root');
+    const root = createRoot(container); // createRoot(container!) if you use TypeScript
     return (
-        <Router>
-            <div>
-                <Header />
-            </div>
-        </Router>
+        <BrowserRouter>
+            <Routes>
+                <Route path="notices" element={<NoticeList />} />
+                <Route path="notices/:id" element={<NoticeDetail />} />
+                <Route path="notices/new" element={<CreateNotice />} />
+
+            </Routes>
+        </BrowserRouter>
     );
 }
 

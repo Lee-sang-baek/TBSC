@@ -1,0 +1,38 @@
+.noticeListContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* 화면 전체 높이만큼 컨테이너를 설정하여 화면 가운데 정렬 */
+}
+
+.noticeList {
+    width: 80%; /* 목록 테이블의 너비를 설정 */
+    margin-top: 20px; /* 위쪽 여백 추가 */
+}
+
+.noticeList h1 {
+    text-align: center; /* 제목을 가운데 정렬 */
+}
+
+.noticeList table {
+    width: 100%; /* 테이블 너비를 100%로 설정 */
+    border-collapse: collapse; /* 테이블 경계를 합치기 */
+}
+
+.noticeList table th,
+.noticeList table td {
+    border: 1px solid #ddd; /* 테이블 셀 경계를 회색으로 설정 */
+    padding: 8px; /* 셀 안에 여백 추가 */
+    text-align: center; /* 셀 안의 텍스트를 가운데 정렬 */
+}
+
+.noticeList table th {
+    background-color: #f2f2f2; /* 테이블 헤더 배경색 설정 */
+}
+.noticeList table td.date {
+    text-align: center; /* 셀 안의 텍스트를 가운데 정렬 */
+}
+
+.noticeList table td.date span {
+    display: block; /* 블록 요소로 설정하여 줄 바꿈 적용 */
+}
