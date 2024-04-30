@@ -1,0 +1,65 @@
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-text {
+    margin-top: 180px;
+}
+
+.input-row {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-row input{
+    width: 500px;
+}
+
+.button-row {
+    padding: 10px;
+}
+
+.button-row button {
+    width: 250px;
+    margin: 5px;
+}
+
+.extra-buttons button {
+    padding: 0px;
+    width: 150px;
+    height: 30px;
+    margin: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.social-login {
+    margin-top: 30px;
+    width: 500px;
+    background-color: #cccccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.social-icons button {
+    margin-top: 15px;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 20px;
+}
