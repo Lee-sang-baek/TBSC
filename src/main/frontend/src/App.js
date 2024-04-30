@@ -11,7 +11,7 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="notices" element={<NoticeList />} />
-                <Route path="notices/:id" element={<NoticeDetail />} />
+                <Route path="notices/:num" element={<NoticeDetail />} />
                 <Route path="notices/new" element={<CreateNotice />} />
 
             </Routes>
