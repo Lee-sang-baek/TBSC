@@ -3,7 +3,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import './customQuillStyles.css';
 
-const CustomEditor = ({ handleContentChange }) => {
+const CustomEditor = ({ handleContentChange, handleFileUrlChange }) => {  // handleFileUrlChange 함수 추가
     const [content, setContent] = useState('');
     const quillRef = useRef();
 
@@ -18,16 +18,18 @@ const CustomEditor = ({ handleContentChange }) => {
             const formData = new FormData();
             formData.append('file', file);
 
-            fetch('notices/create', {
+            fetch('/notices/upload', {
                 method: 'POST',
                 body: formData,
             })
-                .then(response => response.json())
-                .then(data => {
-                    const range = quillRef.current.getEditor().getSelection();
-                    const url = data.url; // 실제 응답에서 파일 URL을 추출해야 합니다.
-
-                    quillRef.current.getEditor().insertEmbed(range.index, 'image', url);
+                .then(response => response.text())
+                .then(url => {
+                    if (url) {
+                        console.log("Received URL: ", url);
+                        handleFileUrlChange(url);  // URL 상태 업데이트
+                    } else {
+                        console.error("Received empty URL");
+                    }
                 })
                 .catch(error => {
                     console.error('Error uploading file:', error);

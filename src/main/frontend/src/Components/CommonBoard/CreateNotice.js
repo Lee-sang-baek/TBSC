@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import CustomEditor from './CustomEditor';
 import './CreateNotice.css';
-import Header from "../Header/Header"; // 추가된 CSS 파일을 불러옵니다.
+import Header from "../Header/Header";
 
 function CreateNotice() {
     const [title, setTitle] = useState('');
@@ -9,6 +9,7 @@ function CreateNotice() {
     const [state, setState] = useState('');
     const [content, setContent] = useState('');
     const [date, setDate] = useState(new Date());
+    const [fileUrl, setFileUrl] = useState('');
 
     const handleTitleChange = (e) => {
         setTitle(e.target.value);
@@ -26,14 +27,21 @@ function CreateNotice() {
         setContent(content);
     };
 
+    const handleFileUrlChange = (url) => {
+        setFileUrl(url);
+    };
+
     const handleSubmit = async () => {
         const data = {
-            title: title,
-            id: id,
-            state: state,
-            content: content,
-            date: date
+            title,
+            id,
+            state,
+            content,
+            fileUrl,
+            date
         };
+
+        console.log("Submitting data:", data);
 
         try {
             const response = await fetch('/notices/create', {
@@ -46,7 +54,6 @@ function CreateNotice() {
 
             if (response.ok) {
                 console.log('게시글이 성공적으로 작성되었습니다.');
-                // 작성 성공 시 /notices로 이동
                 window.location.href = '/notices';
             } else {
                 console.error('게시글 작성에 실패했습니다.');
@@ -55,7 +62,6 @@ function CreateNotice() {
             console.error('서버와의 통신 중 오류가 발생했습니다.', error);
         }
     };
-
 
     return (
         <div>
@@ -75,8 +81,7 @@ function CreateNotice() {
                     <label>마감:</label>
                     <input type="radio" name="state" value="마감" checked={state === "마감"} onChange={handleStateChange}/>
                 </div>
-
-                <CustomEditor handleContentChange={handleContentChange}/>
+                <CustomEditor handleContentChange={handleContentChange} handleFileUrlChange={handleFileUrlChange}/>
                 <button onClick={handleSubmit}>작성</button>
             </div>
         </div>

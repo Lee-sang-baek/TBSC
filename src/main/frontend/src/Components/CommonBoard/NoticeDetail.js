@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './NoticeDetail.css';
-import Header from "../Header/Header"; // CSS 파일을 import합니다.
+import Header from "../Header/Header";
 
 function NoticeDetail() {
-    const { num } = useParams(); // 게시글 번호를 URL 파라미터로부터 가져옵니다.
+    const { num } = useParams();
     const [notice, setNotice] = useState(null);
 
     useEffect(() => {
@@ -23,29 +23,29 @@ function NoticeDetail() {
         };
 
         fetchNotice();
-
-        // cleanup 함수
-        return () => {
-            // 이펙트의 정리(clean-up) 작업을 수행할 수 있습니다.
-        };
-    }, [num]); // num이 변경될 때마다 useEffect가 실행됩니다.
+    }, [num]);
 
     if (!notice) {
         return <div>Loading...</div>;
     }
 
+    const fileName = notice.fileUrl.split(';').pop(); // 파일 경로에서 파일 이름만 추출
+    const fileDownloadUrl = fileName ? `http://localhost:8090/files/${fileName}` : '';
+
     return (
         <div>
             <Header />
             <div className="notice-detail">
-                <h2>{notice.title}</h2>
+                <h1>{notice.title}</h1>
                 <p>작성자: {notice.id}</p>
-                <p>상태: {notice.state}</p>
-                <p>작성일자: {new Date(notice.date).toLocaleDateString()}</p>
+                <p>작성일: {new Date(notice.date).toLocaleString()}</p>
+                <p>조회수: {notice.view}</p>
+                {notice.fileUrl && (
+                    <p>첨부 파일: <a href={fileDownloadUrl} download>다운로드</a></p>
+                )}
                 <div className="content" dangerouslySetInnerHTML={{ __html: notice.content }}></div>
             </div>
         </div>
-
     );
 }
 

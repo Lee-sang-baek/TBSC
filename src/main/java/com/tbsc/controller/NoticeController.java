@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -19,62 +20,81 @@ public class NoticeController {
     @Autowired
     private NoticeService noticeService;
 
-    //모든 공지사항 조회
+    @Value("${file.upload-dir}")
+    private String uploadDir;
+
+    // 모든 공지사항 조회
     @GetMapping
     public List<Notice> getAllNotices() {
         return noticeService.getAllNotices();
     }
 
+    // 공지사항 생성
     @PostMapping("/create")
     public ResponseEntity<Notice> createNotice(@RequestBody Notice notice) {
+        System.out.println("Received file URL: " + notice.getFileUrl());
         Notice createdNotice = noticeService.createNotice(notice);
         return ResponseEntity.ok().body(createdNotice);
     }
 
-
-
-    //글하나씩 조회
+    // 공지사항 조회
     @GetMapping("/{num}")
     public ResponseEntity<Notice> getNoticeById(@PathVariable("num") Integer num) {
         Notice notice = noticeService.getNoticeById(num);
-        notice.setView(notice.getView() + 1); // view 값을 1 증가시킴
-        noticeService.updateNotice(notice.getNum(), notice); // 업데이트 메서드 호출
+        notice.setView(notice.getView() + 1);
+        noticeService.updateNotice(notice.getNum(), notice);
         return ResponseEntity.ok().body(notice);
     }
 
-
-    //공지사항 수정
-    @PutMapping("/update")
-    public Notice updateNotice(@PathVariable Integer id, @RequestBody Notice notice) {
-        return noticeService.updateNotice(id, notice);
+    // 공지사항 수정
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Notice> updateNotice(@PathVariable Integer id, @RequestBody Notice notice) {
+        Notice updatedNotice = noticeService.updateNotice(id, notice);
+        return ResponseEntity.ok(updatedNotice);
     }
 
-    //공지사항 삭제
-    @DeleteMapping("/delete")
+    // 공지사항 삭제
+    @DeleteMapping("/delete/{id}")
     public void deleteNotice(@PathVariable Integer id) {
         noticeService.deleteNotice(id);
     }
 
-
-    @Value("${file.upload-dir}")
-    private String uploadDir;
-
     @PostMapping("/upload")
-    public String uploadFile(@RequestParam("file") MultipartFile file) {
+    public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file) {
         try {
-            // 파일 저장 경로 설정
+            // 파일이 저장되는 경로에 파일의 오리지널 이름을 붙여 전체 경로를 생성
             String filePath = uploadDir + File.separator + file.getOriginalFilename();
             File dest = new File(filePath);
-
-            // 파일 저장
             file.transferTo(dest);
 
-            // 파일 URL 반환
-            return filePath;
+            // 데이터베이스에 저장할 때는 파일명만 저장
+            String fileNameOnly = file.getOriginalFilename();
+
+            // 예시로 파일명만 리턴. 이 부분에서 fileNameOnly를 데이터베이스에 저장하는 로직 추가 필요
+            return ResponseEntity.ok(fileNameOnly);
         } catch (IOException e) {
             e.printStackTrace();
-            return "Upload Failed";
+            return ResponseEntity.status(500).body("Upload Failed: " + e.getMessage());
         }
     }
-}
 
+
+    // 이미지 업로드 (다중 파일 업로드 예시)
+    @PostMapping("/uploadImages")
+    public ResponseEntity<List<String>> uploadImages(@RequestParam("images") MultipartFile[] files) {
+        List<String> fileUrls = new ArrayList<>();
+        for (MultipartFile file : files) {
+            try {
+                String fileName = System.currentTimeMillis() + "-" + file.getOriginalFilename();
+                String filePath = uploadDir + File.separator + fileName;
+                File dest = new File(filePath);
+                file.transferTo(dest);
+                fileUrls.add(filePath);
+            } catch (IOException e) {
+                e.printStackTrace();
+                return ResponseEntity.status(500).body(null);
+            }
+        }
+        return ResponseEntity.ok(fileUrls);
+    }
+}
