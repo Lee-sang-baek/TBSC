@@ -46,17 +46,18 @@ public class NoticeController {
         return ResponseEntity.ok().body(notice);
     }
 
-    // 공지사항 수정
-    @PutMapping("/update/{id}")
-    public ResponseEntity<Notice> updateNotice(@PathVariable Integer id, @RequestBody Notice notice) {
-        Notice updatedNotice = noticeService.updateNotice(id, notice);
+    @PutMapping("/update/{num}")
+    public ResponseEntity<Notice> updateNotice(@PathVariable("num") Integer num, @RequestBody Notice notice) {
+        Notice updatedNotice = noticeService.updateNotice(num, notice);
         return ResponseEntity.ok(updatedNotice);
     }
 
+
+
     // 공지사항 삭제
-    @DeleteMapping("/delete/{id}")
-    public void deleteNotice(@PathVariable Integer id) {
-        noticeService.deleteNotice(id);
+    @DeleteMapping("/delete/{num}")
+    public void deleteNotice(@PathVariable Integer num) {
+        noticeService.deleteNotice(num);
     }
 
     @PostMapping("/upload")

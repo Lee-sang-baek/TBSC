@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import './NoticeDetail.css';
 import Header from "../Header/Header";
 
@@ -44,6 +44,8 @@ function NoticeDetail() {
                     <p>첨부 파일: <a href={fileDownloadUrl} download>다운로드</a></p>
                 )}
                 <div className="content" dangerouslySetInnerHTML={{ __html: notice.content }}></div>
+                {/* Link 컴포넌트를 사용하여 수정 페이지로 이동 */}
+                <Link to={`/notices/update/${num}`} className="edit-button">수정하기</Link>
             </div>
         </div>
     );

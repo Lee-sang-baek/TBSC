@@ -3,6 +3,7 @@ import {Routes, Route, BrowserRouter } from 'react-router-dom';
 import  NoticeList from './Components/CommonBoard/NoticeList';
 import NoticeDetail from "./Components/CommonBoard/NoticeDetail";
 import CreateNotice from "./Components/CommonBoard/CreateNotice";
+import UpdateNotice from "./Components/CommonBoard/UpdateNotice";
 import {createRoot} from "react-dom/client";
 function App() {
     const container = document.getElementById('root');
@@ -13,7 +14,7 @@ function App() {
                 <Route path="notices" element={<NoticeList />} />
                 <Route path="notices/:num" element={<NoticeDetail />} />
                 <Route path="notices/new" element={<CreateNotice />} />
-
+                <Route path="notices/update/:num" element={<UpdateNotice />} />
             </Routes>
         </BrowserRouter>
     );

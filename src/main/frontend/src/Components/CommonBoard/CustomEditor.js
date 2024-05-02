@@ -1,11 +1,16 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
-import './customQuillStyles.css';
+import 'react-quill/dist/quill.snow.css'; // Ensure Quill CSS is included
 
-const CustomEditor = ({ handleContentChange, handleFileUrlChange }) => {  // handleFileUrlChange 함수 추가
-    const [content, setContent] = useState('');
-    const quillRef = useRef();
+const CustomEditor = ({ initialContent, handleContentChange, initialFileUrl, handleFileUrlChange }) => {
+    const [content, setContent] = useState(initialContent || '');
+    const [fileUrl, setFileUrl] = useState(initialFileUrl);
+    const quillRef = useRef(null);
+
+    useEffect(() => {
+        setContent(initialContent);
+        setFileUrl(initialFileUrl);
+    }, [initialContent, initialFileUrl]);
 
     const handleChange = (value) => {
         setContent(value);
@@ -26,7 +31,8 @@ const CustomEditor = ({ handleContentChange, handleFileUrlChange }) => {  // han
                 .then(url => {
                     if (url) {
                         console.log("Received URL: ", url);
-                        handleFileUrlChange(url);  // URL 상태 업데이트
+                        setFileUrl(url);
+                        handleFileUrlChange(url);
                     } else {
                         console.error("Received empty URL");
                     }
@@ -40,32 +46,39 @@ const CustomEditor = ({ handleContentChange, handleFileUrlChange }) => {  // han
     return (
         <div>
             <ReactQuill
+                ref={quillRef}
                 theme="snow"
                 value={content}
                 onChange={handleChange}
-                modules={{
-                    toolbar: [
-                        [{ 'font': [] }],
-                        [{ 'header': '1' }, { 'header': '2' }, { 'header': '3' }, { 'header': '4' }, { 'header': '5' }, { 'header': '6' }],
-                        [{ 'color': [] }, { 'background': [] }],
-                        ['bold', 'italic', 'underline', 'strike'],
-                        [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-                        [{ 'align': [] }],
-                        ['link', 'image', 'video', 'blockquote', 'code-block'],
-                        ['clean']
-                    ],
-                }}
-                formats={[
-                    'header', 'font', 'size',
-                    'bold', 'italic', 'underline', 'strike', 'blockquote',
-                    'list', 'bullet', 'indent',
-                    'link', 'image', 'video'
-                ]}
-                ref={quillRef}
+                modules={CustomEditor.modules}
+                formats={CustomEditor.formats}
             />
+            {fileUrl && (
+                <div>
+                    Current File: <a href={fileUrl} target="_blank" rel="noopener noreferrer">View</a>
+                </div>
+            )}
             <input type="file" onChange={handleFileUpload} />
         </div>
     );
 };
+
+// Define Quill's toolbar options
+CustomEditor.modules = {
+    toolbar: [
+        [{ 'header': '1'}, {'header': '2'}, { 'font': [] }],
+        [{ 'size': [] }],
+        ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+        [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
+        ['link', 'image', 'video'],
+        ['clean']
+    ],
+};
+CustomEditor.formats = [
+    'header', 'font', 'size',
+    'bold', 'italic', 'underline', 'strike', 'blockquote',
+    'list', 'bullet', 'indent',
+    'link', 'image', 'video'
+];
 
 export default CustomEditor;

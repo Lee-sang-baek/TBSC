@@ -19,7 +19,7 @@ public class FileDownloadController {
     private static final String FILE_DIRECTORY = "C:\\tbsc\\file"; // 파일이 저장된 디렉토리 경로
 
     @GetMapping("/files/{fileName:.+}")
-    public ResponseEntity<InputStreamResource> downloadFile(@PathVariable String fileName) {
+    public ResponseEntity<InputStreamResource> downloadFile(@PathVariable("fileName") String fileName) {
         File file = new File(FILE_DIRECTORY + File.separator + fileName); // 파일 경로 생성 수정
         try {
             InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
