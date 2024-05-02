@@ -1,35 +1,52 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+import './NoticeDetail.css';
 import Header from "../Header/Header";
 
 function NoticeDetail() {
-    const { id } = useParams(); // URL 파라미터에서 게시물 번호 가져오기
-
-    // 게시물 상세 정보를 담을 상태 변수
+    const { num } = useParams();
     const [notice, setNotice] = useState(null);
 
-    // 게시물 상세 정보 가져오는 useEffect
     useEffect(() => {
-        axios.get(`/notices/${id}`) // 게시물 번호에 해당하는 정보 가져오기
-            .then(res => setNotice(res.data))
-            .catch(error => console.error("Error fetching notice detail:", error));
-    }, [id]);
+        const fetchNotice = async () => {
+            try {
+                const response = await fetch(`/notices/${num}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    setNotice(data);
+                } else {
+                    console.error('게시글 조회에 실패했습니다.');
+                }
+            } catch (error) {
+                console.error('서버와의 통신 중 오류가 발생했습니다.', error);
+            }
+        };
+
+        fetchNotice();
+    }, [num]);
+
+    if (!notice) {
+        return <div>Loading...</div>;
+    }
+
+    const fileName = notice.fileUrl.split(';').pop(); // 파일 경로에서 파일 이름만 추출
+    const fileDownloadUrl = fileName ? `http://localhost:8090/files/${fileName}` : '';
 
     return (
         <div>
             <Header />
-            {/* 게시물 상세 정보 표시 */}
-            {notice && (
-                <div className="noticeDetail">
-                    <h2>{notice.title}</h2>
-                    <p>작성자: {notice.id}</p>
-                    <p>작성일: {notice.date}</p>
-                    <p>조회수: {notice.view}</p>
-                    <hr />
-                    <p>{notice.content}</p>
-                </div>
-            )}
+            <div className="notice-detail">
+                <h1>{notice.title}</h1>
+                <p>작성자: {notice.id}</p>
+                <p>작성일: {new Date(notice.date).toLocaleString()}</p>
+                <p>조회수: {notice.view}</p>
+                {notice.fileUrl && (
+                    <p>첨부 파일: <a href={fileDownloadUrl} download>다운로드</a></p>
+                )}
+                <div className="content" dangerouslySetInnerHTML={{ __html: notice.content }}></div>
+                {/* Link 컴포넌트를 사용하여 수정 페이지로 이동 */}
+                <Link to={`/notices/update/${num}`} className="edit-button">수정하기</Link>
+            </div>
         </div>
     );
 }

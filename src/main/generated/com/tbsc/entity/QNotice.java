@@ -24,6 +24,8 @@ public class QNotice extends EntityPathBase<Notice> {
 
     public final DateTimePath<java.util.Date> date = createDateTime("date", java.util.Date.class);
 
+    public final StringPath fileUrl = createString("fileUrl");
+
     public final StringPath id = createString("id");
 
     public final ListPath<String, StringPath> images = this.<String, StringPath>createList("images", String.class, StringPath.class, PathInits.DIRECT2);

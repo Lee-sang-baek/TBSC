@@ -10,6 +10,11 @@ import MemberList from './Components/Pages/Admin/MemberList';
 import SiteManagement from './Components/Pages/Admin/SiteManagement';
 import ReservationConfirmation from './Components/Pages/Admin/ReservationConfirmation';
 import AccessLog from './Components/Pages/Admin/AccessLog';
+import NoticeList from './Components/CommonBoard/NoticeList';
+import NoticeDetail from "./Components/CommonBoard/NoticeDetail";
+import CreateNotice from "./Components/CommonBoard/CreateNotice";
+import UpdateNotice from "./Components/CommonBoard/UpdateNotice";
+import {createRoot} from "react-dom/client";
 import axios from "axios";
 
 function App() {
@@ -64,6 +69,10 @@ function App() {
                 <Route path="/admin/site-management" element={<SiteManagement />} />
                 <Route path="/admin/reservation-confirmation" element={<ReservationConfirmation />} />
                 <Route path="/admin/access-log" element={<AccessLog />} />
+                <Route path="notices" element={<NoticeList />} />
+                <Route path="notices/:num" element={<NoticeDetail />} />
+                <Route path="notices/new" element={<CreateNotice />} />
+                <Route path="notices/update/:num" element={<UpdateNotice />} />
             </Routes>
         </div>
     </BrowserRouter>

@@ -1,78 +1,89 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import CustomEditor from './CustomEditor';
+import './CreateNotice.css';
+import Header from "../Header/Header";
 
 function CreateNotice() {
     const [title, setTitle] = useState('');
+    const [id, setId] = useState('');
+    const [state, setState] = useState('');
     const [content, setContent] = useState('');
-    const [state, setState] = useState('Active');
+    const [date, setDate] = useState(new Date());
+    const [fileUrl, setFileUrl] = useState('');
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const handleTitleChange = (e) => {
+        setTitle(e.target.value);
+    };
 
-        const currentDate = new Date().toISOString(); // 현재 날짜를 ISO 형식으로 변환
-        const noticeData = {
-            title: title,
-            content: content,
-            state: state,
-            view: 0, // 초기값 설정
-            date: currentDate // 현재 날짜 추가
+    const handleIdChange = (e) => {
+        setId(e.target.value);
+    };
+
+    const handleStateChange = (e) => {
+        setState(e.target.value);
+    };
+
+    const handleContentChange = (content) => {
+        setContent(content);
+    };
+
+    const handleFileUrlChange = (url) => {
+        setFileUrl(url);
+    };
+
+    const handleSubmit = async () => {
+        const data = {
+            title,
+            id,
+            state,
+            content,
+            fileUrl,
+            date
         };
 
+        console.log("Submitting data:", data);
+
         try {
-            const response = await axios.post('/notices/create', noticeData);
-            console.log('Notice created:', response.data);
-            window.location.href = '/notices'; // 성공적으로 생성되면 홈페이지로 이동
+            const response = await fetch('/notices/create', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (response.ok) {
+                console.log('게시글이 성공적으로 작성되었습니다.');
+                window.location.href = '/notices';
+            } else {
+                console.error('게시글 작성에 실패했습니다.');
+            }
         } catch (error) {
-            console.error('Error creating notice:', error);
+            console.error('서버와의 통신 중 오류가 발생했습니다.', error);
         }
     };
 
     return (
         <div>
-            <h1>글쓰기</h1>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="title">제목</label>
-                    <input
-                        type="text"
-                        id="title"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                    />
+            <Header />
+            <div className="create-notice-container">
+                <div className="form-group">
+                    <label>제목:</label>
+                    <input type="text" value={title} onChange={handleTitleChange}/>
                 </div>
-                <div>
-                    <label htmlFor="content">내용</label>
-                    <textarea
-                        id="content"
-                        value={content}
-                        onChange={(e) => setContent(e.target.value)}
-                    />
+                <div className="form-group">
+                    <label>작성자:</label>
+                    <input type="text" value={id} onChange={handleIdChange}/>
                 </div>
-                <div>
-                    <label>상태</label>
-                    <div>
-                        <input
-                            type="radio"
-                            id="active"
-                            value="Active"
-                            checked={state === 'Active'}
-                            onChange={() => setState('Active')}
-                        />
-                        <label htmlFor="active">Active</label>
-                    </div>
-                    <div>
-                        <input
-                            type="radio"
-                            id="inactive"
-                            value="Inactive"
-                            checked={state === 'Inactive'}
-                            onChange={() => setState('Inactive')}
-                        />
-                        <label htmlFor="inactive">Inactive</label>
-                    </div>
+                <div className="form-group">
+                    <label>진행중:</label>
+                    <input type="radio" name="state" value="진행중" checked={state === "진행중"} onChange={handleStateChange}/>
+                    <label>마감:</label>
+                    <input type="radio" name="state" value="마감" checked={state === "마감"} onChange={handleStateChange}/>
                 </div>
-                <button type="submit">제출</button>
-            </form>
+                <CustomEditor handleContentChange={handleContentChange} handleFileUrlChange={handleFileUrlChange}/>
+                <button onClick={handleSubmit}>작성</button>
+            </div>
         </div>
     );
 }
