@@ -6,6 +6,7 @@ import com.tbsc.enums.MemberType;
 import com.tbsc.service.MemberService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
@@ -16,10 +17,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.time.LocalDate;
+import java.util.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -50,10 +49,10 @@ public class MemberController {
         return memberService.checkEmail(email);
     }
 
-    @GetMapping("/member/login")
-    public String loginForm() {
-        return "loginForm";
-    }
+//    @GetMapping("/member/login")
+//    public String loginForm() {
+//        return "loginForm";
+//    }
 
 //    @PostMapping("/login")
 //    public ResponseEntity<String> login(@RequestBody Map<String, String> loginData) {
@@ -79,14 +78,14 @@ public class MemberController {
             Member member = memberService.login(id, storedPasswordHash);
 
             HttpSession session = httpRequest.getSession();
-            if (session.getAttribute("id") != null) {
-                System.out.println("id: " + session.getAttribute("id"));
-            }
+//            if (session.getAttribute("id") != null) {
+//                System.out.println("id: " + session.getAttribute("id"));
+//            }
             session.setAttribute("id", id);
 
             return ResponseEntity.ok(member.getId());
         } else {
-            return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).body("주전자");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("비밀번호가 다릅니다.");
         }
     }
 
@@ -97,17 +96,25 @@ public class MemberController {
         return ResponseEntity.ok("로그아웃 성공");
     }
 
+    @PostMapping("/member/list")
+    public ResponseEntity<List<Member>> memberList() {
+        List<Member> members = memberService.getList();
+        // System.out.println(members.size());
+        return ResponseEntity.ok(members);
+    }
+
     @GetMapping("/create")
-    public String admin() {
+    public ResponseEntity<String> admin() {
         Member member = new Member();
         member.setId("admin");
         member.setPassword(passwordEncoder.encode("12345"));
-        member.setAddress("admin");
-        member.setEmail("admin@admin");
+        member.setName("admin");
+        member.setAddress("admin's home");
+        member.setEmail("admin@admin.com");
         member.setPhoneNum("010-0000-0000");
         member.setState(MemberType.ADMIN);
-        member.setBirth(new Date());
+        member.setBirth(LocalDate.now());
         memberService.signUp(member);
-        return "admin create";
+        return ResponseEntity.ok("admin create");
     }
 }

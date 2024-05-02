@@ -16,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.regex.Pattern;
 
 @Service
 public class MemberService implements UserDetailsService {
@@ -84,6 +85,14 @@ public class MemberService implements UserDetailsService {
     }
 
     public ResponseEntity<String> checkId(String id) {
+        if (id.length() < 5) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("아이디는 5글자 이상만 가능합니다.");
+        }
+
+        if (!Pattern.matches("[a-zA-Z0-9]+", id)) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("아이디는 영문과 숫자만 가능합니다.");
+        }
+
         Optional<Member> member = memberRepository.findById(id);
         if (member.isPresent()) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("이미 존재하는 아이디 입니다.");
@@ -93,6 +102,11 @@ public class MemberService implements UserDetailsService {
     }
 
     public ResponseEntity<String> checkEmail(String email) {
+
+        if (!Pattern.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", email)) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("이메일 형식이 올바르지 않습니다.");
+        }
+
         Optional<Member> member = memberRepository.findByEmail(email);
         if (member.isPresent()) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("이미 존재하는 이메일 입니다.");
@@ -129,5 +143,9 @@ public class MemberService implements UserDetailsService {
     public Member login(String id, String hashedPassword) {
         Optional<Member> optionalMember = memberRepository.findByIdAndPassword(id, hashedPassword);
         return optionalMember.orElse(null);
+    }
+
+    public List<Member> getList() {
+        return memberRepository.findAll();
     }
 }

@@ -21,7 +21,7 @@ public class QMember extends EntityPathBase<Member> {
 
     public final StringPath address = createString("address");
 
-    public final DateTimePath<java.util.Date> birth = createDateTime("birth", java.util.Date.class);
+    public final DatePath<java.time.LocalDate> birth = createDate("birth", java.time.LocalDate.class);
 
     public final StringPath businessNum = createString("businessNum");
 

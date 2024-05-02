@@ -21,13 +21,13 @@ input[type="text"],
 input[type="password"],
 input[type="email"],
 input[type="date"]{
-  width: calc(100% - 1500px); /* 입력 요소의 너비 조정 */
+  width: calc(100% - 1500px);
   padding: 10px;
   margin-top: 5px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 3px;
-  display: inline-block; /* 입력 요소를 인라인 블록으로 변경 */
+  display: inline-block;
 }
 
 button {
@@ -128,9 +128,36 @@ button + input {
     width: 100px;
 }
 
-.input-box input {
+.input-box label .long-input {
     width: 500px;
     display: block;
+}
+
+.phone-number-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.phone-number-box input {
+    width: 30%;
+}
+
+.phone-number-box select {
+    width: 30%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.phone-number-box h4 {
+    margin-top: 0px;
+    margin-left: 18px;
+    margin-right: 18px;
+    padding-top: 8px;
 }
 
 .input-icon {

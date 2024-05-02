@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -28,7 +29,7 @@ public class Member {
     private String name;
 
     @Column(nullable = false)
-    private Date birth;
+    private LocalDate birth;
 
     @Column(unique = true)
     private String email;
@@ -52,7 +53,7 @@ public class Member {
         this.setBusinessNum(memberDto.getBusinessNum());
         this.setRepresentative(memberDto.getRepresentative());
         this.setCompAddress(memberDto.getCompAddress());
-        this.setAddress(memberDto.getAddress());
+        this.setAddress(memberDto.getAddress() + " " + memberDto.getDetailAddress());
         this.setBirth(memberDto.getBirth());
         this.setEmail(memberDto.getEmail());
         this.setPhoneNum(memberDto.getPhoneNum());

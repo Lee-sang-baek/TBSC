@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import DatePicker from 'react-datepicker';
-import { LocalDateTime } from '@js-joda/core';
 import './SignUp.css';
 import logoImage from '../Imgs/logo.png';
 
@@ -52,6 +50,37 @@ const checkEmail = () => {
       });
 };
 
+  const [areaCode, setAreaCode] = useState('010');
+  const [phoneNum1, setPhoneNum1] = useState('');
+  const [phoneNum2, setPhoneNum2] = useState('');
+  const [isValidPhoneNum, setIsValidPhoneNum] = useState(false);
+
+  const handleAreaCodeChange = (e) => {
+    setAreaCode(e.target.value);
+  };
+
+const handleChange = (e, target) => {
+    const input = e.target.value;
+    const reNum = input.replace(/[^0-9]/g, '');
+    target(reNum);
+};
+
+useEffect(() => {
+    const phoneNumber = `${areaCode}-${phoneNum1}-${phoneNum2}`;
+    setFormData({ ...formData, phoneNum: phoneNumber });
+}, [phoneNum1, phoneNum2]);
+
+useEffect(() => {
+    setIsValidPhoneNum(false);
+    handleSubmit();
+}, [formData.phoneNum]);
+
+  const handleSubmit = () => {
+    if (phoneNum2.length === 4 && formData.phoneNum.length >= 12) {
+        setIsValidPhoneNum(true);
+    }
+  };
+
 const requestPhoneVerification = () => {
   // 휴대폰 번호 인증 요청 로직 구현
   // 필요한 경우 axios를 사용하여 서버로 요청을 보내어 인증번호 요청
@@ -87,7 +116,7 @@ const handleSignUp = () => {
         const missingFieldsMessage = missingFields.join(", ");
         alert(`다음 값을 입력해주세요: ${missingFieldsMessage}`);
     } else {
-        if (idAvailable && passwordMatch && emailAvailable && phoneVerified) {
+        if (idAvailable && passwordMatch && emailAvailable && isValidPhoneNum) {
             // 회원가입 데이터를 서버로 전송
             axios.post('/member/signup', formData)
             .then(response => {
@@ -110,15 +139,15 @@ const handleSignUp = () => {
             else if (!emailAvailable) {
                 alert("이메일 중복확인이 필요합니다.");
             }
-//            if (!phoneVerified) {
-//                alert("휴대폰 인증이 필요합니다.");
-//            }
+            else if (!isValidPhoneNum) {
+                alert("휴대폰 번호의 형식이 잘못되었습니다.");
+            }
         }
     }
 };
 
 const handlePasswordMatch = () => {
-setPasswordMatch(formData.password === formData.confirmPassword);
+    setPasswordMatch(formData.password === formData.confirmPassword);
 };
 
   return (
@@ -130,7 +159,7 @@ setPasswordMatch(formData.password === formData.confirmPassword);
         <div className="input-box">
             <label>
                 아이디: {idAvailable && <span className="complete">중복 확인 완료</span>}
-                <input type="text" value={formData.id} onChange={(e) => {setFormData({ ...formData, id: e.target.value });
+                <input className="long-input" type="text" value={formData.id} onChange={(e) => {setFormData({ ...formData, id: e.target.value });
                                                                          setIdAvailable(false);}} />
             </label>
             <button className="center-button" onClick={checkUserId}>중복 확인</button>
@@ -139,7 +168,7 @@ setPasswordMatch(formData.password === formData.confirmPassword);
       <div className="input-box">
           <label>
             비밀번호:
-            <input type="password" value={formData.password} onChange={(e) => {setFormData({ ...formData, password: e.target.value });
+            <input className="long-input" type="password" value={formData.password} onChange={(e) => {setFormData({ ...formData, password: e.target.value });
                                                                                setPasswordMatch(false);}} onBlur={handlePasswordMatch} />
           </label>
       </div>
@@ -147,7 +176,7 @@ setPasswordMatch(formData.password === formData.confirmPassword);
       <div className="input-box">
           <label>
             비밀번호 확인: {!passwordMatch && <span className="error">비밀번호가 일치하지 않습니다.</span>}
-            <input type="password" value={formData.confirmPassword} onChange={(e) => {setFormData({ ...formData, confirmPassword: e.target.value });
+            <input className="long-input" type="password" value={formData.confirmPassword} onChange={(e) => {setFormData({ ...formData, confirmPassword: e.target.value });
                                                                                       setPasswordMatch(false);}} onBlur={handlePasswordMatch} />
           </label>
       </div>
@@ -155,54 +184,77 @@ setPasswordMatch(formData.password === formData.confirmPassword);
       <div className="input-box">
           <label>
             이름:
-            <input type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
+            <input className="long-input" type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
           </label>
       </div>
 
       <div className="input-box">
           <label>
             생년월일:
-            <input type="date" value={formData.birth} onChange={(e) => setFormData({ ...formData, birth: e.target.value })} />
+            <input className="long-input" type="date" value={formData.birth} onChange={(e) => setFormData({ ...formData, birth: e.target.value })} />
           </label>
       </div>
 
       <div className="input-box">
           <label>
             주소:
-            <input type="text" value={formData.address} onChange={(e) => setFormData({ ...formData, address: e.target.value })} />
+            <input className="long-input" type="text" value={formData.address} onChange={(e) => setFormData({ ...formData, address: e.target.value })} />
           </label>
       </div>
 
       <div className="input-box">
           <label>
             상세주소:
-            <input type="text" value={formData.detailAddress} onChange={(e) => setFormData({ ...formData, detailAddress: e.target.value })} />
+            <input className="long-input" type="text" value={formData.detailAddress} onChange={(e) => setFormData({ ...formData, detailAddress: e.target.value })} />
           </label>
       </div>
 
       <div className="input-box">
           <label>
             이메일: {emailAvailable && <span className="complete">확인완료</span>}
-            <input type="email" value={formData.email} onChange={(e) => {setFormData({ ...formData, email: e.target.value });
+            <input className="long-input" type="email" value={formData.email} onChange={(e) => {setFormData({ ...formData, email: e.target.value });
                                                                         setEmailAvailable(false);}} />
           </label>
           <button className="center-button" onClick={checkEmail}>중복 확인</button>
       </div>
 
       <div className="input-box">
-          <label>
-            휴대폰 번호:
-            <input type="text" value={formData.phoneNum} onChange={(e) => {setFormData({ ...formData, phoneNum: e.target.value });
-                                                                           // setPhoneVerified(false);}} />
-                                                                           setPhoneVerified(true);}} />
-          </label>
-          <button className="center-button" onClick={requestPhoneVerification}>인증 하기</button>
-      </div>
+
+            <label>
+              휴대폰 번호:
+              <div className="phone-number-box">
+              <select value={areaCode} onChange={handleAreaCodeChange}>
+                <option value="010">010</option>
+                <option value="016">011</option>
+                <option value="016">016</option>
+                <option value="016">017</option>
+                <option value="016">019</option>
+              </select>
+              <h4>-</h4>
+              <input
+                type="text"
+                value={phoneNum1}
+                onChange={(e) => handleChange(e, setPhoneNum1)}
+                maxLength="4"
+              />
+              <h4>-</h4>
+              <input
+                type="text"
+                value={phoneNum2}
+                onChange={(e) => handleChange(e, setPhoneNum2)}
+                maxLength="4"
+              />
+              </div>
+            </label>
+
+            <button className="center-button">인증 하기</button>
+
+          </div>
 
     <div className="input-box">
       <label>
         인증번호 입력:
-        <input type="text" value={formData.verificationCode} onChange={(e) => {setFormData({ ...formData, verificationCode: e.target.value });
+        <input className="long-input" type="text" value={formData.verificationCode} onChange={(e) => {setFormData({ ...formData, verificationCode: e.target.value });
                                                                                // setPhoneVerified(false);}} />
                                                                                setPhoneVerified(true);}} />
       </label>

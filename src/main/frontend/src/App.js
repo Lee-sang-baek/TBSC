@@ -2,7 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'; // Routes import 추가
 import Header from './Components/Header/Header';
 import SignUp from './Components/Pages/SignUp';
+import SignUpSelect from './Components/Pages/SignUpSelect';
+import CompSignUp from './Components/Pages/CompSignUp';
 import LoginForm from './Components/Pages/LoginForm';
+import AdminPage from './Components/Pages/AdminPage';
+import MemberList from './Components/Pages/Admin/MemberList';
+import SiteManagement from './Components/Pages/Admin/SiteManagement';
+import ReservationConfirmation from './Components/Pages/Admin/ReservationConfirmation';
+import AccessLog from './Components/Pages/Admin/AccessLog';
 import axios from "axios";
 
 function App() {
@@ -28,6 +35,13 @@ function App() {
         window.location.reload();
     }
 
+    const create = () => {
+        axios.get('/create')
+        .then(response => {
+            alert(response.data);
+        })
+    }
+
     return (
     <BrowserRouter>
         <div>
@@ -36,11 +50,20 @@ function App() {
                 {!sessionStorage.getItem('id') && <Link to={"/login"}> 로그인 </Link>}
                 {sessionStorage.getItem('id') && <a href="#" onClick={logout}> 로그아웃 </a>}
                 {!sessionStorage.getItem('id') && <Link to={"/signup"}> 회원가입 </Link>}
+                <a href="#" onClick={create}> 어드민생성 </a>
+                <Link to={"/admin"}> 관리자페이지 </Link>
             </div>
             <Routes>
                 <Route path='/login' element={<LoginForm />} />
-                <Route path='/signup' element={<SignUp />} />
+                <Route path='/signup' element={<SignUpSelect />} />
+                <Route path='/normal-signup' element={<SignUp />} />
+                <Route path='/company-signup' element={<CompSignUp />} />
                 <Route path='/logout' element={<LoginForm />} />
+                <Route path='/admin' element={<AdminPage />} />
+                <Route path="/admin/member-list" element={<MemberList />} />
+                <Route path="/admin/site-management" element={<SiteManagement />} />
+                <Route path="/admin/reservation-confirmation" element={<ReservationConfirmation />} />
+                <Route path="/admin/access-log" element={<AccessLog />} />
             </Routes>
         </div>
     </BrowserRouter>
