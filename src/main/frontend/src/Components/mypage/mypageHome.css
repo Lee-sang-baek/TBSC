@@ -1,0 +1,47 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.profile {
+    font-size: large;
+    padding: 10px;
+    display: table;
+}
+
+.profileImg {
+    width: 200px;
+    display: table-cell;
+}
+
+.profileInfo {
+    padding: 10px 20px;
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.profileInfo > div {
+    padding: 10px 20px;
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.profileInfo > div > div {
+    padding: 10px;
+}
+
+.profileModify {
+    text-align: center;
+}
+
+.infoText {
+    vertical-align: middle;
+    display: table-cell;
+    width: 300px;
+}
+
+.reservDetails {
+    display: flex;
+    justify-content: space-between;
+}
+

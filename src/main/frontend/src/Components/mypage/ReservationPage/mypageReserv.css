@@ -1,0 +1,24 @@
+.pageTitle {
+    text-align: center;
+}
+
+.reservContainer {
+    background-color: #a3deef;
+    width: 50%;
+    border-radius: 15px;
+}
+
+.reservContainer > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.reservContainer .detailHeader {
+    flex-direction: column;
+}
+
+.reservImg {
+    height: 100px;
+    width: 100px;
+}

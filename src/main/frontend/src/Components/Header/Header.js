@@ -6,6 +6,7 @@ import loginImage from '../Imgs/login.png';
 
 const Header = () => {
     const [showSubmenu, setShowSubmenu] = useState(false);
+    const [activeCategory, setActiveCategory] = useState(null);
 
     const categories = [
         {
@@ -51,7 +52,8 @@ const Header = () => {
         },
     ];
 
-    const handleMouseEnter = () => {
+    const handleMouseEnter = (index) => {
+        setActiveCategory(index);
         setShowSubmenu(true);
     };
 
@@ -62,24 +64,36 @@ const Header = () => {
     return (
         <header>
             <div className="logo-container">
-                <img src={logoImage} alt="Logo" className="logo"/>
-                <img src={loginImage} alt="Login" className="login"/>
+                <img src={logoImage} alt="Logo" className="logo" />
+
+                <div className="menu-container" onMouseLeave={handleMouseLeave}>
+                    <ul className="menu">
+                        {categories.map((category, index) => (
+                            <li
+                                key={index}
+                                className="menu-item"
+                                onMouseEnter={() => handleMouseEnter(index)}
+                            >
+                                <Link to="/" className="menu-link">{category.title}</Link>
+                                {showSubmenu && activeCategory !== null && (
+                                    <ul className="submenu">
+                                        {category.submenus.map((submenu, subIndex) => (
+                                            <li key={subIndex} className="submenu-item">
+                                                <Link to={submenu.path} className="submenu-link">{submenu.name}</Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
+                            </li>
+                        ))}
+                    </ul>
+
+                </div>
+
+                <img src={loginImage} alt="Login" className="login" />
             </div>
 
-            <ul className="menu">
-            {categories.map((category, index) => (
-                    <li key={index} className="menu-item" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-                        <Link to="/" className="menu-link">{category.title}</Link>
-                        <ul className={`submenu ${showSubmenu ? 'show' : ''}`}>
-                            {showSubmenu && category.submenus.map((submenu, subIndex) => (
-                                <li key={subIndex} className="submenu-item">
-                                    <Link to={submenu.path} className="submenu-link">{submenu.name}</Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </li>
-                ))}
-            </ul>
+
             <div className="login-container">
 
             </div>

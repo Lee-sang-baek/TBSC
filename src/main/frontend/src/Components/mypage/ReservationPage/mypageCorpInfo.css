@@ -1,0 +1,66 @@
+.pageTitle {
+    text-align: center;
+}
+
+.pageInfo {
+    display: flex;
+    justify-content: center;
+}
+
+.corpContainer {
+    background-color: #a3deef;
+    width: 50%;
+    border-radius: 15px;
+}
+
+.corpContainer .corpHeader {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.corpHeader > div {
+    display: flex;
+    justify-content: center;
+}
+
+.corpContent {
+    display: flex;
+    justify-content: space-around;
+}
+
+.corpImgContainer {
+    display: grid;
+    align-self: center;
+}
+
+.corpImg {
+    height: 100px;
+    width: 100px;
+}
+
+.corpInfoTitle {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+}
+
+.corpInfoContent {
+    height: 300px;
+    width: 300px;
+}
+
+.contentEdiForm {
+    background-color: #ffc3c3;
+}
+
+.contentText {
+    height: auto;
+    width: auto;
+    background-color: #c9d5d7;
+}
+
+.ifNothing {
+    display: flex;
+    justify-content: center;
+}

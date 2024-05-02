@@ -1,0 +1,59 @@
+.pageTitle {
+    text-align: center;
+}
+
+.modiInfo {
+    background-color: #a3deef;
+    width: 50%;
+    border-radius: 15px;
+}
+
+.modiInfo .modiInfoHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modiInfoHeader > div {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.pageInfo {
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.passcheckBox {
+    position: relative;
+}
+
+.passcheckSignal {
+    width: 50px;
+    height: 20px;
+    background-color: #fa5a5a;
+    position: absolute;
+    right: -20%;
+    font-size: small;
+    border-radius: 30px;
+    text-align: center;
+}
+
+.birthBox{
+    position: relative;
+}
+
+.birthBox > img {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: -10%;
+}

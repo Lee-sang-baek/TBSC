@@ -3,14 +3,17 @@
     padding: 0;
     margin: 0;
     text-align: center;
-    background-color: #DCDCDC;
+    /*background-color: #DCDCDC;*/
+    background-color: rgba( 255, 255, 255, 0.5 );
+    display: flex;
+    align-items: flex-start;
 }
 
 .menu-item {
-    display: inline-block;
-    position: relative;
-    margin-left: 51px;
-
+    /*display: inline-block;*/
+    /*position: relative;*/
+    /*margin-left: 51px;*/
+    margin: 0 30px;
 }
 
 .menu-link {
@@ -21,45 +24,40 @@
 }
 
 .submenu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #fff;
-    padding: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
-    border-radius: 5px; /* 모서리 둥글게 */
-
+    /*display: none; !* 기본적으로 숨김 *!*/
+    /*position: absolute;*/
+    /*top: calc(100% + 10px); !* 부모 요소인 .menu-container의 아래에 위치하도록 설정 *!*/
+    /*left: 0;*/
+    /*background-color: #fff;*/
+    padding: 1px;
+    /*box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);*/
+    border-radius: 5px;
 }
 
-.submenu-item {
-    margin-bottom: 5px;
-    background-color: white;
+/*.submenu-item {*/
+/*    !*margin-bottom: 5px;*!*/
+/*    !*background-color: white;*!*/
+/*    !*!*margin: 5px;*!    이거 절대 넣지 마셈 메뉴 마우스 호버시에 메뉴 일렁거림*!*/
+/*}*/
 
-}
+/*.menu-container:hover .submenu.show {*/
+/*    !*display: block; !* .menu-container에 마우스를 올렸을 때 .submenu.show 클래스가 있는 경우에만 submenu 표시 *!*!*/
+/*    !*color: black;*!*/
+/*    !*background-color: black;*!*/
+/*}*/
 
-
-.menu-item:hover .submenu {
-    display: block;
-}
-
-.submenu.show {
-    display: block;
-    color: black;
-    background-color: black;
-}
-
-
-ul{
-    list-style:none;
+ul {
+    list-style: none;
+    padding: 0;
 }
 
 .logo-container {
     display: flex;
     justify-content: space-between;
-    align-items: center; /* 로고와 로그인 이미지를 수직 중앙 정렬 */
-    padding: 0 20px; /* 로고와 로그인 이미지 사이의 여백 조절 */
-    background-color: gray;
+    align-items: flex-start;
+    padding: 0 20px;
+    /*background-color: gray;*/
+    background-color: rgba( 255, 255, 255, 0.5 );
 }
 
 .logo {
@@ -70,4 +68,17 @@ ul{
 .login {
     width: 50px;
     height: auto;
+}
+
+header{
+    position: fixed;
+    top: 0;
+    /* width: 100% */
+    left: 0;
+    right: 0;
+}
+
+body {
+    padding-top: 75px;
+    /* 생략 */
 }
