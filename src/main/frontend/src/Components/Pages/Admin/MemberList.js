@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import './MemberList.css';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "./MemberList.css";
 
 const MemberList = () => {
   const [memberList, setMemberList] = useState([]);
 
 useEffect(() => {
   const getList = () => {
-    axios.post('/member/list')
+    axios.post("/member/list")
     .then(response => {
         setMemberList(response.data);
         console.log(response.data);

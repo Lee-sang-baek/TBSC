@@ -1,6 +1,6 @@
 package com.tbsc.config;
 
-import com.tbsc.service.MemberService;
+import com.tbsc.member.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

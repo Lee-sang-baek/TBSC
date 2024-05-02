@@ -1,27 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'; // Routes import 추가
-import Header from './Components/Header/Header';
-import SignUp from './Components/Pages/SignUp';
-import SignUpSelect from './Components/Pages/SignUpSelect';
-import CompSignUp from './Components/Pages/CompSignUp';
-import LoginForm from './Components/Pages/LoginForm';
-import AdminPage from './Components/Pages/AdminPage';
-import MemberList from './Components/Pages/Admin/MemberList';
-import SiteManagement from './Components/Pages/Admin/SiteManagement';
-import ReservationConfirmation from './Components/Pages/Admin/ReservationConfirmation';
-import AccessLog from './Components/Pages/Admin/AccessLog';
-import NoticeList from './Components/CommonBoard/NoticeList';
-import NoticeDetail from "./Components/CommonBoard/NoticeDetail";
-import CreateNotice from "./Components/CommonBoard/CreateNotice";
-import UpdateNotice from "./Components/CommonBoard/UpdateNotice";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom"; // Routes import 추가
+import Header from "./Components/Fragments/Header/Header";
+import SignUp from "./Components/Pages/SignUp/SignUp";
+import SignUpSelect from "./Components/Pages/SignUp/SignUpSelect";
+import CompSignUp from "./Components/Pages/SignUp/CompSignUp";
+import LoginForm from "./Components/Pages/LoginForm/LoginForm";
+import AdminPage from "./Components/Pages/Admin/AdminPage";
+import MemberList from "./Components/Pages/Admin/MemberList";
+import SiteManagement from "./Components/Pages/Admin/SiteManagement";
+import ReservationConfirmation from "./Components/Pages/Admin/ReservationConfirmation";
+import AccessLog from "./Components/Pages/Admin/AccessLog";
+import NoticeList from "./Components/Pages/CommonBoard/NoticeList";
+import NoticeDetail from "./Components/Pages/CommonBoard/NoticeDetail";
+import CreateNotice from "./Components/Pages/CommonBoard/CreateNotice";
+import UpdateNotice from "./Components/Pages/CommonBoard/UpdateNotice";
 import {createRoot} from "react-dom/client";
 import axios from "axios";
-import Form from "./Components/Map/Form";
-import ModiInfo from "./Components/mypage/ReservationPage/mypageModify";
-import MyHome from "./Components/mypage/mypageHome";
-import ReservDetails from "./Components/mypage/ReservationPage/mypageReserv";
-import ModiCorp from "./Components/mypage/ReservationPage/mypageModiCorp";
-import CorpInfo from "./Components/mypage/ReservationPage/mypageCorpInfo";
+import Form from "./Components/Util/Map/Form";
+import ModiInfo from "./Components/Pages/mypage/ReservationPage/mypageModify";
+import MyHome from "./Components/Pages/mypage/mypageHome";
+import ReservDetails from "./Components/Pages/mypage/ReservationPage/mypageReserv";
+import ModiCorp from "./Components/Pages/mypage/ReservationPage/mypageModiCorp";
+import CorpInfo from "./Components/Pages/mypage/ReservationPage/mypageCorpInfo";
 
 function App() {
 
@@ -37,7 +37,7 @@ function App() {
     }, []);
 
     const logout = () => {
-        axios.get('/logout')
+        axios.get("/logout")
         .then(response => {
             console.log(response.data);
         });
@@ -47,7 +47,7 @@ function App() {
     }
 
     const create = () => {
-        axios.get('/create')
+        axios.get("/create")
         .then(response => {
             alert(response.data);
         })
@@ -58,11 +58,11 @@ function App() {
         <div>
             <Header />
             <div>
-                {!sessionStorage.getItem('id') && <Link to={"/login"}> 로그인 </Link>}
-                {sessionStorage.getItem('id') && <a href="#" onClick={logout}> 로그아웃 </a>}
-                {!sessionStorage.getItem('id') && <Link to={"/signup"}> 회원가입 </Link>}
-                <a href="#" onClick={create}> 어드민생성 </a>
-                <Link to={"/admin"}> 관리자페이지 </Link>
+                {!sessionStorage.getItem("id") && <Link to={"/login"}> /로그인/ </Link>}
+                {sessionStorage.getItem("id") && <a href="#" onClick={logout}> /로그아웃/ </a>}
+                {!sessionStorage.getItem("id") && <Link to={"/signup"}> /회원가입/</Link>}
+                <a href="#" onClick={create}> /어드민생성/ </a>
+                <Link to={"/admin"}> /관리자페이지/ </Link>
                 <Link to={"/myhome"}> /마이홈/ </Link>
                 <Link to={"/reserv"}> /예약/ </Link>
                 <Link to={"/corpinfo"}> /등록기업정보/ </Link>
@@ -70,12 +70,12 @@ function App() {
                 <Link to={"/modicorp"}> /기업정보수정/ </Link>
             </div>
             <Routes>
-                <Route path='/login' element={<LoginForm />} />
-                <Route path='/signup' element={<SignUpSelect />} />
-                <Route path='/normal-signup' element={<SignUp />} />
-                <Route path='/company-signup' element={<CompSignUp />} />
-                <Route path='/logout' element={<LoginForm />} />
-                <Route path='/admin' element={<AdminPage />} />
+                <Route path="/login" element={<LoginForm />} />
+                <Route path="/signup" element={<SignUpSelect />} />
+                <Route path="/normal-signup" element={<SignUp />} />
+                <Route path="/company-signup" element={<CompSignUp />} />
+                <Route path="/logout" element={<LoginForm />} />
+                <Route path="/admin" element={<AdminPage />} />
                 <Route path="/admin/member-list" element={<MemberList />} />
                 <Route path="/admin/site-management" element={<SiteManagement />} />
                 <Route path="/admin/reservation-confirmation" element={<ReservationConfirmation />} />
@@ -84,11 +84,11 @@ function App() {
                 <Route path="notices/:num" element={<NoticeDetail />} />
                 <Route path="notices/new" element={<CreateNotice />} />
                 <Route path="notices/update/:num" element={<UpdateNotice />} />
-                <Route path='/myhome' element={<MyHome/>}/>
-                <Route path='/reserv' element={<ReservDetails/>}/>
-                <Route path='/corpinfo' element={<CorpInfo/>}/>
-                <Route path='/modiinfo' element={<ModiInfo/>}/>
-                <Route path='/modicorp' element={<ModiCorp/>}/>
+                <Route path="/myhome" element={<MyHome/>}/>
+                <Route path="/reserv" element={<ReservDetails/>}/>
+                <Route path="/corpinfo" element={<CorpInfo/>}/>
+                <Route path="/modiinfo" element={<ModiInfo/>}/>
+                <Route path="/modicorp" element={<ModiCorp/>}/>
             </Routes>
         </div>
     </BrowserRouter>
