@@ -100,7 +100,7 @@ public class MemberController {
         member.setId("admin");
         member.setPassword(passwordEncoder.encode("12345"));
         member.setName("admin");
-        member.setAddress("admin"s home");
+        member.setAddress("admin's home");
         member.setEmail("admin@admin.com");
         member.setPhoneNum("010-0000-0000");
         member.setState(MemberType.ADMIN);
