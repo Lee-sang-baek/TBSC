@@ -1,66 +1,66 @@
-.pageTitle {
+.CorpInfo-compo .pageTitle {
     text-align: center;
 }
 
-.pageInfo {
+.CorpInfo-compo .pageInfo {
     display: flex;
     justify-content: center;
 }
 
-.corpContainer {
+.CorpInfo-compo .corpContainer {
     background-color: #a3deef;
     width: 50%;
     border-radius: 15px;
 }
 
-.corpContainer .corpHeader {
+.CorpInfo-compo .corpContainer .corpHeader {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-.corpHeader > div {
+.CorpInfo-compo .corpHeader > div {
     display: flex;
     justify-content: center;
 }
 
-.corpContent {
+.CorpInfo-compo .corpContent {
     display: flex;
     justify-content: space-around;
 }
 
-.corpImgContainer {
+.CorpInfo-compo .corpImgContainer {
     display: grid;
     align-self: center;
 }
 
-.corpImg {
+.CorpInfo-compo .corpImg {
     height: 100px;
     width: 100px;
 }
 
-.corpInfoTitle {
+.CorpInfo-compo .corpInfoTitle {
     display: flex;
     justify-content: space-between;
     padding: 30px;
 }
 
-.corpInfoContent {
+.CorpInfo-compo .corpInfoContent {
     height: 300px;
     width: 300px;
 }
 
-.contentEdiForm {
+.CorpInfo-compo .contentEdiForm {
     background-color: #ffc3c3;
 }
 
-.contentText {
+.CorpInfo-compo .contentText {
     height: auto;
     width: auto;
     background-color: #c9d5d7;
 }
 
-.ifNothing {
+.CorpInfo-compo .ifNothing {
     display: flex;
     justify-content: center;
 }

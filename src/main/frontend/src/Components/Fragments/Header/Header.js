@@ -13,6 +13,7 @@ const Header = () => {
     ];
 
     return (
+    <div className="Header-compo">
         <div className="navbar" onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)}>
             <div className="navbar-header">
                 <div className="logo">Logo</div>
@@ -33,6 +34,7 @@ const Header = () => {
                 </div>
             )}
         </div>
+    </div>
     );
 };
 

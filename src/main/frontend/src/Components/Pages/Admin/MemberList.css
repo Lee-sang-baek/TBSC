@@ -1,50 +1,50 @@
 /* MemberList.css */
 
-table {
+.MemberList-compo table {
   width: 100%;
   border-collapse: collapse;
 }
 
-thead {
+.MemberList-compo thead {
   background-color: #f2f2f2;
 }
 
-th, td {
+.MemberList-compo th, td {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
 }
 
-tr:nth-child(even) {
+.MemberList-compo tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-tr:hover {
+.MemberList-compo tr:hover {
   background-color: #dddddd;
 }
 
 /* Adjustments for responsive design */
 @media screen and (max-width: 600px) {
-  table {
+  .MemberList-compo table {
     border: 0;
   }
 
-  table thead {
+  .MemberList-compo table thead {
     display: none;
   }
 
-  table tr {
+  .MemberList-compo table tr {
     margin-bottom: 10px;
     display: block;
     border: 1px solid #ddd;
   }
 
-  table td {
+  .MemberList-compo table td {
     display: block;
     text-align: right;
   }
 
-  table td::before {
+  .MemberList-compo table td::before {
     content: attr(data-label);
     float: left;
     font-weight: bold;

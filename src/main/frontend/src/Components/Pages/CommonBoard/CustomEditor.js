@@ -44,7 +44,7 @@ const CustomEditor = ({ initialContent, handleContentChange, initialFileUrl, han
     };
 
     return (
-        <div>
+        <div className="CreateNotice-compo">
             <ReactQuill
                 ref={quillRef}
                 theme="snow"

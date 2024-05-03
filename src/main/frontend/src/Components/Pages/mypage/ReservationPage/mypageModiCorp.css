@@ -1,60 +1,60 @@
-.pageTitle {
+.ModiCorp-compo .pageTitle {
     text-align: center;
 }
 
-.pageInfo {
+.ModiCorp-compo .pageInfo {
     display: flex;
     justify-content: center;
 }
 
-.corpContainer {
+.ModiCorp-compo .corpContainer {
     background-color: #a3deef;
     width: 50%;
     border-radius: 15px;
 }
 
-.corpContainer .corpHeader {
+.ModiCorp-compo .corpContainer .corpHeader {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-.corpHeader > div {
+.ModiCorp-compo .corpHeader > div {
     display: flex;
     justify-content: center;
 }
 
-.corpContent {
+.ModiCorp-compo .corpContent {
     display: flex;
     justify-content: space-around;
 }
 
-.corpImgContainer {
+.ModiCorp-compo .corpImgContainer {
     display: grid;
     align-self: center;
 }
 
-.corpImg {
+.ModiCorp-compo .corpImg {
     height: 100px;
     width: 100px;
 }
 
-.corpInfoTitle {
+.ModiCorp-compo .corpInfoTitle {
     display: flex;
     justify-content: space-between;
     padding: 30px;
 }
 
-.corpInfoContent {
+.ModiCorp-compo .corpInfoContent {
     height: 300px;
     width: 300px;
 }
 
-.contentEdiForm {
+.ModiCorp-compo .contentEdiForm {
     background-color: #ffc3c3;
 }
 
-.contentText {
+.ModiCorp-compo .contentText {
     height: auto;
     width: auto;
     background-color: #c9d5d7;

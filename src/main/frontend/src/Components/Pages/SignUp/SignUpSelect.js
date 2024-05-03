@@ -5,7 +5,7 @@ import logoImage from "../../Imgs/logo.png";
 
 const SignUpSelect = () => {
   return (
-    <div className="SignUpSelect">
+    <div className="SignUpSelect-compo">
         <div className="left-section">
           <h2>일반 회원가입</h2>
           <div className="logo-box"><img src={logoImage} /></div>

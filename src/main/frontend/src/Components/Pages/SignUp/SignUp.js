@@ -151,7 +151,7 @@ const handlePasswordMatch = () => {
 };
 
   return (
-    <div className="input-form">
+    <div className="SignUp-compo">
         <div className="input-icon">
             <img src={logoImage} />
             <h2>회원 가입</h2>

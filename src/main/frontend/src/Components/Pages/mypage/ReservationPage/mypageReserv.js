@@ -5,6 +5,7 @@ import Button from "../../../BaseComponents/Button";
 const ReservDetails = (props) => {
 
     return (
+    <div className="ReservDetails-compo">
         <form>
             <h1 className="pageTitle">예약 내역</h1>
 
@@ -25,6 +26,7 @@ const ReservDetails = (props) => {
                 </div>
             </div>
         </form>
+        </div>
     );
 };
 

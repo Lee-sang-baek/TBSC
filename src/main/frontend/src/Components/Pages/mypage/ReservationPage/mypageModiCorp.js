@@ -5,6 +5,7 @@ import Button from "../../../BaseComponents/Button";
 const ModiCorp = (props) => {
 
     return (
+    <div className="ModiCorp-compo">
         <form>
             <h1 className="pageTitle">등록 기업정보</h1>
 
@@ -35,6 +36,7 @@ const ModiCorp = (props) => {
                 </div>
             </div>
         </form>
+    </div>
     );
 };
 

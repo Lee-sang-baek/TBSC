@@ -1,6 +1,8 @@
-/* App.css 또는 원하는 CSS 파일에 추가합니다. */
+/* App.css 또는 원하는 CSS 파일에 추가합니다.
+    해빈이가 바꿨다고 머지할때 확인하래
+ */
 
-.create-notice-container {
+.CreateNotice-compo .create-notice-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,15 +10,15 @@
     height: 100vh;
 }
 
-.form-group {
+.CreateNotice-compo .form-group {
     margin-bottom: 15px;
 }
 
-.form-group label {
+.CreateNotice-compo .form-group label {
     margin-right: 10px;
 }
 
-input[type="text"],
+.CreateNotice-compo input[type="text"],
 input[type="radio"] {
     padding: 8px;
     border: 1px solid #ccc;
@@ -24,7 +26,7 @@ input[type="radio"] {
     font-size: 16px;
 }
 
-button {
+.CreateNotice-compo button {
     padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
@@ -34,11 +36,11 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.CreateNotice-compo button:hover {
     background-color: #0056b3;
 }
 
-.react-quill {
+.CreateNotice-compo .react-quill {
     width: 500px; /* 에디터 폭 조절 */
     margin-top: 15px;
 }

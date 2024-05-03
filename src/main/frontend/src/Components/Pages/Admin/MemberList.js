@@ -17,7 +17,7 @@ useEffect(() => {
 }, []);
 
   return (
-    <div>
+    <div className="MemberList-compo">
       <h2>회원 목록</h2>
       <table>
       	<thead>

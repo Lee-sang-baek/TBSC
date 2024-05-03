@@ -6,6 +6,7 @@ import userProfile from "../../../Imgs/userProfile.png";
 const ModiInfo = (props) => {
 
     return (
+    <div className="ModiInfo-compo">
         <form>
             <h1 className="pageTitle">개인 정보 수정</h1>
 
@@ -39,6 +40,7 @@ const ModiInfo = (props) => {
                 </div>
             </div>
         </form>
+    </div>
     );
 };
 

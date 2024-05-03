@@ -42,8 +42,7 @@ function NoticeList() {
     const currentNotices = filteredNotices.slice(indexOfFirstNotice, indexOfLastNotice);
 
     return (
-        <div>
-            <Header />
+        <div className="NoticeList-compo">
             <div className="noticeListContainer">
                 <div className="noticeList">
                     <h1>공지사항</h1>

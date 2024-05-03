@@ -159,7 +159,7 @@ const handleSignUp = () => {
     };
 
   return (
-    <div className="input-form">
+    <div className="CompSignUp-compo">
         <div className="input-icon">
             <img src={logoImage} />
             <h2>기업 회원 가입</h2>

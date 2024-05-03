@@ -5,6 +5,7 @@ import Button from "../../BaseComponents/Button";
 const MyHome = () => {
 
     return (
+    <div className="MyHome-compo">
         <form>
             <div className="container">
                 <h3 className="profile">
@@ -48,6 +49,7 @@ const MyHome = () => {
                 }} text="버틍" className="btn-two blue"/>
             </div>
         </form>
+    </div>
     );
 };
 
