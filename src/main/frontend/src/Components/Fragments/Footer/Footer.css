@@ -1,21 +1,23 @@
 /* Footer.css */
-footer {
+.Footer-compo {
     /* 기존 스타일 */
     position: fixed;
     bottom: 0;
     width: 100%;
     background-color:  #61dafb;
 }
-.ft-info{
+
+.Footer-compo .ft-info{
     color:#DCDCDC;
 }
-.ft_copy{
+
+.Footer-compo .ft_copy{
     color:#DCDCDC;
 }
 
 
 /* ft-input 스타일 */
-.ft-input {
+.Footer-compo .ft-input {
     display: flex;
     position: absolute;
     top: 0;
@@ -26,7 +28,7 @@ footer {
 }
 
 /* ul 요소 스타일 */
-.ft-input ul {
+.Footer-compo .ft-input ul {
     display: flex;
     list-style-type: none;
     padding: 0;
@@ -34,7 +36,7 @@ footer {
 }
 
 /* li 요소 스타일 */
-.ft-input ul li {
+.Footer-compo .ft-input ul li {
     margin-left: 10px;
     margin-right: 15px;
     color: #DCDCDC; /* 아이콘 색상 */
@@ -43,18 +45,18 @@ footer {
 }
 
 /* 첫 번째 li 요소 스타일 */
-.ft-input ul li:first-child {
+.Footer-compo .ft-input ul li:first-child {
     margin-left: 0;
 }
 
 /* li에 마우스를 가져다 대었을 때 스타일 */
-.ft-input ul li:hover {
+.Footer-compo .ft-input ul li:hover {
     color: #FFFFFF; /* 아이콘 색상 변경 */
 }
 
 
 /* related-sites 스타일 */
-.related-sites {
+.Footer-compo .related-sites {
     position: absolute;
     bottom: 50px; /* ft-input 아래에 위치하도록 설정 */
     right: 120px;
@@ -70,11 +72,11 @@ footer {
 }
 
 /* related-sites에 마우스를 가져다 대었을 때 스타일 */
-.related-sites:hover {
+.Footer-compo .related-sites:hover {
     background-color: #DCDCDC; /* 배경색 변경 */
     color: #282828; /* 글자색 변경 */
 }
-.related-sites-list {
+.Footer-compo .related-sites-list {
     display: none;
     position: absolute;
     background-color: #DCDCDC;
@@ -87,7 +89,7 @@ footer {
     bottom: calc(100% + 10px);
 }
 
-.related-sites-list.show {
+.Footer-compo .related-sites-list.show {
     display: block;
 }
 

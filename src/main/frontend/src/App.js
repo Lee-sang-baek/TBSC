@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"; // Routes import 추가
 import Header from "./Components/Fragments/Header/Header";
+import Sidebar from "./Components/Fragments/Sidebar/Sidebar";
+import Footer from "./Components/Fragments/Footer/Footer";
 import SignUp from "./Components/Pages/SignUp/SignUp";
 import SignUpSelect from "./Components/Pages/SignUp/SignUpSelect";
 import CompSignUp from "./Components/Pages/SignUp/CompSignUp";

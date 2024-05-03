@@ -6,7 +6,7 @@ const Sidebar = () => {
 
 
 
-        <div className="sidebar">
+        <div className="Sidebar-compo">
 
             <div className='main'>메인</div>
             <ul>

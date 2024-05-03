@@ -1,11 +1,11 @@
-.sidebar {
+.Sidebar-compo {
     margin-top: 200px;
     width: 240px;
     height: 350px;
     background-color: #fcf1f1;
     color: #fff;
 }
-.main {
+.Sidebar-compo .main {
     padding: 30px;
     cursor: pointer;
     text-align: center;
@@ -16,21 +16,23 @@
 
 
 
-.sidebar ul {
+.Sidebar-compo .sidebar ul {
     list-style: none; /*li 점 없애주는 기능*/
     padding: 0;
 }
 
-.sidebar ul li {
+.Sidebar-compo .sidebar ul li {
     padding: 30px;
     cursor: pointer;
     text-align: center; /* 가운데 정렬 추가 */
     border-bottom: 1px solid #ddd; /* 각 li 요소 아래에 구분 선 추가 */
 }
-.sidebar ul li a { /* 링크 스타일 수정 */
+
+.Sidebar-compo .sidebar ul li a { /* 링크 스타일 수정 */
     text-decoration: none; /* 밑줄 없애기 */
     color: #080808; /* 링크 텍스트 색상 */
 }
-.sidebar ul li:hover { /*마우스를 대면 색깔이 바뀌도록*/
+
+.Sidebar-compo .sidebar ul li:hover { /*마우스를 대면 색깔이 바뀌도록*/
     background-color: #ee923d;
 }

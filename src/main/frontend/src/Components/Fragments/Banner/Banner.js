@@ -5,7 +5,7 @@ import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
 
 const Banner = () => {
     return (
-        <div className="Banner">
+        <div className="Banner-compo">
 
 
         </div>

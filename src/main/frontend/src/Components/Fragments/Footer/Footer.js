@@ -31,7 +31,7 @@ function Footer() {
     };
 
     return (
-        <footer>
+        <footer className="Footer-compo">
 
                 <div className="ft-info">
                     <ul>
