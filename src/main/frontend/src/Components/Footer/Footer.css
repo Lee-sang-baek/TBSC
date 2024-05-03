@@ -1,0 +1,98 @@
+/* Footer.css */
+footer {
+    /* 기존 스타일 */
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color:  #61dafb;
+}
+.ft-info{
+    color:#DCDCDC;
+}
+.ft_copy{
+    color:#DCDCDC;
+}
+
+
+/* ft-input 스타일 */
+.ft-input {
+    display: flex;
+    position: absolute;
+    top: 0;
+    bottom: 10px;
+    right: 0;
+    font-size: 20px;
+    color: #DCDCDC;
+}
+
+/* ul 요소 스타일 */
+.ft-input ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* li 요소 스타일 */
+.ft-input ul li {
+    margin-left: 10px;
+    margin-right: 15px;
+    color: #DCDCDC; /* 아이콘 색상 */
+    cursor: pointer;
+    transition: color 0.3s ease; /* 색상 변화 애니메이션 */
+}
+
+/* 첫 번째 li 요소 스타일 */
+.ft-input ul li:first-child {
+    margin-left: 0;
+}
+
+/* li에 마우스를 가져다 대었을 때 스타일 */
+.ft-input ul li:hover {
+    color: #FFFFFF; /* 아이콘 색상 변경 */
+}
+
+
+/* related-sites 스타일 */
+.related-sites {
+    position: absolute;
+    bottom: 50px; /* ft-input 아래에 위치하도록 설정 */
+    right: 120px;
+    margin-top: 0px; /* 원하는 여백 값으로 조정하세요 */
+    background-color: #282828; /* 배경색 설정 */
+    color: #DCDCDC; /* 글자색 설정 */
+    padding: 15px 25px; /* 내부 여백 설정 */
+    font-size: 18px; /* 글자 크기 설정 */
+    border-radius: 10px; /* 모서리를 둥글게 만듦 */
+    border: none; /* 테두리 제거 */
+    cursor: pointer; /* 커서 모양 변경 */
+    transition: background-color 0.3s ease, color 0.3s ease; /* 변화 애니메이션 */
+}
+
+/* related-sites에 마우스를 가져다 대었을 때 스타일 */
+.related-sites:hover {
+    background-color: #DCDCDC; /* 배경색 변경 */
+    color: #282828; /* 글자색 변경 */
+}
+.related-sites-list {
+    display: none;
+    position: absolute;
+    background-color: #DCDCDC;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 20px 16px;
+    z-index: 1;
+    /* 아래 두 줄 추가 */
+    top: auto;
+    bottom: calc(100% + 10px);
+}
+
+.related-sites-list.show {
+    display: block;
+}
+
+
+
+
+
+
