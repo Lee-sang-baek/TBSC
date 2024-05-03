@@ -3,18 +3,15 @@ import axios from "axios";
 import "./MemberList.css";
 
 const MemberList = () => {
-  const [memberList, setMemberList] = useState([]);
+    const [memberList, setMemberList] = useState([]);
 
-useEffect(() => {
-  const getList = () => {
-    axios.post("/member/list")
-    .then(response => {
-        setMemberList(response.data);
-        console.log(response.data);
-    });
-  };
-  getList();
-}, []);
+    useEffect(() => {
+        axios.post("/member/list")
+        .then(response => {
+            setMemberList(response.data);
+            console.log(response.data);
+        });
+    }, []);
 
   return (
     <div className="MemberList-compo">

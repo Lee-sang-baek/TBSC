@@ -1,0 +1,52 @@
+/* MemberList.css */
+
+.AccessLog-compo table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.AccessLog-compo thead {
+  background-color: #f2f2f2;
+}
+
+.AccessLog-compo th, td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.AccessLog-compo tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.AccessLog-compo tr:hover {
+  background-color: #dddddd;
+}
+
+/* Adjustments for responsive design */
+@media screen and (max-width: 600px) {
+  .AccessLog-compo table {
+    border: 0;
+  }
+
+  .AccessLog-compo table thead {
+    display: none;
+  }
+
+  .AccessLog-compo table tr {
+    margin-bottom: 10px;
+    display: block;
+    border: 1px solid #ddd;
+  }
+
+  .AccessLog-compo table td {
+    display: block;
+    text-align: right;
+  }
+
+  .AccessLog-compo table td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+  }
+}
