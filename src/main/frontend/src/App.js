@@ -25,7 +25,7 @@ import ModiCorp from "./Components/Pages/mypage/ReservationPage/mypageModiCorp";
 import CorpInfo from "./Components/Pages/mypage/ReservationPage/mypageCorpInfo";
 import FacilityGuide from "./Components/Pages/FacilityGuide/FacilityGuide";
 import CenterIntroduction from "./Components/Pages/CenterIntroduction/CenterIntroduction";
-import Verification from "./Components/Auth/Verification";
+import SmsSender from "./Components/Pages/sms/SmsSender";
 
 function App() {
 
@@ -91,16 +91,18 @@ function App() {
                 <Route path="notices/new" element={<CreateNotice />} />
                 <Route path="notices/update/:num" element={<UpdateNotice />} />
                 <Route path="facility" element={<FacilityGuide />} />
-                <Route path="/auth" element={<Verification />} />
-                <Route path="/auth/verifyCode" element={<Verification />} />
-                <Route path="/auth/sendCode" element={<Verification />} />
+                <Route path="facility" element={<FacilityGuide />} />
+                <Route path="api" element={<SmsSender />} />
+
+
+
                 <Route path="/myhome" element={<MyHome/>}/>
                 <Route path="/reserv" element={<ReservDetails/>}/>
                 <Route path="/corpinfo" element={<CorpInfo/>}/>
                 <Route path="/modiinfo" element={<ModiInfo/>}/>
                 <Route path="/modicorp" element={<ModiCorp/>}/>
             </Routes>
-            <Footer />
+
         </div>
     </BrowserRouter>
     );
