@@ -31,7 +31,7 @@ const LoginForm = () => {
     };
 
   return (
-    <div className="login-form">
+    <div className="LoginForm-compo">
         <div className="login-text">
             <h2>로그인</h2>
         </div>

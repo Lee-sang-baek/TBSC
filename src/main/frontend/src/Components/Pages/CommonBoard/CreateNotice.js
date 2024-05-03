@@ -64,8 +64,7 @@ function CreateNotice() {
     };
 
     return (
-        <div>
-            <Header />
+        <div className="CreateNotice-compo">
             <div className="create-notice-container">
                 <div className="form-group">
                     <label>제목:</label>

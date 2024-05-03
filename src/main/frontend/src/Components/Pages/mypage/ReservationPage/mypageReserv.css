@@ -1,24 +1,24 @@
-.pageTitle {
+.ReservDetails-compo .pageTitle {
     text-align: center;
 }
 
-.reservContainer {
+.ReservDetails-compo .reservContainer {
     background-color: #a3deef;
     width: 50%;
     border-radius: 15px;
 }
 
-.reservContainer > div {
+.ReservDetails-compo .reservContainer > div {
     display: flex;
     align-items: center;
     justify-content: space-around;
 }
 
-.reservContainer .detailHeader {
+.ReservDetails-compo .reservContainer .detailHeader {
     flex-direction: column;
 }
 
-.reservImg {
+.ReservDetails-compo .reservImg {
     height: 100px;
     width: 100px;
 }

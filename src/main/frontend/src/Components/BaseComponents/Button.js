@@ -3,11 +3,13 @@ import "./Button.css";
 const Button = ({text, className, onClick}) => {
 
     return (
-        <button
-            className={className}
-            onClick={onClick}>
-            {text}
-        </button>
+        <div className="Button-compo">
+            <button
+                className={className}
+                onClick={onClick}>
+                {text}
+            </button>
+        </div>
     );
 };
 

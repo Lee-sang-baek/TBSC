@@ -1,4 +1,4 @@
-.notice-detail {
+.NoticeDetail-compo .notice-detail {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
@@ -6,15 +6,15 @@
     border-radius: 5px;
 }
 
-.notice-detail h2 {
+.NoticeDetail-compo .notice-detail h2 {
     font-size: 24px;
     margin-bottom: 10px;
 }
 
-.notice-detail p {
+.NoticeDetail-compo .notice-detail p {
     margin-bottom: 5px;
 }
 
-.notice-detail .content {
+.NoticeDetail-compo .notice-detail .content {
     margin-top: 20px;
 }

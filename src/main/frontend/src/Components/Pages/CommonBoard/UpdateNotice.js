@@ -53,7 +53,7 @@ function UpdateNotice() {
 
 
     return (
-        <div>
+        <div className="UpdateNotice-compo">
             <Header />
             <div className="create-notice-container">
                 <div className="form-group">

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const AdminPage = () => {
   return (
-      <div>
+      <div className="AdminPage-compo">
         <nav>
           <ul>
             <li>

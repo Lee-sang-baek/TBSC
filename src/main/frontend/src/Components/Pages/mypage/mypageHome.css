@@ -1,46 +1,46 @@
-.container {
+.MyHome-compo .container {
     display: flex;
     justify-content: center;
 }
 
-.profile {
+.MyHome-compo .profile {
     font-size: large;
     padding: 10px;
     display: table;
 }
 
-.profileImg {
+.MyHome-compo .profileImg {
     width: 200px;
     display: table-cell;
 }
 
-.profileInfo {
+.MyHome-compo .profileInfo {
     padding: 10px 20px;
     vertical-align: middle;
     display: table-cell;
 }
 
-.profileInfo > div {
+.MyHome-compo .profileInfo > div {
     padding: 10px 20px;
     vertical-align: middle;
     display: table-cell;
 }
 
-.profileInfo > div > div {
+.MyHome-compo .profileInfo > div > div {
     padding: 10px;
 }
 
-.profileModify {
+.MyHome-compo .profileModify {
     text-align: center;
 }
 
-.infoText {
+.MyHome-compo .infoText {
     vertical-align: middle;
     display: table-cell;
     width: 300px;
 }
 
-.reservDetails {
+.MyHome-compo .reservDetails {
     display: flex;
     justify-content: space-between;
 }

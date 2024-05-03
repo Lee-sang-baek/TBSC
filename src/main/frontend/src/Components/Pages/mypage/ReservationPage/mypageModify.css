@@ -1,20 +1,20 @@
-.pageTitle {
+.ModiInfo-compo .pageTitle {
     text-align: center;
 }
 
-.modiInfo {
+.ModiInfo-compo .modiInfo {
     background-color: #a3deef;
     width: 50%;
     border-radius: 15px;
 }
 
-.modiInfo .modiInfoHeader {
+.ModiInfo-compo .modiInfo .modiInfoHeader {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.modiInfoHeader > div {
+.ModiInfo-compo .modiInfoHeader > div {
     width: 50%;
     display: flex;
     justify-content: center;
@@ -22,21 +22,21 @@
     border-radius: 15px;
 }
 
-.pageInfo {
+.ModiInfo-compo .pageInfo {
     display: flex;
     justify-content: center;
 }
 
-.button {
+.ModiInfo-compo .button {
     display: flex;
     justify-content: flex-end;
 }
 
-.passcheckBox {
+.ModiInfo-compo .passcheckBox {
     position: relative;
 }
 
-.passcheckSignal {
+.ModiInfo-compo .passcheckSignal {
     width: 50px;
     height: 20px;
     background-color: #fa5a5a;
@@ -47,11 +47,11 @@
     text-align: center;
 }
 
-.birthBox{
+.ModiInfo-compo .birthBox{
     position: relative;
 }
 
-.birthBox > img {
+.ModiInfo-compo .birthBox > img {
     width: 20px;
     height: 20px;
     position: absolute;

@@ -33,8 +33,7 @@ function NoticeDetail() {
     const fileDownloadUrl = fileName ? `http://localhost:8090/files/${fileName}` : "";
 
     return (
-        <div>
-            <Header />
+        <div className="NoticeDetail-compo">
             <div className="notice-detail">
                 <h1>{notice.title}</h1>
                 <p>작성자: {notice.id}</p>

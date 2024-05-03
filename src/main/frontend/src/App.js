@@ -5,7 +5,6 @@ import Sidebar from "./Components/Fragments/Sidebar/Sidebar";
 import Footer from "./Components/Fragments/Footer/Footer";
 import SignUp from "./Components/Pages/SignUp/SignUp";
 import SignUpSelect from "./Components/Pages/SignUp/SignUpSelect";
-import CompSignUp from "./Components/Pages/SignUp/CompSignUp";
 import LoginForm from "./Components/Pages/LoginForm/LoginForm";
 import AdminPage from "./Components/Pages/Admin/AdminPage";
 import MemberList from "./Components/Pages/Admin/MemberList";
@@ -74,8 +73,8 @@ function App() {
             <Routes>
                 <Route path="/login" element={<LoginForm />} />
                 <Route path="/signup" element={<SignUpSelect />} />
-                <Route path="/normal-signup" element={<SignUp />} />
-                <Route path="/company-signup" element={<CompSignUp />} />
+                <Route path="/normal-signup" element={<SignUp isComp={false} />} />
+                <Route path="/company-signup" element={<SignUp isComp={true} />} />
                 <Route path="/logout" element={<LoginForm />} />
                 <Route path="/admin" element={<AdminPage />} />
                 <Route path="/admin/member-list" element={<MemberList />} />

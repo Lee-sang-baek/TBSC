@@ -2,53 +2,68 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./SignUp.css";
 import logoImage from "../../Imgs/logo.png";
+import AddressInput from "../../Util/Map/AddressInput";
 
-const SignUp = () => {
-  const [formData, setFormData] = useState({
+const SignUp = ({ isComp }) => {
+  const [formData, setFormData] = useState(isComp ? {
     id: "",
     password: "",
     confirmPassword: "",
     name: "",
     birth: "",
     address: "",
-    detailAddress: "",
+    email: "",
+    phoneNum: "",
+    compName: "",
+    businessNum: "",
+    representative: "",
+    compAddress: "",
+    verificationCode: ""
+  }
+  :{
+    id: "",
+    password: "",
+    confirmPassword: "",
+    name: "",
+    birth: "",
+    address: "",
     email: "",
     phoneNum: "",
     verificationCode: ""
   });
 
-const [idAvailable, setIdAvailable] = useState(false);
-const [passwordMatch, setPasswordMatch] = useState(true);
-const [emailAvailable, setEmailAvailable] = useState(false);
-const [phoneVerified, setPhoneVerified] = useState(true);
+    const [idAvailable, setIdAvailable] = useState(false);
+    const [passwordMatch, setPasswordMatch] = useState(true);
+    const [emailAvailable, setEmailAvailable] = useState(false);
+    const [phoneVerified, setPhoneVerified] = useState(true);
 
-const checkUserId = () => {
-  axios.get("/member/checkId?id=" + formData.id)
-        .then(response => {
-          alert(response.data);
-          if (response.status === 200) {
-              setIdAvailable(true);
-          }
-        })
-        .catch(error => {
-          alert(error.response.data);
-          console.error(error);
-        });
-};
+    const checkUserId = () => {
+      axios.get("/member/checkId?id=" + formData.id)
+            .then(response => {
+              alert(response.data);
+              if (response.status === 200) {
+                  setIdAvailable(true);
+              }
+            })
+            .catch(error => {
+              alert(error.response.data);
+              console.error(error);
+            });
+    };
 
-const checkEmail = () => {
-  axios.get("/member/checkEmail?email=" + formData.email)
-      .then(response => {
-        alert(response.data);
-        if (response.status === 200) {
-            setEmailAvailable(true);
-        }
-      })
-      .catch(error => {
-        alert(error.response.data);
-        console.error(error);
-      });
-};
+    const checkEmail = () => {
+      axios.get("/member/checkEmail?email=" + formData.email)
+          .then(response => {
+            alert(response.data);
+            if (response.status === 200) {
+                setEmailAvailable(true);
+            }
+          })
+          .catch(error => {
+            alert(error.response.data);
+            console.error(error);
+          });
+    };
 
   const [areaCode, setAreaCode] = useState("010");
   const [phoneNum1, setPhoneNum1] = useState("");
@@ -59,21 +74,21 @@ const checkEmail = () => {
     setAreaCode(e.target.value);
   };
 
-const handleChange = (e, target) => {
-    const input = e.target.value;
-    const reNum = input.replace(/[^0-9]/g, "");
-    target(reNum);
-};
+    const handleChange = (e, target) => {
+        const input = e.target.value;
+        const reNum = input.replace(/[^0-9]/g, "");
+        target(reNum);
+    };
 
-useEffect(() => {
-    const phoneNumber = `${areaCode}-${phoneNum1}-${phoneNum2}`;
-    setFormData({ ...formData, phoneNum: phoneNumber });
-}, [phoneNum1, phoneNum2]);
+    useEffect(() => {
+        const phoneNumber = `${areaCode}-${phoneNum1}-${phoneNum2}`;
+        setFormData({ ...formData, phoneNum: phoneNumber });
+    }, [phoneNum1, phoneNum2]);
 
-useEffect(() => {
-    setIsValidPhoneNum(false);
-    handleSubmit();
-}, [formData.phoneNum]);
+    useEffect(() => {
+        setIsValidPhoneNum(false);
+        handleSubmit();
+    }, [formData.phoneNum]);
 
   const handleSubmit = () => {
     if (phoneNum2.length === 4 && formData.phoneNum.length >= 12) {
@@ -81,19 +96,69 @@ useEffect(() => {
     }
   };
 
-const requestPhoneVerification = () => {
-  // 휴대폰 번호 인증 요청 로직 구현
-  // 필요한 경우 axios를 사용하여 서버로 요청을 보내어 인증번호 요청
-};
+    const requestPhoneVerification = () => {
+      // 휴대폰 번호 인증 요청 로직 구현
+      // 필요한 경우 axios를 사용하여 서버로 요청을 보내어 인증번호 요청
+    };
 
-const verifyCode = () => {
-  // 입력된 인증번호 확인 로직 구현
-  // 필요한 경우 axios를 사용하여 서버로 요청을 보내어 인증번호 확인
-};
+    const verifyCode = () => {
+      // 입력된 인증번호 확인 로직 구현
+      // 필요한 경우 axios를 사용하여 서버로 요청을 보내어 인증번호 확인
+    };
+
+    const [zonecode, setZonecode] = useState("");
+    const [address, setAddress] = useState("");
+    const [detailedAddress, setDetailedAddress] = useState("");
+
+    const addressRegEx = /.+/;
+
+    const addressIsValid = addressRegEx.test(detailedAddress);
+
+    const resetAddress = () => {
+        setZonecode("");
+        setAddress("");
+        setDetailedAddress("");
+    };
+
+    let formIsValid = false;
+    if (addressIsValid) {
+        formIsValid = true;
+    }
+
+    const formSubmitHandler = () => {
+
+        const userData = {
+            address: `${address} ${detailedAddress}`,
+            zonecode: zonecode,
+        };
+
+        setFormData({...formData, address: userData.address})
+    };
+
+    useEffect(()=> {
+        formSubmitHandler();
+    },[address, detailedAddress]);
+
 
 const handleSignUp = () => {
     const missingFields = [];
-    const fieldNames = {
+    const fieldNames = isComp ? {
+        id: "아이디",
+        password: "비밀번호",
+        confirmPassword: "비밀번호 확인",
+        name: "이름",
+        birth: "생년월일",
+        address: "주소",
+        detailAddress: "상세주소",
+        email: "이메일",
+        phoneNum: "전화번호",
+        compName: "기업명",
+        businessNum: "사업자번호",
+        representative: "대표자명",
+        compAddress: "기업주소",
+        verificationCode: "인증번호"
+    }
+    :{
         id: "아이디",
         password: "비밀번호",
         confirmPassword: "비밀번호 확인",
@@ -106,6 +171,8 @@ const handleSignUp = () => {
         verificationCode: "인증번호"
     };
 
+
+
     for (const key in formData) {
         if (formData[key] === null || formData[key] === "") {
             missingFields.push(fieldNames[key]);
@@ -116,9 +183,9 @@ const handleSignUp = () => {
         const missingFieldsMessage = missingFields.join(", ");
         alert(`다음 값을 입력해주세요: ${missingFieldsMessage}`);
     } else {
-        if (idAvailable && passwordMatch && emailAvailable && isValidPhoneNum) {
+        if (idAvailable && passwordMatch && emailAvailable && phoneVerified) {
             // 회원가입 데이터를 서버로 전송
-            axios.post("/member/signup", formData)
+            axios.post(isComp ? "/member/compSignup" : "/member/signup", formData)
             .then(response => {
                 alert(response.data);
                 console.log(response.data); // 회원가입 성공 시 처리
@@ -146,15 +213,15 @@ const handleSignUp = () => {
     }
 };
 
-const handlePasswordMatch = () => {
-    setPasswordMatch(formData.password === formData.confirmPassword);
-};
+    const handlePasswordMatch = () => {
+        setPasswordMatch(formData.password === formData.confirmPassword);
+    };
 
   return (
-    <div className="input-form">
+    <div className="SignUp-compo">
         <div className="input-icon">
             <img src={logoImage} />
-            <h2>회원 가입</h2>
+            <h2>{isComp ? "기업" : "일반"} 회원 가입</h2>
         </div>
         <div className="input-box">
             <label>
@@ -196,17 +263,19 @@ const handlePasswordMatch = () => {
       </div>
 
       <div className="input-box">
-          <label>
-            주소:
-            <input className="long-input" type="text" value={formData.address} onChange={(e) => setFormData({ ...formData, address: e.target.value })} />
-          </label>
-      </div>
-
-      <div className="input-box">
-          <label>
-            상세주소:
-            <input className="long-input" type="text" value={formData.detailAddress} onChange={(e) => setFormData({ ...formData, detailAddress: e.target.value })} />
-          </label>
+        <AddressInput
+            addressState={{
+                zonecode,
+                address,
+                detailedAddress,
+            }}
+            addressAction={{
+                setZonecode,
+                setAddress,
+                setDetailedAddress,
+            }}
+            addressIsValid={addressIsValid}
+        />
       </div>
 
       <div className="input-box">
@@ -260,6 +329,39 @@ const handlePasswordMatch = () => {
       </label>
       <button className="center-button">확인</button>
     </div>
+
+    {isComp &&
+      <div className="input-box">
+          <label>
+            기업명:
+            <input className="long-input" type="text" value={formData.compName} onChange={(e) => setFormData({ ...formData, compName: e.target.value })} />
+          </label>
+      </div>
+    }
+    {isComp &&
+      <div className="input-box">
+          <label>
+            사업자번호:
+            <input className="long-input" type="text" value={formData.businessNum} onChange={(e) => setFormData({ ...formData, businessNum: e.target.value })} />
+          </label>
+      </div>
+    }
+    {isComp &&
+      <div className="input-box">
+          <label>
+            대표자명:
+            <input className="long-input" type="text" value={formData.representative} onChange={(e) => setFormData({ ...formData, representative: e.target.value })} />
+          </label>
+      </div>
+    }
+    {isComp &&
+      <div className="input-box">
+          <label>
+            기업주소:
+            <input className="long-input" type="text" value={formData.compAddress} onChange={(e) => setFormData({ ...formData, compAddress: e.target.value })} />
+          </label>
+      </div>
+    }
 
       <div className="signup-button">
           <button onClick={handleSignUp}>가입하기</button>

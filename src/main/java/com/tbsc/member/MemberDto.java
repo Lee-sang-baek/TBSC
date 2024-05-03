@@ -27,8 +27,6 @@ public class MemberDto {
 
     private String address;
 
-    private String detailAddress;
-
     private LocalDate birth;
 
     private String email;
