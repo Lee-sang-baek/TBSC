@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import "./NoticeDetail.css";
 import Header from "../../Fragments/Header/Header";
+import Button from "../../BaseComponents/Button";
 
 function NoticeDetail() {
     const { num } = useParams();
@@ -34,7 +35,6 @@ function NoticeDetail() {
 
     return (
         <div>
-            <Header />
             <div className="notice-detail">
                 <h1>{notice.title}</h1>
                 <p>작성자: {notice.id}</p>
@@ -45,7 +45,7 @@ function NoticeDetail() {
                 )}
                 <div className="content" dangerouslySetInnerHTML={{ __html: notice.content }}></div>
                 {/* Link 컴포넌트를 사용하여 수정 페이지로 이동 */}
-                <Link to={`/notices/update/${num}`} className="edit-button">수정하기</Link>
+                <Button className="writeButton" text="수정하기" link={`/notices/update/${num}`} />
             </div>
         </div>
     );

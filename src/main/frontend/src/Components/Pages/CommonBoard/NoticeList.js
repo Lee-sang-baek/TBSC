@@ -4,46 +4,42 @@ import Header from "../../Fragments/Header/Header";
 import "./NoticeList.css";
 import { Link } from "react-router-dom";
 import Pagination from "./Pagination";
+import Button from "../../BaseComponents/Button";
 
 function NoticeList() {
     const [notices, setNotices] = useState([]);
     const [search, setSearch] = useState("");
-    const [statusFilter, setStatusFilter] = useState(""); // 상태 필터 상태 관리
+    const [statusFilter, setStatusFilter] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const [noticesPerPage] = useState(10);
+    const MemberState = sessionStorage.getItem("state");
 
     useEffect(() => {
         axios.get("/notices")
             .then(res => {
-                const sortedNotices = res.data.sort((a, b) => b.num - a.num);  // 글 번호 내림차순 정렬
+                const sortedNotices = res.data.sort((a, b) => b.num - a.num);
                 setNotices(sortedNotices);
             })
             .catch(error => console.error("Error fetching notices:", error));
     }, []);
-    // 작성일 포맷 조정
+
     const formatDate = (dateString) => {
         const date = new Date(dateString);
         return `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}`;
     };
 
+    const filteredNotices = notices.filter(notice =>
+        notice.title.toLowerCase().includes(search.toLowerCase()) &&
+        (statusFilter ? notice.state === statusFilter : true)
+    );
 
-    // 검색과 상태 필터를 모두 적용한 공지사항 필터링
-    const filteredNotices = notices.filter(notice => {
-        return notice.title.toLowerCase().includes(search.toLowerCase()) &&
-            (statusFilter ? notice.state === statusFilter : true);
-    });
-
-    // 페이지 변경 핸들러
     const paginate = pageNumber => setCurrentPage(pageNumber);
-
-    // 현재 페이지 공지사항 계산
     const indexOfLastNotice = currentPage * noticesPerPage;
     const indexOfFirstNotice = indexOfLastNotice - noticesPerPage;
     const currentNotices = filteredNotices.slice(indexOfFirstNotice, indexOfLastNotice);
 
     return (
-        <div>
-            <Header />
+        <div className="NoticeList-compo">
             <div className="noticeListContainer">
                 <div className="noticeList">
                     <h1>공지사항</h1>
@@ -61,9 +57,10 @@ function NoticeList() {
                             onChange={(e) => setSearch(e.target.value)}
                             className="searchInput"
                         />
-
                         <span>총 게시물: {filteredNotices.length}개</span>
-                        <Link to="/notices/new" className="writeButton">글쓰기</Link>
+                        {MemberState === 'ADMIN' && (
+                            <Button className="writeButton" text="글쓰기" link="notices/new" />
+                        )}
                     </div>
                     <table>
                         <thead>
@@ -83,8 +80,7 @@ function NoticeList() {
                         ))}
                         </tbody>
                     </table>
-                    <Pagination noticesPerPage={noticesPerPage} totalNotices={filteredNotices.length}
-                                paginate={paginate}/>
+                    <Pagination noticesPerPage={noticesPerPage} totalNotices={filteredNotices.length} paginate={paginate}/>
                 </div>
             </div>
         </div>

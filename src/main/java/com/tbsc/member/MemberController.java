@@ -40,6 +40,8 @@ public class MemberController {
         return memberService.checkEmail(email);
     }
 
+
+
 //    @GetMapping("/member/login")
 //    public String loginForm() {
 //        return "loginForm";
@@ -55,7 +57,7 @@ public class MemberController {
 //    }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody Map<String, String> request, HttpServletRequest httpRequest) {
+    public ResponseEntity<Member> login(@RequestBody Map<String, String> request, HttpServletRequest httpRequest) {
         String id = request.get("id");
         String enteredPassword = request.get("password");
 
@@ -74,9 +76,9 @@ public class MemberController {
 //            }
             session.setAttribute("id", id);
 
-            return ResponseEntity.ok(member.getId());
+            return ResponseEntity.ok(member);
         } else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("비밀번호가 다릅니다.");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
     }
 
