@@ -49,7 +49,7 @@ public class Member {
         this.setBusinessNum(memberDto.getBusinessNum());
         this.setRepresentative(memberDto.getRepresentative());
         this.setCompAddress(memberDto.getCompAddress());
-        this.setAddress(memberDto.getAddress() + " " + memberDto.getDetailAddress());
+        this.setAddress(memberDto.getAddress());
         this.setBirth(memberDto.getBirth());
         this.setEmail(memberDto.getEmail());
         this.setPhoneNum(memberDto.getPhoneNum());

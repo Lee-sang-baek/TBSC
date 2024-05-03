@@ -33,7 +33,7 @@ export const labelStyle = (isRequired) => {
 
     if (isRequired) {
         baseStyle["&::after"] = {
-            content: ""*"",
+            content: "'*'",
             color: "#c05850",
         };
     }

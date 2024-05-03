@@ -56,16 +56,13 @@ const AddressInput = (props) => {
 
     return (
         <div css={addressContainer}>
-            <div>
-                <strong css={labelStyle(true)}>address</strong>
-            </div>
+            <label>주소:
             <div css={addressInputsContainer}>
                 <div css={postCodeContainer}>
                     <div css={[boxStyle, zonecodeStyle]}>
                         {zonecode}
                     </div>
                     <button
-                        css={addressButtonStyle}
                         type="button"
                         onClick={toggleHandler}
                     >
@@ -92,6 +89,7 @@ const AddressInput = (props) => {
                     onChange={inputChangeHandler}
                 />
             </div>
+            </label>
         </div>
     );
 };
