@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"; // Routes import 추가
+import {createRoot} from "react-dom/client";
+import axios from "axios";
 import Header from "./Components/Fragments/Header/Header";
 import Sidebar from "./Components/Fragments/Sidebar/Sidebar";
 import Footer from "./Components/Fragments/Footer/Footer";
@@ -15,8 +17,6 @@ import NoticeList from "./Components/Pages/CommonBoard/NoticeList";
 import NoticeDetail from "./Components/Pages/CommonBoard/NoticeDetail";
 import CreateNotice from "./Components/Pages/CommonBoard/CreateNotice";
 import UpdateNotice from "./Components/Pages/CommonBoard/UpdateNotice";
-import {createRoot} from "react-dom/client";
-import axios from "axios";
 import Form from "./Components/Util/Map/Form";
 import ModiInfo from "./Components/Pages/mypage/ReservationPage/mypageModify";
 import MyHome from "./Components/Pages/mypage/mypageHome";
@@ -25,7 +25,8 @@ import ModiCorp from "./Components/Pages/mypage/ReservationPage/mypageModiCorp";
 import CorpInfo from "./Components/Pages/mypage/ReservationPage/mypageCorpInfo";
 import FacilityGuide from "./Components/Pages/FacilityGuide/FacilityGuide";
 import CenterIntroduction from "./Components/Pages/CenterIntroduction/CenterIntroduction";
-import Verification from "./Components/Auth/Verification";
+import LogAccess from "./Components/Util/LogAccess";
+//import Verification from "./Components/Auth/Verification";
 
 function App() {
 
@@ -60,19 +61,19 @@ function App() {
 
     return (
     <BrowserRouter>
-        <div>
+        <LogAccess />
             <Header />
             <div>
-                {!sessionStorage.getItem("id") && <Link to={"/login"}> /로그인/ </Link>}
-                {sessionStorage.getItem("id") && <a href="#" onClick={logout}> /로그아웃/ </a>}
-                {!sessionStorage.getItem("id") && <Link to={"/signup"}> /회원가입/</Link>}
-                <a href="#" onClick={create}> /어드민생성/ </a>
-                <Link to={"/admin"}> /관리자페이지/ </Link>
-                <Link to={"/myhome"}> /마이홈/ </Link>
-                <Link to={"/reserv"}> /예약/ </Link>
-                <Link to={"/corpinfo"}> /등록기업정보/ </Link>
-                <Link to={"/modiinfo"}> /개인정보수정/ </Link>
-                <Link to={"/modicorp"}> /기업정보수정/ </Link>
+                {!sessionStorage.getItem("id") && <Link to={"/login"}> [로그인] </Link>}
+                {sessionStorage.getItem("id") && <a href="#" onClick={logout}> [로그아웃] </a>}
+                {!sessionStorage.getItem("id") && <Link to={"/signup"}> [회원가입] </Link>}
+                <a href="#" onClick={create}> [어드민생성] </a>
+                <Link to={"/admin"}> [관리자페이지] </Link>
+                <Link to={"/myhome"}> [마이홈] </Link>
+                <Link to={"/reserv"}> [예약] </Link>
+                <Link to={"/corpinfo"}> [등록기업정보] </Link>
+                <Link to={"/modiinfo"}> [개인정보수정] </Link>
+                <Link to={"/modicorp"}> [기업정보수정] </Link>
             </div>
             <Routes>
                 <Route path="/login" element={<LoginForm />} />
@@ -91,17 +92,12 @@ function App() {
                 <Route path="notices/new" element={<CreateNotice />} />
                 <Route path="notices/update/:num" element={<UpdateNotice />} />
                 <Route path="facility" element={<FacilityGuide />} />
-                <Route path="/auth" element={<Verification />} />
-                <Route path="/auth/verifyCode" element={<Verification />} />
-                <Route path="/auth/sendCode" element={<Verification />} />
                 <Route path="/myhome" element={<MyHome/>}/>
                 <Route path="/reserv" element={<ReservDetails/>}/>
                 <Route path="/corpinfo" element={<CorpInfo/>}/>
                 <Route path="/modiinfo" element={<ModiInfo/>}/>
                 <Route path="/modicorp" element={<ModiCorp/>}/>
             </Routes>
-            <Footer />
-        </div>
     </BrowserRouter>
     );
 }

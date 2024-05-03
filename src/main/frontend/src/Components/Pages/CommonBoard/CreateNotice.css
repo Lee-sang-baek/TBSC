@@ -23,8 +23,6 @@
     font-weight: 500;
 }
 
-input[type="text"],
-input[type="radio"] {
 .CreateNotice-compo .input-width-set,
 .CreateNotice-compo .create-notice-container input[type="text"],
 .CreateNotice-compo .create-notice-container input[type="title"] {

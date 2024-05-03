@@ -24,15 +24,15 @@ public class MemberControllerTest {
             Member member = new Member();
             member.setId("dummy" + i);
             member.setPassword(pe.encode("12345"));
-            member.setName("dummy" + i + ""s name");
-            member.setAddress("dummy" + i + ""s home");
+            member.setName("dummy" + i + "'s name");
+            member.setAddress("dummy" + i + "'s home");
             member.setEmail("dummy" + i + "@dummy.com");
             member.setPhoneNum("010-0000-0000");
             member.setBirth(LocalDate.now());
             if (i % 2 == 0) {
                 member.setCompName("dummy company");
-                member.setRepresentative("dummy"s owner");
-                member.setCompAddress("dummy company"s address");
+                member.setRepresentative("dummy's owner");
+                member.setCompAddress("dummy company's address");
                 member.setBusinessNum("987654321");
                 member.setState(MemberType.COMP);
             } else {
