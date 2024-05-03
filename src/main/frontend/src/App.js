@@ -90,6 +90,7 @@ function App() {
                 <Route path="/modiinfo" element={<ModiInfo/>}/>
                 <Route path="/modicorp" element={<ModiCorp/>}/>
             </Routes>
+            <Footer />
         </div>
     </BrowserRouter>
     );
