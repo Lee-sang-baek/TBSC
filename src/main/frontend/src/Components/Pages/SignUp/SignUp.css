@@ -51,7 +51,7 @@
 
 /* 버튼과 입력 요소 사이의 간격을 조정 */
 .SignUp-compo button + label,
-button + input {
+.SignUp-compo button + input {
   margin-left: 10px;
 }
 

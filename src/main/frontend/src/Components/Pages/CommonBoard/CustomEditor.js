@@ -46,6 +46,7 @@ const CustomEditor = ({ initialContent, handleContentChange, initialFileUrl, han
     return (
         <div className="CreateNotice-compo">
             <ReactQuill
+                style={{width: "800px", height: "600px"}}
                 ref={quillRef}
                 theme="snow"
                 value={content}
@@ -55,19 +56,26 @@ const CustomEditor = ({ initialContent, handleContentChange, initialFileUrl, han
             />
             {fileUrl && (
                 <div>
+
                     Current File: <a href={fileUrl} target="_blank" rel="noopener noreferrer">View</a>
                 </div>
             )}
-            <input type="file" onChange={handleFileUpload} />
+            <input
+                type="file"
+                onChange={handleFileUpload}
+                className="file-upload-input"
+                style={{position: 'relative', zIndex: 1000}}
+            />
         </div>
+
     );
 };
 
 // Define Quill"s toolbar options
 CustomEditor.modules = {
     toolbar: [
-        [{ "header": "1"}, {"header": "2"}, { "font": [] }],
-        [{ "size": [] }],
+        [{"header": "1"}, {"header": "2"}, {"font": []}],
+        [{"size": []}],
         ["bold", "italic", "underline", "strike", "blockquote"],
         [{"list": "ordered"}, {"list": "bullet"}, {"indent": "-1"}, {"indent": "+1"}],
         ["link", "image", "video"],

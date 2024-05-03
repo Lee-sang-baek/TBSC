@@ -1,5 +1,6 @@
 package com.tbsc.notice;
 
+import com.tbsc.member.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;

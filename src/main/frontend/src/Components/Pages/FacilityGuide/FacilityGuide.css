@@ -1,0 +1,89 @@
+.FacilityGuide-compo2 {
+    border: 1px solid #ccc;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+li {
+    margin-right: 10px;
+    padding: 10px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+
+li.active {
+    background-color: #e9e9e9;
+}
+
+.facility-display {
+    display: flex;
+    align-items: flex-start;
+}
+
+.main-image {
+    width: 70%;
+    height: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-right: 20px;
+}
+
+.thumbnails {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 100px;
+}
+
+.thumbnail-image {
+    width: 100px;
+    height: auto;
+    cursor: pointer;
+    border: 1px solid #ccc;
+}
+
+.facility-description {
+    clear: both;
+    padding-top: 10px;
+    white-space: pre-line;
+}
+.tabMenu{
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    font-size: 13px;
+}
+.h2center
+{
+    display: flex;
+    padding-top: 100px;
+    justify-content: center;
+}
+.ptag{
+    display: flex;
+    justify-content: center;
+}
+.facility-text {
+    width: 2.778rem;
+    height: 2.778rem;
+    background: #2F2C87;
+    border-radius: 100%;
+    text-align: center;
+    font-size: 1.811rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    color: white;
+}

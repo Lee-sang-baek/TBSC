@@ -3,44 +3,75 @@
  */
 
 .CreateNotice-compo .create-notice-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .CreateNotice-compo .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    display: flex;
 }
 
 .CreateNotice-compo .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="radio"] {
+.CreateNotice-compo .input-width-set,
+.CreateNotice-compo .create-notice-container input[type="text"],
+.CreateNotice-compo .create-notice-container input[type="title"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.create-notice-container input[type="radio"] {
     margin-right: 10px;
 }
 
-.CreateNotice-compo input[type="text"],
-input[type="radio"] {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
+.label-right {
+    float: right; /* aligns label to the right */
+    transform: translateY(-50%);
 }
 
 .CreateNotice-compo button {
     padding: 10px 20px;
     background-color: #007bff;
-    color: #fff;
+    color: white;
     border: none;
     border-radius: 5px;
-    font-size: 16px;
     cursor: pointer;
+    font-size: 16px;
 }
 
 .CreateNotice-compo button:hover {
     background-color: #0056b3;
 }
 
-.CreateNotice-compo .react-quill {
-    width: 500px; /* 에디터 폭 조절 */
-    margin-top: 15px;
+/* CustomEditor styles */
+.CreateNotice-compo .editor {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    min-height: 200px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .CreateNotice-compo .create-notice-container {
+        width: 90%;
+        padding: 10px;
+    }
+
+    .CreateNotice-compo .form-group label {
+        margin-bottom: 10px;
+    }
 }

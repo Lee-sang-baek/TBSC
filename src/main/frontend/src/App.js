@@ -23,6 +23,9 @@ import MyHome from "./Components/Pages/mypage/mypageHome";
 import ReservDetails from "./Components/Pages/mypage/ReservationPage/mypageReserv";
 import ModiCorp from "./Components/Pages/mypage/ReservationPage/mypageModiCorp";
 import CorpInfo from "./Components/Pages/mypage/ReservationPage/mypageCorpInfo";
+import FacilityGuide from "./Components/Pages/FacilityGuide/FacilityGuide";
+import CenterIntroduction from "./Components/Pages/CenterIntroduction/CenterIntroduction";
+import Verification from "./Components/Auth/Verification";
 
 function App() {
 
@@ -44,6 +47,7 @@ function App() {
         });
         alert("로그아웃 되었습니다.")
         sessionStorage.removeItem("id");
+        sessionStorage.removeItem("state");
         window.location.reload();
     }
 
@@ -82,9 +86,14 @@ function App() {
                 <Route path="/admin/reservation-confirmation" element={<ReservationConfirmation />} />
                 <Route path="/admin/access-log" element={<AccessLog />} />
                 <Route path="notices" element={<NoticeList />} />
+                <Route path="CenterIntroduction" element={<CenterIntroduction />} />
                 <Route path="notices/:num" element={<NoticeDetail />} />
                 <Route path="notices/new" element={<CreateNotice />} />
                 <Route path="notices/update/:num" element={<UpdateNotice />} />
+                <Route path="facility" element={<FacilityGuide />} />
+                <Route path="/auth" element={<Verification />} />
+                <Route path="/auth/verifyCode" element={<Verification />} />
+                <Route path="/auth/sendCode" element={<Verification />} />
                 <Route path="/myhome" element={<MyHome/>}/>
                 <Route path="/reserv" element={<ReservDetails/>}/>
                 <Route path="/corpinfo" element={<CorpInfo/>}/>

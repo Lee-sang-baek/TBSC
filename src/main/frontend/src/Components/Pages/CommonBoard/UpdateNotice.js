@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom"; // Import useParams
 import CustomEditor from "./CustomEditor";
 import Header from "../../Fragments/Header/Header";
 import "./CreateNotice.css";
+import Button from "../../BaseComponents/Button";
+import Input from "../../BaseComponents/Input";
 
 function UpdateNotice() {
     const { num,setNum } = useParams(); // Use useParams to get the route parameter
@@ -54,15 +56,14 @@ function UpdateNotice() {
 
     return (
         <div className="UpdateNotice-compo">
-            <Header />
             <div className="create-notice-container">
                 <div className="form-group">
                     <label>제목:</label>
-                    <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+                    <Input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
                 </div>
                 <div className="form-group">
                     <label>작성자:</label>
-                    <input type="text" value={id} onChange={(e) => setId(e.target.value)} />
+                    <Input type="text" value={id} onChange={(e) => setId(e.target.value)} />
                 </div>
                 <div className="form-group">
                     <label>진행중:</label>
@@ -76,7 +77,7 @@ function UpdateNotice() {
                     handleFileUrlChange={setFileUrl}
                 />
 
-                <button onClick={handleSubmit}>수정</button>
+                <Button onClick={handleSubmit} text="수정" />
             </div>
         </div>
     );

@@ -23,7 +23,7 @@ public class SecurityConfig {
 
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .csrf().disable()   // 배포 시 주석 처리
+       //         .csrf().disable()   // 배포 시 주석 처리
 //                .formLogin(formLogin -> formLogin
 //                        .loginPage("/member/login")
 //                        .usernameParameter("id")

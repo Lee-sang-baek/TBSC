@@ -16,9 +16,10 @@ const LoginForm = () => {
         .then(response => {
             if (response.status === 200) {
                 console.log(response.data);
-                alert(response.data + "님 안녕하세요.")
+                alert(response.data.id + "님 안녕하세요.")
                 window.location.reload();   // 새로고침
                 sessionStorage.setItem("id", response.data.id);
+                sessionStorage.setItem("state", response.data.state);
             } else {
                 alert("알 수 없는 오류")
             }
