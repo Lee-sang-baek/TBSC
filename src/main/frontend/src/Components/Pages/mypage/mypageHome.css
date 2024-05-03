@@ -1,3 +1,11 @@
+.outter {
+    display: flex;
+    flex-direction: row;
+}
+.Myhome-compo{
+    width:100%;
+    padding:0 100px;
+}
 .container {
     display: flex;
     justify-content: center;
@@ -30,7 +38,7 @@
     padding: 10px;
 }
 
-.profileModify {
+.profileModify {  /*개인정보수정버튼*/
     text-align: center;
 }
 
@@ -40,8 +48,14 @@
     width: 300px;
 }
 
+
 .reservDetails {
     display: flex;
     justify-content: space-between;
+
 }
+
+
+
+
 

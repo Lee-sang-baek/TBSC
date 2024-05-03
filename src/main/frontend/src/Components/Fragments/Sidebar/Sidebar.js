@@ -8,12 +8,24 @@ const Sidebar = () => {
 
         <div className="Sidebar-compo">
 
-            <div className='main'>메인</div>
+            <div className='main'>
+
+                <a href='http://localhost:3000/myhome'>메인페이지</a>
+
+            </div>
+            <div className='list'>
             <ul>
-                <li><a href='https://www.naver.com'>메뉴 1</a></li>
-                <li><a href='https://www.naver.com'>메뉴 2</a></li>
-                <li><a href='https://www.naver.com'>메뉴 3</a></li>
+                <li><a href='http://localhost:3000/modiinfo'>개인 정보 수정</a></li>
+                <li><a href='http://localhost:3000/reserv'>예약 내역</a></li>
+                <li><a href='https://www.naver.com'>회원 탈퇴</a></li>
             </ul>
+            </div>
+            <div className='main'>기업 회원 페이지</div>
+            <div className='list'>
+             <ul>
+             <li><a href='http://localhost:3000/corpinfo?'>등록 기업 정보</a></li>
+             </ul>
+        </div>
         </div>
     );
 }
