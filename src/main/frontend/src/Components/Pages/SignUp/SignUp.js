@@ -97,36 +97,38 @@ const SignUp = ({isComp}) => {
             setIsValidPhoneNum(true);
         }
     };
-//핸드폰인증
+    
+    //휴대폰인증번호 전송
     const requestPhoneVerification = () => {
         axios.post('/sms/send', { phoneNumber: formData.phoneNum })
             .then(response => {
                 alert('인증번호가 전송되었습니다.');
+                setPhoneVerified(false); // 인증 시도 전 상태로 설정
             })
             .catch(error => {
                 alert('인증번호 전송 실패: ' + error.message);
-                console.log("Phone Number: ", formData.phoneNum);
-                setPhoneVerified(true);  // Consider setting this only on successful verification.
+                console.error("Phone Number: ", formData.phoneNum);
             });
-
     };
 
+
     const verifyCode = () => {
-        // 서버에 인증번호 확인을 요청하는 로직 구현 필요
-        axios.post('/sms/verify', { phoneNumber: formData.phoneNum, verificationCode:formData.verificationCode })
+        axios.post('/sms/verify', { phoneNumber: formData.phoneNum, verificationCode: formData.verificationCode })
             .then(response => {
                 if (response.data === '인증 성공') {
                     setPhoneVerified(true);
                     alert('핸드폰 번호가 인증되었습니다.');
                 } else {
                     alert('인증번호가 일치하지 않습니다.');
-
+                    setPhoneVerified(false); // 인증 실패 시 false로 설정
                 }
             })
             .catch(error => {
-                alert('인증 실패: ' + error.message);
+                alert('인증번호가 일치하지 않습니다.');
+                setPhoneVerified(false);
             });
     };
+
     const [zonecode, setZonecode] = useState("");
     const [address, setAddress] = useState("");
     const [detailedAddress, setDetailedAddress] = useState("");

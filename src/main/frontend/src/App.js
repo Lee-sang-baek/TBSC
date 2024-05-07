@@ -25,7 +25,7 @@ import ModiCorp from "./Components/Pages/mypage/ReservationPage/mypageModiCorp";
 import CorpInfo from "./Components/Pages/mypage/ReservationPage/mypageCorpInfo";
 import FacilityGuide from "./Components/Pages/FacilityGuide/FacilityGuide";
 import CenterIntroduction from "./Components/Pages/CenterIntroduction/CenterIntroduction";
-import SmsSender from "./Components/Pages/sms/SmsSender";
+import SMSForm from "./Components/Pages/sms/SMSForm";
 
 function App() {
 
@@ -92,7 +92,7 @@ function App() {
                 <Route path="notices/update/:num" element={<UpdateNotice />} />
                 <Route path="facility" element={<FacilityGuide />} />
                 <Route path="facility" element={<FacilityGuide />} />
-                <Route path="api" element={<SmsSender />} />
+                <Route path="sms" element={<SMSForm />} />
 
 
 
