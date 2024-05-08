@@ -23,8 +23,9 @@ import MyHome from "./Components/Pages/mypage/mypageHome";
 import ReservDetails from "./Components/Pages/mypage/ReservationPage/mypageReserv";
 import ModiCorp from "./Components/Pages/mypage/ReservationPage/mypageModiCorp";
 import CorpInfo from "./Components/Pages/mypage/ReservationPage/mypageCorpInfo";
-import FacilityGuide from "./Components/Pages/FacilityGuide/FacilityGuide";
 import CenterIntroduction from "./Components/Pages/CenterIntroduction/CenterIntroduction";
+import Rental from "./Components/Pages/Rental/Rental";
+import FacilityGuideMain from "./Components/Pages/FacilityGuide/FacilityGuideMain";
 
 
 function App() {
@@ -90,8 +91,11 @@ function App() {
                 <Route path="notices/:num" element={<NoticeDetail />} />
                 <Route path="notices/new" element={<CreateNotice />} />
                 <Route path="notices/update/:num" element={<UpdateNotice />} />
-                <Route path="facility" element={<FacilityGuide />} />
-                <Route path="facility" element={<FacilityGuide />} />
+                <Route path="facility" element={<FacilityGuideMain />} />
+                <Route path="rental" element={<Rental />} />
+
+
+
 
 
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './FacilityGuide.css';
-
+import FacilityHeader from "./FacilityHeader";
 const facilitiesData = {
     1: {
         key: 1,
@@ -54,7 +54,7 @@ const facilitiesData = {
     // 기타 시설 정보 추가
 };
 
-function FacilityGuide() {
+function FacilityGuide({ onSelectFacility }) {
     const [selectedFacility, setSelectedFacility] = useState(1);
     const [mainImage, setMainImage] = useState(facilitiesData[selectedFacility].thumbnails[0]);
     const facility = facilitiesData[selectedFacility];
@@ -66,24 +66,16 @@ function FacilityGuide() {
     const handleTabClick = (id) => {
         setSelectedFacility(id);
         setMainImage(facilitiesData[id].thumbnails[0]);
+        onSelectFacility(facilitiesData[id].name);
     };
 
     return (
-        <div className="FacilityGuide-compo">
-            <div className="h2center">
-                <h2>시설 안내</h2>
-            </div>
-            <div className="ptag">
-                <p>광주광역시 서구 운천로 247(치평동) 스타타워 4층에 위치하며</p>
-            </div>
-            <div className="ptag">
-                <p><strong>창업·보육 및 일자리 지원시설을 조성·운영중</strong>에 있습니다.</p>
-            </div>
 
+
+        <div className="FacilityGuide-compo">
             <div className="FacilityGuide-compo2">
                 <ul>
                     {Object.entries(facilitiesData).map(([id, data]) => (
-
                         <li key={id} onClick={() => handleTabClick(id)}
                             className={`tabMenu ${selectedFacility == id ? 'active' : ''}`}>
                             <p>{data.name}</p>
@@ -92,7 +84,6 @@ function FacilityGuide() {
                 </ul>
                 <div className="facility-display">
                     <img src={mainImage} alt="Main facility" className="main-image"/>
-
                     <div className="facility-description">
                         <p className="facility-text">{facility.key}</p>
                         <h5>{facility.name}</h5>
@@ -104,12 +95,9 @@ function FacilityGuide() {
                             ))}
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
     );
 }
-
 export default FacilityGuide;
