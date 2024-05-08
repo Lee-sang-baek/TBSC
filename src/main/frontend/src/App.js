@@ -26,7 +26,7 @@ import CorpInfo from "./Components/Pages/mypage/ReservationPage/mypageCorpInfo";
 import CenterIntroduction from "./Components/Pages/CenterIntroduction/CenterIntroduction";
 import Rental from "./Components/Pages/Rental/Rental";
 import FacilityGuideMain from "./Components/Pages/FacilityGuide/FacilityGuideMain";
-
+import ConsultantForm from "./Components/Pages/ Consultant/ ConsultantForm";
 
 function App() {
 
@@ -93,6 +93,8 @@ function App() {
                 <Route path="notices/update/:num" element={<UpdateNotice />} />
                 <Route path="facility" element={<FacilityGuideMain />} />
                 <Route path="rental" element={<Rental />} />
+
+                <Route path="/consultants" element={<ConsultantForm />} />
 
 
 
