@@ -17,8 +17,7 @@ public class AccessLogControllerTest {
     @Test
     void addLog() {
         AccessLog log = new AccessLog();
-        log.setMenu("home");
-        log.setPath("naver");
+        log.setPath("home");
         log.setIpAddress("192.168.2.1");
         log.setMember(null);
         log.setTime(LocalDateTime.now());
