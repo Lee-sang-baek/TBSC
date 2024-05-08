@@ -7,7 +7,7 @@ import Button from "../../BaseComponents/Button";
 function NoticeDetail() {
     const { num } = useParams();
     const [notice, setNotice] = useState(null);
-
+    const MemberState = sessionStorage.getItem("state");
     useEffect(() => {
         const fetchNotice = async () => {
             try {
@@ -44,8 +44,9 @@ function NoticeDetail() {
                     <p>첨부 파일: <a href={fileDownloadUrl} download>다운로드</a></p>
                 )}
                 <div className="content" dangerouslySetInnerHTML={{ __html: notice.content }}></div>
-                {/* Link 컴포넌트를 사용하여 수정 페이지로 이동 */}
+                {MemberState === 'ADMIN' && (
                 <Button className="writeButton" text="수정하기" link={`/notices/update/${num}`} />
+                )}
             </div>
         </div>
     );

@@ -14,7 +14,7 @@ function UpdateNotice() {
     const [content, setContent] = useState("");
     const [date, setDate] = useState(new Date());
     const [fileUrl, setFileUrl] = useState("");
-
+    const MemberState = sessionStorage.getItem("state");
     useEffect(() => {
         const fetchNotice = async () => {
             const response = await fetch(`/notices/${num}`);
@@ -52,6 +52,13 @@ function UpdateNotice() {
             console.error("서버와의 통신 중 오류 발생", error);
         }
     };
+    if (MemberState !== "ADMIN") {
+        return (
+            <div className="unauthorized-container">
+                <h1>접근 권한이 없습니다.</h1>
+            </div>
+        );
+    }
 
 
     return (
