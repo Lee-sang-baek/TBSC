@@ -1,6 +1,5 @@
-package com.tbsc.Rental;
+package com.tbsc.rental;
 
-import com.tbsc.Rental.Rental;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

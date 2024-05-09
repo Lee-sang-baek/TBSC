@@ -1,8 +1,7 @@
 /* Rental.css */
 .rental-compo .rental-compo-in {
-    max-width: 600px;
+    width: fit-content;
     margin: 20px auto;
-    padding-right: 245px;
     background-color: #E6E6FA;
     border-radius: 8px;
 }

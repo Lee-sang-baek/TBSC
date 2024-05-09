@@ -26,6 +26,7 @@ import CorpInfo from "./Components/Pages/mypage/ReservationPage/mypageCorpInfo";
 import CenterIntroduction from "./Components/Pages/CenterIntroduction/CenterIntroduction";
 import Rental from "./Components/Pages/Rental/Rental";
 import FacilityGuideMain from "./Components/Pages/FacilityGuide/FacilityGuideMain";
+import FacilityGuide from "./Components/Pages/FacilityGuide/FacilityGuide";
 import ConsultantForm from "./Components/Pages/ Consultant/ ConsultantForm";
 import LogAccess from "./Components/Util/LogAccess";
 //import Verification from "./Components/Auth/Verification";
@@ -104,6 +105,7 @@ function App() {
                 <Route path="/rental" element={<Rental />} />
                 <Route path="/consultants" element={<ConsultantForm />} />
             </Routes>
+            <Footer />
     </BrowserRouter>
     );
 }

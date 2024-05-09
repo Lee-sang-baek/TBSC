@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "./Header.css";
 import logoImage from "../../Imgs/logo.png";
 import loginImage from "../../Imgs/login.png";
@@ -12,7 +13,7 @@ const Header = () => {
         {
             main: "광주관광기업지원센터",
             subs: [
-                { title: "센터소개", link: "/CenterIntroduction" },
+                { title: "센터소개", link: "/centerIntro" },
                 { title: "시설안내", link: "/facility" },
                 { title: "조직도", link: "" },
                 { title: "오시는 길", link: "" }
@@ -53,10 +54,15 @@ const Header = () => {
     ];
 
     const logout = () => {
+        axios.get("/logout")
+        .then(response => {
+            console.log(response.data);
+        });
+        alert("로그아웃 되었습니다.")
         sessionStorage.removeItem("id");
         sessionStorage.removeItem("state");
         window.location.reload();
-    };
+    }
 
     const handleGnbWrapEnter = () => {
         setIsOpen(true);
@@ -100,7 +106,7 @@ const Header = () => {
                                 ) : (
                                     <>
                                         <a href="#" onClick={logout}>로그아웃</a>
-                                        <Link to="/myhome">마이페이지</Link>
+                                        <Link to="/myPage">마이페이지</Link>
                                         {MemberState === "ADMIN" && <Link to="/admin">관리자 페이지</Link>}
                                     </>
                                 )}

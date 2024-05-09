@@ -1,6 +1,5 @@
-package com.tbsc.Rental;
+package com.tbsc.rental;
 
-import com.tbsc.Rental.Rental;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RentalRepository extends JpaRepository<Rental, Integer> {

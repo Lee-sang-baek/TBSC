@@ -1,4 +1,4 @@
-package com.tbsc.Rental;
+package com.tbsc.rental;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
@@ -15,7 +15,7 @@ import com.querydsl.core.types.Path;
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
 public class QRental extends EntityPathBase<Rental> {
 
-    private static final long serialVersionUID = -595438069L;
+    private static final long serialVersionUID = -1394399701L;
 
     public static final QRental rental = new QRental("rental");
 

@@ -27,16 +27,16 @@ function Footer() {
                     <div className="list">
                         <ul>
                             <li>
-                                <a href="/index.do">홈</a>
+                                <a href="/">홈</a>
                             </li>
                             <li>
-                                <a href="/index.do">센터소개</a>
+                                <a href="/centerIntro">센터소개</a>
                             </li>
                             <li>
-                                <a href="/index.do">이용약관</a>
+                                <a href="/">이용약관</a>
                             </li>
                             <li>
-                                <a href="/index.do">개인정보처리방침</a>
+                                <a href="/">개인정보처리방침</a>
                             </li>
                         </ul>
                     </div>

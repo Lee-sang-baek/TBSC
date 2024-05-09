@@ -1,11 +1,10 @@
-package com.tbsc.Rental;
+package com.tbsc.rental;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Calendar;
 import java.util.Date;
 
 @Getter

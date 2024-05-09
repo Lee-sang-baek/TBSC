@@ -100,4 +100,9 @@ function FacilityGuide({ onSelectFacility }) {
         </div>
     );
 }
+
+FacilityGuide.defaultProps = {
+    onSelectFacility: () => console.log("?"),
+};
+
 export default FacilityGuide;

@@ -55,8 +55,8 @@
 .Footer-compo .dropdown-menu{
     position: absolute;
     margin: 0px;
-    width: 30%;
-    transform: translate(-80px, -380px);
+    width: 180px;
+    transform: translate(-80px, -430px);
     background-color:gray;
 }
 .Footer-compo .dropdown-menu li{
