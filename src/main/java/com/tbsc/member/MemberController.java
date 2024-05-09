@@ -3,6 +3,9 @@ package com.tbsc.member;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -75,6 +78,7 @@ public class MemberController {
 //                System.out.println("id: " + session.getAttribute("id"));
 //            }
             session.setAttribute("id", id);
+            session.setAttribute("state", member.getState());
 
             return ResponseEntity.ok(member);
         } else {
@@ -86,13 +90,22 @@ public class MemberController {
     public ResponseEntity<String> logout(HttpServletRequest httpRequest) {
         HttpSession session = httpRequest.getSession();
         session.removeAttribute("id");
+        session.removeAttribute("state");
         return ResponseEntity.ok("로그아웃 성공");
     }
 
-    @PostMapping("/member/list")
-    public ResponseEntity<List<Member>> memberList() {
-        List<Member> members = memberService.getList();
-        // System.out.println(members.size());
+    @GetMapping("/member/list") // 회원 정보 리스트 조회 (어드민전용)
+    public ResponseEntity<Page<Member>> memberList(HttpServletRequest request,
+                                                   @RequestParam("page") int page,
+                                                   @RequestParam("size") int size,
+                                                   @RequestParam("searchTerm") String searchTerm,
+                                                   @RequestParam("category") String category) {
+//        if (request.getSession().getAttribute("state") != "ADMIN") {
+//            return null;
+//        }
+
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Member> members = memberService.getList(pageable, searchTerm, category);
         return ResponseEntity.ok(members);
     }
 

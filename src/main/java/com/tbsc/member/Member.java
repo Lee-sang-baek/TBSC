@@ -1,11 +1,14 @@
 package com.tbsc.member;
 
+import com.tbsc.log.AccessLog;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Member")
@@ -40,6 +43,9 @@ public class Member {
 
     @Enumerated(EnumType.STRING)
     private MemberType state;
+
+//    @OneToMany(mappedBy = "member")
+//    private List<AccessLog> accessLogs = new ArrayList<>();
 
     public Member bind(MemberDto memberDto, PasswordEncoder passwordEncoder) {
         this.setId(memberDto.getId());

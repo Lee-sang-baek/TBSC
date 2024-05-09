@@ -1,6 +1,10 @@
 package com.tbsc.member;
 
+import jakarta.persistence.criteria.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.User;
@@ -140,7 +144,51 @@ public class MemberService implements UserDetailsService {
         return optionalMember.orElse(null);
     }
 
-    public List<Member> getList() {
-        return memberRepository.findAll();
+    public Page<Member> getList(Pageable pageable, String searchTerm, String category) {
+
+        switch (category) {
+            case "name" -> {
+                return memberRepository.findByNameContaining(searchTerm, pageable);
+            }
+            case "email" -> {
+                return memberRepository.findByEmailContaining(searchTerm, pageable);
+            }
+            case "address" -> {
+                return memberRepository.findByAddressContaining(searchTerm, pageable);
+            }
+            case "phoneNum" -> {
+                return memberRepository.findByPhoneNumContaining(searchTerm, pageable);
+            }
+            case "compName" -> {
+                return memberRepository.findByCompNameContaining(searchTerm, pageable);
+            }
+            case "businessNum" -> {
+                return memberRepository.findByBusinessNumContaining(searchTerm, pageable);
+            }
+            case "representative" -> {
+                return memberRepository.findByRepresentativeContaining(searchTerm, pageable);
+            }
+            case "compAddress" -> {
+                return memberRepository.findByCompAddressContaining(searchTerm, pageable);
+            }
+            case "all" -> {
+                Specification<Member> spec = (root, query, cb) -> {
+                    Predicate predicate1 = cb.like(cb.lower(root.get("name")), "%" + searchTerm.toLowerCase() + "%");
+                    Predicate predicate2 = cb.like(cb.lower(root.get("email")), "%" + searchTerm.toLowerCase() + "%");
+                    Predicate predicate3 = cb.like(cb.lower(root.get("address")), "%" + searchTerm.toLowerCase() + "%");
+                    Predicate predicate4 = cb.like(cb.lower(root.get("phoneNum")), "%" + searchTerm.toLowerCase() + "%");
+                    Predicate predicate5 = cb.like(cb.lower(root.get("compName")), "%" + searchTerm.toLowerCase() + "%");
+                    Predicate predicate6 = cb.like(cb.lower(root.get("businessNum")), "%" + searchTerm.toLowerCase() + "%");
+                    Predicate predicate7 = cb.like(cb.lower(root.get("representative")), "%" + searchTerm.toLowerCase() + "%");
+                    Predicate predicate8 = cb.like(cb.lower(root.get("compAddress")), "%" + searchTerm.toLowerCase() + "%");
+                    return cb.or(predicate1, predicate2, predicate3, predicate4, predicate5, predicate6, predicate7, predicate8);
+                };
+                return memberRepository.findAll(spec, pageable);
+            }
+            default -> {
+                return memberRepository.findAll(pageable);
+            }
+        }
     }
+
 }
