@@ -1,12 +1,14 @@
 import React from "react";
 import "./mypageReserv.css";
 import Button from "../../../BaseComponents/Button";
+import Sidebar from "../../../Fragments/Sidebar/Sidebar";
 
 const ReservDetails = (props) => {
 
     return (
-    <div className="ReservDetails-compo">
-        <form>
+        <div className="outter">
+            <Sidebar />
+            <form className="ReservDetails-compo">
             <h1 className="pageTitle">예약 내역</h1>
 
             <div className="pageInfo">

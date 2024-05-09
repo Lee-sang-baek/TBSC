@@ -1,3 +1,12 @@
+.outter {
+    display: flex;
+    flex-direction: row;
+}
+.ReservDetails-compo{
+    padding:0 100px;
+    width:100%;
+}
+
 .ReservDetails-compo .pageTitle {
     text-align: center;
 }

@@ -1,12 +1,19 @@
 import userProfile from "../../Imgs/userProfile.png";
 import "./mypageHome.css";
 import Button from "../../BaseComponents/Button";
+import Sidebar from "../../Fragments/Sidebar/Sidebar";
+import SideBanner from "../../Fragments/SideBanner/SideBanner";
+
 
 const MyHome = () => {
 
     return (
-    <div className="MyHome-compo">
-        <form>
+        <div className="outter">
+            <div className="sidebox">
+            <Sidebar />
+            <SideBanner />
+            </div>
+        <form className="Myhome-compo">
             <div className="container">
                 <h3 className="profile">
                     <img className="profileImg" src={userProfile} alt="profile"/>
@@ -26,6 +33,7 @@ const MyHome = () => {
                 </h3>
 
             </div>
+
             <div className="profileModify">
                 <Button onClick={() => {}} text="개인정보수정" className="btn-two cyan rounded" />
                 {/*<a href="/#" className="btn-two cyan rounded">*/}
@@ -49,7 +57,9 @@ const MyHome = () => {
                 }} text="버틍" className="btn-two blue"/>
             </div>
         </form>
-    </div>
+        </div>
+
+
     );
 };
 
