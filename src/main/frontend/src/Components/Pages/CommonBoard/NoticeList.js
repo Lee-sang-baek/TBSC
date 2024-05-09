@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Header from "../../Fragments/Header/Header";
+import Header from "../../fragments/header/Header";
 import "./NoticeList.css";
 import { Link } from "react-router-dom";
 import Pagination from "./Pagination";
-import Button from "../../BaseComponents/Button";
+import Button from "../../baseComponents/Button";
 
 function NoticeList() {
     const [notices, setNotices] = useState([]);

@@ -1,51 +1,42 @@
-.outter {
-    display: flex;
-    flex-direction: row;
-}
-.ModiInfo-compo{
-    padding:0 100px;
-    width:100%;
-}
-
-.ModiInfo-compo .pageTitle {
+.pageTitle {
     text-align: center;
 }
 
-.ModiInfo-compo .modiInfo {
+.modiInfo {
     background-color: #a3deef;
     width: 50%;
     border-radius: 15px;
 }
 
-.ModiInfo-compo .modiInfo .modiInfoHeader {
+.modiInfo .modiInfoHeader {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.ModiInfo-compo .modiInfoHeader > div {
-    width: 50%;
+/*.modiInfoHeader > div {*/
+/*    width: 50%;*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    background-color: white;*/
+/*    border-radius: 15px;*/
+/*}*/
+
+.pageInfo {
     display: flex;
     justify-content: center;
-    background-color: white;
-    border-radius: 15px;
 }
 
-.ModiInfo-compo .pageInfo {
-    display: flex;
-    justify-content: center;
-}
-
-.ModiInfo-compo .button {
+.button {
     display: flex;
     justify-content: flex-end;
 }
 
-.ModiInfo-compo .passcheckBox {
+.passcheckBox {
     position: relative;
 }
 
-.ModiInfo-compo .passcheckSignal {
+.passcheckSignalView {
     width: 50px;
     height: 20px;
     background-color: #fa5a5a;
@@ -56,13 +47,37 @@
     text-align: center;
 }
 
-.ModiInfo-compo .birthBox{
-    position: relative;
+.modiInfoHeader > Input {
+    width: auto;
 }
 
-.ModiInfo-compo .birthBox > img {
-    width: 20px;
-    height: 20px;
+.modiInfoHeader .passCheckForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.passCheckForm .checkTextBox {
+    width: 100%;
+}
+
+.passcheckText {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.passcheckText .unmatch {
     position: absolute;
-    right: -10%;
+    right: -100%;
+    font-size: small;
+    color: #fa5a5a;
+}
+.passcheckText .match {
+    display: none;
+}
+
+.idTextBox, .emailTextBox {
+    background-color: transparent;
+    text-align: center;
 }

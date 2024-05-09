@@ -1,7 +1,7 @@
 import React from "react";
 import "./mypageModiCorp.css";
-import Button from "../../../BaseComponents/Button";
-import Sidebar from "../../../Fragments/Sidebar/Sidebar";
+import Button from "../../../baseComponents/Button";
+import Sidebar from "../../../fragments/sidebar/Sidebar";
 
 const ModiCorp = (props) => {
 

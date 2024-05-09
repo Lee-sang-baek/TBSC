@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Header.css";
-import logoImage from "../../Imgs/logo.png";
-import loginImage from "../../Imgs/login.png";
+import logoImage from "../../imgs/logo.png";
+import loginImage from "../../imgs/login.png";
 import { Link } from "react-router-dom";
 
 const Header = () => {

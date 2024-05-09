@@ -45,6 +45,7 @@
 
 .MyHome-compo .profileModify {
     text-align: center;
+    position: relative;
 }
 
 .MyHome-compo .infoText {
@@ -58,3 +59,8 @@
     justify-content: space-between;
 }
 
+.profileModify .userDelete {
+    position: absolute;
+    right: 5%;
+    top: 0;
+}

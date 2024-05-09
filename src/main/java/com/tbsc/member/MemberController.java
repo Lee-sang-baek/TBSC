@@ -109,6 +109,15 @@ public class MemberController {
         return ResponseEntity.ok(members);
     }
 
+    @GetMapping("/member/getMember")
+    public ResponseEntity<Member> getMember(@RequestParam("id") String id) {
+        Member member = memberService.getMember(id);
+
+//        System.out.println(member.getId());
+
+        return ResponseEntity.ok(member);
+    }
+
     @GetMapping("/create")
     public ResponseEntity<String> admin() {
         Member member = new Member();
@@ -122,5 +131,11 @@ public class MemberController {
         member.setBirth(LocalDate.now());
         memberService.signUp(member);
         return ResponseEntity.ok("admin create");
+    }
+
+    @PostMapping("/member/membermodify")
+    public ResponseEntity<String> memberModify(@RequestBody MemberDto memberDto) {
+        // System.out.println("signup");
+        return memberService.memberModify(memberDto, passwordEncoder);
     }
 }

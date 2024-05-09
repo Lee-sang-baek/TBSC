@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Rental.css';
-import FacilityGuide from "../FacilityGuide/FacilityGuide";
+import FacilityGuide from "../facilityGuide/FacilityGuide";
 import axios from "axios";
 
 const Rental = () => {

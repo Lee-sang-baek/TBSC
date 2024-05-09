@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./AccessLog.css";
-import { exportToExcel } from "../../Util/ExportToExcel";
+import { exportToExcel } from "../../util/ExportToExcel";
 
 const AccessLog = () => {
     const [page, setPage] = useState(0);

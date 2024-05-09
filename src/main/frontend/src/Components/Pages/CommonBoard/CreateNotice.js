@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CustomEditor from "./CustomEditor";
 import "./CreateNotice.css";
-import Header from "../../Fragments/Header/Header";
-import Button from "../../BaseComponents/Button";
+import Button from "../../baseComponents/Button";
 
 function CreateNotice() {
     const [title, setTitle] = useState("");

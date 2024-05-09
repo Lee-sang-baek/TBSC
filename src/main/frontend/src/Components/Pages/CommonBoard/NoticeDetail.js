@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import "./NoticeDetail.css";
-import Header from "../../Fragments/Header/Header";
-import Button from "../../BaseComponents/Button";
+import Button from "../../baseComponents/Button";
+
 
 function NoticeDetail() {
     const { num } = useParams();

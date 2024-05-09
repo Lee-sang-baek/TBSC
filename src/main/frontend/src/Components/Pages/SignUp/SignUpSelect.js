@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom"; // Routes import 추가
 import "./SignUpSelect.css";
-import logoImage from "../../Imgs/logo.png";
+import logoImage from "../../imgs/logo.png";
 
 const SignUpSelect = () => {
   return (

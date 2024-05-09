@@ -1,6 +1,6 @@
 import "./Input.css";
 
-const Input = ({text, type, className, value, onChange}) => {
+const Input = ({text, type, className, value, onChange, maxLength, readOnly}) => {
     return (
         <div className="Input-compo">
             <input
@@ -8,6 +8,8 @@ const Input = ({text, type, className, value, onChange}) => {
                 className={className}
                 value={value}
                 onChange={onChange}
+                maxLength={maxLength}
+                readOnly={readOnly}
             >
                 {text}
             </input>

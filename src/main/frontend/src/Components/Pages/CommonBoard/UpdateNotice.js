@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"; // Import useParams
 import CustomEditor from "./CustomEditor";
-import Header from "../../Fragments/Header/Header";
+import Header from "../../fragments/header/Header";
 import "./CreateNotice.css";
-import Button from "../../BaseComponents/Button";
-import Input from "../../BaseComponents/Input";
+import Button from "../../baseComponents/Button";
+import Input from "../../baseComponents/Input";
 
 function UpdateNotice() {
     const { num,setNum } = useParams(); // Use useParams to get the route parameter

@@ -1,19 +1,34 @@
-import userProfile from "../../Imgs/userProfile.png";
+import userProfile from "../../imgs/userProfile.png";
 import "./mypageHome.css";
-import Button from "../../BaseComponents/Button";
-import Sidebar from "../../Fragments/Sidebar/Sidebar";
-import SideBanner from "../../Fragments/SideBanner/SideBanner";
-
+import Button from "../../baseComponents/Button";
+import axios from "axios";
+import React, {useEffect, useState} from "react";
+import {Link,} from "react-router-dom";
 
 const MyHome = () => {
 
+    const memberId = sessionStorage.getItem("id");
+
+    const [memberInfo, setMemberInfo] = useState({
+        id: "",
+        name: "",
+        email: "",
+    })
+
+    const getMemberInfo = () => {
+        axios.get("member/getMember?id=" + memberId)
+            .then((res) => {
+                console.log(res.data);
+                setMemberInfo({...res.data})
+            });
+    }
+
+    useEffect(() => {
+        getMemberInfo();
+    }, [])
+
     return (
-        <div className="outter">
-            <div className="sidebox">
-            <Sidebar />
-            <SideBanner />
-            </div>
-        <form className="Myhome-compo">
+        <form>
             <div className="container">
                 <h3 className="profile">
                     <img className="profileImg" src={userProfile} alt="profile"/>
@@ -25,23 +40,28 @@ const MyHome = () => {
                             <div className="profileEmail">Email</div>
                         </div>
                         <div>
-                            <div className="idText">아이디</div>
-                            <div className="nameText">이름</div>
-                            <div className="emailText">Email</div>
+                            <div className="idText">{memberInfo.id}</div>
+                            <div className="nameText">{memberInfo.name}</div>
+                            <div className="emailText">{memberInfo.email}</div>
                         </div>
                     </div>
                 </h3>
 
             </div>
-
             <div className="profileModify">
-                <Button onClick={() => {}} text="개인정보수정" className="btn-two cyan rounded" />
+                <Link to="/myPage/modify-info">
+                    <Button onClick={() => {
+                    }} text="개인정보수정" className="btn-two cyan rounded"/>
+                </Link>
                 {/*<a href="/#" className="btn-two cyan rounded">*/}
                 {/*    <button onClick={() => {*/}
                 {/*    }}>*/}
                 {/*        개인정보수정*/}
                 {/*    </button>*/}
                 {/*</a>*/}
+                <div className="userDelete">
+                    <Button text="계정 탈퇴"></Button>
+                </div>
             </div>
 
             <h2 className="reservDetailTitle">
@@ -52,14 +72,13 @@ const MyHome = () => {
                 <h3 className="reservDate">123213123</h3>
                 <h3 className="reservTitle">제목</h3>
                 <h3 className="reservState">상태</h3>
-                <Button onClick={() => {
-                    console.log("dk");
-                }} text="버틍" className="btn-two blue"/>
+                <Link to="/reserv">
+                    <Button onClick={() => {
+                        console.log("dk");
+                    }} text="버틍" className="btn-two blue"/>
+                </Link>
             </div>
         </form>
-        </div>
-
-
     );
 };
 

@@ -191,4 +191,32 @@ public class MemberService implements UserDetailsService {
         }
     }
 
+    public List<Member> getList() {
+        return memberRepository.findAll();
+    }
+
+    public Member getMember(String id) {
+        Optional<Member> member = memberRepository.findById(id);
+        return member.orElse(null);
+    }
+
+    public ResponseEntity<String> memberModify(MemberDto memberDto, PasswordEncoder passwordEncoder) {
+        // 비밀번호 일치 여부 확인
+        if (!isPasswordMatch(memberDto.getPassword(), memberDto.getConfirmPassword())) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("비밀번호가 일치하지 않습니다.");
+        }
+
+        Member member = new Member();
+        member.bind(memberDto, passwordEncoder);
+        member.setState(MemberType.NORMAL);
+
+        try {
+            // 회원 정보를 데이터베이스에 저장
+            memberRepository.save(member);
+
+            return ResponseEntity.status(HttpStatus.CREATED).body("회원가입이 완료되었습니다.");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("회원가입 중 오류가 발생했습니다.");
+        }
+    }
 }

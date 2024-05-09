@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Button from "../../BaseComponents/Button";
+import Button from "../../baseComponents/Button";
 import "./SiteManagement.css";
-import logoImage from "../../Imgs/logo.png";
+import logoImage from "../../imgs/logo.png";
 
 const SiteManagement = () => {
 

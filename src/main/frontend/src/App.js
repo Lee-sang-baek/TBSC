@@ -1,35 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"; // Routes import 추가
-import {createRoot} from "react-dom/client";
 import axios from "axios";
-import Header from "./Components/Fragments/Header/Header";
-import Sidebar from "./Components/Fragments/Sidebar/Sidebar";
-import Footer from "./Components/Fragments/Footer/Footer";
-import SignUp from "./Components/Pages/SignUp/SignUp";
-import SignUpSelect from "./Components/Pages/SignUp/SignUpSelect";
-import LoginForm from "./Components/Pages/LoginForm/LoginForm";
-import AdminPage from "./Components/Pages/Admin/AdminPage";
-import MemberList from "./Components/Pages/Admin/MemberList";
-import SiteManagement from "./Components/Pages/Admin/SiteManagement";
-import ReservationConfirmation from "./Components/Pages/Admin/ReservationConfirmation";
-import AccessLog from "./Components/Pages/Admin/AccessLog";
-import NoticeList from "./Components/Pages/CommonBoard/NoticeList";
-import NoticeDetail from "./Components/Pages/CommonBoard/NoticeDetail";
-import CreateNotice from "./Components/Pages/CommonBoard/CreateNotice";
-import UpdateNotice from "./Components/Pages/CommonBoard/UpdateNotice";
-import Form from "./Components/Util/Map/Form";
-import ModiInfo from "./Components/Pages/mypage/ReservationPage/mypageModify";
-import MyHome from "./Components/Pages/mypage/mypageHome";
-import ReservDetails from "./Components/Pages/mypage/ReservationPage/mypageReserv";
-import ModiCorp from "./Components/Pages/mypage/ReservationPage/mypageModiCorp";
-import CorpInfo from "./Components/Pages/mypage/ReservationPage/mypageCorpInfo";
-import CenterIntroduction from "./Components/Pages/CenterIntroduction/CenterIntroduction";
-import Rental from "./Components/Pages/Rental/Rental";
-import FacilityGuideMain from "./Components/Pages/FacilityGuide/FacilityGuideMain";
-import FacilityGuide from "./Components/Pages/FacilityGuide/FacilityGuide";
-import ConsultantForm from "./Components/Pages/Consultant/ConsultantForm";
-import LogAccess from "./Components/Util/LogAccess";
-//import Verification from "./Components/Auth/Verification";
+import Header from "./Components/fragments/header/Header";
+import Footer from "./Components/fragments/footer/Footer";
+import SignUp from "./Components/pages/signUp/SignUp";
+import SignUpSelect from "./Components/pages/signUp/SignUpSelect";
+import LoginForm from "./Components/pages/loginForm/LoginForm";
+import AdminPage from "./Components/pages/admin/AdminPage";
+import MemberList from "./Components/pages/admin/MemberList";
+import SiteManagement from "./Components/pages/admin/SiteManagement";
+import ReservationConfirmation from "./Components/pages/admin/ReservationConfirmation";
+import AccessLog from "./Components/pages/admin/AccessLog";
+import NoticeList from "./Components/pages/commonBoard/NoticeList";
+import NoticeDetail from "./Components/pages/commonBoard/NoticeDetail";
+import CreateNotice from "./Components/pages/commonBoard/CreateNotice";
+import UpdateNotice from "./Components/pages/commonBoard/UpdateNotice";
+import ModiInfo from "./Components/pages/mypage/reservationPage/mypageModify";
+import MyHome from "./Components/pages/mypage/mypageHome";
+import ReservDetails from "./Components/pages/mypage/reservationPage/mypageReserv";
+import ModiCorp from "./Components/pages/mypage/reservationPage/mypageModiCorp";
+import CorpInfo from "./Components/pages/mypage/reservationPage/mypageCorpInfo";
+import CenterIntroduction from "./Components/pages/centerIntroduction/CenterIntroduction";
+import Rental from "./Components/pages/rental/Rental";
+import FacilityGuide from "./Components/pages/facilityGuide/FacilityGuide";
+import ConsultantForm from "./Components/pages/consultant/ConsultantForm";
+import LogAccess from "./Components/util/LogAccess";
 
 function App() {
 
@@ -46,9 +41,9 @@ function App() {
 
     const logout = () => {
         axios.get("/logout")
-        .then(response => {
-            console.log(response.data);
-        });
+            .then(response => {
+                console.log(response.data);
+            });
         alert("로그아웃 되었습니다.")
         sessionStorage.removeItem("id");
         sessionStorage.removeItem("state");
@@ -57,14 +52,14 @@ function App() {
 
     const create = () => {
         axios.get("/create")
-        .then(response => {
-            alert(response.data);
-        })
+            .then(response => {
+                alert(response.data);
+            })
     }
 
     return (
-    <BrowserRouter>
-        <LogAccess />
+        <BrowserRouter>
+            <LogAccess />
             <Header />
             <div>
                 {!sessionStorage.getItem("id") && <Link to={"/login"}> [로그인] </Link>}
@@ -106,7 +101,7 @@ function App() {
                 <Route path="/consultants" element={<ConsultantForm />} />
             </Routes>
             <Footer />
-    </BrowserRouter>
+        </BrowserRouter>
     );
 }
 
