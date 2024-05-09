@@ -27,7 +27,7 @@ import CenterIntroduction from "./Components/Pages/CenterIntroduction/CenterIntr
 import Rental from "./Components/Pages/Rental/Rental";
 import FacilityGuideMain from "./Components/Pages/FacilityGuide/FacilityGuideMain";
 import FacilityGuide from "./Components/Pages/FacilityGuide/FacilityGuide";
-import ConsultantForm from "./Components/Pages/ Consultant/ ConsultantForm";
+import ConsultantForm from "./Components/Pages/Consultant/ConsultantForm";
 import LogAccess from "./Components/Util/LogAccess";
 //import Verification from "./Components/Auth/Verification";
 
