@@ -2,13 +2,19 @@ import userProfile from "../../Imgs/userProfile.png";
 import "./mypageHome.css";
 import Button from "../../BaseComponents/Button";
 import Sidebar from "../../Fragments/Sidebar/Sidebar";
+import SideBanner from "../../Fragments/SideBanner/SideBanner";
 
 
 const MyHome = () => {
 
     return (
+
+
         <div className="outter">
+            <div className="sidebox">
             <Sidebar />
+            <SideBanner />
+            </div>
         <form className="Myhome-compo">
             <div className="container">
                 <h3 className="profile">
@@ -54,6 +60,8 @@ const MyHome = () => {
             </div>
         </form>
         </div>
+
+
     );
 };
 

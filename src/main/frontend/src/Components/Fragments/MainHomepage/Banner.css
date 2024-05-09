@@ -1,0 +1,27 @@
+.Banner-compo .slider-container {
+    width: 80%; /* 슬라이더 컨테이너의 너비 */
+    margin: auto; /* 가운데 정렬을 위한 마진 */
+    position: relative; /* 이전/다음 화살표의 위치 조정을 위한 상대 위치 설정 */
+}
+
+.Banner-compo .arrow {
+    position: absolute; /* 이전/다음 화살표의 절대 위치 설정 */
+    top: 50%; /* 슬라이더 컨테이너 상단에서의 위치를 조정 */
+    transform: translateY(-50%); /* 수직 가운데 정렬을 위한 위치 조정 */
+    cursor: pointer; /* 마우스 커서를 포인터로 변경하여 클릭 가능함을 나타냄 */
+    font-size: 2rem; /* 화살표 아이콘 크기 */
+    z-index: 1; /* 다른 내용 위에 화살표가 나타나도록 설정 */
+}
+
+.Banner-compo .prev {
+    left: 0; /* 이전 화살표의 왼쪽 위치 설정 */
+}
+
+.Banner-compo .next {
+    right: 0; /* 다음 화살표의 오른쪽 위치 설정 */
+}
+
+.Banner-compo img {
+    width: 100%; /* 이미지를 슬라이더 크기에 맞게 조정 */
+    height: auto; /* 이미지 비율 유지를 위한 자동 높이 설정 */
+}

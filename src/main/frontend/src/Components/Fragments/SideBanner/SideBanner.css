@@ -1,0 +1,31 @@
+.SideBanner-compo {
+    width: 250px; /* 슬라이더의 너비를 조정하세요 */
+    height: auto;
+    margin-left: 30px;
+}
+
+/* 슬라이더 화살표 스타일 */
+.SideBanner-compo.arrow {
+
+
+    /*position: absolute;  이전/다음 화살표의 절대 위치 설정 */
+    top: 50%; /* 슬라이더 컨테이너 상단에서의 위치를 조정 */
+    transform: translateY(-50%); /* 수직 가운데 정렬을 위한 위치 조정 */
+    cursor: pointer; /* 마우스 커서를 포인터로 변경하여 클릭 가능함을 나타냄 */
+    font-size: 2rem; /* 화살표 아이콘 크기 */
+    z-index: 1; /* 다른 내용 위에 화살표가 나타나도록 설정 */
+}
+
+.SideBanner-compo .prev {
+    left: 0;
+}
+
+.SideBanner-compo .next {
+    right: 0;
+}
+
+/* 슬라이드 이미지 스타일 */
+.SideBanner-compo .slick-slide img {
+    width: 100%;
+    height: auto;
+}

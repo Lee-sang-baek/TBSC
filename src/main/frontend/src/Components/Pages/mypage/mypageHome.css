@@ -2,6 +2,10 @@
     display: flex;
     flex-direction: row;
 }
+.sidebox{
+    display:flex;
+    flex-direction: column;
+}
 .Myhome-compo{
     width:100%;
     padding:0 100px;
