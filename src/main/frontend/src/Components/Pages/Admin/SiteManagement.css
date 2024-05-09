@@ -1,0 +1,144 @@
+.SiteManagement-compo {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.SiteManagement-compo table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.SiteManagement-compo thead {
+  background-color: #f2f2f2;
+}
+
+.SiteManagement-compo th,
+.SiteManagement-compo td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.SiteManagement-compo tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.SiteManagement-compo td {
+  width: 300px;
+  height: 150px;
+}
+
+.SiteManagement-compo td:nth-child(1) {
+  width: 150px;
+}
+
+.SiteManagement-compo td:nth-child(5),
+.SiteManagement-compo td:nth-child(6) {
+  width: 50px;
+  text-align: center;
+}
+
+
+.SiteManagement-compo tr:hover {
+  background-color: #dddddd;
+}
+
+/* Adjustments for responsive design */
+@media screen and (max-width: 600px) {
+  .SiteManagement-compo table {
+    border: 0;
+  }
+
+  .SiteManagement-compo table thead {
+    display: none;
+  }
+
+  .SiteManagement-compo table tr {
+    margin-bottom: 10px;
+    display: block;
+    border: 1px solid #ddd;
+  }
+
+  .SiteManagement-compo table td {
+    display: block;
+    text-align: right;
+  }
+
+  .SiteManagement-compo table td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+  }
+}
+
+.SiteManagement-compo .management-button {
+    display: flex;
+    flex-direction: row;
+    items-align: center;
+}
+
+.SiteManagement-compo .management-button .de-active {
+    width: 200px;
+    margin: 0 10px;
+    padding: 8px 16px;
+    background-color: #55cdff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.SiteManagement-compo .management-button .de-active:hover {
+    background-color: #3389e6;
+}
+
+.SiteManagement-compo .management-button .active {
+    width: 200px;
+    margin: 0 10px;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.SiteManagement-compo .management-button .active:hover {
+    background-color: #0056b3;
+}
+
+
+.SiteManagement-compo .add-button {
+     grid-column: 3;
+     width: 100%;
+     display: flex;
+     justify-content: flex-end;
+     align-items: center;
+ }
+
+ .SiteManagement-compo h3 {
+     grid-column: 1;
+ }
+
+.SiteManagement-compo .middle-box {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+}
+
+.SiteManagement-compo .main-img,
+.SiteManagement-compo .banner,
+.SiteManagement-compo .popup {
+    width: 100%;
+}
+
+.SiteManagement-compo img {
+    width: 100%;
+    height: 100%;
+}
+
+.SiteManagement-compo .hidden {
+    display: none;
+}

@@ -173,25 +173,14 @@ public class MemberService implements UserDetailsService {
             }
             case "all" -> {
                 Specification<Member> spec = (root, query, cb) -> {
-                    // 검색할 필드들 목록
-                    Path<String> name = root.get("name");
-                    Path<String> email = root.get("email");
-                    Path<String> address = root.get("address");
-                    Path<String> phoneNum = root.get("phoneNum");
-                    Path<String> compName = root.get("compName");
-                    Path<String> businessNum = root.get("businessNum");
-                    Path<String> representative = root.get("representative");
-                    Path<String> compAddress = root.get("compAddress");
-                    // 필드1, 필드2에 대한 like 검색 조건 생성
-                    Predicate predicate1 = cb.like(cb.lower(name), "%" + searchTerm.toLowerCase() + "%");
-                    Predicate predicate2 = cb.like(cb.lower(email), "%" + searchTerm.toLowerCase() + "%");
-                    Predicate predicate3 = cb.like(cb.lower(address), "%" + searchTerm.toLowerCase() + "%");
-                    Predicate predicate4 = cb.like(cb.lower(phoneNum), "%" + searchTerm.toLowerCase() + "%");
-                    Predicate predicate5 = cb.like(cb.lower(compName), "%" + searchTerm.toLowerCase() + "%");
-                    Predicate predicate6 = cb.like(cb.lower(businessNum), "%" + searchTerm.toLowerCase() + "%");
-                    Predicate predicate7 = cb.like(cb.lower(representative), "%" + searchTerm.toLowerCase() + "%");
-                    Predicate predicate8 = cb.like(cb.lower(compAddress), "%" + searchTerm.toLowerCase() + "%");
-                    // 필드1 또는 필드2 중 하나라도 검색 조건을 만족하는 엔티티 반환
+                    Predicate predicate1 = cb.like(cb.lower(root.get("name")), "%" + searchTerm.toLowerCase() + "%");
+                    Predicate predicate2 = cb.like(cb.lower(root.get("email")), "%" + searchTerm.toLowerCase() + "%");
+                    Predicate predicate3 = cb.like(cb.lower(root.get("address")), "%" + searchTerm.toLowerCase() + "%");
+                    Predicate predicate4 = cb.like(cb.lower(root.get("phoneNum")), "%" + searchTerm.toLowerCase() + "%");
+                    Predicate predicate5 = cb.like(cb.lower(root.get("compName")), "%" + searchTerm.toLowerCase() + "%");
+                    Predicate predicate6 = cb.like(cb.lower(root.get("businessNum")), "%" + searchTerm.toLowerCase() + "%");
+                    Predicate predicate7 = cb.like(cb.lower(root.get("representative")), "%" + searchTerm.toLowerCase() + "%");
+                    Predicate predicate8 = cb.like(cb.lower(root.get("compAddress")), "%" + searchTerm.toLowerCase() + "%");
                     return cb.or(predicate1, predicate2, predicate3, predicate4, predicate5, predicate6, predicate7, predicate8);
                 };
                 return memberRepository.findAll(spec, pageable);

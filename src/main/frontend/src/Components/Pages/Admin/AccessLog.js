@@ -67,6 +67,7 @@ const AccessLog = () => {
 
     const handleMenuChange = (e) => {
         setMenu(e.target.value);
+        setPage(0);
     };
 
     const handleSortToggle = () => {
