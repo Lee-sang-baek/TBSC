@@ -1,7 +1,7 @@
 .ConsultantForm-compo {
     background: #f4f4f4;
     padding: 20px;
-    width: 350px;
+    width: 500px; /* Adjusted width to better fit the design */
     margin: 20px auto;
     font-family: 'Arial', sans-serif;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -13,14 +13,16 @@
 }
 
 .ConsultantForm-compo h2 {
-    background: #000;
-    color: #fff;
+    background: #f0f0f0;
+    color: #000;
     padding: 10px;
-    margin: -20px -20px 20px -20px;
+    margin: 0 0 20px 0;
+    border-bottom: 2px solid #ddd;
 }
 
 .ConsultantForm-compo label {
     margin-bottom: 10px;
+    font-weight: bold;
 }
 
 .ConsultantForm-compo label input[type="text"],
@@ -28,9 +30,11 @@
 .ConsultantForm-compo label input[type="date"],
 .ConsultantForm-compo label input[type="datetime-local"],
 .ConsultantForm-compo label textarea {
-    width: calc(100% - 20px);
-    padding: 10px;
+    width: calc(100% - 22px);
+    padding: 8px;
     margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 .ConsultantForm-compo label input[type="radio"] {
@@ -38,16 +42,17 @@
 }
 
 .ConsultantForm-compo button {
-    background: #4CAF50;
+    background: #007BFF;
     color: white;
     border: none;
     padding: 10px;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 20px;
+    border-radius: 4px;
 }
 
 .ConsultantForm-compo button:hover {
-    background: #45a049;
+    background: #0056b3;
 }
 
 .ConsultantForm-compo input[type="file"] {
@@ -55,12 +60,17 @@
     display: inline-block;
     padding: 6px 12px;
     cursor: pointer;
+    border-radius: 4px;
+    width: calc(100% - 22px);
 }
 
 .ConsultantForm-compo textarea {
-    height: 80px;
+    height: 60px;
+    resize: none;
 }
 
 .ConsultantForm-compo .business {
-    margin-top: 100px;
+    margin-top: 20px;
+    border-top: 2px solid #ddd;
+    padding-top: 20px;
 }

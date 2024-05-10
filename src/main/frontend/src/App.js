@@ -22,9 +22,9 @@ import ModiCorp from "./Components/pages/mypage/reservationPage/mypageModiCorp";
 import CorpInfo from "./Components/pages/mypage/reservationPage/mypageCorpInfo";
 import CenterIntroduction from "./Components/pages/centerIntroduction/CenterIntroduction";
 import Rental from "./Components/pages/rental/Rental";
-import FacilityGuide from "./Components/pages/facilityGuide/FacilityGuide";
 import ConsultantForm from "./Components/pages/consultant/ConsultantForm";
 import LogAccess from "./Components/util/LogAccess";
+import FacilityGuideMain from "./Components/pages/facilityGuide/FacilityGuideMain";
 
 function App() {
 
@@ -74,6 +74,7 @@ function App() {
                 <Link to={"/centerIntro"}> [센터 소개] </Link>
                 <Link to={"/facility"}> [시설 안내] </Link>
                 <Link to={"/notices"}> [공지사항] </Link>
+
             </div>
             <Routes>
                 <Route path="/login" element={<LoginForm />} />
@@ -91,7 +92,7 @@ function App() {
                 <Route path="/notices/:num" element={<NoticeDetail />} />
                 <Route path="/notices/new" element={<CreateNotice />} />
                 <Route path="/notices/update/:num" element={<UpdateNotice />} />
-                <Route path="/facility" element={<FacilityGuide />} />
+                <Route path="/facility" element={<FacilityGuideMain />} />
                 <Route path="/myPage" element={<MyHome/>}/>
                 <Route path="/myPage/reserve" element={<ReservDetails/>}/>
                 <Route path="/myPage/corp-info" element={<CorpInfo/>}/>

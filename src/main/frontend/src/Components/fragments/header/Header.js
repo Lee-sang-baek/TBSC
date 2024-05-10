@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [loginMenuOpen, setLoginMenuOpen] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     const menus = [
         {
@@ -55,9 +56,9 @@ const Header = () => {
 
     const logout = () => {
         axios.get("/logout")
-        .then(response => {
-            console.log(response.data);
-        });
+            .then(response => {
+                console.log(response.data);
+            });
         alert("로그아웃 되었습니다.")
         sessionStorage.removeItem("id");
         sessionStorage.removeItem("state");
@@ -75,6 +76,10 @@ const Header = () => {
     const toggleLoginMenu = (event) => {
         event.stopPropagation();
         setLoginMenuOpen(prev => !prev);
+    };
+
+    const toggleMobileMenu = () => {
+        setMobileMenuOpen(prev => !prev);
     };
 
     const isLoggedIn = !!sessionStorage.getItem("id");
@@ -113,6 +118,9 @@ const Header = () => {
                             </div>
                         )}
                     </div>
+                    <div className="hamburger-menu" onClick={toggleMobileMenu}>
+                        &#9776; {/* This is the hamburger icon */}
+                    </div>
                 </div>
                 {isOpen && (
                     <div className="gnb_2dul_container">
@@ -132,6 +140,24 @@ const Header = () => {
                     </div>
                 )}
             </div>
+            {mobileMenuOpen && (
+                <div className="mobile-menu">
+                    <ul className="mobile-menu-list">
+                        {menus.map((menu, index) => (
+                            <li key={index} className="mobile-menu-item">
+                                <span className="mobile-menu-main">{menu.main}</span>
+                                <ul className="mobile-sub-menu">
+                                    {menu.subs.map((sub, subIdx) => (
+                                        <li key={subIdx} className="mobile-sub-menu-item">
+                                            <Link to={sub.link}>{sub.title}</Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
         </div>
     );
 };

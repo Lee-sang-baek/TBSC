@@ -4,11 +4,9 @@ import FacilityGuide from "../facilityGuide/FacilityGuide";
 import axios from "axios";
 
 const Rental = () => {
-    // 시작일과 종료일을 오늘 날짜와 시간으로 설정합니다.
-    const [startDate, setStartDate] = useState(new Date().toISOString().slice(0, 16)); // YYYY-MM-DDTHH:mm
-    const [endDate, setEndDate] = useState(new Date().toISOString().slice(0, 16)); // YYYY-MM-DDTHH:mm
+    const [startDate, setStartDate] = useState(new Date().toISOString().slice(0, 16));
+    const [endDate, setEndDate] = useState(new Date().toISOString().slice(0, 16));
 
-    // 나머지 상태들은 그대로 둡니다.
     const [gender, setGender] = useState('');
     const [compName, setCompName] = useState('');
     const [person, setPerson] = useState('');
@@ -38,7 +36,6 @@ const Rental = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // 필수 입력 필드 검사
         if (!gender) {
             alert('성별을 선택해주세요.');
             return;
@@ -79,18 +76,20 @@ const Rental = () => {
             return;
         }
 
-        // 모든 필수 입력 필드가 채워져 있을 경우에만 제출
         const formData = {
             gender, compName, person, place, startDate, endDate, purpose, prepare, id
         };
 
         try {
             const response = await axios.post('/rental/save', formData);
-            console.log('서버 응답:', response.data); // 확인용 콘솔
+            alert("대관예약이 제출되었습니다.");
+            console.log('서버 응답:', response.data);
+            window.location.href = "/";
         } catch (error) {
             console.error('서버 요청 실패:', error);
         }
     };
+
     if (!id) {
         return (
             <div className="rental-compo">
@@ -100,7 +99,6 @@ const Rental = () => {
             </div>
         );
     }
-
 
     return (
         <div className="rental-compo">

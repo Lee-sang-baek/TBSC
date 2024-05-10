@@ -15,7 +15,7 @@ public class Consultant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer num;
-
+    private String id;
     private String compName;
     private String gender;
     private String ownerShip;

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import "./ConsultantForm.css"
+
 const ConsultantForm = () => {
+    const id = sessionStorage.getItem("id");
     const [formData, setFormData] = useState({
         compName: '',
         gender: '남',
@@ -12,10 +14,11 @@ const ConsultantForm = () => {
         category: '',
         sales: '',
         appDate: '',
-        management: '구분1',
+        management: '자영업 클리닉',
         difficulties: '',
         support: '',
         fileUrl: '',
+        id : id,
     });
     const [file, setFile] = useState(null);
 
@@ -40,7 +43,7 @@ const ConsultantForm = () => {
                     'Content-Type': 'multipart/form-data',
                 },
             });
-            return response.data; // 이것이 파일 이름이 될 것입니다.
+            return response.data;
         } catch (error) {
             console.error('파일 업로드 실패:', error);
             return '';
@@ -49,18 +52,15 @@ const ConsultantForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        // 파일 업로드
         const uploadedFileName = await uploadFile();
         if (!uploadedFileName) {
             alert('파일 업로드 실패!');
             return;
         }
 
-        // 파일 업로드 결과를 formData에 반영
         const requestData = {
             ...formData,
-            file: uploadedFileName, // 여기에 업로드된 파일 이름을 사용
+            file: uploadedFileName,
         };
 
         try {
@@ -70,17 +70,27 @@ const ConsultantForm = () => {
                 },
             });
             alert('신청이 성공적으로 제출되었습니다!');
+            window.location.href = "/";
             console.log(response.data);
         } catch (error) {
             console.error('신청 중 에러 발생:', error);
             alert('신청 중 오류가 발생했습니다.');
         }
     };
+    if (!id) {
+        return (
+            <div className="rental-compo">
+                <div className="rental-compo-in">
+                    <h1>로그인 후 이용해주세요</h1>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="ConsultantForm-compo">
             <form onSubmit={handleSubmit}>
-                <h2>고객 정보</h2>
+                <h2>기업 컨설팅 신청</h2>
 
                 <label>성별:
                     <input

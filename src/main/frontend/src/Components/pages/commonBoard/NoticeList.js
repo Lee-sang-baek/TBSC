@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Header from "../../fragments/header/Header";
 import "./NoticeList.css";
 import { Link } from "react-router-dom";
 import Pagination from "./Pagination";
@@ -52,29 +51,24 @@ function NoticeList() {
                         </select>
                         <input
                             type="text"
-                            placeholder="검색..."
+                            placeholder="검색어를 입력하세요"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
                             className="searchInput"
                         />
-                        <span>총 게시물: {filteredNotices.length}개</span>
+                        <Button className="searchButton" text="검색" onClick={() => {}} />
                         {MemberState === 'ADMIN' && (
                             <Button className="writeButton" text="글쓰기" link="notices/new" />
                         )}
                     </div>
                     <table>
-                        <thead>
-                        <tr>
-                            <th>제목</th>
-                            <th>상태</th>
-                            <th>작성일</th>
-                        </tr>
-                        </thead>
+                        <span className="totalCount">총 게시물:{filteredNotices.length}개</span>
                         <tbody>
                         {currentNotices.map((notice) => (
-                            <tr key={notice.num}>
-                                <td><Link to={`/notices/${notice.num}`}>{notice.title}</Link></td>
+                            <tr key={notice.num} className="noticeRow">
+                                <td><span className="noticeTag">공지</span></td>
                                 <td>{notice.state}</td>
+                                <td><Link to={`/notices/${notice.num}`}>{notice.title}</Link></td>
                                 <td>{formatDate(notice.date)}</td>
                             </tr>
                         ))}

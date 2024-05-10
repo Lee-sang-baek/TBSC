@@ -1,0 +1,251 @@
+{
+.Header-compo * {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    word-break: keep-all;
+    font-style: inherit;
+    box-sizing: border-box;
+    font-weight: 400;
+    letter-spacing: -0.05em;
+    text-size-adjust: none;
+    line-height: 1.6;
+}
+}
+
+.Header-compo #gnb_wrap {
+        width: 100%;
+        background-color: #f8f9fa;
+        padding: 10px 0;
+        position: relative;
+    }
+
+    .Header-compo #gnb_container {
+        position: relative;
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+    }
+
+    .Header-compo .logo-container {
+        margin-right: 40px;
+    }
+
+    .Header-compo .logo-img {
+        width: 120px;
+        height: auto;
+        max-width: 100%;
+        object-fit: contain;
+    }
+
+
+    .Header-compo .login-container {
+        margin-left: auto;
+        position: relative;
+    }
+
+    .Header-compo .login-img {
+        width: 100px;
+        height: 50px;
+        object-fit: contain;
+    }
+
+    .Header-compo #gnb_1dul {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        gap: 40px;
+    }
+
+    .Header-compo .gnb_1dli {
+        position: relative;
+    }
+
+    .Header-compo .gnb_1da {
+        display: block;
+        padding: 10px 15px;
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        transition: color 0.2s ease;
+    }
+
+    .Header-compo .gnb_1da:hover {
+        color: #007bff;
+    }
+
+
+    .Header-compo .gnb_2dul_container {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        padding: 20px 0;
+    }
+
+
+    .Header-compo #gnb_2dul {
+        display: flex;
+        justify-content: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        list-style: none;
+        gap: 40px;
+    }
+
+    .Header-compo .gnb_2dcol {
+        position: relative;
+        padding-left: 15px;
+    }
+
+    .Header-compo .gnb_2dcol::before {
+        content: "";
+        position: absolute;
+        left: -15px;
+        top: 0;
+        bottom: 0;
+        border-left: 1px solid #ddd;
+        width: 0; /* 선의 너비 */
+    }
+
+    .Header-compo .gnb_2dcol:first-of-type {
+        border-left: none;
+    }
+
+    .Header-compo .gnb_2dtitle {
+        font-weight: bold;
+        color: #007bff;
+        margin-bottom: 10px;
+    }
+
+    .Header-compo .gnb_2dul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .Header-compo .gnb_2dli {
+        margin: 0;
+        padding: 0;
+    }
+
+    .Header-compo .gnb_2da {
+        display: block;
+        padding: 8px 15px;
+        text-decoration: none;
+        color: #666;
+        transition: color 0.2s ease;
+    }
+
+    .Header-compo .gnb_2da:hover {
+        color: #007bff;
+        background-color: #f0f0f0;
+    }
+
+    .login-dropdown {
+        position: absolute;
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 2000;
+        right: 0;
+        top: 100%;
+        white-space: nowrap;
+    }
+
+    .login-dropdown a {
+        display: block;
+        padding: 10px;
+        color: #333;
+        text-decoration: none;
+    }
+
+    .login-dropdown a:hover {
+        background-color: #f0f0f0;
+    }
+
+    /* 햄버거 메뉴 스타일 */
+
+    .Header-compo .hamburger-menu {
+        display: none;
+        cursor: pointer;
+        font-size: 30px;
+        margin-left: auto;
+
+    }
+
+    /* 모바일 메뉴 스타일 */
+
+    .Header-compo .mobile-menu {
+        display: none;
+        top: 60px;
+        left: 0;
+        width: 40%;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        z-index: 2000;
+    }
+
+    .Header-compo .mobile-menu-list {
+        list-style: none;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .Header-compo .mobile-menu-item {
+        margin-bottom: 15px;
+    }
+
+    .Header-compo .mobile-menu-main {
+        font-weight: bold;
+        color: #007bff;
+        display: block;
+        padding: 10px 0;
+    }
+
+    .Header-compo .mobile-sub-menu {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        padding-left: 15px;
+    }
+
+    .Header-compo .mobile-sub-menu-item {
+        margin: 0;
+        padding: 0;
+    }
+
+    .Header-compo .mobile-sub-menu-item a {
+        display: block;
+        padding: 8px 0;
+        text-decoration: none;
+        color: #666;
+
+    }
+
+    .Header-compo .mobile-sub-menu-item a:hover {
+        color: #007bff;
+    }
+
+    /* 반응형 스타일 */
+    @media (max-width: 768px) {
+        .Header-compo #gnb_1dul,
+        .Header-compo .login-container,
+        .Header-compo .gnb_2dul_container {
+            display: none;
+        }
+
+        .Header-compo .hamburger-menu {
+            display: block;
+        }
+
+        .Header-compo .mobile-menu {
+            display: block;
+        }
+    }
