@@ -7,7 +7,7 @@ const TNoticeList = () => {
     const [notices, setNotices] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState('');
-    const noticesPerPage = 6; // Set notices per page to 6
+    const noticesPerPage = 6;
     const navigate = useNavigate();
     const MemberState = sessionStorage.getItem("state");
 
@@ -37,12 +37,10 @@ const TNoticeList = () => {
         setCurrentPage(1);
     };
 
-
     const filteredNotices = notices.filter(notice =>
-        notice.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        notice.id.toLowerCase().includes(searchQuery.toLowerCase())
+        (notice.title && notice.title.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (notice.id && notice.id.toLowerCase().includes(searchQuery.toLowerCase()))
     );
-
 
     const indexOfLastNotice = currentPage * noticesPerPage;
     const indexOfFirstNotice = indexOfLastNotice - noticesPerPage;
@@ -67,7 +65,6 @@ const TNoticeList = () => {
                     )}
                 </div>
                 <div className="info-bar">
-
                     <div className="search-bar">
                         <input
                             type="text"
@@ -81,9 +78,7 @@ const TNoticeList = () => {
                 <div className="total-notices">
                     <p>총 게시물: {filteredNotices.length}개</p>
                 </div>
-
                 <div className="notice-grid">
-
                     {currentNotices.map(notice => (
                         <div key={notice.num} className="notice-card">
                             {notice.image && (
