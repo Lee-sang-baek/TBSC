@@ -8,6 +8,9 @@ import lombok.Setter;
 @Setter
 @RequiredArgsConstructor
 public class MainImageDto {
+
+    private long num;
+
     private String image;
 
     private String title;

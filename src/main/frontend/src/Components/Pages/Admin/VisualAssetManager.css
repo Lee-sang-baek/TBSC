@@ -18,11 +18,11 @@
 }
 
 .VisualAssetManager-compo label {
+  text-align: start;
   margin-bottom: 10px;
 }
 
-.VisualAssetManager-compo input[type="file"],
-.VisualAssetManager-compo input[type="text"],
+.VisualAssetManager-compo input,
 .VisualAssetManager-compo select,
 .VisualAssetManager-compo textarea {
   width: 100%;
@@ -48,13 +48,31 @@
 }
 
 .VisualAssetManager-compo {
-  position: absolute;
-    top: 280px;
-    right: 100px;
-  z-index: 999; /* 다른 요소 위에 표시되도록 z-index를 설정합니다. */
+  width: 30%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 효과를 추가합니다. */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+.VisualAssetManager-compo .head {
+  display: grid;
+  align-items: center;
+  justify-items: end;
+}
+
+.VisualAssetManager-compo .head h2 {
+  grid-column: 1;
+  text-align: center;
+}
+
+.VisualAssetManager-compo .head .Button-compo {
+  grid-column: 2;
+}
+

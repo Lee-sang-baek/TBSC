@@ -25,7 +25,9 @@ public class Banner {
     private String title;
 
     public Banner bind(BannerDto dto) {
-        setImage(dto.getImage());
+        if (dto.getImage() != null) {
+            setImage(dto.getImage());
+        }
         if (dto.getState().equals("MAIN")) {
             setState(BannerType.MAIN);
         } else {

@@ -35,7 +35,9 @@
 }
 
 .SiteManagement-compo td:nth-child(5),
-.SiteManagement-compo td:nth-child(6) {
+.SiteManagement-compo td:nth-child(6),
+.SiteManagement-compo td:nth-child(7),
+.SiteManagement-compo td:nth-child(8) {
   width: 50px;
   text-align: center;
 }
@@ -76,7 +78,7 @@
 .SiteManagement-compo .management-button {
     display: flex;
     flex-direction: row;
-    items-align: center;
+    align-items: center;
 }
 
 .SiteManagement-compo .management-button .de-active {
@@ -170,4 +172,52 @@
   background-color: #ddd;
   color: #666;
   cursor: not-allowed;
+}
+
+.SiteManagement-compo .size-label {
+  padding-top: 10px;
+  font-size: 13px;
+}
+
+.SiteManagement-compo input[type="number"] {
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 35px;
+}
+
+.SiteManagement-compo {
+
+    /* 모달 스타일 */
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .modal-content p {
+    margin-bottom: 20px;
+  }
+
+  .modal-content div {
+    display: flex;
+    flex-direction: row;
+
+  }
+
 }

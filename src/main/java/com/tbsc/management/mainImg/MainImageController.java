@@ -28,4 +28,16 @@ public class MainImageController {
         mainImageService.insertImage(mainImageDto);
         return ResponseEntity.ok("메인 이미지 추가 완료");
     }
+
+    @GetMapping("/admin/mainImage/remove")
+    public ResponseEntity<String> removeImage(@RequestParam("num") long num) {
+        mainImageService.deleteImage(num);
+        return ResponseEntity.ok("메인 이미지 제거 완료");
+    }
+
+    @PostMapping("/admin/mainImage/update")
+    public ResponseEntity<String> updateMainImage(@RequestBody MainImageDto mainImageDto) {
+        mainImageService.updateMainImage(mainImageDto);
+        return ResponseEntity.ok("메인 이미지 수정 완료");
+    }
 }

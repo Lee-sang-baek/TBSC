@@ -28,4 +28,16 @@ public class PopupController {
         popupService.insertPopup(popupDto);
         return ResponseEntity.ok("팝업 추가 완료");
     }
+
+    @GetMapping("/admin/popup/remove")
+    public ResponseEntity<String> removePopup(@RequestParam("num") long num) {
+        popupService.deletePopup(num);
+        return ResponseEntity.ok("팝업 제거 완료");
+    }
+
+    @PostMapping("/admin/popup/update")
+    public ResponseEntity<String> updatePopup(@RequestBody PopupDto popupDto) {
+        popupService.updatePopup(popupDto);
+        return ResponseEntity.ok("팝업 수정 완료");
+    }
 }

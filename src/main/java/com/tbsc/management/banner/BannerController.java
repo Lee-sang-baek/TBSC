@@ -27,4 +27,16 @@ public class BannerController {
         return ResponseEntity.ok("베너 추가 완료");
     }
 
+    @PostMapping("/admin/banner/update")
+    public ResponseEntity<String> updateBanner(@RequestBody BannerDto bannerDto) {
+        bannerService.updateBanner(bannerDto);
+        return ResponseEntity.ok("베너 수정 완료");
+    }
+
+    @GetMapping("/admin/banner/remove")
+    public ResponseEntity<String> removeBanner(@RequestParam("num") long num) {
+        bannerService.deleteBanner(num);
+        return ResponseEntity.ok("베너 제거 완료");
+    }
+
 }

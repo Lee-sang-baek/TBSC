@@ -29,9 +29,11 @@ public class Popup {
     private String title;
 
     public Popup bind(PopupDto dto) {
-        setImage(dto.getImage());
-        setStartDate(dto.getStartDate());
-        setEndDate(dto.getEndDate());
+        if (dto.getImage() != null) {
+            setImage(dto.getImage());
+        }
+        setStartDate(LocalDateTime.of(dto.getStartDate(), dto.getStartTime()));
+        setEndDate(LocalDateTime.of(dto.getEndDate(), dto.getEndTime()));
         setTitle(dto.getTitle());
         return this;
     }

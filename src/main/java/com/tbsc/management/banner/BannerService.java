@@ -5,6 +5,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class BannerService {
@@ -19,5 +21,18 @@ public class BannerService {
         Banner banner = new Banner();
         banner.bind(bannerDto);
         bannerRepository.save(banner);
+    }
+
+    public void deleteBanner(long num) {
+        bannerRepository.deleteById(num);
+    }
+
+    public void updateBanner(BannerDto bannerDto) {
+        Optional<Banner> opBanner = bannerRepository.findById(bannerDto.getNum());
+        if (opBanner.isPresent()) {
+            Banner banner = opBanner.get();
+            banner.bind(bannerDto);
+            bannerRepository.save(banner);
+        }
     }
 }

@@ -23,7 +23,9 @@ public class MainImage {
     private String title;
 
     public MainImage bind(MainImageDto dto) {
-        setImage(dto.getImage());
+        if (dto.getImage() != null) {
+            setImage(dto.getImage());
+        }
         setTitle(dto.getTitle());
         return this;
     }

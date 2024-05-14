@@ -9,6 +9,8 @@ import lombok.Setter;
 @RequiredArgsConstructor
 public class BannerDto {
 
+    private long num;
+
     private String image;
 
     private String state;
