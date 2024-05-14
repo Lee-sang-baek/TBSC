@@ -56,7 +56,7 @@ const ModiInfo = (props) => {
         axios.get(`member/getMember?id=${memberId}`)
             .then((res) => {
                 console.log(res.data);
-                setMemberInfo(res.data)
+                setMemberInfo(res.data);
                 console.log(memberInfo);
 
                 setName(res.data.name);
@@ -66,9 +66,6 @@ const ModiInfo = (props) => {
             });
     }
 
-    const [areaCode, setAreaCode] = useState("010");
-    const [phoneNum1, setPhoneNum1] = useState("");
-    const [phoneNum2, setPhoneNum2] = useState("");
     const [isValidPhoneNum, setIsValidPhoneNum] = useState(true);
 
     const handleSignUp = () => {
@@ -97,6 +94,7 @@ const ModiInfo = (props) => {
             // 회원가입 데이터를 서버로 전송
             axios.post("/member/membermodify", memberInfo)
                 .then(response => {
+                    console.log(memberInfo);
                     alert(response.data);
                     console.log(response.data); // 회원가입 성공 시 처리
                     window.location.reload();
@@ -169,20 +167,20 @@ const ModiInfo = (props) => {
             setPhone(currentValue);
         }
 
-        setMemberInfo({...memberInfo, phoneNum: currentValue});
+        setMemberInfo({...memberInfo, phoneNum: currentValue.replace(/-/g, '').replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3')});
         setIsValidPhoneNum(true);
     };
 
     useEffect(() => {
-        if (phone.length === 3) {
+        if (phone && phone.length === 3) {
             setPhone(phone.replace(/(\d{3})/, '$1-'));
             setIsValidPhoneNum(false);
         }
-        if (phone.length === 8) {
+        if (phone && phone.length === 8) {
             setPhone(phone.replace(/-/g, '').replace(/(\d{3})(\d{4})/, '$1-$2-'));
             setIsValidPhoneNum(false);
         }
-        if (phone.length === 11) {
+        if (phone && phone.length === 11) {
             setPhone(phone.replace(/-/g, '').replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3'));
         }
         setIsValidPhoneNum(true);
@@ -230,11 +228,11 @@ const ModiInfo = (props) => {
                 <div className="modiInfo">
                     <div className="modiInfoHeader">
                         <h3 className="idText">아이디</h3>
-                        <Input type="text" className="idTextBox" value={memberInfo.id} readOnly/>
+                        <Input type="text" className="idTextBox" value={memberInfo.id || ""} readOnly/>
                         <h3 className="emailText">이메일</h3>
-                        <Input type="text" className="emailTextBox" value={memberInfo.email} readOnly/>
+                        <Input type="text" className="emailTextBox" value={memberInfo.email || ""} readOnly/>
                         <h3 className="passwordText">비밀번호</h3>
-                        <Input type="password" className="passwordTextBox" value={password}
+                        <Input type="password" className="passwordTextBox" value={password || ""}
                                onChange={handleChangePassword}/>
                         <h3 className="passcheckText">
                             비밀번호 확인
@@ -242,17 +240,17 @@ const ModiInfo = (props) => {
                                 비밀번호 불일치
                             </p>
                         </h3>
-                        <Input type="password" className="checkTextBox" value={passwordCheck}
+                        <Input type="password" className="checkTextBox" value={passwordCheck || ""}
                                onChange={handleChangePasswordCh}/>
                         <h3 className="nameText">이름</h3>
-                        <Input type="text" className="nameTextBox" value={name} onChange={handleChangeName}/>
+                        <Input type="text" className="nameTextBox" value={name || ""} onChange={handleChangeName}/>
                         <h3 className="birthText">생년월일</h3>
-                        <Input type="date" className="birthTextBox" value={birth} onChange={handleChangeBirth}/>
+                        <Input type="date" className="birthTextBox" value={birth || ""} onChange={handleChangeBirth}/>
                         <h3 className="phoneText">휴대폰 번호</h3>
-                        <Input type="text" maxLength={13} className="phoneTextBox" value={phone}
+                        <Input type="text" maxLength={13} className="phoneTextBox" value={phone || ""}
                                onChange={handleChangePhone}/>
                         <h3 className="addressText">주소</h3>
-                        <Input type="text" className="addressTextBox" value={address} onChange={handleChangeAddress}/>
+                        <Input type="text" className="addressTextBox" value={address || ""} onChange={handleChangeAddress}/>
                     </div>
                     <div className="button">
                         <Button onClick={handleSignUp} text="수정"/>

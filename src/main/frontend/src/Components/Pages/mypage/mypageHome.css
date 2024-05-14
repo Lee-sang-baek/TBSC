@@ -1,66 +1,47 @@
-.outter {
-    display: flex;
-    flex-direction: row;
-}
-.sidebox{
-    display:flex;
-    flex-direction: column;
-}
-.Myhome-compo{
-    width:100%;
-    padding:0 100px;
+.detailsContainer {
+    margin: 5% 20%;
+
+    .reservDetailTitle {
+        margin: 5% 0;
+    }
+
+    .reservDetails {
+        display: flex;
+        justify-content: space-between;
+    }
 }
 
-.MyHome-compo .container {
+.profileModify {
+    position: relative;
     display: flex;
     justify-content: center;
-}
-
-.MyHome-compo .profile {
-    font-size: large;
-    padding: 10px;
-    display: table;
-}
-
-.MyHome-compo .profileImg {
-    width: 200px;
-    display: table-cell;
-}
-
-.MyHome-compo .profileInfo {
-    padding: 10px 20px;
-    vertical-align: middle;
-    display: table-cell;
-}
-
-.MyHome-compo .profileInfo > div {
-    padding: 10px 20px;
-    vertical-align: middle;
-    display: table-cell;
-}
-
-.MyHome-compo .profileInfo > div > div {
-    padding: 10px;
-}
-
-.MyHome-compo .profileModify {
-    text-align: center;
-    position: relative;
-}
-
-.MyHome-compo .infoText {
-    vertical-align: middle;
-    display: table-cell;
-    width: 300px;
-}
-
-.MyHome-compo .reservDetails {
-    display: flex;
-    justify-content: space-between;
 }
 
 .profileModify .userDelete {
     position: absolute;
     right: 5%;
     top: 0;
+}
+
+.container {
+    .profileImg{
+        height: 10%;
+        width: 10%;
+    }
+
+    .profile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .profile .profileInfo {
+        display: flex;
+        align-items: center;
+
+        div {
+            margin: 0 10px;
+            font-weight: bold;
+        }
+    }
 }

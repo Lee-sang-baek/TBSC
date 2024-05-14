@@ -1,75 +1,102 @@
-.outter {
-    display: flex;
-    flex-direction: row;
-}
-.CorpInfo-compo{
-    padding:0 100px;
-    width:100%;
-}
+.CorpInfo-compo {
+    width: 100%;
 
-.CorpInfo-compo .pageTitle {
-    text-align: center;
-}
+    .pageTitle {
+        text-align: center;
+    }
 
-.CorpInfo-compo .pageInfo {
-    display: flex;
-    justify-content: center;
-}
+    .pageInfo {
+        display: flex;
+        justify-content: center;
+    }
 
-.CorpInfo-compo .corpContainer {
-    background-color: #a3deef;
-    width: 50%;
-    border-radius: 15px;
-}
+    .corpContainer {
+        background-color: #a3deef;
+        width: 80%;
+        height: 100%;
+        border-radius: 15px;
 
-.CorpInfo-compo .corpContainer .corpHeader {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
+        .corpHeader {
+            display: flex;
+            justify-content: space-around;
 
-.CorpInfo-compo .corpHeader > div {
-    display: flex;
-    justify-content: center;
-}
+            div {
+                display: flex;
+                justify-content: center;
+                font-weight: bold;
+                margin: 5%;
+            }
+        }
+    }
 
-.CorpInfo-compo .corpContent {
-    display: flex;
-    justify-content: space-around;
-}
+    .corpContent {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 5%;
 
-.CorpInfo-compo .corpImgContainer {
-    display: grid;
-    align-self: center;
-}
+        .corpInfo {
+            width: 60%;
+            margin: 0 10%;
+        }
+    }
 
-.CorpInfo-compo .corpImg {
-    height: 100px;
-    width: 100px;
-}
+    .corpImgContainer {
+        display: grid;
+        align-self: center;
+    }
 
-.CorpInfo-compo .corpInfoTitle {
-    display: flex;
-    justify-content: space-between;
-    padding: 30px;
-}
+    .corpImg {
+        min-height: 100px;
+        min-width: 100px;
 
-.CorpInfo-compo .corpInfoContent {
-    height: 300px;
-    width: 300px;
-}
+        max-height: 300px;
+        max-width: 300px;
+    }
 
-.CorpInfo-compo .contentEdiForm {
-    background-color: #ffc3c3;
-}
+    .corpInfoTitle {
+        display: flex;
+        padding: 30px;
+        justify-content: space-between;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 5%;
 
-.CorpInfo-compo .contentText {
-    height: auto;
-    width: auto;
-    background-color: #c9d5d7;
-}
+        .corpWriter {
+            display: flex;
+            .writerName {
+                margin: 0 5%;
+                white-space: nowrap;
+            }
+        }
 
-.CorpInfo-compo .ifNothing {
-    display: flex;
-    justify-content: center;
+        .corpState {
+            display: flex;
+            .stateName {
+                margin: 0 5%;
+                white-space: nowrap;
+            }
+        }
+    }
+
+    .corpInfoContent {
+        height: 100%;
+        width: 100%;
+    }
+
+    .contentEdiForm {
+        background-color: #ffc3c3;
+    }
+
+    .contentText {
+        height: auto;
+        width: auto;
+        background-color: #c9d5d7;
+    }
+
+    .ifNothing {
+        display: flex;
+        justify-content: center;
+    }
 }

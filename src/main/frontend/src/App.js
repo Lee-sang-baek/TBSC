@@ -25,6 +25,7 @@ import Rental from "./Components/pages/rental/Rental";
 import FacilityGuide from "./Components/pages/facilityGuide/FacilityGuide";
 import ConsultantForm from "./Components/pages/consultant/ConsultantForm";
 import LogAccess from "./Components/util/LogAccess";
+import DeleteInfo from "./Components/pages/mypage/functionPage/deleteInfo";
 
 function App() {
 
@@ -76,6 +77,7 @@ function App() {
                 <Link to={"/notices"}> [공지사항] </Link>
             </div>
             <Routes>
+                <Route path='/' exact element=""/>
                 <Route path="/login" element={<LoginForm />} />
                 <Route path="/signup" element={<SignUpSelect />} />
                 <Route path="/signup/normal" element={<SignUp isComp={false} />} />
@@ -99,6 +101,7 @@ function App() {
                 <Route path="/myPage/modify-corp" element={<ModiCorp/>}/>
                 <Route path="/rental" element={<Rental />} />
                 <Route path="/consultants" element={<ConsultantForm />} />
+                <Route path="/myPage/delete-info" element={<DeleteInfo logout={logout} />} />
             </Routes>
             <Footer />
         </BrowserRouter>
