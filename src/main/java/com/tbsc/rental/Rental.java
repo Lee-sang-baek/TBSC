@@ -1,9 +1,11 @@
 package com.tbsc.rental;
 
+import com.tbsc.member.Member;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Date;
 
@@ -28,10 +30,15 @@ public class Rental {
     private Date endDate;
     private String purpose;
     private String prepare;
-    private String id; // Assuming renterId is linked to the MEMBER table
 
+    @NotNull
+    @Column(name = "member_id")
+    private String memberId;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "member_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @JsonIgnore
+    private Member member;
 
     public Rental() {}
-
-
 }

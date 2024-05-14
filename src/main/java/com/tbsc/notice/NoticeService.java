@@ -31,4 +31,8 @@ public class NoticeService {
     public void deleteNotice(Integer id) {
         noticeRepository.deleteById(id);
     }
+
+    public NoticeRepository getNoticeRepository() { // 추가된 메서드
+        return noticeRepository;
+    }
 }

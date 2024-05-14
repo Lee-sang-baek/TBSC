@@ -1,14 +1,13 @@
 .rental-compo {
-    background: #f4f4f4;
+    background: #fff;
     padding: 20px;
-    width: 50%;
+    width: fit-content;
     margin: 20px auto;
     font-family: 'Arial', sans-serif;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 .rental-compo-in {
-    background-color: #f4f4f4;
+    background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     border: 1px solid #ccc;
@@ -17,7 +16,7 @@
 .rental-compo-in h1 {
     text-align: center;
     color: #333;
-    background-color: #e0e0e0;
+    background-color: #fff;
     padding: 10px;
     margin: -20px -20px 20px -20px;
     border-bottom: 2px solid #ccc;
@@ -52,7 +51,6 @@
 }
 
 .rental-compo-in .facility-guide-wrapper {
-    border: 1px solid #ccc;
     padding: 10px;
     border-radius: 4px;
     background-color: #fff;

@@ -52,7 +52,7 @@ function CreateNotice() {
 
             if (response.ok) {
                 console.log("게시글이 성공적으로 작성되었습니다.");
-                window.location.href = "/notices"; // Redirect after successful submission
+                window.location.href = "/notices";
             } else {
                 console.error("게시글 작성에 실패했습니다.");
             }

@@ -1,0 +1,67 @@
+
+.ReservationForm-copo {
+    padding: 20px;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.ReservationForm-copo {
+    form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 600px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    form input[type="text"],
+    form textarea {
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 100%;
+    }
+
+    form textarea {
+        height: 200px;
+    }
+
+    form .file-input-label {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        display: inline-block;
+        margin-bottom: 20px;
+    }
+
+    form .file-input-label input[type="file"] {
+        display: none;
+    }
+
+    form button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    form button:hover {
+        background-color: #0056b3;
+    }
+
+    .image-preview img {
+        max-width: 100%;
+        border-radius: 4px;
+        margin-bottom: 20px;
+    }
+}

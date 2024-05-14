@@ -25,6 +25,23 @@ import Rental from "./Components/pages/rental/Rental";
 import ConsultantForm from "./Components/pages/consultant/ConsultantForm";
 import LogAccess from "./Components/util/LogAccess";
 import FacilityGuideMain from "./Components/pages/facilityGuide/FacilityGuideMain";
+import ChatbotToggle from "./Components/pages/chatBot/ChatbotToggle";
+import TNoticeList from "./Components/pages/tnotice/TNoticeList";
+import TNoticeForm from "./Components/pages/tnotice/TNoticeForm";
+import TNoticeDetail from "./Components/pages/tnotice/TNoticeDetail";
+import TNoticeEdit from "./Components/pages/tnotice/TNoticeEdit";
+import ReservationList from "./Components/pages/reservation/ReservationList";
+import ReservationForm from "./Components/pages/reservation/ReservationForm";
+import ReservationEdit from "./Components/pages/reservation/ReservationEdit";
+import ReservationDetail from "./Components/pages/reservation/ReservationDetail";
+import CenterNewsDetail from "./Components/pages/centerNews/CenterNewsDetail";
+import CenterNewsEdit from "./Components/pages/centerNews/CenterNewsEdit";
+import CenterNewsForm from "./Components/pages/centerNews/CenterNewsForm";
+import CenterNewsList from "./Components/pages/centerNews/CenterNewsList";
+import PressReleaseList from "./Components/pages/pressrelease/PressReleaseList";
+import PressReleaseForm from "./Components/pages/pressrelease/PressReleaseForm";
+import PressReleaseEdit from "./Components/pages/pressrelease/PressReleaseEdit";
+import PressReleaseDetail from "./Components/pages/pressrelease/PressReleaseDetail";
 
 function App() {
 
@@ -100,7 +117,24 @@ function App() {
                 <Route path="/myPage/modify-corp" element={<ModiCorp/>}/>
                 <Route path="/rental" element={<Rental />} />
                 <Route path="/consultants" element={<ConsultantForm />} />
+                <Route path="/tnotice" element={<TNoticeList />} />
+                <Route path="/tnotice/create" element={<TNoticeForm />} />
+                <Route path="/tnotice/:num" element={<TNoticeDetail />} />
+                <Route path="/tnotice/edit/:num" element={<TNoticeEdit />} />
+                <Route path="/reservation" element={<ReservationList />} />
+                <Route path="/reservation/create" element={<ReservationForm />} />
+                <Route path="/reservation/update/:num" element={<ReservationEdit />} />
+                <Route path="/reservation/:num" element={<ReservationDetail />} />
+                <Route path="/centernews" element={<CenterNewsList />} />
+                <Route path="/centernews/create" element={<CenterNewsForm />} />
+                <Route path="/centernews/update/:num" element={<CenterNewsEdit />} />
+                <Route path="/centernews/:num" element={<CenterNewsDetail />} />
+                <Route path="/pressrelease" element={<PressReleaseList />} />
+                <Route path="/pressrelease/create" element={<PressReleaseForm />} />
+                <Route path="/pressrelease/update/:num" element={<PressReleaseEdit />} />
+                <Route path="/pressrelease/:num" element={<PressReleaseDetail />} />
             </Routes>
+            <ChatbotToggle />
             <Footer />
         </BrowserRouter>
     );

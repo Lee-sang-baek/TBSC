@@ -62,7 +62,7 @@ function NoticeList() {
                         )}
                     </div>
                     <table>
-                        <span className="totalCount">총 게시물:{filteredNotices.length}개</span>
+                        <span className="totalCount">총게시물:{filteredNotices.length}개</span>
                         <tbody>
                         {currentNotices.map((notice) => (
                             <tr key={notice.num} className="noticeRow">
@@ -74,7 +74,13 @@ function NoticeList() {
                         ))}
                         </tbody>
                     </table>
-                    <Pagination noticesPerPage={noticesPerPage} totalNotices={filteredNotices.length} paginate={paginate}/>
+                    <Pagination
+                        noticesPerPage={noticesPerPage}
+                        totalNotices={filteredNotices.length}
+                        paginate={paginate}
+                        currentPage={currentPage}
+                        setCurrentPage={setCurrentPage}
+                    />
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-/* NoticeList.css */
+/* TNoticeList.css */
 
 .NoticeList-compo {
     width: 100%;
@@ -10,7 +10,7 @@
 
 .NoticeList-compo .noticeListContainer {
     width: 60%;
-    background-color:rgba(0, 0, 0, 0.1);
+    background-color: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);

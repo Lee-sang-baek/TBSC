@@ -32,13 +32,13 @@ const Header = () => {
             main: "입주기업 홍보관",
             subs: [
                 { title: "기업 소개", link: "" },
-                { title: "기업 홍보", link: "" }
+                { title: "기업 홍보", link: "/tnotice" }
             ]
         },
         {
             main: "센터 이용예약",
             subs: [
-                { title: "이용예약 안내", link: "" },
+                { title: "이용예약 안내", link: "/reservation" },
                 { title: "기업 컨설팅 신청", link: "/consultants" },
                 { title: "일자리 상담신청", link: "" },
                 { title: "회의실 대관신청", link: "/rental" }
@@ -48,8 +48,8 @@ const Header = () => {
             main: "알림마당",
             subs: [
                 { title: "공지사항", link: "/notices" },
-                { title: "센터소식", link: "" },
-                { title: "보도자료", link: "" }
+                { title: "센터소식", link: "/centernews" },
+                { title: "보도자료", link: "/pressrelease" }
             ]
         }
     ];

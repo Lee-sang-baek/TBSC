@@ -72,6 +72,7 @@ function NoticeDetail() {
                 {MemberState === 'ADMIN' && (
                     <>
                         <Button className="editButton" text="수정하기" link={`/notices/update/${num}`} />
+                        <br/>
                         <Button className="deleteButton" text="삭제하기" onClick={deleteNotice} />
                     </>
                 )}
