@@ -14,4 +14,10 @@ public class PopupService {
     public Page<Popup> getList(Pageable pageable) {
         return popupRepository.findAll(pageable);
     }
+
+    public void insertPopup(PopupDto popupDto) {
+        Popup popup = new Popup();
+        popup.bind(popupDto);
+        popupRepository.save(popup);
+    }
 }

@@ -14,4 +14,10 @@ public class MainImageService {
     public Page<MainImage> getList(Pageable pageable) {
         return mainImageRepository.findAll(pageable);
     }
+
+    public void insertImage(MainImageDto mainImageDto) {
+        MainImage mainImage = new MainImage();
+        mainImage.bind(mainImageDto);
+        mainImageRepository.save(mainImage);
+    }
 }

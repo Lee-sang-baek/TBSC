@@ -14,4 +14,10 @@ public class BannerService {
     public Page<Banner> getList(Pageable pageable) {
         return bannerRepository.findAll(pageable);
     }
+
+    public void insertBanner(BannerDto bannerDto) {
+        Banner banner = new Banner();
+        banner.bind(bannerDto);
+        bannerRepository.save(banner);
+    }
 }

@@ -25,6 +25,7 @@ import Rental from "./Components/pages/rental/Rental";
 import FacilityGuide from "./Components/pages/facilityGuide/FacilityGuide";
 import ConsultantForm from "./Components/pages/consultant/ConsultantForm";
 import LogAccess from "./Components/util/LogAccess";
+import VisualAssetManager from "./Components/pages/admin/VisualAssetManager";
 
 function App() {
 
@@ -99,6 +100,7 @@ function App() {
                 <Route path="/myPage/modify-corp" element={<ModiCorp/>}/>
                 <Route path="/rental" element={<Rental />} />
                 <Route path="/consultants" element={<ConsultantForm />} />
+                <Route path="/addAsset" element={<VisualAssetManager />} />
             </Routes>
             <Footer />
         </BrowserRouter>
