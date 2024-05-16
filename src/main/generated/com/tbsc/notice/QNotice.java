@@ -7,7 +7,6 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
-import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -27,8 +26,6 @@ public class QNotice extends EntityPathBase<Notice> {
     public final StringPath fileUrl = createString("fileUrl");
 
     public final StringPath id = createString("id");
-
-    public final ListPath<String, StringPath> images = this.<String, StringPath>createList("images", String.class, StringPath.class, PathInits.DIRECT2);
 
     public final NumberPath<Integer> num = createNumber("num", Integer.class);
 

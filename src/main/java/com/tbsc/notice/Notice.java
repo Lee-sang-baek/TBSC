@@ -19,8 +19,6 @@ public class Notice {
     private String state;
     private Integer view = 0;
     private String fileUrl;
-    @ElementCollection
-    private List<String> images;
     private Date date;
     private String id;
     @Lob
@@ -36,7 +34,6 @@ public class Notice {
         this.state = state;
         this.view = view;
         this.fileUrl = fileUrl;
-        this.images = images;
         this.date = date;
         this.id = id;
         this.content = content;
