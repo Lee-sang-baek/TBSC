@@ -1,12 +1,14 @@
 package com.tbsc.rental;
 
 import com.tbsc.member.MemberRepository;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import jakarta.validation.Valid;
+
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/rental")
@@ -14,6 +16,8 @@ public class RentalController {
 
     @Autowired
     private RentalService rentalService;
+
+
 
     @Autowired
     private MemberRepository memberRepository;

@@ -33,6 +33,8 @@ public class QConsultant extends EntityPathBase<Consultant> {
 
     public final StringPath gender = createString("gender");
 
+    public final StringPath id = createString("id");
+
     public final StringPath management = createString("management");
 
     public final NumberPath<Integer> num = createNumber("num", Integer.class);

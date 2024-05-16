@@ -1,5 +1,5 @@
 import React from 'react';
-import './CenterIntroduction.css'; // Import your custom CSS
+import './CenterIntroduction.css';
 
 function CenterIntroduction() {
     return (

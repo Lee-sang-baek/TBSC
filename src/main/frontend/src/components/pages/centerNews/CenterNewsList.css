@@ -1,0 +1,111 @@
+.CenterNewsList-copo {
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        background-color: #f0f0f0;
+        position: relative;
+    }
+
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 1200px;
+        margin-bottom: 20px;
+    }
+
+    .header h1 {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .header button {
+        padding: 10px 20px;
+        background-color: #000;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+
+    .search-bar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .search-bar input {
+        padding: 10px;
+        margin-right: 10px;
+        width: 300px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .search-bar button {
+        padding: 10px 20px;
+        background-color: #000;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+
+    .news-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        width: 100%;
+        max-width: 1200px;
+    }
+
+    .news-card {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        overflow: hidden;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .total-news {
+        text-align: left;
+    }
+
+    .news-card img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .news-card h3 {
+        margin: 10px 0;
+        font-size: 18px;
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .pagination button {
+        margin: 0 5px;
+        padding: 10px 15px;
+        border: none;
+        background-color: #f0f0f0;
+        cursor: pointer;
+    }
+
+    .pagination button.active {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .total-news {
+        position: absolute;
+        left: 21px;
+        top: 13%;
+    }
+}

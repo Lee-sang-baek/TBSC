@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [loginMenuOpen, setLoginMenuOpen] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     const menus = [
         {
@@ -31,13 +32,13 @@ const Header = () => {
             main: "입주기업 홍보관",
             subs: [
                 { title: "기업 소개", link: "" },
-                { title: "기업 홍보", link: "" }
+                { title: "기업 홍보", link: "/tnotice" }
             ]
         },
         {
             main: "센터 이용예약",
             subs: [
-                { title: "이용예약 안내", link: "" },
+                { title: "이용예약 안내", link: "/reservation" },
                 { title: "기업 컨설팅 신청", link: "/consultants" },
                 { title: "일자리 상담신청", link: "" },
                 { title: "회의실 대관신청", link: "/rental" }
@@ -47,17 +48,17 @@ const Header = () => {
             main: "알림마당",
             subs: [
                 { title: "공지사항", link: "/notices" },
-                { title: "센터소식", link: "" },
-                { title: "보도자료", link: "" }
+                { title: "센터소식", link: "/centernews" },
+                { title: "보도자료", link: "/pressrelease" }
             ]
         }
     ];
 
     const logout = () => {
         axios.get("/logout")
-        .then(response => {
-            console.log(response.data);
-        });
+            .then(response => {
+                console.log(response.data);
+            });
         alert("로그아웃 되었습니다.")
         sessionStorage.removeItem("id");
         sessionStorage.removeItem("state");
@@ -75,6 +76,10 @@ const Header = () => {
     const toggleLoginMenu = (event) => {
         event.stopPropagation();
         setLoginMenuOpen(prev => !prev);
+    };
+
+    const toggleMobileMenu = () => {
+        setMobileMenuOpen(prev => !prev);
     };
 
     const isLoggedIn = !!sessionStorage.getItem("id");
@@ -113,6 +118,9 @@ const Header = () => {
                             </div>
                         )}
                     </div>
+                    <div className="hamburger-menu" onClick={toggleMobileMenu}>
+                        &#9776; {/* This is the hamburger icon */}
+                    </div>
                 </div>
                 {isOpen && (
                     <div className="gnb_2dul_container">
@@ -132,6 +140,24 @@ const Header = () => {
                     </div>
                 )}
             </div>
+            {mobileMenuOpen && (
+                <div className="mobile-menu">
+                    <ul className="mobile-menu-list">
+                        {menus.map((menu, index) => (
+                            <li key={index} className="mobile-menu-item">
+                                <span className="mobile-menu-main">{menu.main}</span>
+                                <ul className="mobile-sub-menu">
+                                    {menu.subs.map((sub, subIdx) => (
+                                        <li key={subIdx} className="mobile-sub-menu-item">
+                                            <Link to={sub.link}>{sub.title}</Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
         </div>
     );
 };

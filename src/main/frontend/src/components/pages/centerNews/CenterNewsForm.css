@@ -1,0 +1,61 @@
+.CenterNewsForm-copo {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.CenterNewsForm-copo form {
+    display: flex;
+    flex-direction: column;
+}
+
+.CenterNewsForm-copo input[type="text"],
+.CenterNewsForm-copo textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.CenterNewsForm-copo textarea {
+    height: 150px;
+    resize: none;
+}
+
+.CenterNewsForm-copo .file-input-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.CenterNewsForm-copo .file-input-label input {
+    display: none;
+}
+
+.CenterNewsForm-copo button[type="submit"] {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.CenterNewsForm-copo button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.image-preview img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 10px;
+}

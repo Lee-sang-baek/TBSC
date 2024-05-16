@@ -1,67 +1,74 @@
-/* 리셋 스타일 */
-.Header-compo {
-    html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, p, time, figure, article, nav, header, footer, hgroup, video, audio, aside, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, button, caption, tbody, tfoot, thead, tr, th, td {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        word-break: keep-all;
-        font-style: inherit;
-        box-sizing: border-box;
-        font-weight: 400;
-        letter-spacing: -0.05em;
-        text-size-adjust: none;
-        line-height: 1.6;
-    }
-}
+.Header-compo * {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    word-break: keep-all;
+    font-style: inherit;
+    box-sizing: border-box;
+    font-weight: 400;
+    letter-spacing: -0.05em;
+    text-size-adjust: none;
+    line-height: 1.6;
 
-/* gnb_wrap 스타일 */
+}
+.Header-compo {
+    width: 100%;
+
+}
 .Header-compo #gnb_wrap {
     width: 100%;
     background-color: #f8f9fa;
-    padding: 10px 0;
     position: relative;
+    background-image: linear-gradient(to left, #fddb92 0%, #d1fdff 100%);
 }
 
-/* gnb_container 스타일 */
 .Header-compo #gnb_container {
-    position: relative;
-    max-width: 1200px;
-    margin: 0 auto;
+    /*position: relative;*/
+    /*max-width: 1200px;*/
+    /*margin: 0 auto;*/
+    /*display: grid;*/
+    /*grid-template-columns: auto 1fr auto;*/
+    /*align-items: center;*/
+    /*color: white;*/
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 
-/* 로고 스타일 */
 .Header-compo .logo-container {
-    margin-right: 40px;
+    position: absolute;
+    left: 5%;
+
+
 }
 
 .Header-compo .logo-img {
-    width: 120px; /* 원하는 크기로 변경 */
-    height: auto;
-    max-width: 100%;
-    object-fit: contain;
+    /*width: 120px;*/
+    /*height: fit-content;*/
+    /*max-width: 100%;*/
+    /*object-fit: contain;*/
 }
 
-/* 로그인 이미지 스타일 */
 .Header-compo .login-container {
-    margin-left: auto;
+    /*margin-left: auto;*/
+    position: relative;
+    left: 45%;
 }
 
 .Header-compo .login-img {
-    width: 100px; /* 원하는 크기로 변경 */
+    width: 100px;
     height: 50px;
     object-fit: contain;
 }
 
-/* 1차 네비게이션 스타일 */
 .Header-compo #gnb_1dul {
     display: flex;
-    justify-content: center;
+    /*justify-content: center;*/
     list-style: none;
-    margin: 0;
-    padding: 0;
+    /*margin: 0;*/
+    /*padding: 0;*/
     gap: 40px;
+    position: absolute;
 }
 
 .Header-compo .gnb_1dli {
@@ -72,7 +79,7 @@
     display: block;
     padding: 10px 15px;
     text-decoration: none;
-    color: #333;
+    color: black;
     font-weight: bold;
     transition: color 0.2s ease;
 }
@@ -81,19 +88,17 @@
     color: #007bff;
 }
 
-/* 2차 네비게이션 컨테이너 스타일 */
 .Header-compo .gnb_2dul_container {
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
     background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     padding: 20px 0;
+    background-image: linear-gradient(to left, #fddb92 0%, #d1fdff 100%);
 }
 
-/* 2차 네비게이션 스타일 */
 .Header-compo #gnb_2dul {
     display: flex;
     justify-content: center;
@@ -105,22 +110,21 @@
 
 .Header-compo .gnb_2dcol {
     position: relative;
-    padding-left: 15px; /* 기존 패딩 유지 */
+    padding-left: 15px;
 }
+
 .Header-compo .gnb_2dcol::before {
     content: "";
     position: absolute;
-    left: -15px; /* 테두리 위치 조정 */
+    left: -15px;
     top: 0;
     bottom: 0;
     border-left: 1px solid #ddd;
-    width: 0; /* 선의 너비 */
+    width: 0;
 }
-
 
 .Header-compo .gnb_2dcol:first-of-type {
     border-left: none;
-
 }
 
 .Header-compo .gnb_2dtitle {
@@ -144,13 +148,13 @@
     display: block;
     padding: 8px 15px;
     text-decoration: none;
-    color: #666;
+    color: black;
     transition: color 0.2s ease;
 }
 
 .Header-compo .gnb_2da:hover {
-    color: #007bff;
-    background-color: #f0f0f0;
+    color: black;
+    background-image: linear-gradient(to left, #fddb92 0%, #d1fdff 100%);
 }
 
 .login-dropdown {
@@ -172,4 +176,82 @@
 
 .login-dropdown a:hover {
     background-color: #f0f0f0;
+}
+
+.Header-compo .hamburger-menu {
+    display: none;
+    cursor: pointer;
+    font-size: 30px;
+    margin-left: auto;
+
+}
+
+.Header-compo .mobile-menu {
+    display: none;
+    top: 60px;
+    right: 0;
+    width: 40%;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    z-index: 2000;
+    transition: all 500ms ease-in-out;
+
+
+}
+
+.Header-compo .mobile-menu-list {
+    list-style: none;
+    margin: 0;
+    padding: 20px;
+}
+
+.Header-compo .mobile-menu-item {
+    margin-bottom: 15px;
+}
+
+.Header-compo .mobile-menu-main {
+    font-weight: bold;
+    color: #007bff;
+    display: block;
+    padding: 10px 0;
+}
+
+.Header-compo .mobile-sub-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    padding-left: 15px;
+}
+
+.Header-compo .mobile-sub-menu-item {
+    margin: 0;
+    padding: 0;
+}
+
+.Header-compo .mobile-sub-menu-item a {
+    display: block;
+    padding: 8px 0;
+    text-decoration: none;
+    color: #666;
+}
+
+.Header-compo .mobile-sub-menu-item a:hover {
+    color: #007bff;
+}
+
+@media (max-width: 768px) {
+    .Header-compo #gnb_1dul,
+    .Header-compo .login-container,
+    .Header-compo .gnb_2dul_container {
+        display: none;
+    }
+
+    .Header-compo .hamburger-menu {
+        display: block;
+    }
+
+    .Header-compo .mobile-menu {
+        display: block;
+    }
 }

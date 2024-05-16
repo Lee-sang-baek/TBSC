@@ -1,65 +1,69 @@
-.container {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 15px;
-}
+.CenterIntroduction-compo{
 
-.heading h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 2rem;
-    color: #333;
-}
+    .container {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 0 15px;
 
-.center-intro-container {
-    animation: fadeInUp 1s both;
-    animation-delay: 0.1s;
-}
-
-.center-intro-txt {
-    background-color: #f8f9fa;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.center-intro-txt h5 {
-    margin-top: 0;
-}
-
-.center-intro-txt p {
-    color: #666;
-    line-height: 1.6;
-}
-
-.center-intro-txt b {
-    color: #ED6C01;
-    font-weight: bold;
-}
-
-.img-fluid {
-    width: 100%;
-    height: auto;
-    display: block;
-    margin: 20px auto;
-}
-
-.text-center {
-    text-align: center;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translate3d(0, 40px, 0);
     }
-    to {
-        opacity: 1;
-        transform: none;
-    }
-}
 
-.headerCenter{
-    display: flex;
-    justify-content: center;
+    .heading h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 2rem;
+        color: #333;
+    }
+
+    .center-intro-container {
+        animation: fadeInUp 1s both;
+        animation-delay: 0.1s;
+    }
+
+    .center-intro-txt {
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .center-intro-txt h5 {
+        margin-top: 0;
+    }
+
+    .center-intro-txt p {
+        color: #666;
+        line-height: 1.6;
+    }
+
+    .center-intro-txt b {
+        color: #ED6C01;
+        font-weight: bold;
+    }
+
+    .img-fluid {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin: 20px auto;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translate3d(0, 40px, 0);
+        }
+        to {
+            opacity: 1;
+            transform: none;
+        }
+    }
+
+    .headerCenter{
+        display: flex;
+        justify-content: center;
+    }
 }

@@ -13,7 +13,6 @@ const Rental = () => {
     const [purpose, setPurpose] = useState('');
     const [prepare, setPrepare] = useState('');
     const memberId = sessionStorage.getItem("id");
-    const [state, setState] = useState(true);
 
     const handlePlaceSelection = (placeName) => {
         setPlace(placeName);
@@ -77,14 +76,14 @@ const Rental = () => {
         }
 
         const formData = {
-            gender, compName, person, place, startDate, endDate, purpose, prepare, memberId, state
+            gender, compName, person, place, startDate, endDate, purpose, prepare, memberId
         };
 
         try {
             const response = await axios.post(`/rental/save?memberId=${memberId}`, formData);
             alert("대관예약이 제출되었습니다.");
             console.log('서버 응답:', response.data);
-            // window.location.href = "/";
+            window.location.href = "/";
         } catch (error) {
             console.error('서버 요청 실패:', error);
         }

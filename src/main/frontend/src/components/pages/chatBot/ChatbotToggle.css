@@ -1,0 +1,40 @@
+/* 기존 스타일 */
+.chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.chatbot-button {
+    background-color: #5ccc9d;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.chatbot-button img {
+    width: 30px;
+    height: 30px;
+}
+
+.chatbot-popup {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    width: fit-content;
+    height: 500px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* 새로운 스타일 추가 */
+.chatbot-header {
+    display: none; /* 기본 헤더 숨기기 */
+}

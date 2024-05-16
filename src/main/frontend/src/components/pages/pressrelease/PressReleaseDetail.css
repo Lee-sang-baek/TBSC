@@ -1,0 +1,74 @@
+.PressReleaseDetail-copo {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.PressReleaseDetail-copo .detail-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.PressReleaseDetail-copo .detail-header {
+    margin-bottom: 20px;
+}
+
+.PressReleaseDetail-copo .detail-header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.PressReleaseDetail-copo .detail-meta {
+    margin-bottom: 20px;
+}
+
+.PressReleaseDetail-copo .detail-meta p {
+    margin: 5px 0;
+}
+
+.PressReleaseDetail-copo .detail-content {
+    margin-bottom: 20px;
+}
+
+.PressReleaseDetail-copo .detail-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px 0;
+}
+
+.PressReleaseDetail-copo .file-download {
+    margin-bottom: 20px;
+}
+
+.PressReleaseDetail-copo .file-download a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.PressReleaseDetail-copo .file-download a:hover {
+    text-decoration: underline;
+}
+
+.PressReleaseDetail-copo .detail-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.PressReleaseDetail-copo .detail-actions button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.PressReleaseDetail-copo .detail-actions button:hover {
+    background-color: #0056b3;
+}

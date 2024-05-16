@@ -19,13 +19,11 @@ public class Notice {
     private String state;
     private Integer view = 0;
     private String fileUrl;
-    @ElementCollection // List 필드를 매핑할 때 사용
-    private List<String> images; // List<String>으로 변경
     private Date date;
     private String id;
-    @Lob // 큰 데이터 저장을 위한 어노테이션
+    @Lob
     @Column(columnDefinition = "TEXT")
-    private String content; // HTML 형식으로 스타일이 적용된 내용을 저장
+    private String content;
 
 
     public Notice() {}
@@ -36,7 +34,6 @@ public class Notice {
         this.state = state;
         this.view = view;
         this.fileUrl = fileUrl;
-        this.images = images;
         this.date = date;
         this.id = id;
         this.content = content;

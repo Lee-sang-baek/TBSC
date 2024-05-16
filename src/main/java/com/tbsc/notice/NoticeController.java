@@ -3,6 +3,7 @@ package com.tbsc.notice;
 import com.tbsc.member.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -53,11 +54,16 @@ public class NoticeController {
 
 
 
-    // 공지사항 삭제
     @DeleteMapping("/delete/{num}")
-    public void deleteNotice(@PathVariable Integer num) {
-        noticeService.deleteNotice(num);
+    public ResponseEntity<Void> deleteNotice(@PathVariable("num") Integer num) {
+        try {
+            noticeService.deleteNotice(num);
+            return ResponseEntity.noContent().build();
+        } catch (Exception e) {
+            return ResponseEntity.status(500).build(); // Use appropriate status code and logging
+        }
     }
+
 
     @PostMapping("/upload")
     public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file) {

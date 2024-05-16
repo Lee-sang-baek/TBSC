@@ -27,6 +27,24 @@ import ConsultantForm from "./components/pages/consultant/ConsultantForm";
 import LogAccess from "./components/util/LogAccess";
 import VisualAssetManager from "./components/pages/admin/VisualAssetManager";
 import DeleteInfo from "./components/pages/mypage/functionPage/deleteInfo";
+import FacilityGuideMain from "./components/pages/facilityGuide/FacilityGuideMain";
+import ChatbotToggle from "./components/pages/chatBot/ChatbotToggle";
+import TNoticeList from "./components/pages/tnotice/TNoticeList";
+import TNoticeForm from "./components/pages/tnotice/TNoticeForm";
+import TNoticeDetail from "./components/pages/tnotice/TNoticeDetail";
+import TNoticeEdit from "./components/pages/tnotice/TNoticeEdit";
+import ReservationList from "./components/pages/reservation/ReservationList";
+import ReservationForm from "./components/pages/reservation/ReservationForm";
+import ReservationEdit from "./components/pages/reservation/ReservationEdit";
+import ReservationDetail from "./components/pages/reservation/ReservationDetail";
+import CenterNewsDetail from "./components/pages/centerNews/CenterNewsDetail";
+import CenterNewsEdit from "./components/pages/centerNews/CenterNewsEdit";
+import CenterNewsForm from "./components/pages/centerNews/CenterNewsForm";
+import CenterNewsList from "./components/pages/centerNews/CenterNewsList";
+import PressReleaseList from "./components/pages/pressrelease/PressReleaseList";
+import PressReleaseForm from "./components/pages/pressrelease/PressReleaseForm";
+import PressReleaseEdit from "./components/pages/pressrelease/PressReleaseEdit";
+import PressReleaseDetail from "./components/pages/pressrelease/PressReleaseDetail";
 
 function App() {
 
@@ -76,6 +94,7 @@ function App() {
                 <Link to={"/centerIntro"}> [센터 소개] </Link>
                 <Link to={"/facility"}> [시설 안내] </Link>
                 <Link to={"/notices"}> [공지사항] </Link>
+
             </div>
             <Routes>
                 <Route path='/' exact element=""/>
@@ -94,7 +113,7 @@ function App() {
                 <Route path="/notices/:num" element={<NoticeDetail />} />
                 <Route path="/notices/new" element={<CreateNotice />} />
                 <Route path="/notices/update/:num" element={<UpdateNotice />} />
-                <Route path="/facility" element={<FacilityGuide />} />
+                <Route path="/facility" element={<FacilityGuideMain />} />
                 <Route path="/myPage" element={<MyHome/>}/>
                 <Route path="/myPage/reserve" element={<ReservDetails/>}/>
                 <Route path="/myPage/corp-info" element={<CorpInfo/>}/>
@@ -102,9 +121,26 @@ function App() {
                 <Route path="/myPage/modify-corp" element={<ModiCorp/>}/>
                 <Route path="/rental" element={<Rental />} />
                 <Route path="/consultants" element={<ConsultantForm />} />
+                <Route path="/tnotice" element={<TNoticeList />} />
+                <Route path="/tnotice/create" element={<TNoticeForm />} />
+                <Route path="/tnotice/:num" element={<TNoticeDetail />} />
+                <Route path="/tnotice/edit/:num" element={<TNoticeEdit />} />
+                <Route path="/reservation" element={<ReservationList />} />
+                <Route path="/reservation/create" element={<ReservationForm />} />
+                <Route path="/reservation/update/:num" element={<ReservationEdit />} />
+                <Route path="/reservation/:num" element={<ReservationDetail />} />
+                <Route path="/centernews" element={<CenterNewsList />} />
+                <Route path="/centernews/create" element={<CenterNewsForm />} />
+                <Route path="/centernews/update/:num" element={<CenterNewsEdit />} />
+                <Route path="/centernews/:num" element={<CenterNewsDetail />} />
+                <Route path="/pressrelease" element={<PressReleaseList />} />
+                <Route path="/pressrelease/create" element={<PressReleaseForm />} />
+                <Route path="/pressrelease/update/:num" element={<PressReleaseEdit />} />
+                <Route path="/pressrelease/:num" element={<PressReleaseDetail />} />
                 <Route path="/myPage/delete-info" element={<DeleteInfo logout={logout} />} />
                 <Route path="/addAsset" element={<VisualAssetManager />} />
             </Routes>
+            <ChatbotToggle />
             <Footer />
         </BrowserRouter>
     );
