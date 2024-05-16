@@ -40,7 +40,7 @@ const CorpInfo = (props) => {
                             </div>
                         </div>
                         <div className="ifNothing">
-                            <Button text="기업 정보 수정"/>
+                            <Button text="기업 정보 없으면 표시"/>
                         </div>
 
                     </div>

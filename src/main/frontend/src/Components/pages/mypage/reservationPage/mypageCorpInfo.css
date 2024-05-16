@@ -14,7 +14,7 @@
         background-color: #a3deef;
         width: 80%;
         height: 100%;
-        border-radius: 15px;
+        border-radius: 0 0 15px 15px;
 
         .corpHeader {
             display: flex;
@@ -24,7 +24,7 @@
                 display: flex;
                 justify-content: center;
                 font-weight: bold;
-                margin: 5%;
+                margin: 2%;
             }
         }
     }
@@ -34,7 +34,7 @@
         justify-content: space-around;
         flex-direction: row;
         flex-wrap: wrap;
-        margin: 5%;
+        margin: 2%;
 
         .corpInfo {
             width: 60%;
