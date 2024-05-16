@@ -1,6 +1,8 @@
 package com.tbsc.member;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tbsc.log.AccessLog;
+import com.tbsc.rental.Rental;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -44,8 +46,13 @@ public class Member {
     @Enumerated(EnumType.STRING)
     private MemberType state;
 
-//    @OneToMany(mappedBy = "member")
-//    private List<AccessLog> accessLogs = new ArrayList<>();
+    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @JsonIgnore // 이 부분을 추가하여 JSON 직렬화에서 무시하도록 설정.
+    private List<AccessLog> accessLogs = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @JsonIgnore // 이 부분을 추가하여 JSON 직렬화에서 무시하도록 설정.
+    private List<Rental> rentals = new ArrayList<>();
 
     public Member bind(MemberDto memberDto, PasswordEncoder passwordEncoder) {
         this.setId(memberDto.getId());
@@ -61,4 +68,6 @@ public class Member {
         this.setPhoneNum(memberDto.getPhoneNum());
         return this;
     }
+
+
 }

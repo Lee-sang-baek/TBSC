@@ -2,12 +2,10 @@ package com.tbsc.log;
 
 import com.tbsc.member.Member;
 import com.tbsc.member.MemberRepository;
-import jakarta.persistence.criteria.Path;
 import jakarta.persistence.criteria.Predicate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -20,13 +18,16 @@ import java.util.Optional;
 public class AccessLogService {
 
     private final AccessLogRepository accessLogRepository;
+    private final MemberRepository memberRepository;
 
     public void saveAccessLog(String id, String path, String ipAddress) {
         AccessLog accessLog = new AccessLog();
         if (id != null) {
-            Member member = new Member();
-            member.setId(id);
-            accessLog.setMember(member);
+//            Member member = new Member();
+//            member.setId(id);
+//            accessLog.setMember(member);
+            Optional<Member> optionalMember = memberRepository.findById(id);
+            optionalMember.ifPresent(accessLog::setMember);
         }
         accessLog.setPath(path);
         accessLog.setTime(LocalDateTime.now());

@@ -1,5 +1,3 @@
-<<<<<<< HEAD:src/main/frontend/src/Components/Pages/SignUp/CompSignUp.css
-=======
 /* styles.css */
 
 /* 회원가입 폼 전체를 감싸는 div */
@@ -188,4 +186,3 @@ button + input {
 .input-form .error {
     color: red;
 }
->>>>>>> refs/heads/mypage:src/main/frontend/src/components/pages/signUp/CompSignUp.css

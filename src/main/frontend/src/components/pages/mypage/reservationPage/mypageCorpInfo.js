@@ -25,8 +25,14 @@ const CorpInfo = (props) => {
 
                             <div className="corpInfo">
                                 <div className="corpInfoTitle">
-                                    <div className="corpTime">작성자</div>
-                                    <div className="corpState">소속</div>
+                                    <div className="corpWriter">
+                                        작성자:
+                                        <div className="writerName">작성자 이름</div>
+                                    </div>
+                                    <div className="corpState">
+                                        소속:
+                                        <div className="stateName">소속 명</div>
+                                    </div>
                                 </div>
                                 <div className="corpInfoContent">
                                     <div className="contentText">내용</div>
@@ -34,7 +40,7 @@ const CorpInfo = (props) => {
                             </div>
                         </div>
                         <div className="ifNothing">
-                            <Button/>
+                            <Button text="기업 정보 없으면 표시"/>
                         </div>
 
                     </div>

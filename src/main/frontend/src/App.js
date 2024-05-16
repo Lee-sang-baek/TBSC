@@ -26,6 +26,7 @@ import FacilityGuide from "./components/pages/facilityGuide/FacilityGuide";
 import ConsultantForm from "./components/pages/consultant/ConsultantForm";
 import LogAccess from "./components/util/LogAccess";
 import VisualAssetManager from "./components/pages/admin/VisualAssetManager";
+import DeleteInfo from "./components/pages/mypage/functionPage/deleteInfo";
 
 function App() {
 
@@ -77,6 +78,7 @@ function App() {
                 <Link to={"/notices"}> [공지사항] </Link>
             </div>
             <Routes>
+                <Route path='/' exact element=""/>
                 <Route path="/login" element={<LoginForm />} />
                 <Route path="/signup" element={<SignUpSelect />} />
                 <Route path="/signup/normal" element={<SignUp isComp={false} />} />
@@ -100,6 +102,7 @@ function App() {
                 <Route path="/myPage/modify-corp" element={<ModiCorp/>}/>
                 <Route path="/rental" element={<Rental />} />
                 <Route path="/consultants" element={<ConsultantForm />} />
+                <Route path="/myPage/delete-info" element={<DeleteInfo logout={logout} />} />
                 <Route path="/addAsset" element={<VisualAssetManager />} />
             </Routes>
             <Footer />

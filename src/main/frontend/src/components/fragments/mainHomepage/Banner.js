@@ -39,27 +39,25 @@ function Banner() {
 
     return (
         <div>
-            <Header />
-        <div className="Banner-compo">
-        <div className="slider-container">
-            <Slider {...settings} className="autoplay">
-                <div>
-                    <img src="imgs/login.png" alt="image1" />
-                </div>
-                <div>
-                    <img src="imgs/logo.png" alt="image2" />
-                </div>
-                <div>
-                    <img src="/imgs/userProfile.png" alt="image3" />
-                </div>
+            <Header/>
+            <div className="Banner-compo">
+                <div className="slider-container">
+                    <Slider {...settings} className="autoplay">
+                        <div>
+                            <img src="imgs/login.png" alt="image1"/>
+                        </div>
+                        <div>
+                            <img src="imgs/logo.png" alt="image2"/>
+                        </div>
+                        <div>
+                            <img src="/imgs/userProfile.png" alt="image3"/>
+                        </div>
 
-            </Slider>
-        <Footer />
-            <div>
-
+                    </Slider>
+                    <Footer/>
+                </div>
+            </div>
         </div>
-        </div>
-
     );
 }
 

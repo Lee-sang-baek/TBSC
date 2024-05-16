@@ -7,6 +7,7 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -18,6 +19,8 @@ public class QMember extends EntityPathBase<Member> {
     private static final long serialVersionUID = -99273365L;
 
     public static final QMember member = new QMember("member1");
+
+    public final ListPath<com.tbsc.log.AccessLog, com.tbsc.log.QAccessLog> accessLogs = this.<com.tbsc.log.AccessLog, com.tbsc.log.QAccessLog>createList("accessLogs", com.tbsc.log.AccessLog.class, com.tbsc.log.QAccessLog.class, PathInits.DIRECT2);
 
     public final StringPath address = createString("address");
 
@@ -38,6 +41,8 @@ public class QMember extends EntityPathBase<Member> {
     public final StringPath password = createString("password");
 
     public final StringPath phoneNum = createString("phoneNum");
+
+    public final ListPath<com.tbsc.rental.Rental, com.tbsc.rental.QRental> rentals = this.<com.tbsc.rental.Rental, com.tbsc.rental.QRental>createList("rentals", com.tbsc.rental.Rental.class, com.tbsc.rental.QRental.class, PathInits.DIRECT2);
 
     public final StringPath representative = createString("representative");
 

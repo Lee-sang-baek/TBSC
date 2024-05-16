@@ -1,13 +1,14 @@
 import "./Button.css";
 
-const Button = ({text, className, onClick, link }) => {
+const Button = ({text, className, onClick, link = "#" }) => {
 
     return (
         <div className="Button-compo">
             <a href={link}>
                 <button
                     className={className}
-                    onClick={onClick}>
+                    onClick={onClick}
+                >
                     {text}
                 </button>
             </a>
@@ -17,7 +18,6 @@ const Button = ({text, className, onClick, link }) => {
 
 Button.defaultProps = {
     className: "btn-two cyan rounded",
-    link: "#",
 };
 
 export default Button;

@@ -7,7 +7,7 @@ const ModiCorp = (props) => {
 
     return (
         <div className="outter">
-            <Sidebar />
+            <Sidebar/>
             <form className="ModiCorp-compo">
                 <h1 className="pageTitle">등록 기업정보</h1>
 
@@ -39,7 +39,7 @@ const ModiCorp = (props) => {
                 </div>
             </form>
         </div>
-            );
-            };
+    );
+};
 
 export default ModiCorp;

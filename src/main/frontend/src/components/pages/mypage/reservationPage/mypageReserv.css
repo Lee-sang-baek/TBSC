@@ -2,32 +2,51 @@
     display: flex;
     flex-direction: row;
 }
-.ReservDetails-compo{
+
+.ReservDetails-compo {
     padding:0 100px;
     width:100%;
+
+    .pageInfo {
+        padding: 1% 0;
+    }
+
+    .pageTitle {
+        text-align: center;
+    }
+
+    .reservImg {
+        width: fit-content;
+        max-width: 150px;
+    }
+
+    .reservContainer {
+        background-color: #a3deef;
+        width: 100%;
+        border-radius: 15px;
+
+        div {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        p {
+            padding: 0 5px;
+        }
+
+        .detailHeader {
+            flex-direction: column;
+        }
+
+        .detailContent {
+            .true {
+                color: #054BFF;
+                font-weight: bold;
+                font-size: large;
+            }
+        }
+    }
+
 }
 
-.ReservDetails-compo .pageTitle {
-    text-align: center;
-}
-
-.ReservDetails-compo .reservContainer {
-    background-color: #a3deef;
-    width: 50%;
-    border-radius: 15px;
-}
-
-.ReservDetails-compo .reservContainer > div {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.ReservDetails-compo .reservContainer .detailHeader {
-    flex-direction: column;
-}
-
-.ReservDetails-compo .reservImg {
-    height: 100px;
-    width: 100px;
-}

@@ -1,66 +1,49 @@
-.outter {
-    display: flex;
-    flex-direction: row;
-}
-.sidebox{
-    display:flex;
-    flex-direction: column;
-}
-.Myhome-compo{
-    width:100%;
-    padding:0 100px;
-}
+.MyHome-compo {
+    .detailsContainer {
+        margin: 5% 20%;
 
-.MyHome-compo .container {
-    display: flex;
-    justify-content: center;
-}
+        .reservDetailTitle {
+            margin: 5% 0;
+        }
 
-.MyHome-compo .profile {
-    font-size: large;
-    padding: 10px;
-    display: table;
-}
+        .reservDetails {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
 
-.MyHome-compo .profileImg {
-    width: 200px;
-    display: table-cell;
-}
+    .profileModify {
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
 
-.MyHome-compo .profileInfo {
-    padding: 10px 20px;
-    vertical-align: middle;
-    display: table-cell;
-}
+    .profileModify .userDelete {
+        position: absolute;
+        right: 5%;
+        top: 0;
+    }
 
-.MyHome-compo .profileInfo > div {
-    padding: 10px 20px;
-    vertical-align: middle;
-    display: table-cell;
-}
+    .container {
+        .profileImg{
+            height: 10%;
+            width: 10%;
+        }
 
-.MyHome-compo .profileInfo > div > div {
-    padding: 10px;
-}
+        .profile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-.MyHome-compo .profileModify {
-    text-align: center;
-    position: relative;
-}
+        .profile .profileInfo {
+            display: flex;
+            align-items: center;
 
-.MyHome-compo .infoText {
-    vertical-align: middle;
-    display: table-cell;
-    width: 300px;
-}
-
-.MyHome-compo .reservDetails {
-    display: flex;
-    justify-content: space-between;
-}
-
-.profileModify .userDelete {
-    position: absolute;
-    right: 5%;
-    top: 0;
+            div {
+                margin: 0 10px;
+                font-weight: bold;
+            }
+        }
+    }
 }

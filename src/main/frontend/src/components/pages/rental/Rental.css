@@ -1,50 +1,72 @@
-/* Rental.css */
-.rental-compo .rental-compo-in {
+.rental-compo {
+    background: #fff;
+    padding: 20px;
     width: fit-content;
     margin: 20px auto;
-    background-color: #E6E6FA;
-    border-radius: 8px;
+    font-family: 'Arial', sans-serif;
 }
 
-.rental-compo .rental-compo-in form {
-    display: grid;
-    grid-template-columns: 1fr;
+.rental-compo-in {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.rental-compo-in h1 {
+    text-align: center;
+    color: #333;
+    background-color: #fff;
+    padding: 10px;
+    margin: -20px -20px 20px -20px;
+    border-bottom: 2px solid #ccc;
+}
+
+.rental-compo-in form {
+    display: flex;
+    flex-direction: column;
     gap: 20px;
 }
 
-
-.rental-compo .labelwidth {
+.rental-compo-in label {
+    font-weight: bold;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    margin-bottom: 10px;
 }
 
-.rental-compo .rental-compo-in input[type="text"],
-.rental-compo .rental-compo-in input[type="number"],
-.rental-compo .rental-compo-in input[type="date"],
-.rental-compo .rental-compo-in textarea {
+.rental-compo-in input[type="text"],
+.rental-compo-in input[type="number"],
+.rental-compo-in input[type="datetime-local"],
+.rental-compo-in textarea {
+    width: calc(100% - 20px);
     padding: 8px;
     margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
-.rental-compo .rental-compo-in input[type="radio"] {
+.rental-compo-in input[type="radio"] {
     margin-right: 10px;
 }
 
-/*.rental-compo .rental-compo-in button {*/
-/*    padding: 10px 15px;*/
-/*    background-color: #007bff;*/
-/*    color: white;*/
-/*    border: none;*/
-/*    border-radius: 5px;*/
-/*    cursor: pointer;*/
-/*    width: 300px;*/
-/*    margin-left: 250px;*/
-/*}*/
-
-.rental-compo .rental-compo-in button:hover {
-    background-color: #0056b3;
+.rental-compo-in .facility-guide-wrapper {
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #fff;
 }
-.rental-compo .rental-compo-in .h1center {
-    text-align: center;
-    margin-left: 250px;
+
+.rental-compo-in button {
+    background: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    align-self: center;
+    width: 150px;
+}
+
+.rental-compo-in button:hover {
+    background: #0056b3;
 }

@@ -7,6 +7,7 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -17,6 +18,8 @@ public class QRental extends EntityPathBase<Rental> {
 
     private static final long serialVersionUID = -1394399701L;
 
+    private static final PathInits INITS = PathInits.DIRECT2;
+
     public static final QRental rental = new QRental("rental");
 
     public final StringPath compName = createString("compName");
@@ -25,7 +28,9 @@ public class QRental extends EntityPathBase<Rental> {
 
     public final StringPath gender = createString("gender");
 
-    public final StringPath id = createString("id");
+    public final com.tbsc.member.QMember member;
+
+    public final StringPath memberId = createString("memberId");
 
     public final NumberPath<Integer> num = createNumber("num", Integer.class);
 
@@ -39,16 +44,27 @@ public class QRental extends EntityPathBase<Rental> {
 
     public final DateTimePath<java.util.Date> startDate = createDateTime("startDate", java.util.Date.class);
 
+    public final StringPath state = createString("state");
+
     public QRental(String variable) {
-        super(Rental.class, forVariable(variable));
+        this(Rental.class, forVariable(variable), INITS);
     }
 
     public QRental(Path<? extends Rental> path) {
-        super(path.getType(), path.getMetadata());
+        this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
     }
 
     public QRental(PathMetadata metadata) {
-        super(Rental.class, metadata);
+        this(metadata, PathInits.getFor(metadata, INITS));
+    }
+
+    public QRental(PathMetadata metadata, PathInits inits) {
+        this(Rental.class, metadata, inits);
+    }
+
+    public QRental(Class<? extends Rental> type, PathMetadata metadata, PathInits inits) {
+        super(type, metadata, inits);
+        this.member = inits.isInitialized("member") ? new com.tbsc.member.QMember(forProperty("member")) : null;
     }
 
 }

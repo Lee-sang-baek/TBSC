@@ -109,7 +109,7 @@ public class MemberController {
         return ResponseEntity.ok(members);
     }
 
-    @GetMapping("/member/getMember")
+    @GetMapping("myPage/member/getMember")
     public ResponseEntity<Member> getMember(@RequestParam("id") String id) {
         Member member = memberService.getMember(id);
 
@@ -137,5 +137,23 @@ public class MemberController {
     public ResponseEntity<String> memberModify(@RequestBody MemberDto memberDto) {
         // System.out.println("signup");
         return memberService.memberModify(memberDto, passwordEncoder);
+    }
+
+    @PostMapping("/member/memberdelete")
+    public ResponseEntity<String> memberDelete(@RequestBody MemberDto memberDto) {
+
+        String enteredPassword = memberDto.getPassword();
+
+        // 암호화된 패스워드
+        String storedPasswordHash = memberService.getPassword(memberDto.getId());
+
+        // 입력된 비밀번호, 암호화된 비밀번호 비교
+        boolean passwordMatches = passwordEncoder.matches(enteredPassword, storedPasswordHash);
+
+        if (passwordMatches) {
+            return memberService.memberDelete(memberDto, passwordEncoder);
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
     }
 }

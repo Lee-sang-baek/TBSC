@@ -16,7 +16,7 @@ const MyHome = () => {
     })
 
     const getMemberInfo = () => {
-        axios.get("member/getMember?id=" + memberId)
+        axios.get("/myPage/member/getMember?id=" + memberId)
             .then((res) => {
                 console.log(res.data);
                 setMemberInfo({...res.data})
@@ -60,23 +60,29 @@ const MyHome = () => {
                 {/*    </button>*/}
                 {/*</a>*/}
                 <div className="userDelete">
-                    <Button text="계정 탈퇴"></Button>
+                    <Link to="/myPage/delete-info">
+                        <Button text="계정 탈퇴" onClick={() => {
+                            
+                        }}/>
+                    </Link>
                 </div>
             </div>
 
-            <h2 className="reservDetailTitle">
-                예약내역
-            </h2>
+            <div className="detailsContainer">
+                <h2 className="reservDetailTitle">
+                    예약내역
+                </h2>
 
-            <div className="reservDetails">
-                <h3 className="reservDate">123213123</h3>
-                <h3 className="reservTitle">제목</h3>
-                <h3 className="reservState">상태</h3>
-                <Link to="/reserv">
-                    <Button onClick={() => {
-                        console.log("dk");
-                    }} text="버틍" className="btn-two blue"/>
-                </Link>
+                <div className="reservDetails">
+                    <h3 className="reservDate">123213123</h3>
+                    <h3 className="reservTitle">제목</h3>
+                    <h3 className="reservState">상태</h3>
+                    <Link to="/reserv">
+                        <Button onClick={() => {
+                            console.log("dk");
+                        }} text="버틍" className="btn-two blue"/>
+                    </Link>
+                </div>
             </div>
         </form>
     );
