@@ -1,4 +1,3 @@
-{
 .Header-compo * {
     margin: 0;
     padding: 0;
@@ -12,42 +11,48 @@
     line-height: 1.6;
 
 }
-}
+.Header-compo {
+    width: 100%;
 
+}
 .Header-compo #gnb_wrap {
     width: 100%;
     background-color: #f8f9fa;
-    padding: 10px 0;
     position: relative;
-    background: linear-gradient(to right, rgba(106, 17, 203, 0.51), rgba(37, 117, 252, 0.45));
-
-
+    background-image: linear-gradient(to left, #fddb92 0%, #d1fdff 100%);
 }
 
 .Header-compo #gnb_container {
-    position: relative;
-    max-width: 1200px;
-    margin: 0 auto;
+    /*position: relative;*/
+    /*max-width: 1200px;*/
+    /*margin: 0 auto;*/
+    /*display: grid;*/
+    /*grid-template-columns: auto 1fr auto;*/
+    /*align-items: center;*/
+    /*color: white;*/
     display: flex;
+    justify-content: center;
     align-items: center;
-    color: white;
 }
 
 .Header-compo .logo-container {
-    margin-right: 40px;
+    position: absolute;
+    left: 5%;
+
+
 }
 
 .Header-compo .logo-img {
-    width: 120px;
-    height: auto;
-    max-width: 100%;
-    object-fit: contain;
+    /*width: 120px;*/
+    /*height: fit-content;*/
+    /*max-width: 100%;*/
+    /*object-fit: contain;*/
 }
 
-
 .Header-compo .login-container {
-    margin-left: auto;
+    /*margin-left: auto;*/
     position: relative;
+    left: 45%;
 }
 
 .Header-compo .login-img {
@@ -58,11 +63,12 @@
 
 .Header-compo #gnb_1dul {
     display: flex;
-    justify-content: center;
+    /*justify-content: center;*/
     list-style: none;
-    margin: 0;
-    padding: 0;
+    /*margin: 0;*/
+    /*padding: 0;*/
     gap: 40px;
+    position: absolute;
 }
 
 .Header-compo .gnb_1dli {
@@ -73,18 +79,14 @@
     display: block;
     padding: 10px 15px;
     text-decoration: none;
-    color: #ffffff;
+    color: black;
     font-weight: bold;
     transition: color 0.2s ease;
-
 }
 
 .Header-compo .gnb_1da:hover {
     color: #007bff;
-
-
 }
-
 
 .Header-compo .gnb_2dul_container {
     position: absolute;
@@ -92,14 +94,10 @@
     left: 0;
     width: 100%;
     background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     padding: 20px 0;
-    background: linear-gradient(to right, rgba(106, 17, 203, 0.51), rgba(37, 117, 252, 0.45));
-
-
+    background-image: linear-gradient(to left, #fddb92 0%, #d1fdff 100%);
 }
-
 
 .Header-compo #gnb_2dul {
     display: flex;
@@ -108,8 +106,6 @@
     margin: 0 auto;
     list-style: none;
     gap: 40px;
-
-
 }
 
 .Header-compo .gnb_2dcol {
@@ -124,8 +120,7 @@
     top: 0;
     bottom: 0;
     border-left: 1px solid #ddd;
-    width: 0; /* 선의 너비 */
-
+    width: 0;
 }
 
 .Header-compo .gnb_2dcol:first-of-type {
@@ -151,19 +146,15 @@
 
 .Header-compo .gnb_2da {
     display: block;
-
     padding: 8px 15px;
     text-decoration: none;
-    color: #ffffff;
+    color: black;
     transition: color 0.2s ease;
-
 }
 
 .Header-compo .gnb_2da:hover {
-    color: #ffffff;
-    background: linear-gradient(to right, rgba(106, 17, 203, 0.51), rgba(37, 117, 252, 0.45));
-
-
+    color: black;
+    background-image: linear-gradient(to left, #fddb92 0%, #d1fdff 100%);
 }
 
 .login-dropdown {
@@ -187,8 +178,6 @@
     background-color: #f0f0f0;
 }
 
-/* 햄버거 메뉴 스타일 */
-
 .Header-compo .hamburger-menu {
     display: none;
     cursor: pointer;
@@ -197,17 +186,18 @@
 
 }
 
-/* 모바일 메뉴 스타일 */
-
 .Header-compo .mobile-menu {
     display: none;
     top: 60px;
-    left: 0;
+    right: 0;
     width: 40%;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: fixed;
     z-index: 2000;
+    transition: all 500ms ease-in-out;
+
+
 }
 
 .Header-compo .mobile-menu-list {
@@ -244,14 +234,12 @@
     padding: 8px 0;
     text-decoration: none;
     color: #666;
-
 }
 
 .Header-compo .mobile-sub-menu-item a:hover {
     color: #007bff;
 }
 
-/* 반응형 스타일 */
 @media (max-width: 768px) {
     .Header-compo #gnb_1dul,
     .Header-compo .login-container,
