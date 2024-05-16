@@ -1,31 +1,31 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"; // Routes import 추가
 import axios from "axios";
-import Header from "./Components/fragments/header/Header";
-import Footer from "./Components/fragments/footer/Footer";
-import SignUp from "./Components/pages/signUp/SignUp";
-import SignUpSelect from "./Components/pages/signUp/SignUpSelect";
-import LoginForm from "./Components/pages/loginForm/LoginForm";
-import AdminPage from "./Components/pages/admin/AdminPage";
-import MemberList from "./Components/pages/admin/MemberList";
-import SiteManagement from "./Components/pages/admin/SiteManagement";
-import ReservationConfirmation from "./Components/pages/admin/ReservationConfirmation";
-import AccessLog from "./Components/pages/admin/AccessLog";
-import NoticeList from "./Components/pages/commonBoard/NoticeList";
-import NoticeDetail from "./Components/pages/commonBoard/NoticeDetail";
-import CreateNotice from "./Components/pages/commonBoard/CreateNotice";
-import UpdateNotice from "./Components/pages/commonBoard/UpdateNotice";
-import ModiInfo from "./Components/pages/mypage/reservationPage/mypageModify";
-import MyHome from "./Components/pages/mypage/mypageHome";
-import ReservDetails from "./Components/pages/mypage/reservationPage/mypageReserv";
-import ModiCorp from "./Components/pages/mypage/reservationPage/mypageModiCorp";
-import CorpInfo from "./Components/pages/mypage/reservationPage/mypageCorpInfo";
-import CenterIntroduction from "./Components/pages/centerIntroduction/CenterIntroduction";
-import Rental from "./Components/pages/rental/Rental";
-import FacilityGuide from "./Components/pages/facilityGuide/FacilityGuide";
-import ConsultantForm from "./Components/pages/consultant/ConsultantForm";
-import LogAccess from "./Components/util/LogAccess";
-import VisualAssetManager from "./Components/pages/admin/VisualAssetManager";
+import Header from "./components/fragments/header/Header";
+import Footer from "./components/fragments/footer/Footer";
+import SignUp from "./components/pages/signUp/SignUp";
+import SignUpSelect from "./components/pages/signUp/SignUpSelect";
+import LoginForm from "./components/pages/loginForm/LoginForm";
+import AdminPage from "./components/pages/admin/AdminPage";
+import MemberList from "./components/pages/admin/MemberList";
+import SiteManagement from "./components/pages/admin/SiteManagement";
+import ReservationConfirmation from "./components/pages/admin/ReservationConfirmation";
+import AccessLog from "./components/pages/admin/AccessLog";
+import NoticeList from "./components/pages/commonBoard/NoticeList";
+import NoticeDetail from "./components/pages/commonBoard/NoticeDetail";
+import CreateNotice from "./components/pages/commonBoard/CreateNotice";
+import UpdateNotice from "./components/pages/commonBoard/UpdateNotice";
+import ModiInfo from "./components/pages/mypage/reservationPage/mypageModify";
+import MyHome from "./components/pages/mypage/mypageHome";
+import ReservDetails from "./components/pages/mypage/reservationPage/mypageReserv";
+import ModiCorp from "./components/pages/mypage/reservationPage/mypageModiCorp";
+import CorpInfo from "./components/pages/mypage/reservationPage/mypageCorpInfo";
+import CenterIntroduction from "./components/pages/centerIntroduction/CenterIntroduction";
+import Rental from "./components/pages/rental/Rental";
+import FacilityGuide from "./components/pages/facilityGuide/FacilityGuide";
+import ConsultantForm from "./components/pages/consultant/ConsultantForm";
+import LogAccess from "./components/util/LogAccess";
+import VisualAssetManager from "./components/pages/admin/VisualAssetManager";
 
 function App() {
 

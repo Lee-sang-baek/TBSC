@@ -8,8 +8,8 @@ const VisualAssetManager = ({ asset, itemToEdit, close }) => {
     num: null,
     image: null,
     title: "",
-    state: "", 
-    content: "", 
+    state: "",
+    content: "",
     startDate: "",
     startTime: "",
     endDate: "",
@@ -33,7 +33,7 @@ const VisualAssetManager = ({ asset, itemToEdit, close }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     let assetStr = "";
     if (asset === "메인 이미지") {
       assetStr = "mainImage";
@@ -42,13 +42,13 @@ const VisualAssetManager = ({ asset, itemToEdit, close }) => {
     } else {
       assetStr = "popup";
     }
-  
+
     try {
       var imageUrl = null;
       if (!itemToEdit || formData.image !== itemToEdit.image) {
         const formDataToSend = new FormData();
         formDataToSend.append("file", formData.image);
-    
+
         // axios를 이용해서 파일을 서버에 업로드합니다.
         const uploadResponse = await axios.post(`/upload`, formDataToSend, {
           headers: {
@@ -58,7 +58,7 @@ const VisualAssetManager = ({ asset, itemToEdit, close }) => {
 
         imageUrl = uploadResponse.data;
       }
-  
+
       // 파일 업로드가 성공하면, 나머지 정보를 가지고 다시 서버로 요청합니다.
       const dataToSend = {
         num: formData.num,

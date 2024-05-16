@@ -254,7 +254,7 @@ const SiteManagement = () => {
             </div>
 
           </div>
-        
+
         {showDeleteModal && (
             <div className="modal">
                 <div className="modal-content">
