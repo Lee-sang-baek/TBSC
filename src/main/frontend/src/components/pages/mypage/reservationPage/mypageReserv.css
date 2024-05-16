@@ -1,0 +1,33 @@
+.outter {
+    display: flex;
+    flex-direction: row;
+}
+.ReservDetails-compo{
+    padding:0 100px;
+    width:100%;
+}
+
+.ReservDetails-compo .pageTitle {
+    text-align: center;
+}
+
+.ReservDetails-compo .reservContainer {
+    background-color: #a3deef;
+    width: 50%;
+    border-radius: 15px;
+}
+
+.ReservDetails-compo .reservContainer > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.ReservDetails-compo .reservContainer .detailHeader {
+    flex-direction: column;
+}
+
+.ReservDetails-compo .reservImg {
+    height: 100px;
+    width: 100px;
+}

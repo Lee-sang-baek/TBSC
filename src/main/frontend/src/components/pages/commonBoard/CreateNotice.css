@@ -1,0 +1,75 @@
+/* App.css 또는 원하는 CSS 파일에 추가합니다.
+    해빈이가 바꿨다고 머지할때 확인하래
+ */
+
+.CreateNotice-compo .create-notice-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.CreateNotice-compo .form-group {
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.CreateNotice-compo .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.CreateNotice-compo .input-width-set,
+.CreateNotice-compo .create-notice-container input[type="text"],
+.CreateNotice-compo .create-notice-container input[type="title"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.create-notice-container input[type="radio"] {
+    margin-right: 10px;
+}
+
+.label-right {
+    float: right; /* aligns label to the right */
+    transform: translateY(-50%);
+}
+
+.CreateNotice-compo button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.CreateNotice-compo button:hover {
+    background-color: #0056b3;
+}
+
+/* CustomEditor styles */
+.CreateNotice-compo .editor {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    min-height: 200px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .CreateNotice-compo .create-notice-container {
+        width: 90%;
+        padding: 10px;
+    }
+
+    .CreateNotice-compo .form-group label {
+        margin-bottom: 10px;
+    }
+}

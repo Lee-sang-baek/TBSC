@@ -1,0 +1,47 @@
+.Sidebar-compo {
+    margin-left: 35px;
+    margin-top:50px;
+    width: 240px;
+    height: 570px;
+    background-color: #fcf1f1;
+    color: #fff;
+}
+.Sidebar-compo .main {
+    padding: 30px;
+    cursor: pointer;
+    text-align: center;
+    list-style: none;
+    color: #080808;
+    border: 2px solid #ccc; /* 테두리 두께를 2px로 변경하고 색상을 회색으로 지정합니다. */
+    border-radius: 10px; /* 선의 끝을 동그랗게 만듭니다. */
+}
+
+
+.Sidebar-compo .main  a { /* 링크 스타일 수정 */
+    text-align: center; /* 가운데 정렬 추가 */
+    list-style: none; /*li 점 없애주는 기능*/
+    text-decoration: none; /* 밑줄 없애기 */
+    cursor: pointer;
+    color: #080808; /* 링크 텍스트 색상 */
+}
+
+.Sidebar-compo .list ul {
+    list-style: none; /*li 점 없애주는 기능*/
+    padding: 0;
+}
+
+.Sidebar-compo .list ul li {
+    padding: 30px;
+    cursor: pointer;
+    text-align: center; /* 가운데 정렬 추가 */
+    border-bottom: 1px solid #ddd; /* 각 li 요소 아래에 구분 선 추가 */
+}
+
+.Sidebar-compo .list ul li a { /* 링크 스타일 수정 */
+    text-decoration: none; /* 밑줄 없애기 */
+    color: #080808; /* 링크 텍스트 색상 */
+}
+
+.Sidebar-compo .list ul li:hover { /*마우스를 대면 색깔이 바뀌도록*/
+    background-color: #ee923d;
+}

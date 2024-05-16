@@ -1,0 +1,70 @@
+.outter {
+    display: flex;
+    flex-direction: row;
+}
+.ModiCorp-compo{
+    padding:0 100px;
+    width:100%;
+}
+
+.ModiCorp-compo .pageTitle {
+    text-align: center;
+}
+
+.ModiCorp-compo .pageInfo {
+    display: flex;
+    justify-content: center;
+}
+
+.ModiCorp-compo .corpContainer {
+    background-color: #a3deef;
+    width: 50%;
+    border-radius: 15px;
+}
+
+.ModiCorp-compo .corpContainer .corpHeader {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.ModiCorp-compo .corpHeader > div {
+    display: flex;
+    justify-content: center;
+}
+
+.ModiCorp-compo .corpContent {
+    display: flex;
+    justify-content: space-around;
+}
+
+.ModiCorp-compo .corpImgContainer {
+    display: grid;
+    align-self: center;
+}
+
+.ModiCorp-compo .corpImg {
+    height: 100px;
+    width: 100px;
+}
+
+.ModiCorp-compo .corpInfoTitle {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+}
+
+.ModiCorp-compo .corpInfoContent {
+    height: 300px;
+    width: 300px;
+}
+
+.ModiCorp-compo .contentEdiForm {
+    background-color: #ffc3c3;
+}
+
+.ModiCorp-compo .contentText {
+    height: auto;
+    width: auto;
+    background-color: #c9d5d7;
+}

@@ -1,0 +1,82 @@
+.LoginForm-compo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.LoginForm-compo input[type="text"],
+.LoginForm-compo input[type="password"] {
+  width: calc(100% - 1500px);
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.LoginForm-compo .login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.LoginForm-compo .login-text {
+    margin-top: 180px;
+}
+
+.LoginForm-compo .input-row {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.LoginForm-compo .input-row input{
+    width: 500px;
+}
+
+.LoginForm-compo .button-row {
+    padding: 10px;
+}
+
+.LoginForm-compo .button-row button {
+    width: 250px;
+    margin: 5px;
+}
+
+.LoginForm-compo .extra-buttons button {
+    padding: 0px;
+    width: 150px;
+    height: 30px;
+    margin: 5px;
+}
+
+.LoginForm-compo button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.LoginForm-compo button:hover {
+    background-color: #0056b3;
+}
+
+.LoginForm-compo .social-login {
+    margin-top: 30px;
+    width: 500px;
+    background-color: #cccccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.LoginForm-compo .social-icons button {
+    margin-top: 15px;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 20px;
+}

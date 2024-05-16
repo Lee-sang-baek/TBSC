@@ -1,0 +1,64 @@
+.Footer-compo{
+    display: flex;
+    bottom: 0; left: 0;
+    height: 150px;
+    width: 100%;
+    background-color: #ddd;
+}
+.blank {
+    margin-top: 80px;
+}
+.Footer-compo .list{
+    margin-right: 30px
+}
+.Footer-compo .list ul{
+    text-align: right;
+    list-style: none;
+    display:flex; /*가로로 정렬*/
+
+}
+.Footer-compo .list ul li{
+    margin: 20px;
+}
+
+.Footer-compo .left-box {
+
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.Footer-compo .right-box {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.Footer-compo .related-sites button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 20px; /* 수정된 버튼 사이즈 */
+    cursor: pointer;
+    margin-right: 30px;/*오른쪽 끝 사이 간격 조정*/
+}
+.Footer-compo .ft_copy{
+    margin-top: 15px;
+    margin-left: 20px;
+}
+.Footer-compo .ft-info ul{
+    list-style: none;
+    padding-left:20px;
+}
+.Footer-compo .dropdown-menu{
+    position: absolute;
+    margin: 0px;
+    width: 180px;
+    transform: translate(-80px, -430px);
+    background-color:gray;
+}
+.Footer-compo .dropdown-menu li{
+    margin: 5px 0;
+}
