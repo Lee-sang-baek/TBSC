@@ -7,7 +7,7 @@ const ModiCorp = (props) => {
 
     return (
         <div className="outter">
-            <Sidebar/>
+            <Sidebar menuType="type1" />
             <form className="ModiCorp-compo">
                 <h1 className="pageTitle">등록 기업정보</h1>
 

@@ -4,13 +4,11 @@ import './Sidebar.css'; // 스타일 파일
 const Sidebar = () => {
     return (
 
-
-
         <div className="Sidebar-compo">
 
             <div className='main'>
 
-                <a href='http://localhost:3000/myhome'>메인페이지</a>
+                <a href='/myPage'>메인페이지</a>
 
             </div>
             <div className='list'>

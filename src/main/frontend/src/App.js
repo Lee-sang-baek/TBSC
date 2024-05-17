@@ -45,6 +45,7 @@ import PressReleaseList from "./components/pages/pressrelease/PressReleaseList";
 import PressReleaseForm from "./components/pages/pressrelease/PressReleaseForm";
 import PressReleaseEdit from "./components/pages/pressrelease/PressReleaseEdit";
 import PressReleaseDetail from "./components/pages/pressrelease/PressReleaseDetail";
+import JobConsult from "./components/pages/jobConsult/JobConsult";
 
 function App() {
 
@@ -94,6 +95,7 @@ function App() {
                 <Link to={"/centerIntro"}> [센터 소개] </Link>
                 <Link to={"/facility"}> [시설 안내] </Link>
                 <Link to={"/notices"}> [공지사항] </Link>
+                <Link to={"/jobConsult"}> [jobConsult] </Link>
 
             </div>
             <Routes>
@@ -139,6 +141,7 @@ function App() {
                 <Route path="/pressrelease/:num" element={<PressReleaseDetail />} />
                 <Route path="/myPage/delete-info" element={<DeleteInfo logout={logout} />} />
                 <Route path="/addAsset" element={<VisualAssetManager />} />
+                <Route path="/jobConsult" element={<JobConsult />} />
             </Routes>
             <ChatbotToggle />
             <Footer />

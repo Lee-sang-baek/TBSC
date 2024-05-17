@@ -137,7 +137,7 @@ const SiteManagement = () => {
         <tbody>
             {mainImageList.map((item, index) => (
                 <tr key={index}>
-                    <td><img src={`/upload/${item.image}`} alt={item.image}/></td>
+                    <td><img src={`/uploads/${item.image}`} alt={item.image}/></td>
                     <td>{item.title}</td>
                     <td>{item.content}</td>
                     <td>{item.startDate} ~ {item.endDate}</td>
@@ -185,7 +185,7 @@ const SiteManagement = () => {
           <tbody>
             {bannerList.map((item, index) => (
                 <tr key={index}>
-                    <td><img src={`/upload/${item.image}`} alt={item.image}/></td>
+                    <td><img src={`/uploads/${item.image}`} alt={item.image}/></td>
                     <td>{item.title}</td>
                     <td>{item.content}</td>
                     <td>{item.startDate} ~ {item.endDate}</td>
@@ -233,7 +233,7 @@ const SiteManagement = () => {
             <tbody>
                 {popupList.map((item, index) => (
                     <tr key={index}>
-                        <td><img src={`/upload/${item.image}`} alt={item.image}/></td>
+                        <td><img src={`/uploads/${item.image}`} alt={item.image}/></td>
                         <td>{item.title}</td>
                         <td>{item.content}</td>
                         <td>{DateFormat(item.startDate)} ~<br/> {DateFormat(item.endDate)}</td>

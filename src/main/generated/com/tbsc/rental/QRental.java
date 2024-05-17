@@ -44,8 +44,6 @@ public class QRental extends EntityPathBase<Rental> {
 
     public final DateTimePath<java.util.Date> startDate = createDateTime("startDate", java.util.Date.class);
 
-    public final StringPath state = createString("state");
-
     public QRental(String variable) {
         this(Rental.class, forVariable(variable), INITS);
     }

@@ -9,12 +9,12 @@
     letter-spacing: -0.05em;
     text-size-adjust: none;
     line-height: 1.6;
-
 }
+
 .Header-compo {
     width: 100%;
-
 }
+
 .Header-compo #gnb_wrap {
     width: 100%;
     background-color: #f8f9fa;
@@ -23,56 +23,46 @@
 }
 
 .Header-compo #gnb_container {
-    /*position: relative;*/
-    /*max-width: 1200px;*/
-    /*margin: 0 auto;*/
-    /*display: grid;*/
-    /*grid-template-columns: auto 1fr auto;*/
-    /*align-items: center;*/
-    /*color: white;*/
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 50px;
+    width: 100%;
 }
 
 .Header-compo .logo-container {
     position: absolute;
-    left: 5%;
-
-
+    left: 15px;
+    
 }
 
 .Header-compo .logo-img {
-    /*width: 120px;*/
-    /*height: fit-content;*/
-    /*max-width: 100%;*/
-    /*object-fit: contain;*/
+    position: absolute;
+    top: -25px;
 }
 
 .Header-compo .login-container {
-    /*margin-left: auto;*/
-    position: relative;
-    left: 45%;
+    position: absolute;
+    right: 5%;
 }
 
 .Header-compo .login-img {
+    position: absolute;
+    top: -20px;
     width: 100px;
     height: 50px;
     object-fit: contain;
 }
 
-.Header-compo #gnb_1dul {
+.Header-compo .gnb_1dul {
     display: flex;
-    /*justify-content: center;*/
     list-style: none;
-    /*margin: 0;*/
-    /*padding: 0;*/
     gap: 40px;
     position: absolute;
 }
 
 .Header-compo .gnb_1dli {
-    position: relative;
+    width: 200px;
 }
 
 .Header-compo .gnb_1da {
@@ -82,6 +72,8 @@
     color: black;
     font-weight: bold;
     transition: color 0.2s ease;
+    text-align: center;
+    width: 100%;
 }
 
 .Header-compo .gnb_1da:hover {
@@ -102,15 +94,16 @@
 .Header-compo #gnb_2dul {
     display: flex;
     justify-content: center;
-    max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
     list-style: none;
     gap: 40px;
 }
 
 .Header-compo .gnb_2dcol {
+    width: 200px;
     position: relative;
-    padding-left: 15px;
+    text-align: center;
 }
 
 .Header-compo .gnb_2dcol::before {
@@ -134,7 +127,6 @@
 }
 
 .Header-compo .gnb_2dul {
-    list-style: none;
     margin: 0;
     padding: 0;
 }
@@ -145,6 +137,7 @@
 }
 
 .Header-compo .gnb_2da {
+    width: 200px;
     display: block;
     padding: 8px 15px;
     text-decoration: none;
@@ -162,8 +155,8 @@
     background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 2000;
-    right: 0;
-    top: 100%;
+    right: -70px;
+    top: 25px;
     white-space: nowrap;
 }
 
@@ -182,22 +175,19 @@
     display: none;
     cursor: pointer;
     font-size: 30px;
-    margin-left: auto;
-
+    margin-right: auto;
 }
 
 .Header-compo .mobile-menu {
     display: none;
     top: 60px;
-    right: 0;
-    width: 40%;
+    left: 0;
+    width: 250px;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: fixed;
+    position: absolute;
     z-index: 2000;
     transition: all 500ms ease-in-out;
-
-
 }
 
 .Header-compo .mobile-menu-list {
@@ -215,6 +205,7 @@
     color: #007bff;
     display: block;
     padding: 10px 0;
+    
 }
 
 .Header-compo .mobile-sub-menu {
@@ -240,15 +231,52 @@
     color: #007bff;
 }
 
-@media (max-width: 768px) {
-    .Header-compo #gnb_1dul,
-    .Header-compo .login-container,
+@media (max-width: 1600px) {
+    .Header-compo .login-dropdown {
+        right: 30px;
+    }
+
+    .Header-compo #gnb_container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        
+    }
+
+    .Header-compo .gnb_1dul,
     .Header-compo .gnb_2dul_container {
         display: none;
     }
 
-    .Header-compo .hamburger-menu {
+    .Header-compo .logo-container {
+        grid-column: 2;
+        position: relative;
+        left: 0;
+        top: 0;
         display: block;
+        justify-self: center;
+        
+    }
+
+    .Header-compo .logo-img {
+        position: relative;
+        top: 0;
+    }
+
+
+    .Header-compo .hamburger-menu {
+        grid-column: 1;
+        margin-left: 15px;
+        display: block;
+        position: absolute;
+    }
+
+    .Header-compo .login-container {
+        grid-column: 3;
+        position: relative;
+        display: flex;
+        justify-content: flex-end;
+        top: -7px;
+        left: 7px;
     }
 
     .Header-compo .mobile-menu {

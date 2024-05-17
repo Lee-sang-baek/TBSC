@@ -25,6 +25,10 @@ public class AccessLogController {
     public void logAccess(HttpServletRequest request) {
         String id = (String) request.getSession().getAttribute("id");
         String path = request.getHeader("Referer");
+        if (path.length() > 100) {
+            System.out.println(path);
+            return;
+        }
         String ipAddress = request.getRemoteAddr();
         accessLogService.saveAccessLog(id, path, ipAddress);
     }

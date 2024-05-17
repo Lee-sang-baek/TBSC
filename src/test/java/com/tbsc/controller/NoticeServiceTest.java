@@ -25,7 +25,7 @@ public class NoticeServiceTest {
             notice.setState("마감");
             notice.setView(0);
             notice.setFileUrl("sample-file-" + i + ".txt");
-            notice.setImages(List.of("image1-" + i + ".jpg", "image2-" + i + ".jpg"));
+            //notice.setImages(List.of("image1-" + i + ".jpg", "image2-" + i + ".jpg"));
             notice.setDate(new Date());
             notice.setId("admin" + i);
             notice.setContent("글테스트 " + i);
