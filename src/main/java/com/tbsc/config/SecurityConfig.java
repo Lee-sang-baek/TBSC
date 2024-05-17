@@ -37,8 +37,11 @@ public class SecurityConfig {
 
                 .authorizeHttpRequests(request -> request
                         .requestMatchers(new AntPathRequestMatcher("/member/**")).permitAll()
-                        // .requestMatchers("/member/myPage").authenticated()
-                        .requestMatchers(new AntPathRequestMatcher("/admin/**")).hasRole("ADMIN")
+                        .requestMatchers(new AntPathRequestMatcher("/**/**/**")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/**/**")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/**")).permitAll()
+                        // .requestMatchers(new AntPathRequestMatcher("/admin/**")).hasRole("ADMIN")
+                        .requestMatchers(new AntPathRequestMatcher("/admin/**")).permitAll()
                         .anyRequest().authenticated())
 
                 .sessionManagement(sm -> sm
@@ -69,7 +72,7 @@ public class SecurityConfig {
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().requestMatchers("/**", "/member/login", "/member/signup", "/member/checkId", "/member/checkEmail", "/member/list", "/login", "/create");
+        return (web) -> web.ignoring().requestMatchers("/**");
     }
 
 

@@ -28,6 +28,7 @@ public class Experiences {
 
     private LocalDate endDate;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "jobConsult_num", referencedColumnName = "num", insertable = false, updatable = false)
     private JobConsult jobConsult;
 }

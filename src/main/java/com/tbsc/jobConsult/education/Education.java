@@ -28,5 +28,6 @@ public class Education {
     private String academicStatus;
 
     @OneToOne
+    @JoinColumn(name = "jobConsult_num", referencedColumnName = "num", insertable = false, updatable = false)
     private JobConsult jobConsult;
 }

@@ -16,12 +16,13 @@ import java.util.List;
 import java.util.Objects;
 
 @RestController
+@RequestMapping("/admin/log")
 public class AccessLogController {
 
     @Autowired
     private AccessLogService accessLogService;
 
-    @PostMapping("/log/add")
+    @PostMapping("/add")
     public void logAccess(HttpServletRequest request) {
         String id = (String) request.getSession().getAttribute("id");
         String path = request.getHeader("Referer");
@@ -39,7 +40,7 @@ public class AccessLogController {
 //        return ResponseEntity.ok(logList);
 //    }
 
-    @GetMapping("/log/list") // 로그 정보 리스트 조회 (어드민전용)
+    @GetMapping("/list") // 로그 정보 리스트 조회 (어드민전용)
     public ResponseEntity<Page<AccessLog>> logList(HttpServletRequest request,
                                                    @RequestParam("page") int page,
                                                    @RequestParam("size") int size,

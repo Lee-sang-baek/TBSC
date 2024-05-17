@@ -31,12 +31,8 @@ public class Rental {
     private String purpose;
     private String prepare;
 
-    @NotNull
-    @Column(name = "member_id")
-    private String memberId;
-
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "member_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "member", referencedColumnName = "id", insertable = false, updatable = false)
     @JsonIgnore
     private Member member;
 

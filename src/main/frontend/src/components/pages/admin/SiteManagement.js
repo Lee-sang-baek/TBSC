@@ -28,17 +28,17 @@ const SiteManagement = () => {
     }, [size, mpage, ppage, bpage]);
 
     const loadList = () => {
-        axios.get(`mainImage/list?page=${mpage}&size=${size}`)
+        axios.get(`/admin/mainImage/list?page=${mpage}&size=${size}`)
         .then((res) => {
             setMainImageList(res.data.content);
             setMPages(res.data.totalPages);
         });
-        axios.get(`banner/list?page=${bpage}&size=${size}`)
+        axios.get(`/admin/banner/list?page=${bpage}&size=${size}`)
         .then((res) => {
             setBannerList(res.data.content);
             setBPages(res.data.totalPages);
         });
-        axios.get(`popup/list?page=${ppage}&size=${size}`)
+        axios.get(`/admin/popup/list?page=${ppage}&size=${size}`)
         .then((res) => {
             setPopupList(res.data.content);
             setPPages(res.data.totalPages);

@@ -29,13 +29,34 @@
     }
 
     .other-box {
-        width: 15%;
+        width: fit-content;
     }
 
     .category-in,
-    .industry-box {
+    .industry-box,
+    .date-box {
         display: flex;
         flex-direction: row;
+        padding: 5px;
+        margin: 5px;
+    }
+
+    .category-in div,
+    .industry-box div,
+    .date-box div {
+        display: flex;
+        flex-direction: row;
+        margin-left: 5px;
+        justify-content: center;
+    }
+
+    .category-in div label,
+    .industry-box div label,
+    .date-box div label {
+        margin: 0;
+        padding: 0;
+        text-wrap: nowrap;
+        justify-content: center;
     }
 
     .category-box,
@@ -69,6 +90,14 @@
         border: 1px solid #ccc;
         border-radius: 4px;
     }
+
+    .other-box input {
+        padding: 0;
+        margin: 0;
+        width: 95%;
+        height: 100%;
+    }
+
 
     .remove-btn {
         padding: 10px 20px;

@@ -1,5 +1,6 @@
 package com.tbsc.tnotice;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tbsc.member.Member;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -24,6 +25,9 @@ public class TNotice {
     @Temporal(TemporalType.TIMESTAMP)
     private Date date = new Date();
 
-    private String id;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "member", referencedColumnName = "id", insertable = false, updatable = false)
+    @JsonIgnore
+    private Member member;
 
 }

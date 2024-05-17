@@ -26,6 +26,8 @@ public class QJobConsult extends EntityPathBase<JobConsult> {
 
     public final ListPath<com.tbsc.jobConsult.certifications.Certifications, com.tbsc.jobConsult.certifications.QCertifications> certifications = this.<com.tbsc.jobConsult.certifications.Certifications, com.tbsc.jobConsult.certifications.QCertifications>createList("certifications", com.tbsc.jobConsult.certifications.Certifications.class, com.tbsc.jobConsult.certifications.QCertifications.class, PathInits.DIRECT2);
 
+    public final DateTimePath<java.time.LocalDateTime> date = createDateTime("date", java.time.LocalDateTime.class);
+
     public final com.tbsc.jobConsult.education.QEducation education;
 
     public final ListPath<com.tbsc.jobConsult.experiences.Experiences, com.tbsc.jobConsult.experiences.QExperiences> experiences = this.<com.tbsc.jobConsult.experiences.Experiences, com.tbsc.jobConsult.experiences.QExperiences>createList("experiences", com.tbsc.jobConsult.experiences.Experiences.class, com.tbsc.jobConsult.experiences.QExperiences.class, PathInits.DIRECT2);
@@ -33,6 +35,8 @@ public class QJobConsult extends EntityPathBase<JobConsult> {
     public final StringPath industry = createString("industry");
 
     public final ListPath<com.tbsc.jobConsult.languages.Languages, com.tbsc.jobConsult.languages.QLanguages> languages = this.<com.tbsc.jobConsult.languages.Languages, com.tbsc.jobConsult.languages.QLanguages>createList("languages", com.tbsc.jobConsult.languages.Languages.class, com.tbsc.jobConsult.languages.QLanguages.class, PathInits.DIRECT2);
+
+    public final com.tbsc.member.QMember member;
 
     public final NumberPath<Long> num = createNumber("num", Long.class);
 
@@ -59,6 +63,7 @@ public class QJobConsult extends EntityPathBase<JobConsult> {
     public QJobConsult(Class<? extends JobConsult> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.education = inits.isInitialized("education") ? new com.tbsc.jobConsult.education.QEducation(forProperty("education"), inits.get("education")) : null;
+        this.member = inits.isInitialized("member") ? new com.tbsc.member.QMember(forProperty("member")) : null;
     }
 
 }

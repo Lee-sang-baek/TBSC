@@ -109,7 +109,7 @@ public class MemberController {
         return ResponseEntity.ok(members);
     }
 
-    @GetMapping("myPage/member/getMember")
+    @GetMapping("/myPage/member/getMember")
     public ResponseEntity<Member> getMember(@RequestParam("id") String id) {
         Member member = memberService.getMember(id);
 

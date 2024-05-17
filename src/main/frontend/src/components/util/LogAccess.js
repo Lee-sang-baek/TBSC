@@ -6,7 +6,7 @@ function LogAccess() {
     const location = useLocation();
 
     useEffect(() => {
-        axios.post("/log/add");
+        axios.post("/admin/log/add");
     }, [location]);
 
     return null;

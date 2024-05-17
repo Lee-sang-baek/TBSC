@@ -24,7 +24,7 @@ public class CenterNews {
     private Date date = new Date();
 
     @ManyToOne
-    @JoinColumn(name = "id", referencedColumnName = "id")
+    @JoinColumn(name = "member", referencedColumnName = "id")
     private Member member;
 
 }

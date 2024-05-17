@@ -5,11 +5,13 @@ import com.tbsc.jobConsult.certifications.Certifications;
 import com.tbsc.jobConsult.education.Education;
 import com.tbsc.jobConsult.experiences.Experiences;
 import com.tbsc.jobConsult.languages.Languages;
+import com.tbsc.member.Member;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -26,7 +28,10 @@ public class JobConsult {
 
     private String industry;
 
+    private LocalDateTime date;
+
     @OneToOne
+    @JoinColumn(name = "education_num", referencedColumnName = "num", insertable = false, updatable = false)
     private Education education;
 
     @OneToMany(mappedBy = "jobConsult", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
@@ -45,9 +50,14 @@ public class JobConsult {
 
     private String selfIntroduction;
 
+    @ManyToOne
+    @JoinColumn(name = "member", referencedColumnName = "id", insertable = false, updatable = false)
+    private Member member;
+
     public void bind(JobConsultDto dto) {
         setCategory(dto.getCategory());
         setIndustry(dto.getIndustry());
+        setDate(dto.getDate());
         setEducation(dto.getEducation());
         setExperiences(dto.getExperiences());
         setCertifications(dto.getCertifications());

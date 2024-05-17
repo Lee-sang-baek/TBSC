@@ -1,8 +1,14 @@
 package com.tbsc.member;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.tbsc.centerNews.CenterNews;
+import com.tbsc.jobConsult.JobConsult;
 import com.tbsc.log.AccessLog;
+import com.tbsc.notice.Notice;
+import com.tbsc.pressrelease.PressRelease;
 import com.tbsc.rental.Rental;
+import com.tbsc.reservation.Reservation;
+import com.tbsc.tnotice.TNotice;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -47,12 +53,37 @@ public class Member {
     private MemberType state;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
-    @JsonIgnore // 이 부분을 추가하여 JSON 직렬화에서 무시하도록 설정.
+    @JsonIgnore
     private List<AccessLog> accessLogs = new ArrayList<>();
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
-    @JsonIgnore // 이 부분을 추가하여 JSON 직렬화에서 무시하도록 설정.
+    @JsonIgnore
     private List<Rental> rentals = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @JsonIgnore
+    private List<JobConsult> jobConsults = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @JsonIgnore
+    private List<Notice> notices = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @JsonIgnore
+    private List<TNotice> tNotices = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @JsonIgnore
+    private List<PressRelease> pressReleases = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @JsonIgnore
+    private List<Reservation> reservations = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @JsonIgnore
+    private List<CenterNews> centerNews = new ArrayList<>();
+
 
     public Member bind(MemberDto memberDto, PasswordEncoder passwordEncoder) {
         this.setId(memberDto.getId());

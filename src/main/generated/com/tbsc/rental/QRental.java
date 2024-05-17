@@ -30,8 +30,6 @@ public class QRental extends EntityPathBase<Rental> {
 
     public final com.tbsc.member.QMember member;
 
-    public final StringPath memberId = createString("memberId");
-
     public final NumberPath<Integer> num = createNumber("num", Integer.class);
 
     public final NumberPath<Integer> person = createNumber("person", Integer.class);

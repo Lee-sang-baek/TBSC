@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
@@ -21,6 +22,8 @@ public class JobConsultDto {
 
     private Education education;
 
+    private LocalDateTime date;
+
     private List<Experiences> experiences;
 
     private List<Certifications> certifications;
@@ -30,4 +33,6 @@ public class JobConsultDto {
     private String other;
 
     private String selfIntroduction;
+
+    private String MemberId;
 }

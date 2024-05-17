@@ -11,11 +11,12 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/admin/mainImage")
 public class MainImageController {
 
     private final MainImageService mainImageService;
 
-    @GetMapping("/admin/mainImage/list")
+    @GetMapping("/list")
     public ResponseEntity<Page<MainImage>> getImageList(@RequestParam("page") int page,
                                                         @RequestParam("size") int size) {
         Pageable pageable = PageRequest.of(page, size);
@@ -23,19 +24,19 @@ public class MainImageController {
         return ResponseEntity.ok(mainImages);
     }
 
-    @PostMapping("/admin/mainImage/add")
+    @PostMapping("/add")
     public ResponseEntity<String> addImage(@RequestBody MainImageDto mainImageDto) {
         mainImageService.insertImage(mainImageDto);
         return ResponseEntity.ok("메인 이미지 추가 완료");
     }
 
-    @GetMapping("/admin/mainImage/remove")
+    @GetMapping("/remove")
     public ResponseEntity<String> removeImage(@RequestParam("num") long num) {
         mainImageService.deleteImage(num);
         return ResponseEntity.ok("메인 이미지 제거 완료");
     }
 
-    @PostMapping("/admin/mainImage/update")
+    @PostMapping("/update")
     public ResponseEntity<String> updateMainImage(@RequestBody MainImageDto mainImageDto) {
         mainImageService.updateMainImage(mainImageDto);
         return ResponseEntity.ok("메인 이미지 수정 완료");

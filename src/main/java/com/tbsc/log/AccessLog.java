@@ -19,6 +19,7 @@ public class AccessLog {
     private Long num;
 
     @ManyToOne
+    @JoinColumn(name = "member", referencedColumnName = "id", insertable = false, updatable = false)
     private Member member;
 
     private String path;

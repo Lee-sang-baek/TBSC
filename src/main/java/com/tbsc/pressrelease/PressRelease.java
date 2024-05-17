@@ -24,8 +24,8 @@ public class PressRelease {
     @Temporal(TemporalType.TIMESTAMP)
     private Date date = new Date();
 
-    @ManyToOne
-    @JoinColumn(name = "member_id", referencedColumnName = "id")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "member", referencedColumnName = "id", insertable = false, updatable = false)
     private Member member;
 
 }

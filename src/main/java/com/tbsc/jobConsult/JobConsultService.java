@@ -8,11 +8,14 @@ import com.tbsc.jobConsult.experiences.Experiences;
 import com.tbsc.jobConsult.experiences.ExperiencesRepository;
 import com.tbsc.jobConsult.languages.Languages;
 import com.tbsc.jobConsult.languages.LanguagesRepository;
+import com.tbsc.member.Member;
+import com.tbsc.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -23,11 +26,15 @@ public class JobConsultService {
     private final ExperiencesRepository experiencesRepository;
     private final LanguagesRepository languagesRepository;
     private final EducationRepository educationRepository;
+    private final MemberRepository memberRepository;
 
     @Transactional
     public void insertJobConsult(JobConsultDto jobConsultDto) {
+        Optional<Member> optionalMember = memberRepository.findById(jobConsultDto.getMemberId());
+
         JobConsult jobConsult = new JobConsult();
         jobConsult.bind(jobConsultDto);
+        optionalMember.ifPresent(jobConsult::setMember);
         jobConsultRepository.save(jobConsult);
 
         Education education = jobConsultDto.getEducation();
@@ -58,5 +65,9 @@ public class JobConsultService {
             });
         }
 
+    }
+
+    public List<JobConsult> selectJobConsult(String memberId) {
+        return jobConsultRepository.findByMemberId(memberId);
     }
 }

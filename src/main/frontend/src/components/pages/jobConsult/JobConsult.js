@@ -3,9 +3,11 @@ import axios from 'axios';
 import './JobConsult.css';
 
 function JobConsult() {
+  const memberId = sessionStorage.getItem("id");
   const [formData, setFormData] = useState({
     category: '',
     industry: '',
+    date: '',
     education: {
       schoolName: '',
       major: '',
@@ -33,6 +35,7 @@ function JobConsult() {
       }],
     other: '',
     selfIntroduction: '',
+    memberId: '',
   });
 
   const [experienceFields, setExperienceFields] = useState({
@@ -57,6 +60,13 @@ function JobConsult() {
   });
 
   const [isOther, setOther] = useState(false);
+
+  useEffect(() => {
+    setFormData({
+        ...formData,
+        memberId: memberId
+    })
+  }, []);
 
   const submitForm = async () => {
     try {
@@ -256,55 +266,68 @@ function JobConsult() {
             <h3>신청 구분</h3>
             <div className='category-in'>
                 <label>구분:</label>
-                <label>
-                    <input type="radio" name="category" value="재직자" checked={formData.category === "재직자"} onChange={handleChange} />
-                    재직자
-                </label>
-                <label>
-                    <input type="radio" name="category" value="구직자" checked={formData.category === "구직자"} onChange={handleChange} />
-                    구직자
-                </label>
+                <div>
+                    <label>
+                        <input type="radio" name="category" value="재직자" checked={formData.category === "재직자"} onChange={handleChange} />
+                        재직자
+                    </label>
+                    <label>
+                        <input type="radio" name="category" value="구직자" checked={formData.category === "구직자"} onChange={handleChange} />
+                        구직자
+                    </label>
+                </div>
             </div>
         
             <div className='industry-box'>
                 <label>희망 업종:</label>
-                <label>
-                    <input type="radio" name="industry" value="여행업" checked={formData.industry === "여행업"} onChange={handleCategoryChange} />
-                    여행업
-                </label>
-                <label>
-                    <input type="radio" name="industry" value="항공업" checked={formData.industry === "항공업"} onChange={handleCategoryChange} />
-                    항공업
-                </label>
-                <label>
-                    <input type="radio" name="industry" value="IT/플랫폼" checked={formData.industry === "IT/플랫폼"} onChange={handleCategoryChange} />
-                    IT/플랫폼
-                </label>
-                <label>
-                    <input type="radio" name="industry" value="창업" checked={formData.industry === "창업"} onChange={handleCategoryChange} />
-                    창업
-                </label>
-                <label>
-                    <input type="radio" name="industry" value="호텔업" checked={formData.industry === "호텔업"} onChange={handleCategoryChange} />
-                    호텔업
-                </label>
-                <label>
-                    <input type="radio" name="industry" value="NICE" checked={formData.industry === "NICE"} onChange={handleCategoryChange} />
-                    NICE
-                </label>
-                <label>
-                    <input type="radio" name="industry" value="공공기관" checked={formData.industry === "공공기관"} onChange={handleCategoryChange} />
-                    공공기관
-                </label>
-                <label>
-                    <input type="radio" name="industry" value="" onChange={handleOtherCategoryChange} />
-                    기타
-                </label>
-                <div className='other-box'>
-                    {isOther && (
-                    <input type="text" name="industry" value={formData.industry} onChange={handleOtherCategoryChange} placeholder="기타 업종 입력" />
-                    )}
+                <div>
+                    <label>
+                        <input type="radio" name="industry" value="여행업" checked={formData.industry === "여행업"} onChange={handleCategoryChange} />
+                        여행업
+                    </label>
+                    <label>
+                        <input type="radio" name="industry" value="항공업" checked={formData.industry === "항공업"} onChange={handleCategoryChange} />
+                        항공업
+                    </label>
+                    <label>
+                        <input type="radio" name="industry" value="IT/플랫폼" checked={formData.industry === "IT/플랫폼"} onChange={handleCategoryChange} />
+                        IT/플랫폼
+                    </label>
+                    <label>
+                        <input type="radio" name="industry" value="창업" checked={formData.industry === "창업"} onChange={handleCategoryChange} />
+                        창업
+                    </label>
+                    <label>
+                        <input type="radio" name="industry" value="호텔업" checked={formData.industry === "호텔업"} onChange={handleCategoryChange} />
+                        호텔업
+                    </label>
+                    <label>
+                        <input type="radio" name="industry" value="NICE" checked={formData.industry === "NICE"} onChange={handleCategoryChange} />
+                        NICE
+                    </label>
+                    <label>
+                        <input type="radio" name="industry" value="공공기관" checked={formData.industry === "공공기관"} onChange={handleCategoryChange} />
+                        공공기관
+                    </label>
+                    <label>
+                        <input type="radio" name="industry" value="" onChange={handleOtherCategoryChange} />
+                        기타
+                    </label>
+                    <div className='other-box'>
+                        {isOther && (
+                            <input type="text" name="industry" value={formData.industry} onChange={handleOtherCategoryChange} placeholder="기타 업종 입력" />
+                        )}
+                    </div>
                 </div>
+            </div>
+
+            <div className='date-box'>
+                <label>
+                    상담일자: 
+                    <div>
+                        <input type='datetime-local' name="date" value={formData.date} onChange={handleChange} ></input>
+                    </div>
+                </label>
             </div>
         </div>
 
