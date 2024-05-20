@@ -25,8 +25,8 @@ public class Notice {
     private String fileUrl;
     private Date date;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "member", referencedColumnName = "id", insertable = false, updatable = false)
+    @ManyToOne
+    @JoinColumn(name = "member", referencedColumnName = "id", updatable = false)
     @JsonIgnore
     private Member member;
 
@@ -34,4 +34,11 @@ public class Notice {
     @Column(columnDefinition = "TEXT")
     private String content;
 
+    public void bind(NoticeDto noticeDto) {
+        setDate(noticeDto.getDate());
+        setContent(noticeDto.getContent());
+        setState(noticeDto.getState());
+        setFileUrl(noticeDto.getFileUrl());
+        setTitle(noticeDto.getTitle());
+    }
 }

@@ -31,10 +31,15 @@ public class NoticeController {
 
     // 공지사항 생성
     @PostMapping("/create")
-    public ResponseEntity<Notice> createNotice(@RequestBody Notice notice) {
-        System.out.println("Received file URL: " + notice.getFileUrl());
-        Notice createdNotice = noticeService.createNotice(notice);
-        return ResponseEntity.ok().body(createdNotice);
+    public ResponseEntity<Notice> createNotice(@RequestBody NoticeDto noticeDto) {
+        System.out.println("Received file URL: " + noticeDto.getFileUrl());
+        System.out.println(noticeDto.getId());
+        System.out.println(noticeDto.getTitle());
+        System.out.println(noticeDto.getState());
+        System.out.println(noticeDto.getContent());
+        System.out.println(noticeDto.getDate());
+
+        return noticeService.createNotice(noticeDto);
     }
 
     // 공지사항 조회

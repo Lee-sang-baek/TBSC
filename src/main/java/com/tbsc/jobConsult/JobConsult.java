@@ -51,7 +51,7 @@ public class JobConsult {
     private String selfIntroduction;
 
     @ManyToOne
-    @JoinColumn(name = "member", referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "member", referencedColumnName = "id", updatable = false)
     private Member member;
 
     public void bind(JobConsultDto dto) {

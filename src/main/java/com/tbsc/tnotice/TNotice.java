@@ -25,8 +25,8 @@ public class TNotice {
     @Temporal(TemporalType.TIMESTAMP)
     private Date date = new Date();
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "member", referencedColumnName = "id", insertable = false, updatable = false)
+    @ManyToOne
+    @JoinColumn(name = "member", referencedColumnName = "id", updatable = false)
     @JsonIgnore
     private Member member;
 
