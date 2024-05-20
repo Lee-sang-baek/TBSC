@@ -2,6 +2,7 @@ package com.tbsc.member;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tbsc.centerNews.CenterNews;
+import com.tbsc.consultant.Consultant;
 import com.tbsc.jobConsult.JobConsult;
 import com.tbsc.log.AccessLog;
 import com.tbsc.notice.Notice;
@@ -83,6 +84,10 @@ public class Member {
     @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     @JsonIgnore
     private List<CenterNews> centerNews = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<Consultant> consultants = new ArrayList<>();
 
 
     public Member bind(MemberDto memberDto, PasswordEncoder passwordEncoder) {

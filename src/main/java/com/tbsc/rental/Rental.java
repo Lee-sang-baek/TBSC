@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
@@ -25,9 +26,9 @@ public class Rental {
     private Integer person;
     private String place;
     @Column(columnDefinition = "TIMESTAMP(0)")
-    private Date startDate;
+    private LocalDateTime startDate;
     @Column(columnDefinition = "TIMESTAMP(0)")
-    private Date endDate;
+    private LocalDateTime endDate;
     private String purpose;
     private String prepare;
 

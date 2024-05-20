@@ -1,9 +1,12 @@
 package com.tbsc.consultant;
 
+import com.tbsc.member.Member;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
@@ -15,20 +18,39 @@ public class Consultant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer num;
-    private String id;
+
+    @ManyToOne
+    @JoinColumn(name = "member", referencedColumnName = "id")
+    private Member member;
+
     private String compName;
     private String gender;
     private String ownerShip;
     private Integer employees;
     private String type;
-    private Date startDate;
+    private LocalDate startDate;
     private String category;
     private Integer sales;
-    private Date appDate;
+    private LocalDateTime appDate;
     private String management;
     private String difficulties;
     private String support;
     private String file;
 
-    // Getter and Setter methods
+    public void bind(ConsultantDto dto) {
+        setCompName(dto.getCompName());
+        setGender(dto.getGender());
+        setOwnerShip(dto.getOwnerShip());
+        setEmployees(dto.getEmployees());
+        setType(dto.getType());
+        setStartDate(dto.getStartDate());
+        setCategory(dto.getCategory());
+        setSales(dto.getSales());
+        setAppDate(dto.getAppDate());
+        setManagement(dto.getManagement());
+        setDifficulties(dto.getDifficulties());
+        setSupport(dto.getSupport());
+        setFile(dto.getFile());
+    }
+
 }

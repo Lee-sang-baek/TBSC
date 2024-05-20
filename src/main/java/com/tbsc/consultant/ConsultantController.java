@@ -22,9 +22,8 @@ public class ConsultantController {
     private ConsultantService consultantService;
 
     @PostMapping("/save")
-    public ResponseEntity<Consultant> saveConsultant(@RequestBody Consultant consultant) {
-        Consultant savedConsultant = consultantService.saveConsultant(consultant);
-        return ResponseEntity.ok(savedConsultant);
+    public ResponseEntity<Consultant> saveConsultant(@RequestBody ConsultantDto consultantDto) {
+        return consultantService.saveConsultant(consultantDto);
     }
 
     @PostMapping("/upload")

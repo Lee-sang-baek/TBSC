@@ -24,7 +24,7 @@ public class QTNotice extends EntityPathBase<TNotice> {
 
     public final StringPath content = createString("content");
 
-    public final DateTimePath<java.util.Date> date = createDateTime("date", java.util.Date.class);
+    public final DateTimePath<java.time.LocalDateTime> date = createDateTime("date", java.time.LocalDateTime.class);
 
     public final StringPath image = createString("image");
 

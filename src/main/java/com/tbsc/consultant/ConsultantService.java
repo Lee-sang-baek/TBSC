@@ -1,17 +1,33 @@
 package com.tbsc.consultant;// File: ConsultantService.java
 
+import com.tbsc.member.Member;
+import com.tbsc.member.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import com.tbsc.consultant.Consultant;
 import com.tbsc.consultant.ConsultantRepository;
 
+import java.util.Optional;
+
 @Service
+@RequiredArgsConstructor
 public class ConsultantService {
 
-    @Autowired
-    private ConsultantRepository consultantRepository;
+    private final ConsultantRepository consultantRepository;
+    private final MemberRepository memberRepository;
 
-    public Consultant saveConsultant(Consultant consultant) {
-        return consultantRepository.save(consultant);
+    public ResponseEntity<Consultant> saveConsultant(ConsultantDto consultantDto) {
+        Optional<Member> optionalMember = memberRepository.findById(consultantDto.getId());
+        if (optionalMember.isPresent()) {
+            Consultant consultant = new Consultant();
+            consultant.bind(consultantDto);
+            consultant.setMember(optionalMember.get());
+            consultantRepository.save(consultant);
+            return ResponseEntity.ok(consultant);
+        }
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 }

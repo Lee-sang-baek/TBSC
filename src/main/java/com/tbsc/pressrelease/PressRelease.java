@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
@@ -22,7 +23,7 @@ public class PressRelease {
     private String fileUrl;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Date date = new Date();
+    private LocalDateTime date = LocalDateTime.now();
 
     @ManyToOne
     @JoinColumn(name = "member", referencedColumnName = "id", updatable = false)

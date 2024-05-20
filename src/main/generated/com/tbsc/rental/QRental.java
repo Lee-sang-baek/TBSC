@@ -24,7 +24,7 @@ public class QRental extends EntityPathBase<Rental> {
 
     public final StringPath compName = createString("compName");
 
-    public final DateTimePath<java.util.Date> endDate = createDateTime("endDate", java.util.Date.class);
+    public final DateTimePath<java.time.LocalDateTime> endDate = createDateTime("endDate", java.time.LocalDateTime.class);
 
     public final StringPath gender = createString("gender");
 
@@ -40,7 +40,7 @@ public class QRental extends EntityPathBase<Rental> {
 
     public final StringPath purpose = createString("purpose");
 
-    public final DateTimePath<java.util.Date> startDate = createDateTime("startDate", java.util.Date.class);
+    public final DateTimePath<java.time.LocalDateTime> startDate = createDateTime("startDate", java.time.LocalDateTime.class);
 
     public QRental(String variable) {
         this(Rental.class, forVariable(variable), INITS);

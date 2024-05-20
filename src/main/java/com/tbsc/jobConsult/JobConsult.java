@@ -31,7 +31,7 @@ public class JobConsult {
     private LocalDateTime date;
 
     @OneToOne
-    @JoinColumn(name = "education_num", referencedColumnName = "num", insertable = false, updatable = false)
+    @JoinColumn(name = "education_num", referencedColumnName = "num", updatable = false)
     private Education education;
 
     @OneToMany(mappedBy = "jobConsult", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)

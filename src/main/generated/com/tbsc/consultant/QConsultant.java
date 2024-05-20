@@ -7,6 +7,7 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -17,9 +18,11 @@ public class QConsultant extends EntityPathBase<Consultant> {
 
     private static final long serialVersionUID = -95131701L;
 
+    private static final PathInits INITS = PathInits.DIRECT2;
+
     public static final QConsultant consultant = new QConsultant("consultant");
 
-    public final DateTimePath<java.util.Date> appDate = createDateTime("appDate", java.util.Date.class);
+    public final DateTimePath<java.time.LocalDateTime> appDate = createDateTime("appDate", java.time.LocalDateTime.class);
 
     public final StringPath category = createString("category");
 
@@ -33,9 +36,9 @@ public class QConsultant extends EntityPathBase<Consultant> {
 
     public final StringPath gender = createString("gender");
 
-    public final StringPath id = createString("id");
-
     public final StringPath management = createString("management");
+
+    public final com.tbsc.member.QMember member;
 
     public final NumberPath<Integer> num = createNumber("num", Integer.class);
 
@@ -43,22 +46,31 @@ public class QConsultant extends EntityPathBase<Consultant> {
 
     public final NumberPath<Integer> sales = createNumber("sales", Integer.class);
 
-    public final DateTimePath<java.util.Date> startDate = createDateTime("startDate", java.util.Date.class);
+    public final DatePath<java.time.LocalDate> startDate = createDate("startDate", java.time.LocalDate.class);
 
     public final StringPath support = createString("support");
 
     public final StringPath type = createString("type");
 
     public QConsultant(String variable) {
-        super(Consultant.class, forVariable(variable));
+        this(Consultant.class, forVariable(variable), INITS);
     }
 
     public QConsultant(Path<? extends Consultant> path) {
-        super(path.getType(), path.getMetadata());
+        this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
     }
 
     public QConsultant(PathMetadata metadata) {
-        super(Consultant.class, metadata);
+        this(metadata, PathInits.getFor(metadata, INITS));
+    }
+
+    public QConsultant(PathMetadata metadata, PathInits inits) {
+        this(Consultant.class, metadata, inits);
+    }
+
+    public QConsultant(Class<? extends Consultant> type, PathMetadata metadata, PathInits inits) {
+        super(type, metadata, inits);
+        this.member = inits.isInitialized("member") ? new com.tbsc.member.QMember(forProperty("member")) : null;
     }
 
 }
