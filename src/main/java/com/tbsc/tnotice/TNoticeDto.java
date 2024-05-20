@@ -12,7 +12,6 @@ public class TNoticeDto {
     private String title;
     private String state;
     private String image;
-    private Date date;
     private String id;
     private String content;
 }

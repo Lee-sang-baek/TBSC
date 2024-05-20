@@ -33,6 +33,5 @@ public class TNotice {
         setTitle(tNoticeDto.getTitle());
         setContent(tNoticeDto.getContent());
         setImage(tNoticeDto.getImage());
-        setDate(tNoticeDto.getDate());
     }
 }
