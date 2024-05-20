@@ -7,6 +7,8 @@ import com.tbsc.notice.NoticeService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -28,7 +30,7 @@ public class NoticeServiceTest {
             notice.setView(0);
             notice.setFileUrl("sample-file-" + i + ".txt");
             //notice.setImages(List.of("image1-" + i + ".jpg", "image2-" + i + ".jpg"));
-            notice.setDate(new Date());
+            notice.setDate(LocalDateTime.now());
             Member member = new Member();
             member.setId("admin");
             notice.setMember(member);
