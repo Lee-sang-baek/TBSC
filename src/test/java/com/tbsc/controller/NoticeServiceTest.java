@@ -1,6 +1,8 @@
 package com.tbsc.controller;
 
+import com.tbsc.member.Member;
 import com.tbsc.notice.Notice;
+import com.tbsc.notice.NoticeRepository;
 import com.tbsc.notice.NoticeService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,7 @@ import java.util.List;
 public class NoticeServiceTest {
 
     @Autowired
-    private NoticeService noticeService;
+    private NoticeRepository noticeRepository;
 
     @Test
     public void createSampleNotices() {
@@ -27,12 +29,14 @@ public class NoticeServiceTest {
             notice.setFileUrl("sample-file-" + i + ".txt");
             //notice.setImages(List.of("image1-" + i + ".jpg", "image2-" + i + ".jpg"));
             notice.setDate(new Date());
-            notice.setId("admin" + i);
+            Member member = new Member();
+            member.setId("admin");
+            notice.setMember(member);
             notice.setContent("글테스트 " + i);
             notices.add(notice);
         }
 
-        noticeService.getNoticeRepository().saveAll(notices);
+        noticeRepository.saveAll(notices);
         System.out.println("100 Sample notices have been inserted.");
     }
 }
