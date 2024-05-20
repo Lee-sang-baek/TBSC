@@ -47,7 +47,7 @@ const TNoticeDetail = () => {
                     <h1>{notice.title}</h1>
                 </div>
                 <div className="detail-meta">
-                    <p><strong>작성자:</strong> {notice.id}</p>
+                    <p><strong>작성자:</strong> {notice.member.id}</p>
                     <p><strong>조회수:</strong> {notice.view}</p>
                     <p>작성일: {new Date(notice.date).toLocaleString()}</p>
                 </div>

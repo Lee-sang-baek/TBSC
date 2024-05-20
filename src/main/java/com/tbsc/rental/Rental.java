@@ -33,7 +33,6 @@ public class Rental {
 
     @ManyToOne
     @JoinColumn(name = "member", referencedColumnName = "id", updatable = false)
-    @JsonIgnore
     private Member member;
 
     public Rental() {}

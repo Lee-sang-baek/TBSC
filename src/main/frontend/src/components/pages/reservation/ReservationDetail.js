@@ -47,7 +47,7 @@ const ReservationDetail = () => {
                     <h1>{reservation.title}</h1>
                 </div>
                 <div className="detail-meta">
-                    <p><strong>작성자:</strong> {reservation.member?.id}</p> {/* Adjusted here */}
+                    <p><strong>작성자:</strong> {reservation.member.id}</p> {/* Adjusted here */}
                     <p><strong>조회수:</strong> {reservation.view}</p>
                     <p>작성일: {new Date(reservation.date).toLocaleString()}</p>
                 </div>

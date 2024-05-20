@@ -27,7 +27,6 @@ public class Notice {
 
     @ManyToOne
     @JoinColumn(name = "member", referencedColumnName = "id", updatable = false)
-    @JsonIgnore
     private Member member;
 
     @Lob

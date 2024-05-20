@@ -61,7 +61,7 @@ function NoticeDetail() {
             <div className="notice-detail">
                 <h1 className="title">{notice.title}</h1>
                 <div className="meta">
-                    <p>작성자: {notice.id}</p>
+                    <p>작성자: {notice.member.id}</p>
                     <p>작성일: {new Date(notice.date).toLocaleString()}</p>
                     <p>조회수: {notice.view}</p>
                 </div>

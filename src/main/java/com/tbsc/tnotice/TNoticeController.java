@@ -2,6 +2,7 @@ package com.tbsc.tnotice;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -37,12 +38,12 @@ public class TNoticeController {
     }
 
     @PostMapping("/create")
-    public TNotice createNotice(@RequestPart("notice") TNotice tNotice, @RequestPart("file") MultipartFile file) throws IOException {
+    public ResponseEntity<TNotice> createNotice(@RequestPart("notice") TNoticeDto tNoticeDto, @RequestPart("file") MultipartFile file) throws IOException {
         String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
         Path filePath = Paths.get(uploadDir, fileName);
         Files.write(filePath, file.getBytes());
-        tNotice.setImage(fileName);
-        return tNoticeService.saveNotice(tNotice);
+        tNoticeDto.setImage(fileName);
+        return tNoticeService.saveNotice(tNoticeDto);
     }
 
     @PutMapping("/update/{num}")

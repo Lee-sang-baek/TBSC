@@ -35,15 +35,12 @@ public class JobConsult {
     private Education education;
 
     @OneToMany(mappedBy = "jobConsult", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
-    @JsonIgnore
     private List<Experiences> experiences;
 
     @OneToMany(mappedBy = "jobConsult", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
-    @JsonIgnore
     private List<Certifications> certifications;
 
     @OneToMany(mappedBy = "jobConsult", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
-    @JsonIgnore
     private List<Languages> languages;
 
     private String other;

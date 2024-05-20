@@ -27,7 +27,12 @@ public class TNotice {
 
     @ManyToOne
     @JoinColumn(name = "member", referencedColumnName = "id", updatable = false)
-    @JsonIgnore
     private Member member;
 
+    public void bind(TNoticeDto tNoticeDto) {
+        setTitle(tNoticeDto.getTitle());
+        setContent(tNoticeDto.getContent());
+        setImage(tNoticeDto.getImage());
+        setDate(tNoticeDto.getDate());
+    }
 }
