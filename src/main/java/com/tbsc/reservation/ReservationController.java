@@ -2,6 +2,7 @@ package com.tbsc.reservation;
 
 import com.tbsc.member.Member;
 import com.tbsc.member.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
@@ -15,13 +16,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/reservation")
+@RequiredArgsConstructor
 public class ReservationController {
 
-    @Autowired
-    private ReservationService reservationService;
-
-    @Autowired
-    private MemberRepository memberRepository;
+    private final ReservationService reservationService;
 
     @Value("${file.upload-dir}")
     private String uploadDir;
@@ -45,9 +43,6 @@ public class ReservationController {
     public Reservation createReservation(@RequestPart("reservation") Reservation reservation,
                                          @RequestPart(value = "file", required = false) MultipartFile file,
                                          @RequestPart(value = "attachment", required = false) MultipartFile attachment) throws IOException {
-        // Member 설정
-        Member member = memberRepository.findById(reservation.getMember().getId()).orElse(null);
-        reservation.setMember(member);
 
         if (file != null && !file.isEmpty()) {
             String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
@@ -77,10 +72,6 @@ public class ReservationController {
         }
         existingReservation.setTitle(reservation.getTitle());
         existingReservation.setContent(reservation.getContent());
-
-        // Member 설정
-        Member member = memberRepository.findById(reservation.getMember().getId()).orElse(null);
-        existingReservation.setMember(member);
 
         if (file != null && !file.isEmpty()) {
             String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();

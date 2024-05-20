@@ -1,6 +1,6 @@
 package com.tbsc.consultant;
 
-import com.tbsc.consultant.ConsultantService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -10,16 +10,15 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 
-@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/consultants")
+@RequiredArgsConstructor
 public class ConsultantController {
 
     @Value("${file.upload-dir}")
     private String uploadDir;
 
-    @Autowired
-    private ConsultantService consultantService;
+    private final ConsultantService consultantService;
 
     @PostMapping("/save")
     public ResponseEntity<Consultant> saveConsultant(@RequestBody ConsultantDto consultantDto) {

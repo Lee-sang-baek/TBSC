@@ -1,5 +1,8 @@
 package com.tbsc.reservation;
 
+import com.tbsc.member.Member;
+import com.tbsc.member.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -7,10 +10,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class ReservationService {
 
-    @Autowired
-    private ReservationRepository reservationRepository;
+    private final ReservationRepository reservationRepository;
+    private final MemberRepository memberRepository;
 
     public List<Reservation> getAllReservations() {
         return reservationRepository.findAll();
@@ -21,6 +25,8 @@ public class ReservationService {
     }
 
     public Reservation saveReservation(Reservation reservation) {
+        Member member = memberRepository.findById(reservation.getMember().getId()).orElse(null);
+        reservation.setMember(member);
         return reservationRepository.save(reservation);
     }
 

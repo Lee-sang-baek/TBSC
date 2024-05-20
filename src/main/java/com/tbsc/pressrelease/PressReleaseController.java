@@ -2,6 +2,7 @@ package com.tbsc.pressrelease;
 
 import com.tbsc.member.Member;
 import com.tbsc.member.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
@@ -15,13 +16,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/pressrelease")
+@RequiredArgsConstructor
 public class PressReleaseController {
 
-    @Autowired
-    private PressReleaseService pressReleaseService;
-
-    @Autowired
-    private MemberRepository memberRepository;
+    private final PressReleaseService pressReleaseService;
 
     @Value("${file.upload-dir}")
     private String uploadDir;
@@ -45,8 +43,6 @@ public class PressReleaseController {
     public PressRelease createPressRelease(@RequestPart("pressRelease") PressRelease pressRelease,
                                            @RequestPart(value = "file", required = false) MultipartFile file,
                                            @RequestPart(value = "attachment", required = false) MultipartFile attachment) throws IOException {
-        Member member = memberRepository.findById(pressRelease.getMember().getId()).orElse(null);
-        pressRelease.setMember(member);
 
         if (file != null && !file.isEmpty()) {
             String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
@@ -76,10 +72,6 @@ public class PressReleaseController {
         }
         existingPressRelease.setTitle(pressRelease.getTitle());
         existingPressRelease.setContent(pressRelease.getContent());
-
-        // Member 설정
-        Member member = memberRepository.findById(pressRelease.getMember().getId()).orElse(null);
-        existingPressRelease.setMember(member);
 
         if (file != null && !file.isEmpty()) {
             String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();

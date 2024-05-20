@@ -1,5 +1,6 @@
 package com.tbsc.sms;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,13 +13,12 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/sms")
+@RequiredArgsConstructor
 public class SmsController {
 
-    @Autowired
-    private SmsUtil smsUtil;
+    private final SmsUtil smsUtil;
 
-    @Autowired
-    private VerificationStorage verificationStorage;
+    private final VerificationStorage verificationStorage;
 
     @PostMapping("/send")
     public ResponseEntity<?> sendSms(@RequestBody Map<String, String> request) {

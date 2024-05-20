@@ -1,5 +1,6 @@
 package com.tbsc.tnotice;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +15,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/tnotice")
+@RequiredArgsConstructor
 public class TNoticeController {
 
-    @Autowired
-    private TNoticeService tNoticeService;
+    private final TNoticeService tNoticeService;
 
     @Value("${file.upload-dir}")
     private String uploadDir;

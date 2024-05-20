@@ -1,6 +1,7 @@
 package com.tbsc.notice;
 
 import com.tbsc.member.Member;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -15,10 +16,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/notices")
+@RequiredArgsConstructor
 public class NoticeController {
 
-    @Autowired
-    private NoticeService noticeService;
+    private final NoticeService noticeService;
 
     @Value("${file.upload-dir}")
     private String uploadDir;

@@ -1,5 +1,6 @@
 package com.tbsc.email;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,10 +10,10 @@ import java.util.Random;
 
 @RestController
 @RequestMapping("/auth")
+@RequiredArgsConstructor
 public class AuthController {
 
-    @Autowired
-    private EmailService emailService;
+    private final EmailService emailService;
 
     private Map<String, String> codeStorage = new HashMap<>();
 

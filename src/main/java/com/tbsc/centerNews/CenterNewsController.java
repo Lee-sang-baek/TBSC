@@ -4,6 +4,7 @@ import com.tbsc.centerNews.CenterNews;
 import com.tbsc.centerNews.CenterNewsService;
 import com.tbsc.member.Member;
 import com.tbsc.member.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
@@ -17,13 +18,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/centernews")
+@RequiredArgsConstructor
 public class CenterNewsController {
 
-    @Autowired
-    private CenterNewsService centerNewsService;
-
-    @Autowired
-    private MemberRepository memberRepository;
+    private final CenterNewsService centerNewsService;
 
     @Value("${file.upload-dir}")
     private String uploadDir;
@@ -47,8 +45,6 @@ public class CenterNewsController {
     public CenterNews createCenterNews(@RequestPart("centerNews") CenterNews centerNews,
                                        @RequestPart(value = "file", required = false) MultipartFile file,
                                        @RequestPart(value = "attachment", required = false) MultipartFile attachment) throws IOException {
-        Member member = memberRepository.findById(centerNews.getMember().getId()).orElse(null);
-        centerNews.setMember(member);
 
         if (file != null && !file.isEmpty()) {
             String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
@@ -78,9 +74,6 @@ public class CenterNewsController {
         }
         existingCenterNews.setTitle(centerNews.getTitle());
         existingCenterNews.setContent(centerNews.getContent());
-
-        Member member = memberRepository.findById(centerNews.getMember().getId()).orElse(null);
-        existingCenterNews.setMember(member);
 
         if (file != null && !file.isEmpty()) {
             String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();

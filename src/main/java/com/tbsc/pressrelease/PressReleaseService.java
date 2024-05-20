@@ -1,15 +1,19 @@
 package com.tbsc.pressrelease;
 
+import com.tbsc.member.Member;
+import com.tbsc.member.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class PressReleaseService {
 
-    @Autowired
-    private PressReleaseRepository pressReleaseRepository;
+    private final PressReleaseRepository pressReleaseRepository;
+    private final MemberRepository memberRepository;
 
     public List<PressRelease> getAllPressReleases() {
         return pressReleaseRepository.findAll();
@@ -20,6 +24,8 @@ public class PressReleaseService {
     }
 
     public PressRelease savePressRelease(PressRelease pressRelease) {
+        Member member = memberRepository.findById(pressRelease.getMember().getId()).orElse(null);
+        pressRelease.setMember(member);
         return pressReleaseRepository.save(pressRelease);
     }
 
