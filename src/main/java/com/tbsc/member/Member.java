@@ -34,6 +34,9 @@ public class Member {
     private String address;
 
     @Column(nullable = false)
+    private String detailAddress;
+
+    @Column(nullable = false)
     private String name;
 
     @Column(nullable = false)
@@ -99,6 +102,7 @@ public class Member {
         this.setRepresentative(memberDto.getRepresentative());
         this.setCompAddress(memberDto.getCompAddress());
         this.setAddress(memberDto.getAddress());
+        this.setDetailAddress(memberDto.getDetailAddress());
         this.setBirth(memberDto.getBirth());
         this.setEmail(memberDto.getEmail());
         this.setPhoneNum(memberDto.getPhoneNum());

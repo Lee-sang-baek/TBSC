@@ -36,6 +36,8 @@ public class QMember extends EntityPathBase<Member> {
 
     public final ListPath<com.tbsc.consultant.Consultant, com.tbsc.consultant.QConsultant> consultants = this.<com.tbsc.consultant.Consultant, com.tbsc.consultant.QConsultant>createList("consultants", com.tbsc.consultant.Consultant.class, com.tbsc.consultant.QConsultant.class, PathInits.DIRECT2);
 
+    public final StringPath detailAddress = createString("detailAddress");
+
     public final StringPath email = createString("email");
 
     public final StringPath id = createString("id");

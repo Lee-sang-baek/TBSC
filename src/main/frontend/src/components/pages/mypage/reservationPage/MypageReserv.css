@@ -1,0 +1,52 @@
+.outter {
+    display: flex;
+    flex-direction: row;
+}
+
+.ReservDetails-compo {
+    /*padding:0 100px;*/
+    width:100%;
+
+    .pageInfo {
+        padding: 1% 0;
+    }
+
+    .pageTitle {
+        text-align: center;
+    }
+
+    .reservImg {
+        width: fit-content;
+        max-width: 150px;
+    }
+
+    .reservContainer {
+        background-color: #a3deef;
+        width: 100%;
+        border-radius: 15px;
+
+        div {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        p {
+            padding: 0 5px;
+        }
+
+        .detailHeader {
+            flex-direction: column;
+        }
+
+        .detailContent {
+            .true {
+                color: #054BFF;
+                font-weight: bold;
+                font-size: large;
+            }
+        }
+    }
+
+}
+

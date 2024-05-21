@@ -12,6 +12,7 @@ const SignUp = ({isComp}) => {
             name: "",
             birth: "",
             address: "",
+            detailAddress: "",
             email: "",
             phoneNum: "",
             compName: "",
@@ -28,6 +29,7 @@ const SignUp = ({isComp}) => {
             name: "",
             birth: "",
             address: "",
+            detailAddress: "",
             email: "",
             phoneNum: "",
             verificationCode: "",
@@ -149,16 +151,21 @@ const SignUp = ({isComp}) => {
     const formSubmitHandler = () => {
 
         const userData = {
-            address: `${address} ${detailedAddress}`,
+            address: `${address}`,
+            detailAddress: `${detailedAddress}`,
             zonecode: zonecode,
         };
 
-        setFormData({...formData, address: userData.address})
+        setFormData({...formData, address: userData.address, detailAddress: userData.detailAddress})
     };
 
     useEffect(() => {
         formSubmitHandler();
     }, [address, detailedAddress]);
+
+    // useEffect(() => {   //formData의 값이 변경 될때마다 콘솔 띄움
+    //     console.log(formData)
+    // }, [formData])
 
     // 여기서부터 이메일
     const [code, setCode] = useState('');
