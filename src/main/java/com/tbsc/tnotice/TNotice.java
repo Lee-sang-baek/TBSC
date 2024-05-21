@@ -25,6 +25,7 @@ public class TNotice {
     @Temporal(TemporalType.TIMESTAMP)
     private Date date = new Date();
 
+
     @ManyToOne
     @JoinColumn(name = "member", referencedColumnName = "id", updatable = false)
     private Member member;
@@ -33,6 +34,5 @@ public class TNotice {
         setTitle(tNoticeDto.getTitle());
         setContent(tNoticeDto.getContent());
         setImage(tNoticeDto.getImage());
-        setDate(tNoticeDto.getDate());
     }
 }

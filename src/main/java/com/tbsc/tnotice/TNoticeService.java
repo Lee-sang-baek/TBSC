@@ -15,6 +15,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class TNoticeService {
 
+
     private final TNoticeRepository tNoticeRepository;
     private final MemberRepository memberRepository;
 
