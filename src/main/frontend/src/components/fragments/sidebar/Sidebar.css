@@ -1,8 +1,8 @@
 .Sidebar-compo {
-    margin-left: 35px;
-    margin-top: 50px;
-    width: 240px;
-    height: 570px;
+    margin-left: 50px;
+    margin-top: 100px;
+    min-width: 250px;
+    height: fit-content;
     background-color: #ffffff; /* 흰색 배경으로 변경 */
     color: #333; /* 텍스트 색상을 짙은 회색으로 */
     border-radius: 15px; /* 전체 컴포넌트의 모서리를 둥글게 */
@@ -47,13 +47,7 @@
     color: #ee923d; /* 링크 텍스트 색상 변경 */
 }
 
-.Sidebar-compo .list ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.Sidebar-compo .list ul li {
+.Sidebar-compo .list div {
     padding: 15px;
     cursor: pointer;
     text-align: center;
@@ -65,19 +59,19 @@
     border-radius: 8px; /* 각 항목의 모서리를 둥글게 */
 }
 
-.Sidebar-compo .list ul li a {
+.Sidebar-compo .list a {
     text-decoration: none;
     color: #333;
     display: block; /* 링크 전체가 클릭 가능하도록 */
     font-weight: bold; /* 링크 텍스트를 두껍게 */
 }
 
-.Sidebar-compo .list ul li:hover {
+.Sidebar-compo .list div:hover {
     background-color: #ee923d; /* 마우스를 대면 배경색 변경 */
     color: #fff; /* 텍스트 색상 변경 */
     transform: translateY(-2px); /* 살짝 위로 올라가는 효과 */
 }
 
-.Sidebar-compo .list ul li:hover a {
+.Sidebar-compo .list div:hover {
     color: #fff; /* 링크 텍스트 색상도 변경 */
 }

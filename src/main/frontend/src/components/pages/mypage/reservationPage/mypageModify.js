@@ -221,6 +221,7 @@ const ModiInfo = (props) => {
     }, [password, passwordCheck]);
 
     return (
+        <div className="mypageModify-compo">
         <form>
             <h1 className="pageTitle">개인 정보 수정</h1>
 
@@ -259,6 +260,7 @@ const ModiInfo = (props) => {
             </div>
 
         </form>
+        </div>
     );
 };
 

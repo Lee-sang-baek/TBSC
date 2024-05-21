@@ -1,25 +1,18 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import axios from "axios";
 
 const AdminPage = () => {
+  const create = () => {
+    axios.get("/create")
+        .then(response => {
+            alert(response.data);
+        })
+  }
+
   return (
       <div className="AdminPage-compo">
-        <nav>
-          <ul>
-            <li>
-              <Link to="/admin/member-list">회원 목록</Link>
-            </li>
-            <li>
-              <Link to="/admin/site-management">사이트 관리</Link>
-            </li>
-            <li>
-              <Link to="/admin/reservation-confirmation">예약 신청 확인</Link>
-            </li>
-            <li>
-              <Link to="/admin/access-log">접속 로그 확인</Link>
-            </li>
-          </ul>
-        </nav>
+        <a href="#" onClick={create}>어드민 생성</a>
       </div>
   );
 };

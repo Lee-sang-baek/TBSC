@@ -1,7 +1,4 @@
-.outter {
-    display: flex;
-    flex-direction: column;
-}
+
 .Banner-compo .slider-container {
     width: 90%; /* 슬라이더 컨테이너의 너비 */
     margin: auto; /* 가운데 정렬을 위한 마진 */

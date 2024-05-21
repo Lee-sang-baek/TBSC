@@ -1,10 +1,9 @@
-.outter {
-    display: flex;
-    flex-direction: row;
-}
+
 .ModiCorp-compo{
-    padding:0 100px;
-    width:100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 3% 5%;
 }
 
 .ModiCorp-compo .pageTitle {

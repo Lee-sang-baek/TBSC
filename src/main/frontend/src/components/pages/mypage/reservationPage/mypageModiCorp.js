@@ -6,8 +6,6 @@ import Sidebar from "../../../fragments/sidebar/Sidebar";
 const ModiCorp = (props) => {
 
     return (
-        <div className="outter">
-            <Sidebar menuType="type1" />
             <form className="ModiCorp-compo">
                 <h1 className="pageTitle">등록 기업정보</h1>
 
@@ -38,7 +36,6 @@ const ModiCorp = (props) => {
                     </div>
                 </div>
             </form>
-        </div>
     );
 };
 

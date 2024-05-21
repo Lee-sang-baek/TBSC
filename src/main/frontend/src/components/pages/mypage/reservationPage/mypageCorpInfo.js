@@ -6,8 +6,6 @@ import Sidebar from "../../../fragments/sidebar/Sidebar";
 const CorpInfo = (props) => {
 
     return (
-        <div className="outter">
-            <Sidebar />
             <form className="CorpInfo-compo">
                 <h1 className="pageTitle">등록 기업정보</h1>
 
@@ -46,7 +44,6 @@ const CorpInfo = (props) => {
                     </div>
                 </div>
             </form>
-        </div>
     );
 };
 

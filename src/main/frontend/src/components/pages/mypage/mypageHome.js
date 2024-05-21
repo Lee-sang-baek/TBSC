@@ -28,7 +28,8 @@ const MyHome = () => {
     }, [])
 
     return (
-        <form>
+        <div className="MyHome-compo">
+            <h2>마이 페이지</h2>
             <div className="container">
                 <h3 className="profile">
                     <img className="profileImg" src={userProfile} alt="profile"/>
@@ -84,7 +85,7 @@ const MyHome = () => {
                     </Link>
                 </div>
             </div>
-        </form>
+        </div>
     );
 };
 

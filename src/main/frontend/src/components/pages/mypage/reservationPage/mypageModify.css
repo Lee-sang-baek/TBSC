@@ -1,83 +1,92 @@
-.pageTitle {
-    text-align: center;
-}
-
-.modiInfo {
-    background-color: #a3deef;
-    width: 50%;
-    border-radius: 15px;
-}
-
-.modiInfo .modiInfoHeader {
+.mypageModify-compo {
     display: flex;
     flex-direction: column;
-    align-items: center;
-}
-
-/*.modiInfoHeader > div {*/
-/*    width: 50%;*/
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*    background-color: white;*/
-/*    border-radius: 15px;*/
-/*}*/
-
-.pageInfo {
-    display: flex;
-    justify-content: center;
-}
-
-.button {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.passcheckBox {
-    position: relative;
-}
-
-.passcheckSignalView {
-    width: 50px;
-    height: 20px;
-    background-color: #fa5a5a;
-    position: absolute;
-    right: -20%;
-    font-size: small;
-    border-radius: 30px;
-    text-align: center;
-}
-
-.modiInfoHeader > Input {
-    width: auto;
-}
-
-.modiInfoHeader .passCheckForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.passCheckForm .checkTextBox {
     width: 100%;
+    padding: 3% 5%;
+
+    .pageTitle {
+        text-align: center;
+    }
+    
+    .modiInfo {
+        background-color: #a3deef;
+        width: 90%;
+        border-radius: 15px;
+    }
+    
+    .modiInfo .modiInfoHeader {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /*.modiInfoHeader > div {*/
+    /*    width: 50%;*/
+    /*    display: flex;*/
+    /*    justify-content: center;*/
+    /*    background-color: white;*/
+    /*    border-radius: 15px;*/
+    /*}*/
+    
+    .pageInfo {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .button {
+        display: flex;
+        justify-content: flex-end;
+    }
+    
+    .passcheckBox {
+        position: relative;
+    }
+    
+    .passcheckSignalView {
+        width: 50px;
+        height: 20px;
+        background-color: #fa5a5a;
+        position: absolute;
+        right: -20%;
+        font-size: small;
+        border-radius: 30px;
+        text-align: center;
+    }
+    
+    .modiInfoHeader > Input {
+        width: auto;
+    }
+    
+    .modiInfoHeader .passCheckForm {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .passCheckForm .checkTextBox {
+        width: 100%;
+    }
+    
+    .passcheckText {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+    
+    .passcheckText .unmatch {
+        position: absolute;
+        right: -100%;
+        font-size: small;
+        color: #fa5a5a;
+    }
+    .passcheckText .match {
+        display: none;
+    }
+    
+    .idTextBox, .emailTextBox {
+        background-color: transparent;
+        text-align: center;
+    }
+    
 }
 
-.passcheckText {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.passcheckText .unmatch {
-    position: absolute;
-    right: -100%;
-    font-size: small;
-    color: #fa5a5a;
-}
-.passcheckText .match {
-    display: none;
-}
-
-.idTextBox, .emailTextBox {
-    background-color: transparent;
-    text-align: center;
-}

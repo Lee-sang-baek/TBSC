@@ -1,64 +1,91 @@
-.Footer-compo{
+.Footer-compo {
     display: flex;
-    bottom: 0; left: 0;
+    bottom: 0;
+    left: 0;
     height: 150px;
     width: 100%;
-    background-color: #ddd;
-}
-.blank {
-    margin-top: 0px;
-}
-.Footer-compo .list{
-    margin-right: 30px
-}
-.Footer-compo .list ul{
-    text-align: right;
-    list-style: none;
-    display:flex; /*가로로 정렬*/
+    background-color: rgba(22, 22, 22, 0.24);
+    
+    .list{
+        margin-right: 30px
+    }
+    
+    .list ul{
+        text-align: right;
+        list-style: none;
+        display:flex; /*가로로 정렬*/
+    }
+    
+    .list ul li{
+        margin: 20px;
+    }
+    
+    .left-box {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .right-box {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    
+    .related-sites button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 5px 20px; /* 수정된 버튼 사이즈 */
+        cursor: pointer;
+        margin-right: 100px;/*오른쪽 끝 사이 간격 조정*/
+    }
 
-}
-.Footer-compo .list ul li{
-    margin: 20px;
+    #ft_copy{
+        margin: 0 20px;
+        text-wrap: nowrap;
+        font-weight: 600;
+    }
+
+    .ft-info ul{
+        list-style: none;
+        padding-left: 20px;
+        text-wrap: nowrap;
+        font-weight: 600;
+    }
+
+    a {
+        text-decoration: none;
+        color: #0058b6;
+        font-weight: bold;
+    }
+
+    .dropdown-menu{
+        position: absolute;
+        margin: 0px;
+        width: 180px;
+        transform: translate(-80px, -430px);
+        background-color:gray;
+    }
+    .dropdown-menu li{
+        margin: 5px 0;
+    }
+    
+    @media (max-width: 1000px) {
+
+        .list {
+            display: none;
+        }
+
+        .related-sites button {
+            margin: 20px 30px;
+        }
+    }
 }
 
-.Footer-compo .left-box {
-
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.Footer-compo .right-box {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
-
-.Footer-compo .related-sites button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 5px 20px; /* 수정된 버튼 사이즈 */
-    cursor: pointer;
-    margin-right: 30px;/*오른쪽 끝 사이 간격 조정*/
-}
-.Footer-compo .ft_copy{
-    margin-top: 15px;
-    margin-left: 20px;
-}
-.Footer-compo .ft-info ul{
-    list-style: none;
-    padding-left:20px;
-}
-.Footer-compo .dropdown-menu{
-    position: absolute;
-    margin: 0px;
-    width: 180px;
-    transform: translate(-80px, -430px);
-    background-color:gray;
-}
-.Footer-compo .dropdown-menu li{
-    margin: 5px 0;
+.fixed {
+    position: fixed;
+    bottom: 0;
 }

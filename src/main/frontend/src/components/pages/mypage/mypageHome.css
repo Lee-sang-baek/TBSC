@@ -1,4 +1,10 @@
 .MyHome-compo {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 3% 5%;
+    align-items: center;
+
     .detailsContainer {
         margin: 5% 20%;
 

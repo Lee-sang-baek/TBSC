@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Footer.css';
+import { useLocation } from 'react-router';
 
 function Footer() {
+    const location = useLocation();
     const [showRelatedSites, setShowRelatedSites] = useState(false); // 상태 변수 추가
 
     // 관련 사이트 목록을 토글하는 함수
@@ -9,9 +11,32 @@ function Footer() {
         setShowRelatedSites(!showRelatedSites);
     };
 
+    const [isFooterFixed, setIsFooterFixed] = useState(false);
+
+    const adjustFooter = () => {
+        const bodyHeight = document.body.scrollHeight;
+        const windowHeight = window.innerHeight;
+
+        if (bodyHeight < windowHeight) {
+            setIsFooterFixed(true);
+        } else {
+            setIsFooterFixed(false);
+        }
+    };
+
+    useEffect(() => {
+        adjustFooter();
+        window.addEventListener('resize', adjustFooter);
+        window.addEventListener('load', adjustFooter);
+        return () => {
+            window.removeEventListener('resize', adjustFooter);
+            window.removeEventListener('load', adjustFooter);
+        };
+    }, [location]);
+
     return (
         <div className="blank">
-            <footer className="Footer-compo">
+            <footer className={isFooterFixed ? 'Footer-compo fixed' : 'Footer-compo'}>
 
                 <div className="left-box">
                     <div className="ft-info">
