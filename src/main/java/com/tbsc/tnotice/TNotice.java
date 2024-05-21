@@ -27,6 +27,7 @@ public class TNotice {
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime date = LocalDateTime.now();
 
+
     @ManyToOne
     @JoinColumn(name = "member", referencedColumnName = "id", updatable = false)
     private Member member;

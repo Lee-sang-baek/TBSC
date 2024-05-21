@@ -7,7 +7,9 @@ const TNoticeList = () => {
     const [notices, setNotices] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState('');
-    const noticesPerPage = 6;
+    const [filteredNotices, setFilteredNotices] = useState([]);
+    const noticesPerPage = 8; // 페이지당 게시글표시임
+    const pagesPerGroup = 10; // 10페이지씩보이게
     const navigate = useNavigate();
     const MemberState = sessionStorage.getItem("state");
 
@@ -20,6 +22,7 @@ const TNoticeList = () => {
             const response = await axios.get('/tnotice');
             const sortedNotices = response.data.sort((a, b) => b.num - a.num);
             setNotices(sortedNotices);
+            setFilteredNotices(sortedNotices);
         } catch (error) {
             console.error("There was an error fetching the notices!", error);
         }
@@ -34,25 +37,40 @@ const TNoticeList = () => {
     };
 
     const handleSearchClick = () => {
+        const newFilteredNotices = notices.filter(notice =>
+            (notice.title && notice.title.toLowerCase().includes(searchQuery.toLowerCase())) ||
+            (notice.id && notice.id.toLowerCase().includes(searchQuery.toLowerCase()))
+        );
+        setFilteredNotices(newFilteredNotices);
         setCurrentPage(1);
     };
 
-    const filteredNotices = notices.filter(notice =>
-        (notice.title && notice.title.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        (notice.id && notice.id.toLowerCase().includes(searchQuery.toLowerCase()))
-    );
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            handleSearchClick();
+        }
+    };
 
     const indexOfLastNotice = currentPage * noticesPerPage;
     const indexOfFirstNotice = indexOfLastNotice - noticesPerPage;
     const currentNotices = filteredNotices.slice(indexOfFirstNotice, indexOfLastNotice);
 
-    const pageNumbers = [];
-    for (let i = 1; i <= Math.ceil(filteredNotices.length / noticesPerPage); i++) {
-        pageNumbers.push(i);
-    }
+    const totalPages = Math.ceil(filteredNotices.length / noticesPerPage);
+    const currentGroup = Math.ceil(currentPage / pagesPerGroup);
+
+    const startPage = (currentGroup - 1) * pagesPerGroup + 1;
+    const endPage = Math.min(currentGroup * pagesPerGroup, totalPages);
 
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
+    };
+
+    const handlePreviousGroup = () => {
+        setCurrentPage(startPage - 1);
+    };
+
+    const handleNextGroup = () => {
+        setCurrentPage(endPage + 1);
     };
 
     return (
@@ -71,6 +89,7 @@ const TNoticeList = () => {
                             placeholder="검색어를 입력하세요"
                             value={searchQuery}
                             onChange={handleSearchChange}
+                            onKeyDown={handleKeyDown}
                         />
                         <button onClick={handleSearchClick}>검색</button>
                     </div>
@@ -90,20 +109,35 @@ const TNoticeList = () => {
                             <h3>
                                 <Link to={`/tnotice/${notice.num}`}>{notice.title}</Link>
                             </h3>
-                            <p>{notice.id}</p>
+                            <div className="notice-meta">
+                                <p>작성자: {notice.member.id}</p>
+                                <p>작성일: {new Date(notice.date).toLocaleDateString()}</p>
+                            </div>
                         </div>
+                    ))}
+                    {[...Array(noticesPerPage - currentNotices.length)].map((_, index) => (
+                        <div key={`empty-${index}`} className="notice-card empty-card"></div>
                     ))}
                 </div>
                 <div className="pagination">
-                    {pageNumbers.map(number => (
-                        <button
-                            key={number}
-                            onClick={() => handlePageChange(number)}
-                            className={number === currentPage ? 'active' : ''}
-                        >
-                            {number}
-                        </button>
-                    ))}
+                    {startPage > 1 && (
+                        <button onClick={handlePreviousGroup}>&laquo;</button>
+                    )}
+                    {[...Array(endPage - startPage + 1)].map((_, index) => {
+                        const pageNumber = startPage + index;
+                        return (
+                            <button
+                                key={pageNumber}
+                                onClick={() => handlePageChange(pageNumber)}
+                                className={pageNumber === currentPage ? 'active' : ''}
+                            >
+                                {pageNumber}
+                            </button>
+                        );
+                    })}
+                    {endPage < totalPages && (
+                        <button onClick={handleNextGroup}>&raquo;</button>
+                    )}
                 </div>
             </div>
         </div>

@@ -7,6 +7,7 @@ const CenterNewsList = () => {
     const [news, setNews] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState('');
+    const [filteredNews, setFilteredNews] = useState([]);
     const newsPerPage = 6;
     const navigate = useNavigate();
     const MemberState = sessionStorage.getItem("state");
@@ -20,6 +21,7 @@ const CenterNewsList = () => {
             const response = await axios.get('/centernews');
             const sortedNews = response.data.sort((a, b) => b.num - a.num);
             setNews(sortedNews);
+            setFilteredNews(sortedNews); // 초기에는 전체 뉴스를 설정
         } catch (error) {
             console.error("There was an error fetching the news!", error);
         }
@@ -34,13 +36,19 @@ const CenterNewsList = () => {
     };
 
     const handleSearchClick = () => {
+        const newFilteredNews = news.filter(newsItem =>
+            newsItem.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            newsItem.member.id.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+        setFilteredNews(newFilteredNews);
         setCurrentPage(1);
     };
 
-    const filteredNews = news.filter(newsItem =>
-        newsItem.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        newsItem.member.id.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            handleSearchClick();
+        }
+    };
 
     const indexOfLastNews = currentPage * newsPerPage;
     const indexOfFirstNews = indexOfLastNews - newsPerPage;
@@ -71,6 +79,7 @@ const CenterNewsList = () => {
                             placeholder="검색어를 입력하세요"
                             value={searchQuery}
                             onChange={handleSearchChange}
+                            onKeyDown={handleKeyDown}
                         />
                         <button onClick={handleSearchClick}>검색</button>
                     </div>
@@ -90,8 +99,14 @@ const CenterNewsList = () => {
                             <h3>
                                 <Link to={`/centernews/${newsItem.num}`}>{newsItem.title}</Link>
                             </h3>
-                            <p>{newsItem.member.id}</p>
+                            <div className="news-meta">
+                                <p>작성자: {newsItem.member.id}</p>
+                                <p>작성일: {new Date(newsItem.date).toLocaleDateString()}</p>
+                            </div>
                         </div>
+                    ))}
+                    {[...Array(newsPerPage - currentNews.length)].map((_, index) => (
+                        <div key={`empty-${index}`} className="news-card empty-card"></div>
                     ))}
                 </div>
                 <div className="pagination">
