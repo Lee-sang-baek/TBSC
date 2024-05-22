@@ -1,7 +1,11 @@
 .Sidebar-compo {
-    margin-left: 50px;
-    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 250px;
     min-width: 250px;
+    max-width: 250px;
+    margin: 100px 40px;
     height: fit-content;
     background-color: #ffffff; /* 흰색 배경으로 변경 */
     color: #333; /* 텍스트 색상을 짙은 회색으로 */

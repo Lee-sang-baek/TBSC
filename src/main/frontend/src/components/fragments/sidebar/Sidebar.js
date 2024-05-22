@@ -5,12 +5,6 @@ const Sidebar = ({ type }) => {
   const [menuItems, setMenuItems] = useState([]);
 
   useEffect(() => {
-    console.log("Type prop value:", type);
-
-    if (!type) {
-      console.error("Type prop is undefined or null");
-      return;
-    }
 
     // 타입에 따라 메뉴 항목 설정
     if (type === 'mypage') {

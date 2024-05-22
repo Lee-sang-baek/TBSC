@@ -17,7 +17,7 @@
 
 .Header-compo #gnb_wrap {
     width: 100%;
-    background-color: rgba(100, 100, 100, 0.7);
+    background-color: rgb(255, 255, 255);
     position: relative;
     
 }
@@ -38,7 +38,7 @@
 
 .Header-compo .logo-img {
     position: absolute;
-    top: -25px;
+    top: -35px;
 }
 
 .Header-compo .login-container {
@@ -86,7 +86,7 @@
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: rgb(238, 238, 238);
+    background-color: rgb(255, 255, 255);
     z-index: 1000;
     padding: 20px 0;
     background-image: linear-gradient(to left, #d1fdff 0%, #fddb92 100%);
@@ -107,17 +107,17 @@
     text-align: center;
 }
 
-.Header-compo .gnb_2dcol::before {
+.Header-compo .gnb_2dcol:before {
     content: "";
     position: absolute;
     left: -15px;
     top: 0;
     bottom: 0;
-    border-left: 1px solid #ddd;
+    border-left: 1px solid #000000;
     width: 0;
 }
 
-.Header-compo .gnb_2dcol:first-of-type {
+.Header-compo .gnb_2dcol:first {
     border-left: none;
 }
 
@@ -261,6 +261,7 @@
 
     .Header-compo .logo-img {
         position: relative;
+        height: 50px;
         top: 0;
     }
 

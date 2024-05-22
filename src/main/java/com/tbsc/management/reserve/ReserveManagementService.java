@@ -4,6 +4,7 @@ import com.tbsc.consultant.Consultant;
 import com.tbsc.consultant.ConsultantRepository;
 import com.tbsc.jobConsult.JobConsult;
 import com.tbsc.jobConsult.JobConsultRepository;
+import com.tbsc.member.Member;
 import com.tbsc.rental.Rental;
 import com.tbsc.rental.RentalRepository;
 import com.tbsc.reservation.Reservation;
@@ -41,29 +42,34 @@ public class ReserveManagementService {
                 : rentalRepository.findByState(state, pageable);
     }
 
-    public void updateReservationState(String type, Long num, ReserveType state) {
+    public String updateReservationState(String type, Long num, ReserveType state) {
+        String email;
         switch (type) {
             case "Consultant":
                 Consultant consultant = consultantRepository.findByNum(num)
                         .orElseThrow(() -> new IllegalArgumentException("Consultant not found"));
                 consultant.setState(state);
+                email = consultant.getMember().getEmail();
                 consultantRepository.save(consultant);
                 break;
             case "JobConsult":
                 JobConsult jobConsult = jobConsultRepository.findByNum(num)
                         .orElseThrow(() -> new IllegalArgumentException("JobConsult not found"));
                 jobConsult.setState(state);
+                email = jobConsult.getMember().getEmail();
                 jobConsultRepository.save(jobConsult);
                 break;
             case "Rental":
                 Rental rental = rentalRepository.findByNum(num)
                         .orElseThrow(() -> new IllegalArgumentException("Rental not found"));
                 rental.setState(state);
+                email = rental.getMember().getEmail();
                 rentalRepository.save(rental);
                 break;
             default:
                 throw new IllegalArgumentException("Invalid reservation type");
         }
+        return email;
     }
 
 }

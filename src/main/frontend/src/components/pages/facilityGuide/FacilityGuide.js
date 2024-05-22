@@ -70,30 +70,26 @@ function FacilityGuide({ onSelectFacility }) {
     };
 
     return (
-
-
         <div className="FacilityGuide-compo">
-            <div className="FacilityGuide-compo2">
-                <ul>
-                    {Object.entries(facilitiesData).map(([id, data]) => (
-                        <li key={id} onClick={() => handleTabClick(id)}
-                            className={`tabMenu ${selectedFacility == id ? 'active' : ''}`}>
-                            <p>{data.name}</p>
-                        </li>
-                    ))}
-                </ul>
-                <div className="facility-display">
-                    <img src={mainImage} alt="Main facility" className="main-image"/>
-                    <div className="facility-description">
-                        <p className="facility-text">{facility.key}</p>
-                        <h5>{facility.name}</h5>
-                        <p>{facility.description}</p>
-                        <div className="thumbnails">
-                            {facility.thumbnails.map((thumb, index) => (
-                                <img key={index} src={thumb} alt={`Thumbnail ${index}`} className="thumbnail-image"
-                                     onClick={() => handleThumbnailClick(thumb)}/>
-                            ))}
-                        </div>
+            <ul>
+                {Object.entries(facilitiesData).map(([id, data]) => (
+                    <li key={id} onClick={() => handleTabClick(id)}
+                        className={`tabMenu ${selectedFacility == id ? 'active' : ''}`}>
+                        <p>{data.name}</p>
+                    </li>
+                ))}
+            </ul>
+            <div className="facility-display">
+                <img src={mainImage} alt="Main facility" className="main-image"/>
+                <div className="facility-description">
+                    <p className="facility-text">{facility.key}</p>
+                    <h5>{facility.name}</h5>
+                    <p>{facility.description}</p>
+                    <div className="thumbnails">
+                        {facility.thumbnails.map((thumb, index) => (
+                            <img key={index} src={thumb} alt={`Thumbnail ${index}`} className="thumbnail-image"
+                                    onClick={() => handleThumbnailClick(thumb)}/>
+                        ))}
                     </div>
                 </div>
             </div>

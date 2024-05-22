@@ -14,4 +14,6 @@ public class MainImageDto {
     private String image;
 
     private String title;
+
+    private String content;
 }

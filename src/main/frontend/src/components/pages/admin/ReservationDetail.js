@@ -1,7 +1,8 @@
 import React from "react";
 import "./ReservationDetail.css";
+import { DateFormat } from "../../util/DateFormat";
 
-const ReservationDetail = ({ reservation, reserveType, onClose }) => {
+const ReservationDetail = ({ reservation, reserveType, onClose, handleStatusChange }) => {
 
   const getStringState = (state) => {
     if (state === "RESERVE") {
@@ -71,7 +72,7 @@ const ReservationDetail = ({ reservation, reserveType, onClose }) => {
               </tr>
               <tr>
                 <th>신청일</th>
-                <td>{reservation.appDate}</td>
+                <td>{DateFormat(reservation.appDate)}</td>
               </tr>
               <tr>
                 <th>사업구분</th>
@@ -103,7 +104,7 @@ const ReservationDetail = ({ reservation, reserveType, onClose }) => {
               </tr>
               <tr>
                 <th>신청일</th>
-                <td>{reservation.date}</td>
+                <td>{DateFormat(reservation.date)}</td>
               </tr>
               <tr>
                 <th>기타사항</th>
@@ -135,11 +136,11 @@ const ReservationDetail = ({ reservation, reserveType, onClose }) => {
               </tr>
               <tr>
                 <th>시작일</th>
-                <td>{reservation.startDate}</td>
+                <td>{DateFormat(reservation.startDate)}</td>
               </tr>
               <tr>
                 <th>종료일</th>
-                <td>{reservation.endDate}</td>
+                <td>{DateFormat(reservation.endDate)}</td>
               </tr>
               <tr>
                 <th>대관목적</th>
@@ -153,6 +154,24 @@ const ReservationDetail = ({ reservation, reserveType, onClose }) => {
           )}
         </tbody>
       </table>
+      <div className="detail-btn-box">
+      <button className="approve"
+        onClick={() => {
+          handleStatusChange(reserveType, reservation.num, "APPROVE");
+          onClose();
+        }}
+      >
+        승인
+      </button>
+      <button className="deny"
+        onClick={() => {
+          handleStatusChange(reserveType, reservation.num, "DENY");
+          onClose();
+        }}
+      >
+        거절
+      </button>
+      </div>
     </div>
   </div>
   );

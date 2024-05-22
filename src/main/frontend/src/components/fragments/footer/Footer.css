@@ -4,7 +4,7 @@
     left: 0;
     height: 150px;
     width: 100%;
-    background-color: rgba(22, 22, 22, 0.24);
+    background-color: rgb(255, 255, 255);
     
     .list{
         margin-right: 30px
@@ -65,12 +65,13 @@
     .dropdown-menu{
         position: absolute;
         margin: 0px;
-        width: 180px;
-        transform: translate(-80px, -430px);
-        background-color:gray;
+        width: 200px;
+        transform: translate(-130px, -450px);
+        background-color:rgba(255, 255, 255, 0.829);
+        border-radius: 5px;
     }
     .dropdown-menu li{
-        margin: 5px 0;
+        margin: 10px 0;
     }
     
     @media (max-width: 1000px) {

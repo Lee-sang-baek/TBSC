@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Header.css";
 import logoImage from "../../imgs/logo.png";
 import loginImage from "../../imgs/login.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
+    const location = useLocation();
     const [isOpen, setIsOpen] = useState(false);
     const [loginMenuOpen, setLoginMenuOpen] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -81,6 +82,10 @@ const Header = () => {
     const toggleMobileMenu = () => {
         setMobileMenuOpen(prev => !prev);
     };
+
+    useEffect(() => {
+        setMobileMenuOpen(false);
+    }, [location]);
 
     const isLoggedIn = !!sessionStorage.getItem("id");
     const MemberState = sessionStorage.getItem("state");

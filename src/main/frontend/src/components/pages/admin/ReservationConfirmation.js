@@ -72,11 +72,13 @@ const ReservationConfirmation = () => {
     fetchReservations();
   }, [page, reserveType, state]);
 
-  const handleStatusChange = async (type, id, newStatus) => {
+  const handleStatusChange = async (type, num, newStatus) => {
     try {
-      await axios.put(`/api/reservations/${type}/${id}`, { state: newStatus });
+      await axios.put(`/admin/reserve/${type}/${num}/${newStatus}`);
+      alert("예약 상태가 변경되었습니다. 이메일을 전송합니다.")
       fetchReservations();
     } catch (error) {
+      alert("에러 : " + error)
       console.error("Error updating reservation status:", error);
     }
   };
@@ -160,7 +162,7 @@ const ReservationConfirmation = () => {
                   <option value="RESERVE">예약</option>
                   <option value="CHECK">검토</option>
                   <option value="APPROVE">승인</option>
-                  <option value="DENY">거부</option>
+                  <option value="DENY">거절</option>
                 </select>
               </th>
               <th>동작</th>
@@ -175,25 +177,19 @@ const ReservationConfirmation = () => {
                   <td>{reservation.member.id}</td>
                   <td>{getStringState(reservation.state)}</td>
                   <td>
-                    {reservation.state === "검토중" && (
-                      <>
-                        <button
+                  <div className="btn-box">
+                    <div className="state-btn-box">
+                      <button className="check"
                           onClick={() =>
-                            handleStatusChange(reserveType, reservation.num, "승인")
+                            handleStatusChange(reserveType, reservation.num, "CHECK")
                           }
                         >
-                          승인
+                          검토
                         </button>
-                        <button
-                          onClick={() =>
-                            handleStatusChange(reserveType, reservation.num, "거절")
-                          }
-                        >
-                          거절
-                        </button>
-                      </>
-                    )}
-                    <button onClick={() => handleDetails(reservation)}>자세히 보기</button>
+                        
+                    </div>
+                    <button className="detail-btn" onClick={() => handleDetails(reservation)}>자세히 보기</button>
+                  </div>
                   </td>
                 </tr>
               ))}
@@ -252,25 +248,18 @@ const ReservationConfirmation = () => {
                   <td>{reservation.member.id}</td>
                   <td>{getStringState(reservation.state)}</td>
                   <td>
-                    {reservation.state === "검토중" && (
-                      <>
-                        <button
-                          onClick={() =>
-                            handleStatusChange(reserveType, reservation.num, "승인")
-                          }
-                        >
-                          승인
-                        </button>
-                        <button
-                          onClick={() =>
-                            handleStatusChange(reserveType, reservation.num, "거절")
-                          }
-                        >
-                          거절
-                        </button>
-                      </>
-                    )}
-                    <button onClick={() => handleDetails(reservation)}>자세히 보기</button>
+                  <div className="btn-box">
+                    <div className="state-btn-box">
+                      <button className="check"
+                        onClick={() =>
+                          handleStatusChange(reserveType, reservation.num, "CHECK")
+                        }
+                      >
+                        검토
+                      </button>
+                    </div>
+                    <button className="detail-btn" onClick={() => handleDetails(reservation)}>자세히 보기</button>
+                  </div>
                   </td>
                 </tr>
               ))}
@@ -314,7 +303,7 @@ const ReservationConfirmation = () => {
                   <option value="RESERVE">예약</option>
                   <option value="CHECK">검토</option>
                   <option value="APPROVE">승인</option>
-                  <option value="DENY">거부</option>
+                  <option value="DENY">거절</option>
                 </select>
               </th>
               <th>동작</th>
@@ -329,25 +318,18 @@ const ReservationConfirmation = () => {
                   <td>{reservation.member.id}</td>
                   <td>{getStringState(reservation.state)}</td>
                   <td>
-                    {reservation.state === "검토중" && (
-                      <>
-                        <button
-                          onClick={() =>
-                            handleStatusChange(reserveType, reservation.num, "승인")
-                          }
-                        >
-                          승인
-                        </button>
-                        <button
-                          onClick={() =>
-                            handleStatusChange(reserveType, reservation.num, "거절")
-                          }
-                        >
-                          거절
-                        </button>
-                      </>
-                    )}
-                    <button onClick={() => handleDetails(reservation)}>자세히 보기</button>
+                  <div className="btn-box">
+                  <div className="state-btn-box">
+                    <button className="check"
+                        onClick={() =>
+                          handleStatusChange(reserveType, reservation.num, "CEHCK")
+                        }
+                      >
+                        검토
+                      </button>
+                    </div>
+                    <button className="detail-btn" onClick={() => handleDetails(reservation)}>자세히 보기</button>
+                  </div>
                   </td>
                 </tr>
               ))}
@@ -361,6 +343,7 @@ const ReservationConfirmation = () => {
           reservation={selectedReservation}
           reserveType={reserveType}
           onClose={handleCloseDetails}
+          handleStatusChange={handleStatusChange}
         />
       )}
     </div>

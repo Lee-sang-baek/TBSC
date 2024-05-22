@@ -1,12 +1,18 @@
-.FacilityGuide-compo .FacilityGuide-compo2 {
-    border: 1px solid #ccc;
-    padding: 20px;
+.FacilityGuide-compo-outter {
+    width: 72%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.FacilityGuide-compo {
+    
     display: flex;
     align-items: center;
-    width: 87%;
+    width: 95%;
     flex-direction: column;
-    margin: auto;
-    margin-top: 20px;
+    margin-bottom: 20px;
+    
 }
 
 .FacilityGuide-compo ul {
@@ -14,9 +20,12 @@
     padding: 0;
     display: flex;
     margin-bottom: 20px;
+    width: 100%;
 }
 
 .FacilityGuide-compo li {
+    display: flex;
+    justify-content: center;
     margin-right: 10px;
     padding: 10px;
     cursor: pointer;
@@ -31,6 +40,7 @@
 .FacilityGuide-compo .facility-display {
     display: flex;
     align-items: flex-start;
+    margin-bottom: 50px;
 }
 
 .FacilityGuide-compo .main-image {
