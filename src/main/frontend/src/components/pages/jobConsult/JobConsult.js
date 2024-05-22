@@ -260,6 +260,7 @@ function JobConsult() {
 
   return (
     <div className='JobConsult-compo'>
+      <div className='form-box'>
       <h2>일자리 상담신청</h2>
       <form>
         <div className='category-box'>
@@ -503,6 +504,7 @@ function JobConsult() {
         </div>
 
       </form>
+      </div>
     </div>
   );
 }

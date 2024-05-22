@@ -135,6 +135,7 @@ const Sidebar = ({ type }) => {
   }, [type]); // 의존성 배열에 type 포함
 
   return (
+    <div className='side-box'>
     <div className="Sidebar-compo">
       {menuItems.map((menu, index) => (
         <div key={index} className={menu.type === 'main' ? 'main' : 'list'}>
@@ -147,6 +148,7 @@ const Sidebar = ({ type }) => {
             ))}
         </div>
       ))}
+    </div>
     </div>
   );
 }

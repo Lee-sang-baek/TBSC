@@ -81,7 +81,7 @@ const ReservationList = () => {
                     </div>
                 </div>
                 <div className="total-reservations">
-                    <p>총 예약: {filteredReservations.length}개</p>
+                    <p>총 게시글 {filteredReservations.length}개</p>
                 </div>
                 <div className="reservation-table">
                     <div className="reservation-header">

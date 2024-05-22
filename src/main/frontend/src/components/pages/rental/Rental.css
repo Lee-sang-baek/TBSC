@@ -3,8 +3,10 @@
     flex-direction: column;
     background: #fff;
     padding: 20px;
-    
-    width: 65%;
+    border: 1px solid #777;
+    border-radius: 5px;
+    min-width: 50%;
+    max-width: 80%;
     margin: 4%;
     font-family: 'Arial', sans-serif;
 }
@@ -18,7 +20,7 @@
     flex-direction: column;
 }
 
-.rental-compo-in h1 {
+.rental-compo-in h2 {
     text-align: center;
     color: #333;
     background-color: #fff;

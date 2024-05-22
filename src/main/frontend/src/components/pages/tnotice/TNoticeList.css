@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 .TNoticeList-copo {
-    font-family: 'Roboto', sans-serif;
     min-height: 100vh;
     padding: 3% 0%;
     display: flex;

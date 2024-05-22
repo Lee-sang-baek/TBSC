@@ -38,6 +38,10 @@ const ReservationDetail = () => {
         }
     };
 
+    if (!reservation) {
+        return;
+    }
+
     return (
         <div className="ReservationDetail-copo">
             <div className="detail-container">

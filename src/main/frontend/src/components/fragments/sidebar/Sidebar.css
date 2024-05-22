@@ -11,75 +11,84 @@
     color: #333; /* 텍스트 색상을 짙은 회색으로 */
     border-radius: 15px; /* 전체 컴포넌트의 모서리를 둥글게 */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* 현대적인 폰트 스타일 */
     padding: 20px; /* 내부 여백 */
     box-sizing: border-box; /* 패딩을 포함한 전체 크기 유지 */
+
+    .main {
+        padding: 15px;
+        cursor: pointer;
+        text-align: center;
+        list-style: none;
+        color: #333;
+        border: 2px solid #eee; /* 테두리 색상을 연한 회색으로 */
+        border-radius: 10px;
+        background-color: #fafafa; /* 연한 배경색 */
+        transition: background-color 0.3s ease, transform 0.3s ease; /* 배경색과 크기 전환에 애니메이션 효과 */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* 살짝 떠있는 효과 */
+        margin-bottom: 10px; /* 아래쪽 간격 */
+    }
+    
+    .main a {
+        text-align: center;
+        list-style: none;
+        text-decoration: none;
+        cursor: pointer;
+        color: #333;
+        font-weight: bold; /* 링크 텍스트를 두껍게 */
+        display: block; /* 링크 전체가 클릭 가능하도록 */
+        padding: 10px 0; /* 클릭 영역 확장 */
+        transition: color 0.3s ease; /* 글자색 전환에 애니메이션 효과 */
+    }
+    
+    .main:hover {
+        background-color: #f0f0f0; /* 마우스를 대면 배경색 변경 */
+        transform: scale(1.05); /* 살짝 커지는 효과 */
+    }
+    
+    .main a:hover {
+        color: #ee923d; /* 링크 텍스트 색상 변경 */
+    }
+    
+    .list div {
+        padding: 15px;
+        cursor: pointer;
+        text-align: center;
+        border: 1px solid #eee;
+        transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease; /* 배경색과 글자색, 크기 전환에 애니메이션 효과 */
+        background-color: #ffffff; /* 기본 배경색 */
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* 살짝 떠있는 효과 */
+        margin-bottom: 10px; /* 각 항목 사이의 간격 */
+        border-radius: 8px; /* 각 항목의 모서리를 둥글게 */
+    }
+    
+    .list a {
+        text-decoration: none;
+        color: #333;
+        display: block; /* 링크 전체가 클릭 가능하도록 */
+        font-weight: bold; /* 링크 텍스트를 두껍게 */
+    }
+    
+    .list div:hover {
+        background-color: #ee923d; /* 마우스를 대면 배경색 변경 */
+        color: #fff; /* 텍스트 색상 변경 */
+        transform: translateY(-2px); /* 살짝 위로 올라가는 효과 */
+    }
+    
+    .list div:hover {
+        color: #fff; /* 링크 텍스트 색상도 변경 */
+    }
+    
 
     @media (max-width: 1000px) {
         display: none;
     }
 }
 
-.Sidebar-compo .main {
-    padding: 15px;
-    cursor: pointer;
-    text-align: center;
-    list-style: none;
-    color: #333;
-    border: 2px solid #eee; /* 테두리 색상을 연한 회색으로 */
-    border-radius: 10px;
-    background-color: #fafafa; /* 연한 배경색 */
-    transition: background-color 0.3s ease, transform 0.3s ease; /* 배경색과 크기 전환에 애니메이션 효과 */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* 살짝 떠있는 효과 */
-    margin-bottom: 10px; /* 아래쪽 간격 */
+.side-box {
+    height: 72.5vh;
+
+    @media (max-width: 1000px) {
+        display: none;
+    }
 }
 
-.Sidebar-compo .main a {
-    text-align: center;
-    list-style: none;
-    text-decoration: none;
-    cursor: pointer;
-    color: #333;
-    font-weight: bold; /* 링크 텍스트를 두껍게 */
-    display: block; /* 링크 전체가 클릭 가능하도록 */
-    padding: 10px; /* 클릭 영역 확장 */
-    transition: color 0.3s ease; /* 글자색 전환에 애니메이션 효과 */
-}
-
-.Sidebar-compo .main:hover {
-    background-color: #f0f0f0; /* 마우스를 대면 배경색 변경 */
-    transform: scale(1.05); /* 살짝 커지는 효과 */
-}
-
-.Sidebar-compo .main a:hover {
-    color: #ee923d; /* 링크 텍스트 색상 변경 */
-}
-
-.Sidebar-compo .list div {
-    padding: 15px;
-    cursor: pointer;
-    text-align: center;
-    border: 1px solid #eee;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease; /* 배경색과 글자색, 크기 전환에 애니메이션 효과 */
-    background-color: #ffffff; /* 기본 배경색 */
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* 살짝 떠있는 효과 */
-    margin-bottom: 10px; /* 각 항목 사이의 간격 */
-    border-radius: 8px; /* 각 항목의 모서리를 둥글게 */
-}
-
-.Sidebar-compo .list a {
-    text-decoration: none;
-    color: #333;
-    display: block; /* 링크 전체가 클릭 가능하도록 */
-    font-weight: bold; /* 링크 텍스트를 두껍게 */
-}
-
-.Sidebar-compo .list div:hover {
-    background-color: #ee923d; /* 마우스를 대면 배경색 변경 */
-    color: #fff; /* 텍스트 색상 변경 */
-    transform: translateY(-2px); /* 살짝 위로 올라가는 효과 */
-}
-
-.Sidebar-compo .list div:hover {
-    color: #fff; /* 링크 텍스트 색상도 변경 */
-}

@@ -54,6 +54,7 @@ const Pagination = ({ noticesPerPage, totalNotices, paginate, currentPage, setCu
                         disabled={currentGroup >= totalGroups - 1}
                         className="button button-next"
                     >
+                        다음
                     </button>
                 </li>
             </ul>

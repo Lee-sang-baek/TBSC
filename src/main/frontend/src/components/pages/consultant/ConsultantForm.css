@@ -1,10 +1,12 @@
 .ConsultantForm-compo {
-    background: #f4f4f4;
+    background: #ffffff;
     padding: 20px;
-    width: 65%;
-    margin: 3% auto;
+    width: 70%;
+    margin: 5% auto;
     font-family: 'Arial', sans-serif;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border: 1px solid #000;
+    border-radius: 8px;
 }
 
 .ConsultantForm-compo form {
@@ -13,7 +15,7 @@
 }
 
 .ConsultantForm-compo h2 {
-    background: #f0f0f0;
+    background: #ffffff;
     color: #000;
     padding: 10px;
     margin: 0 0 20px 0;

@@ -127,7 +127,7 @@ const Header = () => {
                     <div className="logo-container">
                         <a href="/"> <img src={logoImage} alt="Logo" className="logo-img"/></a>
                     </div>
-                    <div className="gnb_1dul" onMouseEnter={handleGnbWrapEnter}>
+                    <div className="gnb_1dul" onMouseEnter={handleGnbWrapEnter} onMouseLeave={handleGnbWrapLeave}>
                         {menus.map((menu, index) => (
                             <div key={index} className="gnb_1dli">
                                 <a href="#" className="gnb_1da">{menu.main}</a>
@@ -136,7 +136,9 @@ const Header = () => {
                     </div>
                     <div className="search-icon" onClick={toggleSearch}>
                         <img src={searchImage} alt="search" className="searchImage"/>
-                        {searchOpen && (
+                        
+                    </div>
+                    {searchOpen && (
                             <div className="search-dropdown" onClick={handleSearchContainerClick}>
                                 <form onSubmit={handleSearchSubmit}>
                                     <input
@@ -150,7 +152,6 @@ const Header = () => {
                                 </form>
                             </div>
                         )}
-                    </div>
                     <div className="login-container" onMouseEnter={toggleLoginMenu} onMouseLeave={toggleLoginMenu}>
                         <img src={loginImage} alt="Login" className="login-img"/>
                         {loginMenuOpen && (
@@ -176,7 +177,7 @@ const Header = () => {
                     </div>
                 </div>
                 {isOpen && (
-                    <div className="gnb_2dul_container" onMouseLeave={handleGnbWrapLeave}>
+                    <div className="gnb_2dul_container" onMouseEnter={handleGnbWrapEnter} onMouseLeave={handleGnbWrapLeave}>
                         <div id="gnb_2dul">
                             {menus.map((menu, index) => (
                                 <div key={index} className="gnb_2dcol">

@@ -74,6 +74,7 @@ const SearchResult = () => {
                     <option value="센터뉴스">센터뉴스</option>
                     <option value="보도자료">보도자료</option>
                 </select>
+                <p>총 {filteredResults.noticeResults.length + filteredResults.tNoticeResults.length + filteredResults.centerNewsResults.length}개의 글을 찾았습니다.</p>
                 {filteredResults.noticeResults && filteredResults.noticeResults.length > 0 && (
                     <div>
                         <h2>공지사항</h2>
