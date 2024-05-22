@@ -3,7 +3,9 @@
 .TNoticeList-copo {
     font-family: 'Roboto', sans-serif;
     min-height: 100vh;
-    padding: 40px 0;
+    padding: 3% 0%;
+    display: flex;
+    width: 100%;
 
     .container {
         display: flex;
@@ -13,9 +15,10 @@
         background-color: #ffffff;
         border-radius: 15px;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        max-width: 1200px;
+        
         margin: 0 auto;
         position: relative;
+        width: 87%;
     }
 
     .header {

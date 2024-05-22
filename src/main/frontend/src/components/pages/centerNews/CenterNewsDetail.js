@@ -38,8 +38,6 @@ const CenterNewsDetail = () => {
         }
     };
 
-    if (!centerNews) return <div>Loading...</div>;
-
     return (
         <div className="CenterNewsDetail-copo">
             <div className="detail-container">

@@ -42,6 +42,8 @@ public class QRental extends EntityPathBase<Rental> {
 
     public final DateTimePath<java.time.LocalDateTime> startDate = createDateTime("startDate", java.time.LocalDateTime.class);
 
+    public final EnumPath<com.tbsc.util.ReserveType> state = createEnum("state", com.tbsc.util.ReserveType.class);
+
     public QRental(String variable) {
         this(Rental.class, forVariable(variable), INITS);
     }

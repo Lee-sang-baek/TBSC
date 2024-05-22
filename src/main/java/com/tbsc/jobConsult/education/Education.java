@@ -27,7 +27,7 @@ public class Education {
 
     private String academicStatus;
 
-    @OneToOne
-    @JoinColumn(name = "jobConsult_num", referencedColumnName = "num", insertable = false, updatable = false)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "jobConsult_num", referencedColumnName = "num")
     private JobConsult jobConsult;
 }

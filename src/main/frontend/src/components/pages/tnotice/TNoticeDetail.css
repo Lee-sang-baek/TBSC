@@ -1,4 +1,7 @@
 .TNoticedetail-copo {
+    width: 100%;
+    margin: 4% 0;
+
     .detail-container {
         max-width: 800px;
         margin: auto;
@@ -14,6 +17,10 @@
 
     .detail-meta p {
         margin: 5px 0;
+    }
+
+    .detail-content {
+        min-height: 200px;
     }
 
     .detail-content p {

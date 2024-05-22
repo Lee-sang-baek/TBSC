@@ -1,71 +1,75 @@
-
-
 .TNoticeForm-copo {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
+    
     border-radius: 8px;
-    max-width: 600px;
-    margin: auto;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.TNoticeForm-copo form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
     width: 100%;
+    margin: 4% 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    form {
+        padding: 20px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 70%;
+    }
+    
+    input[type="text"],
+    textarea {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        width: calc(100% - 22px);
+        
+    }
+    
+    textarea {
+        resize: vertical;
+        height: 150px;
+        min-height: 300px;
+    }
+    
+    .file-input-label {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        display: inline-block;
+        text-align: center;
+        font-size: 16px;
+    }
+    
+    button {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        font-size: 14px;
+        cursor: pointer;
+    }
+    
+    button[type="submit"] {
+        background-color: #007bff;
+        color: white;
+    }
+    
+    button:hover {
+        opacity: 0.9;
+    }
+    
+    .image-preview img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-top: 10px;
+    }
+    
 }
 
-.TNoticeForm-copo input[type="text"],
-textarea {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    width: calc(100% - 22px);
-}
-
-.TNoticeForm-copo textarea {
-    resize: vertical;
-    height: 150px;
-}
-
-.TNoticeForm-copo .file-input-label {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    display: inline-block;
-    text-align: center;
-    font-size: 16px;
-}
-
-.TNoticeForm-copo button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
-    cursor: pointer;
-}
-
-.TNoticeForm-copo button[type="submit"] {
-    background-color: #007bff;
-    color: white;
-}
-
-.TNoticeForm-copo button:hover {
-    opacity: 0.9;
-}
-
-.TNoticeForm-copo .image-preview img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-top: 10px;
-}

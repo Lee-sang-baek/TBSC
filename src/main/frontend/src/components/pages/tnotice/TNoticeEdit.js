@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
-import './TNoticeForm.css';
+import './TNoticeEdit.css';
 
 const TNoticeEdit = () => {
     const { num } = useParams();
@@ -71,7 +71,7 @@ const TNoticeEdit = () => {
     }
 
     return (
-        <div className="TNoticeForm-copo">
+        <div className="TNoticeEdit-copo">
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"

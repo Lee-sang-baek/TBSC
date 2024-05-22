@@ -44,6 +44,8 @@ public class QJobConsult extends EntityPathBase<JobConsult> {
 
     public final StringPath selfIntroduction = createString("selfIntroduction");
 
+    public final EnumPath<com.tbsc.util.ReserveType> state = createEnum("state", com.tbsc.util.ReserveType.class);
+
     public QJobConsult(String variable) {
         this(JobConsult.class, forVariable(variable), INITS);
     }

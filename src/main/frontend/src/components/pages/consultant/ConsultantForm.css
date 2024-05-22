@@ -1,8 +1,8 @@
 .ConsultantForm-compo {
     background: #f4f4f4;
     padding: 20px;
-    width: 500px; /* Adjusted width to better fit the design */
-    margin: 20px auto;
+    width: 65%;
+    margin: 3% auto;
     font-family: 'Arial', sans-serif;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }

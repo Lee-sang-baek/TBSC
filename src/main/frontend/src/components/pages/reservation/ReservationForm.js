@@ -54,6 +54,7 @@ const ReservationForm = ({ onFormToggle }) => {
 
     return (
         <div className="ReservationForm-copo">
+            <h3>이용 예약 게시글 작성</h3>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"

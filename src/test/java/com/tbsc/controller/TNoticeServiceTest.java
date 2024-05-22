@@ -33,7 +33,7 @@ public class TNoticeServiceTest {
             TNoticeDto tNoticeDto = new TNoticeDto();
             tNoticeDto.setTitle("테스트1 " + i);
             tNoticeDto.setContent("테스트내용 " + i);
-            tNoticeDto.setImage("1716166134323_dtd" + ".png");
+            tNoticeDto.setImage("1715823511643_당근" + ".png");
             tNoticeDto.setId("admin");
 
             ResponseEntity<TNotice> response = tNoticeService.saveNotice(tNoticeDto);

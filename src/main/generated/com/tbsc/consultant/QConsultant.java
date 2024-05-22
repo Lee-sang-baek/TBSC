@@ -48,6 +48,8 @@ public class QConsultant extends EntityPathBase<Consultant> {
 
     public final DatePath<java.time.LocalDate> startDate = createDate("startDate", java.time.LocalDate.class);
 
+    public final EnumPath<com.tbsc.util.ReserveType> state = createEnum("state", com.tbsc.util.ReserveType.class);
+
     public final StringPath support = createString("support");
 
     public final StringPath type = createString("type");

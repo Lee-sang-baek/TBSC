@@ -24,7 +24,7 @@ public class Languages {
 
     private String writing;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "jobConsult_num", referencedColumnName = "num", insertable = false, updatable = false)
+    @ManyToOne
+    @JoinColumn(name = "jobConsult_num", referencedColumnName = "num", updatable = false)
     private JobConsult jobConsult;
 }

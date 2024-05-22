@@ -49,9 +49,6 @@ function NoticeDetail() {
         }
     };
 
-    if (!notice) {
-        return <div className="loading">로딩 중...</div>;
-    }
 
     const fileName = notice.fileUrl ? notice.fileUrl.split(";").pop() : "";
     const fileDownloadUrl = fileName ? `http://localhost:8090/files/${fileName}` : "";

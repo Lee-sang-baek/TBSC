@@ -2,8 +2,9 @@
     border: 1px solid #ccc;
     padding: 20px;
     display: flex;
+    align-items: center;
+    width: 87%;
     flex-direction: column;
-    max-width: 800px;
     margin: auto;
     margin-top: 20px;
 }
@@ -80,6 +81,9 @@
 }
 
 .FacilityGuide-compo .facility-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 2.778rem;
     height: 2.778rem;
     background: #2F2C87;

@@ -1,70 +1,368 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios"; // axios를 사용하여 서버에서 데이터를 가져옵니다.
-import "./ReservationConfirmation.css"; // CSS 파일 import
+import axios from "axios";
+import "./ReservationConfirmation.css";
+import ReservationDetail from "./ReservationDetail";
 
 const ReservationConfirmation = () => {
-  const [reservations, setReservations] = useState([]);
+  const [reserveType, setReserveType] = useState("Consultant");
+  const [consultants, setConsultants] = useState([]);
+  const [jobConsult, setJobConsult] = useState([]);
+  const [rental, setRental] = useState([]);
+  const [page, setPage] = useState(0);
+  const [size, setSize] = useState(10);
+  const [total, setTotal] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
+  const [selectedReservation, setSelectedReservation] = useState(null);
+  const [state, setState] = useState("all")
 
-  // 서버에서 예약 정보를 가져오는 함수
-  const fetchReservations = async () => {
-    try {
-      const response = await axios.get("/api/reservations"); // 예약 정보를 가져오는 API 엔드포인트로 요청을 보냅니다.
-      setReservations(response.data); // 받아온 예약 정보를 상태에 설정합니다.
-    } catch (error) {
-      console.error("Error fetching reservations:", error);
+  const handleStateChange = (e) => {
+    setState(e.target.value);
+    setPage(0);
+};
+
+  const handlePageChange = (newPage) => {
+    if (newPage >= 0 && newPage < totalPages) {
+      setPage(newPage);
     }
   };
 
-  // 컴포넌트가 마운트될 때 예약 정보를 가져옵니다.
+  const toggleSection = (section) => {
+    setReserveType(section === reserveType ? null : section);
+    setPage(section === reserveType ? page : 0);
+  };
+
+  const fetchReservations = async () => {
+    if (reserveType === "Consultant") {
+      await axios
+        .get(`/admin/consultant?page=${page}&size=${size}&state=${state}`)
+        .then((response) => {
+          setConsultants(response.data.content);
+          setTotalPages(response.data.totalPages);
+          setTotal(response.data.totalElements);
+        })
+        .catch((error) => {
+          console.error("예약 목록을 가져오는 중 에러 발생:", error);
+        });
+    } else if (reserveType === "JobConsult") {
+      await axios
+        .get(`/admin/jobConsult?page=${page}&size=${size}&state=${state}`)
+        .then((response) => {
+          setJobConsult(response.data.content);
+          setTotalPages(response.data.totalPages);
+          setTotal(response.data.totalElements);
+        })
+        .catch((error) => {
+          console.error("예약 목록을 가져오는 중 에러 발생:", error);
+        });
+    } else if (reserveType === "Rental") {
+      await axios
+        .get(`/admin/rental?page=${page}&size=${size}&state=${state}`)
+        .then((response) => {
+          setRental(response.data.content);
+          setTotalPages(response.data.totalPages);
+          setTotal(response.data.totalElements);
+        })
+        .catch((error) => {
+          console.error("예약 목록을 가져오는 중 에러 발생:", error);
+        });
+    }
+  };
+
   useEffect(() => {
     fetchReservations();
-  }, []);
+  }, [page, reserveType, state]);
 
-  // 예약 상태를 변경하는 함수
-  const handleStatusChange = async (id, newStatus) => {
+  const handleStatusChange = async (type, id, newStatus) => {
     try {
-      await axios.put(`/api/reservations/${id}`, { status: newStatus }); // 서버에 예약 상태 변경을 요청합니다.
-      fetchReservations(); // 변경된 예약 정보를 다시 가져옵니다.
+      await axios.put(`/api/reservations/${type}/${id}`, { state: newStatus });
+      fetchReservations();
     } catch (error) {
       console.error("Error updating reservation status:", error);
     }
   };
 
+  const handleDetails = (reservation) => {
+    setSelectedReservation(reservation);
+  };
+
+  const handleCloseDetails = () => {
+    setSelectedReservation(null);
+  };
+
+  const getStringState = (state) => {
+    if (state === "RESERVE") {
+      return "예약";
+    } else if (state === "CHECK") {
+      return "검토";
+    } else if (state === "APPROVE") {
+      return "승인";
+    } else if (state === "DENY") {
+      return "거절";
+    }
+  };
+
   return (
     <div className="ReservationConfirmation-compo">
-      <h2>예약 신청 확인</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>이름</th>
-            <th>상태</th>
-            <th>동작</th>
-          </tr>
-        </thead>
-        <tbody>
-          {reservations.map(reservation => (
-            <tr key={reservation.id} className={`status-${reservation.status}`}>
-              <td>{reservation.id}</td>
-              <td>{reservation.name}</td>
-              <td>{reservation.status}</td>
-              {/* 상태에 따라 버튼을 보여줍니다. */}
-              <td>
-                {reservation.status === "검토중" && (
-                  <>
-                    <button onClick={() => handleStatusChange(reservation.id, "승인")}>
-                      승인
-                    </button>
-                    <button onClick={() => handleStatusChange(reservation.id, "거부")}>
-                      거부
-                    </button>
-                  </>
-                )}
-              </td>
+      <h2>예약 신청 관리</h2>
+      <div className="management-button">
+        <button
+          onClick={() => toggleSection("Consultant")}
+          className={reserveType === "Consultant" ? "active" : "de-active"}
+        >
+          기업 컨설팅 신청
+        </button>
+        <button
+          onClick={() => toggleSection("JobConsult")}
+          className={reserveType === "JobConsult" ? "active" : "de-active"}
+        >
+          일자리 상담 신청
+        </button>
+        <button
+          onClick={() => toggleSection("Rental")}
+          className={reserveType === "Rental" ? "active" : "de-active"}
+        >
+          회의실 대관 신청
+        </button>
+      </div>
+
+      <div className={reserveType === "Consultant" ? "reserve-box" : "hidden"}>
+        <label className="size-label">
+          한 페이지에 표시 할 예약 수
+          <input
+            type="number"
+            value={size}
+            onChange={(e) => setSize(e.target.value)}
+          />
+        </label>
+
+        <div className="pagination">
+          <button onClick={() => handlePageChange(page - 1)} disabled={page === 0}>
+            이전
+          </button>
+          <span>
+            페이지: {page + 1} / {totalPages}
+          </span>
+          <button
+            onClick={() => handlePageChange(page + 1)}
+            disabled={page === totalPages - 1}
+          >
+            다음
+          </button>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>번호</th>
+              <th>회원</th>
+              <th>                
+                <select value={state} onChange={handleStateChange}>
+                  <option value="all">상태</option>
+                  <option value="RESERVE">예약</option>
+                  <option value="CHECK">검토</option>
+                  <option value="APPROVE">승인</option>
+                  <option value="DENY">거부</option>
+                </select>
+              </th>
+              <th>동작</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {consultants &&
+              consultants.length > 0 &&
+              consultants.map((reservation) => (
+                <tr key={reservation.num} className={`status-${reservation.state}`}>
+                  <td>{reservation.num}</td>
+                  <td>{reservation.member.id}</td>
+                  <td>{getStringState(reservation.state)}</td>
+                  <td>
+                    {reservation.state === "검토중" && (
+                      <>
+                        <button
+                          onClick={() =>
+                            handleStatusChange(reserveType, reservation.num, "승인")
+                          }
+                        >
+                          승인
+                        </button>
+                        <button
+                          onClick={() =>
+                            handleStatusChange(reserveType, reservation.num, "거절")
+                          }
+                        >
+                          거절
+                        </button>
+                      </>
+                    )}
+                    <button onClick={() => handleDetails(reservation)}>자세히 보기</button>
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+        <h4>총 {total}개의 예약 조회됨</h4>
+      </div>
+
+      <div className={reserveType === "JobConsult" ? "reserve-box" : "hidden"}>
+        <label className="size-label">
+          한 페이지에 표시 할 예약 수
+          <input
+            type="number"
+            value={size}
+            onChange={(e) => setSize(e.target.value)}
+          />
+        </label>
+
+        <div className="pagination">
+          <button onClick={() => handlePageChange(page - 1)} disabled={page === 0}>
+            이전
+          </button>
+          <span>
+            페이지: {page + 1} / {totalPages}
+          </span>
+          <button
+            onClick={() => handlePageChange(page + 1)}
+            disabled={page === totalPages - 1}
+          >
+            다음
+          </button>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>번호</th>
+              <th>회원</th>
+              <th>                
+                <select value={state} onChange={handleStateChange}>
+                  <option value="all">상태</option>
+                  <option value="RESERVE">예약</option>
+                  <option value="CHECK">검토</option>
+                  <option value="APPROVE">승인</option>
+                  <option value="DENY">거절</option>
+                </select>
+              </th>
+              <th>동작</th>
+            </tr>
+          </thead>
+          <tbody>
+            {jobConsult &&
+              jobConsult.length > 0 &&
+              jobConsult.map((reservation) => (
+                <tr key={reservation.num} className={`status-${reservation.state}`}>
+                  <td>{reservation.num}</td>
+                  <td>{reservation.member.id}</td>
+                  <td>{getStringState(reservation.state)}</td>
+                  <td>
+                    {reservation.state === "검토중" && (
+                      <>
+                        <button
+                          onClick={() =>
+                            handleStatusChange(reserveType, reservation.num, "승인")
+                          }
+                        >
+                          승인
+                        </button>
+                        <button
+                          onClick={() =>
+                            handleStatusChange(reserveType, reservation.num, "거절")
+                          }
+                        >
+                          거절
+                        </button>
+                      </>
+                    )}
+                    <button onClick={() => handleDetails(reservation)}>자세히 보기</button>
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+        <h4>총 {total}개의 예약 조회됨</h4>
+      </div>
+
+      <div className={reserveType === "Rental" ? "reserve-box" : "hidden"}>
+        <label className="size-label">
+          한 페이지에 표시 할 예약 수
+          <input
+            type="number"
+            value={size}
+            onChange={(e) => setSize(e.target.value)}
+          />
+        </label>
+
+        <div className="pagination">
+          <button onClick={() => handlePageChange(page - 1)} disabled={page === 0}>
+            이전
+          </button>
+          <span>
+            페이지: {page + 1} / {totalPages}
+          </span>
+          <button
+            onClick={() => handlePageChange(page + 1)}
+            disabled={page === totalPages - 1}
+          >
+            다음
+          </button>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>번호</th>
+              <th>회원</th>
+              <th>
+                <select value={state} onChange={handleStateChange}>
+                  <option value="all">상태</option>
+                  <option value="RESERVE">예약</option>
+                  <option value="CHECK">검토</option>
+                  <option value="APPROVE">승인</option>
+                  <option value="DENY">거부</option>
+                </select>
+              </th>
+              <th>동작</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rental &&
+              rental.length > 0 &&
+              rental.map((reservation) => (
+                <tr key={reservation.num} className={`status-${reservation.state}`}>
+                  <td>{reservation.num}</td>
+                  <td>{reservation.member.id}</td>
+                  <td>{getStringState(reservation.state)}</td>
+                  <td>
+                    {reservation.state === "검토중" && (
+                      <>
+                        <button
+                          onClick={() =>
+                            handleStatusChange(reserveType, reservation.num, "승인")
+                          }
+                        >
+                          승인
+                        </button>
+                        <button
+                          onClick={() =>
+                            handleStatusChange(reserveType, reservation.num, "거절")
+                          }
+                        >
+                          거절
+                        </button>
+                      </>
+                    )}
+                    <button onClick={() => handleDetails(reservation)}>자세히 보기</button>
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+        <h4>총 {total}개의 예약 조회됨</h4>
+      </div>
+
+      {selectedReservation && (
+        <ReservationDetail
+          reservation={selectedReservation}
+          reserveType={reserveType}
+          onClose={handleCloseDetails}
+        />
+      )}
     </div>
   );
 };

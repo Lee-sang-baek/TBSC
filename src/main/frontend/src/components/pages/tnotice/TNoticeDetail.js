@@ -38,8 +38,6 @@ const TNoticeDetail = () => {
         }
     };
 
-    if (!notice) return <div>Loading...</div>;
-
     return (
         <div className="TNoticedetail-copo">
             <div className="detail-container">

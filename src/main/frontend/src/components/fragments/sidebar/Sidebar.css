@@ -10,6 +10,10 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* 현대적인 폰트 스타일 */
     padding: 20px; /* 내부 여백 */
     box-sizing: border-box; /* 패딩을 포함한 전체 크기 유지 */
+
+    @media (max-width: 1000px) {
+        display: none;
+    }
 }
 
 .Sidebar-compo .main {

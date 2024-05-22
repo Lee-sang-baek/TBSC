@@ -38,8 +38,6 @@ const PressReleaseDetail = () => {
         }
     };
 
-    if (!pressRelease) return <div>Loading...</div>;
-
     return (
         <div className="PressReleaseDetail-copo">
             <div className="detail-container">
