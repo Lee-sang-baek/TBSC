@@ -37,6 +37,9 @@ const PressReleaseDetail = () => {
             }
         }
     };
+    if(!pressRelease) {
+        return;
+    }
 
     return (
         <div className="PressReleaseDetail-copo">

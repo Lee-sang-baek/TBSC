@@ -48,6 +48,7 @@ import PressReleaseDetail from "./components/pages/pressrelease/PressReleaseDeta
 import JobConsult from "./components/pages/jobConsult/JobConsult";
 import MainHomepage from "./components/fragments/mainHomepage/MainHomepage";
 import Sidebar from "./components/fragments/sidebar/Sidebar";
+import SearchResult from "./components/pages/search/SearchResult";
 
 
 function App() {
@@ -320,6 +321,12 @@ function App() {
                 <JobConsult />
                 </div>
                 } />
+                <Route path="/search-results" element={
+                <div className="outter">
+                <Sidebar type="reserve" />
+                <SearchResult />
+                </div>
+                }/>
                 
                 <Route path="/addAsset" element={<VisualAssetManager />} />
                 
