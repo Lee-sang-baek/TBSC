@@ -19,7 +19,7 @@
     width: 100%;
     background-color: rgba(100, 100, 100, 0.7);
     position: relative;
-    
+
 }
 
 .Header-compo #gnb_container {
@@ -33,7 +33,7 @@
 .Header-compo .logo-container {
     position: absolute;
     left: 15px;
-    
+
 }
 
 .Header-compo .logo-img {
@@ -52,6 +52,46 @@
     width: fit-content;
     height: 50px;
     object-fit: contain;
+}
+.Header-compo .search-icon {
+    position: absolute;
+    right: 150px;
+}
+.Header-compo .searchImage {
+    width: fit-content;
+    height: 50px;
+
+}
+.Header-compo .search-dropdown {
+    position: absolute;
+    right: 160px;
+    background-color: rgba(100, 100, 100, 0.7);
+    border: 1px solid #ccc;
+    padding: 10px;
+    z-index: 1000;
+    display: flex;
+    gap: 10px;
+    bottom: 5px;
+    width: 250px;
+}
+
+.Header-compo .search-dropdown input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.Header-compo .search-dropdown button {
+    padding: 5px 10px;
+    border: none;
+    background-color: black;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.Header-compo .search-dropdown button:hover {
+    background-color: #414141;
 }
 
 .Header-compo .gnb_1dul {
@@ -207,7 +247,7 @@
     color: #007bff;
     display: block;
     padding: 10px 0;
-    
+
 }
 
 .Header-compo .mobile-sub-menu {
@@ -233,6 +273,8 @@
     color: #007bff;
 }
 
+
+
 @media (max-width: 1600px) {
     .Header-compo .login-dropdown {
         right: 30px;
@@ -256,7 +298,7 @@
         top: 0;
         display: block;
         justify-self: center;
-        
+
     }
 
     .Header-compo .logo-img {
@@ -288,5 +330,15 @@
 
     .Header-compo .mobile-menu {
         display: block;
+    }
+    .Header-compo .search-dropdown{
+        position: fixed;
+        height: fit-content;
+        top: 50px;
+        width: 100%;
+        left: 0;
+        right: 0;
+        justify-content: center;
+        border: none;
     }
 }

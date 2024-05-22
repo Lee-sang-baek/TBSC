@@ -48,10 +48,14 @@ function NoticeDetail() {
             }
         }
     };
-
+    if (!notice) {
+        return;
+    }
 
     const fileName = notice.fileUrl ? notice.fileUrl.split(";").pop() : "";
     const fileDownloadUrl = fileName ? `http://localhost:8090/files/${fileName}` : "";
+
+
 
     return (
         <div className="NoticeDetail-compo">

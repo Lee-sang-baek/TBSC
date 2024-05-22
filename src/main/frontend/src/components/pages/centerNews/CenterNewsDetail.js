@@ -38,6 +38,11 @@ const CenterNewsDetail = () => {
         }
     };
 
+    if(!centerNews){
+        return;
+    }
+
+
     return (
         <div className="CenterNewsDetail-copo">
             <div className="detail-container">
