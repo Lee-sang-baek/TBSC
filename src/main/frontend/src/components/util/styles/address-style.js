@@ -1,6 +1,7 @@
 import { css } from "@emotion/react";
 
 export const addressContainer = css`
+  width: 100%;
   padding: 4px;
   font-size: 16px;
   //font-family: "Jost";
@@ -9,6 +10,7 @@ export const addressContainer = css`
 `;
 
 export const addressInputsContainer = css`
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -22,25 +24,25 @@ export const postCodeContainer = css`
 export const boxStyle = css`
   border-radius: 0;
   border: 1.2px solid #ccc;
-  width: 400px;
-  height: 32px;
+  width: 91%;
+  height: 30px;
   padding: 4px 8px;
   outline: none;
   font-size: 14px;
-
+  background-color: #fff;
   &:focus {
     border-color: #444;
   }
 `;
 
 export const zonecodeStyle = css`
-  width: 139px;
+  width: 35%;
 `;
 
 export const addressButtonStyle = css`
   border-radius: 0;
   border: 1.2px solid #ccc;
-  height: 32px;
+  height: 30px;
   padding: 4px 8px;
   background: #f4f4f4;
   cursor: pointer;

@@ -95,7 +95,7 @@ function App() {
                 <Route path="/admin" element={
                     <div className="outter">
                         <Sidebar type="admin" />
-                        <AdminPage />
+                        <MemberList />
                     </div>
                 } />
                 <Route path="/admin/member-list" element={

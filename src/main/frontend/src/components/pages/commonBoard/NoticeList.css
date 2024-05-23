@@ -5,10 +5,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 4% 0;
+    padding: 0;
 }
 
 .NoticeList-compo .noticeListContainer {
+    margin: 100px 0;
     width: 87%;
     background-color: #fff;
     padding: 20px;

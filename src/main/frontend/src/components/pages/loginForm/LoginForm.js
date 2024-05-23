@@ -46,8 +46,9 @@ const LoginForm = () => {
 
   return (
     <div className="LoginForm-compo">
+      <div className="form-box">
         <div className="login-text">
-            <h2>로그인</h2>
+            <h1>로그인</h1>
         </div>
       <div className="input-row">
         <input type="text" onChange={(e) => {setLoginForm({ ...loginForm, id: e.target.value })}} placeholder="아이디 입력" onKeyPress={handleKeyPress}/>
@@ -63,13 +64,14 @@ const LoginForm = () => {
           <button>아이디 찾기</button>
           <button>비밀번호 찾기</button>
         </div>
-      <div className="social-login">
+      {/* <div className="social-login">
         <p>통합 로그인</p>
         <div className="social-icons">
           <button>G</button>
           <button>N</button>
           <button>K</button>
         </div>
+      </div> */}
       </div>
     </div>
   );

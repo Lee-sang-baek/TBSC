@@ -5,35 +5,52 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-}
+    justify-content: center;
 
-.SignUp-compo .signup-form {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  text-align: center; /* 전체 요소를 가운데 정렬 */
+    /* 작은 화면에서도 잘 보일 수 있도록 반응형 스타일링 */
+    @media (max-width: 500px) {
+      label,
+      input,
+      button {
+        margin: 10px 20px; /* 좌우 여백을 더 줄임 */
+      }
+    }
+
+  .form-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+  }
 }
 
 /* 각 입력 요소와 라벨의 간격을 조정 */
 .SignUp-compo label {
-  display: block;
-  margin-bottom: 10px;
-  text-align: left; /* 라벨 텍스트를 왼쪽 정렬 */
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+
+  margin: 10px 0;
 }
 
-.SignUp-compo input[type="text"],
-.SignUp-compo input[type="password"],
-.SignUp-compo input[type="email"],
-.SignUp-compo input[type="date"]{
-  width: calc(100% - 1500px);
+.SignUp-compo .input-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5px; /* 각 input-box 사이의 간격 설정 */
+  min-width: none;
+  max-width: 500px;
+}
+
+.SignUp-compo input{
+  width: 91%;
   padding: 10px;
   margin-top: 5px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 3px;
-  display: inline-block;
+  height: 20px;
 }
 
 .SignUp-compo button {
@@ -43,6 +60,8 @@
   border: none;
   border-radius: 3px;
   cursor: pointer;
+  margin: 0 10px;
+  
 }
 
 .SignUp-compo button:hover {
@@ -55,67 +74,6 @@
   margin-left: 10px;
 }
 
-/* 전체적으로 가운데 정렬
-.signup-form {
-  text-align: center;
-}
-*/
-
-/* 작은 화면에서도 잘 보일 수 있도록 반응형 스타일링 */
-@media (max-width: 500px) {
-  .SignUp-compo .signup-form label,
-  .signup-form input,
-  .signup-form button {
-    margin: 10px 20px; /* 좌우 여백을 더 줄임 */
-  }
-}
-
-.SignUp-compo .custom-calendar {
-  font-family: Arial, sans-serif; /* 원하는 글꼴로 변경 */
-  border: 1px solid #ccc; /* 테두리 스타일 및 색상 설정 */
-  border-radius: 5px; /* 모서리를 둥글게 만듭니다. */
-}
-
-.SignUp-compo .react-datepicker__month-container {
-  padding: 10px; /* 달력 내용의 패딩 설정 */
-}
-
-.SignUp-compo .react-datepicker__day {
-  width: 40px; /* 각 날짜의 너비 설정 */
-  height: 40px; /* 각 날짜의 높이 설정 */
-  line-height: 40px; /* 날짜 텍스트의 세로 가운데 정렬 */
-  margin: 2px; /* 각 날짜 사이의 간격 설정 */
-  border-radius: 5px; /* 날짜를 둥글게 만듭니다. */
-  text-align: center; /* 날짜 텍스트를 가운데 정렬 */
-}
-
-.SignUp-compo .react-datepicker__day:hover {
-  background-color: #f0f0f0; /* 날짜에 마우스를 올렸을 때 배경색 변경 */
-}
-
-.SignUp-compo .react-datepicker__day--selected {
-  background-color: #007bff; /* 선택된 날짜의 배경색 설정 */
-  color: #fff; /* 선택된 날짜의 텍스트 색상 설정 */
-}
-
-.SignUp-compo .react-datepicker__day--keyboard-selected {
-  background-color: #0056b3; /* 키보드로 선택된 날짜의 배경색 설정 */
-}
-
-.SignUp-compo .react-datepicker__time-container {
-  width: 100%; /* 시간 선택 컨테이너의 너비를 100%로 설정 */
-}
-
-.SignUp-compo .react-datepicker__time-box {
-  width: 100px; /* 시간 선택 상자의 너비 설정 */
-}
-
-.SignUp-compo .react-datepicker__time-list {
-  list-style: none; /* 시간 목록의 목록 스타일 제거 */
-  padding: 0; /* 시간 목록의 패딩 제거 */
-  margin: 0; /* 시간 목록의 마진 제거 */
-}
-
 .SignUp-compo .input-form {
     display: flex; /* Flexbox 레이아웃 사용 */
     flex-direction: column; /* 열 방향으로 요소들을 배치 */
@@ -123,21 +81,10 @@
     /* 다른 스타일 속성들 */
 }
 
-.SignUp-compo .input-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 5px; /* 각 input-box 사이의 간격 설정 */
-}
-
 .SignUp-compo .input-box .center-button {
     width: 100px;
 }
 
-.SignUp-compo .input-box label .long-input {
-    width: 500px;
-    display: block;
-}
 
 .SignUp-compo .phone-number-box {
     display: flex;
@@ -160,10 +107,9 @@
 }
 
 .SignUp-compo .phone-number-box h4 {
-    margin-top: 0px;
-    margin-left: 18px;
-    margin-right: 18px;
-    padding-top: 8px;
+    display: block;
+    margin: 0 5px;
+    margin-bottom: 13px;
 }
 
 .SignUp-compo .input-icon {
@@ -185,10 +131,10 @@
     height: 50px;
 }
 
-.SignUp-compo .input-form .complete {
+.SignUp-compo .complete {
     color: green;
 }
 
-.SignUp-compo .input-form .error {
+.SignUp-compo .error {
     color: red;
 }

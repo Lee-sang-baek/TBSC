@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Sidebar.css'; // 스타일 파일
+import SideBanner from '../sideBanner/SideBanner';
 
 const Sidebar = ({ type }) => {
   const [menuItems, setMenuItems] = useState([]);
@@ -25,7 +26,7 @@ const Sidebar = ({ type }) => {
           ]
         }
       ]);
-    } else if (type === 'admin') {
+    } else if (type === 'admin' && sessionStorage.getItem("state") === "ADMIN") {
       setMenuItems([
         {
           type: 'main',
@@ -149,7 +150,9 @@ const Sidebar = ({ type }) => {
         </div>
       ))}
     </div>
+    <SideBanner />
     </div>
+    
   );
 }
 

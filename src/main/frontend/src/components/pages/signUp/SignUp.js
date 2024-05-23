@@ -37,7 +37,12 @@ const SignUp = ({isComp}) => {
     const [idAvailable, setIdAvailable] = useState(false);
     const [passwordMatch, setPasswordMatch] = useState(true);
     const [emailAvailable, setEmailAvailable] = useState(false);
-    const [phoneVerified, setPhoneVerified] = useState(true);
+    const [verified, setVerified] = useState(true);
+    const [isEmail, setIsEmail] = useState(false);
+
+    const handleIsEmailChange = () => {
+        setIsEmail(!isEmail);
+    };
 
     const checkUserId = () => {
         axios.get("/member/checkId?id=" + formData.id)
@@ -85,42 +90,31 @@ const SignUp = ({isComp}) => {
     useEffect(() => {
         const phoneNumber = `${areaCode}${phoneNum1}${phoneNum2}`;
         setFormData({...formData, phoneNum: phoneNumber});
-    }, [phoneNum1, phoneNum2]);
-
-    useEffect(() => {
-        setIsValidPhoneNum(false);
-        handleSubmit();
-    }, [formData.phoneNum]);
-
-    const handleSubmit = () => {
-        if (phoneNum2.length === 4 && formData.phoneNum.length >= 12) {
+        if (phoneNum2.length === 4 && phoneNumber >= 12) {
             setIsValidPhoneNum(true);
+        } else {
+            setIsValidPhoneNum(false);
         }
-    };
-//핸드폰인증
+    }, [areaCode, phoneNum1, phoneNum2]);
+
     const requestPhoneVerification = () => {
+        alert('인증번호가 전송되었습니다.')
         axios.post('/sms/send', { phoneNumber: formData.phoneNum })
-            .then(response => {
-                alert('인증번호가 전송되었습니다.');
-            })
             .catch(error => {
                 alert('인증번호 전송 실패: ' + error.message);
                 console.log("Phone Number: ", formData.phoneNum);
-                setPhoneVerified(true);  // Consider setting this only on successful verification.
             });
 
     };
 
     const verifyCode = () => {
-        // 서버에 인증번호 확인을 요청하는 로직 구현 필요
         axios.post('/sms/verify', { phoneNumber: formData.phoneNum, verificationCode:formData.verificationCode })
             .then(response => {
                 if (response.data === '인증 성공') {
-                    setPhoneVerified(true);
+                    setVerified(true);
                     alert('핸드폰 번호가 인증되었습니다.');
                 } else {
                     alert('인증번호가 일치하지 않습니다.');
-
                 }
             })
             .catch(error => {
@@ -163,10 +157,9 @@ const SignUp = ({isComp}) => {
     // 여기서부터 이메일
     const [code, setCode] = useState('');
     const [message, setMessage] = useState('');
-    const [emailVerified, setEmailVerified] = useState(false);
     const handleSendCode = () => {
+        alert("인증번호가 발송되었습니다.")
         axios.post('/auth/sendCode', { email: formData.email })
-            .then(() => alert("인증번호가 발송되었습니다."))
             .catch(error => alert("인증번호 전송이 실패하였습니다."));
     };
 
@@ -176,7 +169,7 @@ const SignUp = ({isComp}) => {
                 setMessage(response.data);  // 서버로부터 받은 응답 메시지를 상태로 저장
                 alert(response.data);       // 사용자에게 서버 응답을 알림
                 if (response.data === "인증되었습니다.") {
-                    setEmailVerified(true); // 이메일 인증 성공 시 emailVerified 상태 업데이트
+                    setVerified(true); // 이메일 인증 성공 시 verified 상태 업데이트
                 }
             })
             .catch(error => {
@@ -222,6 +215,9 @@ const SignUp = ({isComp}) => {
 
 
         for (const key in formData) {
+            if (key === "verificationCode" || key === "emailCode") {
+                continue;
+            }
             if (formData[key] === null || formData[key] === "") {
                 missingFields.push(fieldNames[key]);
             }
@@ -231,9 +227,7 @@ const SignUp = ({isComp}) => {
             const missingFieldsMessage = missingFields.join(", ");
             alert(`다음 값을 입력해주세요: ${missingFieldsMessage}`);
         } else {
-            if (!emailVerified) {
-                alert("이메일 인증을 해주세요.");
-            } else if (idAvailable && passwordMatch && emailAvailable && phoneVerified) {
+            if (idAvailable && passwordMatch && emailAvailable && verified && isValidPhoneNum) {
                 // 회원가입 데이터를 서버로 전송
                 axios.post(isComp ? "/member/compSignup" : "/member/signup", formData)
                     .then(response => {
@@ -246,7 +240,9 @@ const SignUp = ({isComp}) => {
                         console.error(error); // 오류 발생 시 처리
                     });
             } else {
-                if (!idAvailable) {
+                if (!verified) {
+                    alert("이메일 또는 휴대폰 인증이 필요합니다.");
+                } else if (!idAvailable) {
                     alert("아이디 중복확인이 필요합니다.");
                 } else if (!passwordMatch) {
                     alert("비밀번호가 같지 않습니다.");
@@ -265,8 +261,9 @@ const SignUp = ({isComp}) => {
 
     return (
         <div className="SignUp-compo">
+            <div className="form-box">
             <div className="input-icon">
-                <img src={logoImage}/>
+                <img src={logoImage} alt={logoImage}/>
                 <h2>{isComp ? "기업" : "일반"} 회원 가입</h2>
             </div>
             <div className="input-box">
@@ -341,22 +338,9 @@ const SignUp = ({isComp}) => {
                     }}/>
                 </label>
                 <button className="center-button" onClick={checkEmail}>중복 확인</button>
-                <button onClick={handleSendCode}>이메일 보내기</button>
-                <label>
-                    <input
-                        className="long-input"
-                        type="text"
-                        value={formData.emailCode}
-                        onChange={(e) => setFormData({...formData, emailCode: e.target.value})}
-                        placeholder="인증번호를 입력하세요"
-                    />
-                </label>
-                <button onClick={handleEmailCode}>인증하기</button>
-
             </div>
 
             <div className="input-box">
-
                 <label>
                     휴대폰 번호:
                     <div className="phone-number-box">
@@ -383,27 +367,44 @@ const SignUp = ({isComp}) => {
                         />
                     </div>
                 </label>
-
-
-
+            </div>
+            
+            <div className="input-box">
+                <button type="button" onClick={handleIsEmailChange}>{isEmail ? "휴대폰 인증으로 변경" : "이메일 인증으로 변경"}</button>
             </div>
 
+            {isEmail && 
             <div className="input-box">
                 <label>
-                    인증번호 입력:
+                    이메일 인증번호 입력:
+                    <input
+                        className="long-input"
+                        type="text"
+                        value={formData.emailCode}
+                        onChange={(e) => setFormData({...formData, emailCode: e.target.value})}
+                    />
+                </label>
+                <div className="btn-twice">
+                    <button onClick={handleSendCode}>인증번호 전송</button>
+                    <button onClick={handleEmailCode}>인증하기</button>
+                </div>
+            </div>}
+            
+            {!isEmail &&
+            <div className="input-box">
+                <label>
+                    휴대폰 인증번호 입력:
                     <input className="long-input" type="text" value={formData.verificationCode} onChange={(e) => {
                         setFormData({...formData, verificationCode: e.target.value});
-                        // setPhoneVerified(false);}} />
-                        setPhoneVerified(true);
+                        // setVerified(false);}} />
+                        setVerified(true);
                     }}/>
-
                 </label>
-                <button className="center-button" onClick={requestPhoneVerification}>인증번호전송</button>
-
-
-                <button className="center-button" onClick={verifyCode}>인증번호확인</button>
-
-            </div>
+                <div className="btn-twice">
+                    <button onClick={requestPhoneVerification}>인증번호 전송</button>
+                    <button onClick={verifyCode}>인증하기</button>
+                </div>
+            </div>}
 
             {isComp &&
                 <div className="input-box">
@@ -444,6 +445,7 @@ const SignUp = ({isComp}) => {
 
             <div className="signup-button">
                 <button onClick={handleSignUp}>가입하기</button>
+            </div>
             </div>
         </div>
     );

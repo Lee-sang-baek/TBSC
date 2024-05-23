@@ -4,6 +4,11 @@ import "./ReservationConfirmation.css";
 import ReservationDetail from "./ReservationDetail";
 
 const ReservationConfirmation = () => {
+  useEffect(() => {
+    if (sessionStorage.getItem("state") !== "ADMIN") {
+        window.location.href = "/";
+    }
+  }, [])
   const [reserveType, setReserveType] = useState("Consultant");
   const [consultants, setConsultants] = useState([]);
   const [jobConsult, setJobConsult] = useState([]);
@@ -102,6 +107,10 @@ const ReservationConfirmation = () => {
       return "거절";
     }
   };
+
+  if (sessionStorage.getItem("state") !== "ADMIN") {
+    return null;
+  }
 
   return (
     <div className="ReservationConfirmation-compo">

@@ -39,6 +39,5 @@ public class NoticeServiceTest {
         }
 
         noticeRepository.saveAll(notices);
-        System.out.println("100 Sample notices have been inserted.");
     }
 }

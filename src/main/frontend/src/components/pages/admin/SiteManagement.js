@@ -6,6 +6,11 @@ import VisualAssetManager from "./VisualAssetManager";
 import axios from "axios";
 
 const SiteManagement = () => {
+    useEffect(() => {
+        if (sessionStorage.getItem("state") !== "ADMIN") {
+            window.location.href = "/";
+        }
+    }, [])
     const [selectedSection, setSelectedSection] = useState("mainImage"); // 현재 선택된 섹션 상태
     const [isAssetManagerOpen, setIsAssetManagerOpen] = useState(false); // VisualAssetManager 창이 열려있는지 여부를 추적하는 상태
     const [isUpadateManagerOpen, setIsUpdateManagerOpen] = useState(0);
@@ -96,6 +101,10 @@ const SiteManagement = () => {
                 });
         }
     };
+
+    if (sessionStorage.getItem("state") !== "ADMIN") {
+        return null;
+    }
 
   return (
     <div className="SiteManagement-compo">

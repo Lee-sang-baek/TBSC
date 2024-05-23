@@ -10,7 +10,7 @@
     background-color: #ffffff; /* 흰색 배경으로 변경 */
     color: #333; /* 텍스트 색상을 짙은 회색으로 */
     border-radius: 15px; /* 전체 컴포넌트의 모서리를 둥글게 */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
     padding: 20px; /* 내부 여백 */
     box-sizing: border-box; /* 패딩을 포함한 전체 크기 유지 */
 
@@ -85,7 +85,8 @@
 }
 
 .side-box {
-    height: 72.5vh;
+    /* height: 72.5vh; */
+    height: 90vh;
 
     @media (max-width: 1000px) {
         display: none;

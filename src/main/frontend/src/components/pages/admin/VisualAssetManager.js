@@ -4,6 +4,11 @@ import Button from "../../baseComponents/Button";
 import "./VisualAssetManager.css";
 
 const VisualAssetManager = ({ asset, itemToEdit, close }) => {
+  useEffect(() => {
+    if (sessionStorage.getItem("state") !== "ADMIN") {
+        window.location.href = "/";
+    }
+  }, [])
   const [formData, setFormData] = useState({
     num: null,
     image: null,
@@ -100,6 +105,9 @@ const VisualAssetManager = ({ asset, itemToEdit, close }) => {
     }
   };
 
+  if (sessionStorage.getItem("state") !== "ADMIN") {
+    return null;
+  }
 
   return (
     <div className="VisualAssetManager-compo">

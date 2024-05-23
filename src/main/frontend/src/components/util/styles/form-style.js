@@ -13,7 +13,6 @@ export const inputsContainer = css`
 export const inputContainer = css`
   padding: 4px;
   font-size: 16px;
-  //font-family: "Jost";
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -26,9 +25,10 @@ export const inputContainer = css`
 
 export const labelStyle = (isRequired) => {
     const baseStyle = {
-        display: "inline-block",
-        width: "128px",
+        
+        width: "350px",
         fontWeight: 400,
+        display: "flex",
     };
 
     if (isRequired) {
@@ -44,7 +44,7 @@ export const labelStyle = (isRequired) => {
 export const inputStyle = (isInValid) => css`
   border-radius: 0;
   border: 1.2px solid ${isInValid ? "#c05850bf" : "#ccc"};
-  height: 32px;
+  height: 20px;
   padding: 4px 8px;
   outline: none;
 

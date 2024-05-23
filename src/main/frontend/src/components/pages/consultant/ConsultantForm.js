@@ -92,7 +92,7 @@ const ConsultantForm = () => {
             <form onSubmit={handleSubmit}>
                 <h2>기업 컨설팅 신청</h2>
 
-                <label>성별:
+                <label className='big-label'>성별:
                     <input
                         type="radio"
                         name="gender"
@@ -117,10 +117,8 @@ const ConsultantForm = () => {
                         required
                     />
                 </label>
-
-                <div className="business">
-                    <h2>사업자 등록 정보</h2>
-                    <label>소유 구분:
+                <h2>사업자 등록 정보</h2>
+                <label className='big-label'>소유 구분:
                         <input
                             type="radio"
                             name="ownerShip"
@@ -182,10 +180,9 @@ const ConsultantForm = () => {
                             required
                         />
                     </label>
-                </div>
-                <br/><br/><br/>
+                <br/>
                 <h2>사업 신청 내역</h2>
-                <label>신청일자:
+                <label className='big-label'>신청일자:
                     <input
                         type="datetime-local"
                         name="appDate"
@@ -231,8 +228,9 @@ const ConsultantForm = () => {
                         onChange={handleInputChange}
                     /> 현장체험(멘토링)
                 </label>
-
-                <label>경영 애로사항:
+                
+                <label className='big-label'>
+                <h2>경영 애로사항</h2>
                     <textarea
                         name="difficulties"
                         value={formData.difficulties}
@@ -240,7 +238,9 @@ const ConsultantForm = () => {
                         required
                     />
                 </label>
-                <label>지원 요청 사항:
+                
+                <label className='big-label'>
+                <h2>지원 요청 사항</h2>
                     <textarea
                         name="support"
                         value={formData.support}
@@ -248,7 +248,9 @@ const ConsultantForm = () => {
                         required
                     />
                 </label>
-                <label>첨부 서류:
+                
+                <label className='big-label'>
+                <h2>첨부 서류</h2>
                     <input
                         type="file"
                         name="file"

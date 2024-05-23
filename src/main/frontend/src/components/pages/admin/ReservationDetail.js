@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./ReservationDetail.css";
 import { DateFormat } from "../../util/DateFormat";
 
 const ReservationDetail = ({ reservation, reserveType, onClose, handleStatusChange }) => {
-
+  useEffect(() => {
+    if (sessionStorage.getItem("state") !== "ADMIN") {
+        window.location.href = "/";
+    }
+  }, [])
   const getStringState = (state) => {
     if (state === "RESERVE") {
       return "예약";
@@ -15,6 +19,10 @@ const ReservationDetail = ({ reservation, reserveType, onClose, handleStatusChan
       return "거절";
     }
   };
+
+  if (sessionStorage.getItem("state") !== "ADMIN") {
+    return null;
+  }
 
   return (
   <div className="modal-overlay">
