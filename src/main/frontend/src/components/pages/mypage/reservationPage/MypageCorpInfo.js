@@ -1,10 +1,39 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./MypageCorpInfo.css";
 import Button from "../../../baseComponents/Button";
 import Sidebar from "../../../fragments/sidebar/Sidebar";
+import axios from "axios";
+import Viewer from "../functionPage/Viewer";
 
 const CorpInfo = (props) => {
-    const memberId = sessionStorage.getItem("userId");
+    const memberId = sessionStorage.getItem("id");
+
+    const [memberInfo, setMemberInfo] = useState([{
+        memberId: "",
+        num: "",
+        comp_name: "",
+        gender: "",
+        endDate: "",
+        startDate: "",
+        place: "",
+        prepare: "",
+        purpose: "",
+        state: ""
+    }]);
+
+    useEffect(() => {
+        if (memberId) {
+            getMemberInfo();
+        }
+    }, [memberId]); // memberId가 변경되면 getMemberInfo 함수를 호출합니다.
+
+    const getMemberInfo = () => {
+        axios.get("/myPage/member/getMember?id=" + memberId)
+            .then((res) => {
+                console.log(res.data);
+                setMemberInfo({...res.data})
+            });
+    }
 
     if (!memberId) {
         return (
@@ -47,10 +76,11 @@ const CorpInfo = (props) => {
                                 </div>
                                 <div className="corpInfoContent">
                                     <div className="contentText">내용</div>
+                                    <Viewer contents={""}/>
                                 </div>
                             </div>
                         </div>
-                        {(memberId !== "") && (memberId !== "undefined") &&
+                        {(memberId === "") && (memberId === "undefined") &&
                             <div className="ifNothing">
                                 <Button text="기업 정보 없으면 표시"/>
                             </div>

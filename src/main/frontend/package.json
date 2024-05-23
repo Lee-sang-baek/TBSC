@@ -35,6 +35,7 @@
   "proxy": "http://localhost:8090",
   "scripts": {
     "start": "react-scripts start",
+    "winstart": "set \"GENERATE_SOURCEMAP=false\" && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

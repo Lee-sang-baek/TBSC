@@ -1,5 +1,5 @@
 .detailsContainer {
-    margin: 5% 20%;
+    margin: 5% 10%;
 
     .reservDetailTitle {
         margin: 5% 0;
@@ -8,6 +8,19 @@
     .reservDetails {
         display: flex;
         justify-content: space-between;
+        align-items: center;
+
+        .reservTitle {
+            width: 30%;
+        }
+
+        .reservDate {
+            font-size: 15px;
+        }
+    }
+
+    .reservDetails:hover {
+        background-color: rgba(0, 0, 0, 0.15);
     }
 }
 
@@ -24,6 +37,12 @@
 }
 
 .container {
+    .myTitle {
+        padding: 2%;
+        display: flex;
+        justify-content: center;
+    }
+
     .profileImg{
         height: 10%;
         width: 10%;
@@ -40,7 +59,7 @@
         align-items: center;
 
         div {
-            margin: 0 10px;
+            margin: 10px;
             font-weight: bold;
         }
     }

@@ -34,7 +34,7 @@ public class RentalController {
 
     @GetMapping("/member/{memberId}")
     public ResponseEntity<List<Rental>> getRentalsByMemberId(@PathVariable String memberId) {
-        List<Rental> rentals = rentalService.findRentalsByMemberId(memberId);
+        List<Rental> rentals = rentalService.getRentalList(memberId);
         return ResponseEntity.ok().body(rentals);
     }
 

@@ -52,6 +52,8 @@ public class QMember extends EntityPathBase<Member> {
 
     public final StringPath phoneNum = createString("phoneNum");
 
+    public final ListPath<com.tbsc.registcomp.RegistComp, com.tbsc.registcomp.QRegistComp> registComps = this.<com.tbsc.registcomp.RegistComp, com.tbsc.registcomp.QRegistComp>createList("registComps", com.tbsc.registcomp.RegistComp.class, com.tbsc.registcomp.QRegistComp.class, PathInits.DIRECT2);
+
     public final ListPath<com.tbsc.pressrelease.PressRelease, com.tbsc.pressrelease.QPressRelease> pressReleases = this.<com.tbsc.pressrelease.PressRelease, com.tbsc.pressrelease.QPressRelease>createList("pressReleases", com.tbsc.pressrelease.PressRelease.class, com.tbsc.pressrelease.QPressRelease.class, PathInits.DIRECT2);
 
     public final ListPath<com.tbsc.rental.Rental, com.tbsc.rental.QRental> rentals = this.<com.tbsc.rental.Rental, com.tbsc.rental.QRental>createList("rentals", com.tbsc.rental.Rental.class, com.tbsc.rental.QRental.class, PathInits.DIRECT2);

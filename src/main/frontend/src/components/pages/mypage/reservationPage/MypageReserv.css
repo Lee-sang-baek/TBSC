@@ -22,7 +22,7 @@
 
     .reservContainer {
         background-color: #a3deef;
-        width: 100%;
+        width: 90%;
         border-radius: 15px;
 
         div {
@@ -48,5 +48,9 @@
         }
     }
 
+    .reservContainer:hover {
+        background-color: #91cdd7;
+        width: 95%;
+        height: 220px;
+    }
 }
-
