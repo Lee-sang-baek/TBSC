@@ -1,6 +1,6 @@
 package com.tbsc.registComp;
 
-import com.tbsc.registcomp.RegistComp;
+import com.tbsc.member.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface RegistCompRepository extends JpaRepository<RegistComp, Integer> {
@@ -26,4 +27,6 @@ public interface RegistCompRepository extends JpaRepository<RegistComp, Integer>
     //startDate와 endDate 매개변수를 사용하여 조회할 범위를 지정
     @Query(value = "SELECT * FROM RegistComp r WHERE r.date >= :startDate AND r.date <= :endDate", nativeQuery = true)
     List<RegistComp> findByDateRange(@Param("startDate") LocalDateTime startDate, @Param("endDate") LocalDateTime endDate);
+
+    Optional<RegistComp> findByMember(Member member);
 }

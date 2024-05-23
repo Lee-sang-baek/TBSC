@@ -1,4 +1,4 @@
-package com.tbsc.notice;
+package com.tbsc.registComp;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
@@ -11,50 +11,52 @@ import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
- * QNotice is a Querydsl query type for Notice
+ * QRegistComp is a Querydsl query type for RegistComp
  */
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
-public class QNotice extends EntityPathBase<Notice> {
+public class QRegistComp extends EntityPathBase<RegistComp> {
 
-    private static final long serialVersionUID = -1994878037L;
+    private static final long serialVersionUID = 2098981259L;
 
     private static final PathInits INITS = PathInits.DIRECT2;
 
-    public static final QNotice notice = new QNotice("notice");
+    public static final QRegistComp registComp = new QRegistComp("registComp");
+
+    public final StringPath compImage = createString("compImage");
 
     public final StringPath content = createString("content");
 
-    public final DateTimePath<java.time.LocalDateTime> date = createDateTime("date", java.time.LocalDateTime.class);
+    public final StringPath corpName = createString("corpName");
 
-    public final StringPath fileUrl = createString("fileUrl");
+    public final DateTimePath<java.time.LocalDateTime> date = createDateTime("date", java.time.LocalDateTime.class);
 
     public final com.tbsc.member.QMember member;
 
     public final NumberPath<Integer> num = createNumber("num", Integer.class);
 
-    public final StringPath state = createString("state");
-
     public final StringPath title = createString("title");
 
     public final NumberPath<Integer> view = createNumber("view", Integer.class);
 
-    public QNotice(String variable) {
-        this(Notice.class, forVariable(variable), INITS);
+    public final StringPath writer = createString("writer");
+
+    public QRegistComp(String variable) {
+        this(RegistComp.class, forVariable(variable), INITS);
     }
 
-    public QNotice(Path<? extends Notice> path) {
+    public QRegistComp(Path<? extends RegistComp> path) {
         this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
     }
 
-    public QNotice(PathMetadata metadata) {
+    public QRegistComp(PathMetadata metadata) {
         this(metadata, PathInits.getFor(metadata, INITS));
     }
 
-    public QNotice(PathMetadata metadata, PathInits inits) {
-        this(Notice.class, metadata, inits);
+    public QRegistComp(PathMetadata metadata, PathInits inits) {
+        this(RegistComp.class, metadata, inits);
     }
 
-    public QNotice(Class<? extends Notice> type, PathMetadata metadata, PathInits inits) {
+    public QRegistComp(Class<? extends RegistComp> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.member = inits.isInitialized("member") ? new com.tbsc.member.QMember(forProperty("member"), inits.get("member")) : null;
     }

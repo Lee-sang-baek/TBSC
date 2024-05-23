@@ -65,7 +65,7 @@ public class QJobConsult extends EntityPathBase<JobConsult> {
     public QJobConsult(Class<? extends JobConsult> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.education = inits.isInitialized("education") ? new com.tbsc.jobConsult.education.QEducation(forProperty("education"), inits.get("education")) : null;
-        this.member = inits.isInitialized("member") ? new com.tbsc.member.QMember(forProperty("member")) : null;
+        this.member = inits.isInitialized("member") ? new com.tbsc.member.QMember(forProperty("member"), inits.get("member")) : null;
     }
 
 }

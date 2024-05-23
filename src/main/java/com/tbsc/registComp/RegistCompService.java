@@ -1,24 +1,30 @@
 package com.tbsc.registComp;
 
-import com.tbsc.registcomp.RegistComp;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.tbsc.member.Member;
+import com.tbsc.member.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class RegistCompService {
 
-    @Autowired
-    private RegistCompRepository registCompRepository;
+    private final RegistCompRepository registCompRepository;
+    private final MemberRepository memberRepository;
 
-    public RegistComp saveRegistComp(RegistComp registComp) {
+    public RegistComp saveRegistComp(RegistCompDto registCompDto) {
+        RegistComp registComp = new RegistComp();
+        registComp.bind(registCompDto);
+        registComp.setMember(memberRepository.findById(registCompDto.getMemberId()).orElse(null));
         return registCompRepository.save(registComp);
     }
 
-    public Optional<RegistComp> getRegistCompById(int id) {
-        return registCompRepository.findById(id);
+    public Optional<RegistComp> getRegistCompById(String memberId) {
+        Member member = memberRepository.findById(memberId).orElse(null);
+        return registCompRepository.findByMember(member);
     }
 
     public List<RegistComp> getAllRegistComps() {

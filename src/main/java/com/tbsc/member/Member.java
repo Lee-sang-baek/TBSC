@@ -7,7 +7,7 @@ import com.tbsc.jobConsult.JobConsult;
 import com.tbsc.log.AccessLog;
 import com.tbsc.notice.Notice;
 import com.tbsc.pressrelease.PressRelease;
-import com.tbsc.registcomp.RegistComp;
+import com.tbsc.registComp.RegistComp;
 import com.tbsc.rental.Rental;
 import com.tbsc.reservation.Reservation;
 import com.tbsc.tnotice.TNotice;
@@ -93,9 +93,10 @@ public class Member {
     @JsonIgnore
     private List<Consultant> consultants = new ArrayList<>();
 
-    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(referencedColumnName = "num")
     @JsonIgnore
-    private List<RegistComp> registComps = new ArrayList<>();
+    private RegistComp registComp;
 
     public Member bind(MemberDto memberDto, PasswordEncoder passwordEncoder) {
         this.setId(memberDto.getId());
