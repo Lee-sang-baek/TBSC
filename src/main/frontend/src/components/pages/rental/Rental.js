@@ -102,7 +102,7 @@ const Rental = () => {
     return (
         <div className="rental-compo">
             <div className="rental-compo-in">
-                <h1>회의실 대관 신청</h1>
+                <h2>회의실 대관 신청</h2>
                 <form onSubmit={handleSubmit}>
                     <label>
                         성별:

@@ -17,28 +17,30 @@
 
 .Header-compo #gnb_wrap {
     width: 100%;
-    background-color: #f8f9fa;
+    background-color: rgb(255, 255, 255);
     position: relative;
-    background-image: linear-gradient(to left, #fddb92 0%, #d1fdff 100%);
+    border-bottom: 1px solid rgb(180, 180, 180);
 }
 
 .Header-compo #gnb_container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50px;
+    height: 100px;
     width: 100%;
 }
 
 .Header-compo .logo-container {
     position: absolute;
     left: 15px;
-    
+    width: 12%;
 }
 
 .Header-compo .logo-img {
+    width: 100%;
     position: absolute;
-    top: -25px;
+    top: -22px;
+    height: auto;
 }
 
 .Header-compo .login-container {
@@ -48,14 +50,59 @@
 
 .Header-compo .login-img {
     position: absolute;
-    top: -20px;
-    width: 100px;
+    top: -25px;
+    width: fit-content;
     height: 50px;
     object-fit: contain;
 }
+.Header-compo .search-icon {
+    position: absolute;
+    right: 100px;
+    transform: translate(0%, 6%);
+}
+.Header-compo .searchImage {
+    width: 40px;
+    height: 40px;
+
+}
+.Header-compo .search-dropdown {
+    position: absolute;
+    top: 101px;
+    right: 100px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    z-index: 1000;
+    display: flex;
+    gap: 10px;
+    width: 400px;
+    background-color: #fff;
+}
+
+.Header-compo .search-dropdown input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 330px;
+}
+
+.Header-compo .search-dropdown button {
+    padding: 5px 10px;
+    border: none;
+    background-color: black;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.Header-compo .search-dropdown button:hover {
+    background-color: #414141;
+}
 
 .Header-compo .gnb_1dul {
+    height: 100%;
     display: flex;
+    align-items: center;
     list-style: none;
     gap: 40px;
     position: absolute;
@@ -70,7 +117,8 @@
     padding: 10px 15px;
     text-decoration: none;
     color: black;
-    font-weight: bold;
+    font-weight: bolder;
+    font-size: large;
     transition: color 0.2s ease;
     text-align: center;
     width: 100%;
@@ -85,10 +133,10 @@
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: #fff;
+    background-color: rgb(255, 255, 255);
     z-index: 1000;
     padding: 20px 0;
-    background-image: linear-gradient(to left, #fddb92 0%, #d1fdff 100%);
+    border-bottom: 1px solid rgb(180, 180, 180);
 }
 
 .Header-compo #gnb_2dul {
@@ -106,17 +154,17 @@
     text-align: center;
 }
 
-.Header-compo .gnb_2dcol::before {
+.Header-compo .gnb_2dcol:before {
     content: "";
     position: absolute;
     left: -15px;
     top: 0;
     bottom: 0;
-    border-left: 1px solid #ddd;
+    
     width: 0;
 }
 
-.Header-compo .gnb_2dcol:first-of-type {
+.Header-compo .gnb_2dcol:first {
     border-left: none;
 }
 
@@ -141,13 +189,14 @@
     display: block;
     padding: 8px 15px;
     text-decoration: none;
+    font-weight: bold;
     color: black;
     transition: color 0.2s ease;
 }
 
 .Header-compo .gnb_2da:hover {
-    color: black;
-    background-image: linear-gradient(to left, #fddb92 0%, #d1fdff 100%);
+    background-color: rgb(230, 245, 255);
+    
 }
 
 .login-dropdown {
@@ -180,7 +229,7 @@
 
 .Header-compo .mobile-menu {
     display: none;
-    top: 60px;
+    top: 50px;
     left: 0;
     width: 250px;
     background-color: #fff;
@@ -205,7 +254,7 @@
     color: #007bff;
     display: block;
     padding: 10px 0;
-    
+
 }
 
 .Header-compo .mobile-sub-menu {
@@ -231,6 +280,8 @@
     color: #007bff;
 }
 
+
+
 @media (max-width: 1600px) {
     .Header-compo .login-dropdown {
         right: 30px;
@@ -239,7 +290,7 @@
     .Header-compo #gnb_container {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        
+        height: 50px;
     }
 
     .Header-compo .gnb_1dul,
@@ -254,14 +305,15 @@
         top: 0;
         display: block;
         justify-self: center;
-        
+        width: fit-content;
     }
 
     .Header-compo .logo-img {
+        width: fit-content;
         position: relative;
+        height: 50px;
         top: 0;
     }
-
 
     .Header-compo .hamburger-menu {
         grid-column: 1;
@@ -274,12 +326,41 @@
         grid-column: 3;
         position: relative;
         display: flex;
-        justify-content: flex-end;
         top: -7px;
-        left: 7px;
+        left: 0;
+    }
+
+    .Header-compo .login-img {
+        display: flex;
+        right: 10px;
+        top: -22.5px;
+        width: fit-content;
     }
 
     .Header-compo .mobile-menu {
         display: block;
+    }
+
+    .Header-compo .search-icon{
+        right: 70px;
+        
+    }
+
+    .Header-compo .search-dropdown{
+        display: flex;
+        flex-direction: row;
+        position: absolute;
+        height: fit-content;
+        top: 50px;
+        width: 100%;
+        right: 0;
+        justify-content: center;
+        border: none;
+    }
+
+    .Header-compo .search-dropdown form{
+        display: flex;
+        flex-direction: row;
+        
     }
 }

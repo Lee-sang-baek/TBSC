@@ -1,14 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Header.css";
 import logoImage from "../../imgs/logo.png";
 import loginImage from "../../imgs/login.png";
-import { Link } from "react-router-dom";
+import searchImage from "../../imgs/search.png";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const Header = () => {
+    const location = useLocation();
     const [isOpen, setIsOpen] = useState(false);
     const [loginMenuOpen, setLoginMenuOpen] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [searchOpen, setSearchOpen] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [warningMessage, setWarningMessage] = useState('');
+    const navigate = useNavigate();
 
     const menus = [
         {
@@ -40,7 +46,7 @@ const Header = () => {
             subs: [
                 { title: "이용예약 안내", link: "/reservation" },
                 { title: "기업 컨설팅 신청", link: "/consultants" },
-                { title: "일자리 상담신청", link: "" },
+                { title: "일자리 상담신청", link: "/jobConsult" },
                 { title: "회의실 대관신청", link: "/rental" }
             ]
         },
@@ -82,25 +88,72 @@ const Header = () => {
         setMobileMenuOpen(prev => !prev);
     };
 
+    const toggleSearch = (event) => {
+        event.stopPropagation();
+        setSearchOpen(prev => !prev);
+    };
+
+    const handleSearchChange = (e) => {
+        setSearchQuery(e.target.value);
+        if (e.target.value.length >= 2) {
+            setWarningMessage('');
+        }
+    };
+
+    const handleSearchSubmit = (e) => {
+        e.preventDefault();
+        if (searchQuery.length < 2) {
+            alert('검색은 두 글자 이상부터 할 수 있습니다.')
+            return;
+        }
+        navigate(`/search-results?title=${searchQuery}`);
+    };
+
+    const handleSearchContainerClick = (event) => {
+        event.stopPropagation();
+    };
+
+    useEffect(() => {
+        setMobileMenuOpen(false);
+    }, [location]);
+
     const isLoggedIn = !!sessionStorage.getItem("id");
     const MemberState = sessionStorage.getItem("state");
 
     return (
-        <div className="Header-compo">
-            <div id="gnb_wrap" onMouseEnter={handleGnbWrapEnter} onMouseLeave={handleGnbWrapLeave}>
+        <div className="Header-compo" onClick={() => setSearchOpen(false)}>
+            <div id="gnb_wrap">
                 <div id="gnb_container">
                     <div className="logo-container">
-                        <a href="/"> <img src={logoImage} alt="Logo" className="logo-img" /></a>
+                        <a href="/"> <img src={logoImage} alt="Logo" className="logo-img"/></a>
                     </div>
-                    <div className="gnb_1dul">
+                    <div className="gnb_1dul" onMouseEnter={handleGnbWrapEnter} onMouseLeave={handleGnbWrapLeave}>
                         {menus.map((menu, index) => (
                             <div key={index} className="gnb_1dli">
                                 <a href="#" className="gnb_1da">{menu.main}</a>
                             </div>
                         ))}
                     </div>
+                    <div className="search-icon" onClick={toggleSearch}>
+                        <img src={searchImage} alt="search" className="searchImage"/>
+                        
+                    </div>
+                    {searchOpen && (
+                            <div className="search-dropdown" onClick={handleSearchContainerClick}>
+                                <form onSubmit={handleSearchSubmit}>
+                                    <input
+                                        type="text"
+                                        value={searchQuery}
+                                        onChange={handleSearchChange}
+                                        placeholder="검색어를 입력하세요"
+                                    />
+                                    <button type="submit">검색</button>
+                                    {warningMessage && <p className="warning-message">{warningMessage}</p>}
+                                </form>
+                            </div>
+                        )}
                     <div className="login-container" onMouseEnter={toggleLoginMenu} onMouseLeave={toggleLoginMenu}>
-                        <img src={loginImage} alt="Login" className="login-img" />
+                        <img src={loginImage} alt="Login" className="login-img"/>
                         {loginMenuOpen && (
                             <div className="login-dropdown">
                                 {!isLoggedIn ? (
@@ -118,12 +171,13 @@ const Header = () => {
                             </div>
                         )}
                     </div>
+
                     <div className="hamburger-menu" onClick={toggleMobileMenu}>
-                        &#9776; {/* This is the hamburger icon */}
+                        &#9776; {/* 햄버거 아이콘 */}
                     </div>
                 </div>
                 {isOpen && (
-                    <div className="gnb_2dul_container">
+                    <div className="gnb_2dul_container" onMouseEnter={handleGnbWrapEnter} onMouseLeave={handleGnbWrapLeave}>
                         <div id="gnb_2dul">
                             {menus.map((menu, index) => (
                                 <div key={index} className="gnb_2dcol">

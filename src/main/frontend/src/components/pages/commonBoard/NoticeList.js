@@ -11,6 +11,7 @@ function NoticeList() {
     const [statusFilter, setStatusFilter] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const [noticesPerPage] = useState(10);
+    const [filteredNotices, setFilteredNotices] = useState([]);
     const MemberState = sessionStorage.getItem("state");
 
     useEffect(() => {
@@ -18,6 +19,7 @@ function NoticeList() {
             .then(res => {
                 const sortedNotices = res.data.sort((a, b) => b.num - a.num);
                 setNotices(sortedNotices);
+                setFilteredNotices(sortedNotices); // 초기에는 전체 공지사항을 설정
             })
             .catch(error => console.error("Error fetching notices:", error));
     }, []);
@@ -27,10 +29,20 @@ function NoticeList() {
         return `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}`;
     };
 
-    const filteredNotices = notices.filter(notice =>
-        notice.title.toLowerCase().includes(search.toLowerCase()) &&
-        (statusFilter ? notice.state === statusFilter : true)
-    );
+    const handleSearchClick = () => {
+        const newFilteredNotices = notices.filter(notice =>
+            notice.title.toLowerCase().includes(search.toLowerCase()) &&
+            (statusFilter ? notice.state === statusFilter : true)
+        );
+        setFilteredNotices(newFilteredNotices);
+        setCurrentPage(1);
+    };
+
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            handleSearchClick();
+        }
+    };
 
     const paginate = pageNumber => setCurrentPage(pageNumber);
     const indexOfLastNotice = currentPage * noticesPerPage;
@@ -54,9 +66,10 @@ function NoticeList() {
                             placeholder="검색어를 입력하세요"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
+                            onKeyDown={handleKeyDown}
                             className="searchInput"
                         />
-                        <Button className="searchButton" text="검색" onClick={() => {}} />
+                        <Button className="searchButton" text="검색" onClick={handleSearchClick} />
                         {MemberState === 'ADMIN' && (
                             <Button className="writeButton" text="글쓰기" link="notices/new" />
                         )}

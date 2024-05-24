@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios"; // Axios 임포트 추가
 import "./NoticeDetail.css";
 import Button from "../../baseComponents/Button";
 
@@ -49,12 +50,29 @@ function NoticeDetail() {
         }
     };
 
+    const downloadFile = async (fileName) => {
+        try {
+            const response = await axios.get(`/files/${fileName}`, {
+                responseType: 'blob',
+            });
+            const url = window.URL.createObjectURL(new Blob([response.data]));
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', fileName);
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+        } catch (error) {
+            console.error("파일 다운로드 중 오류가 발생했습니다.", error);
+            alert("파일 다운로드 중 오류가 발생했습니다.");
+        }
+    };
+
     if (!notice) {
-        return <div className="loading">로딩 중...</div>;
+        return null;
     }
 
     const fileName = notice.fileUrl ? notice.fileUrl.split(";").pop() : "";
-    const fileDownloadUrl = fileName ? `http://localhost:8090/files/${fileName}` : "";
 
     return (
         <div className="NoticeDetail-compo">
@@ -64,10 +82,10 @@ function NoticeDetail() {
                     <p>작성자: {notice.member.id}</p>
                     <p>작성일: {new Date(notice.date).toLocaleString()}</p>
                     <p>조회수: {notice.view}</p>
+                    {fileName && (
+                        <p className="file-link">첨부 파일: <a href="#" onClick={(e) => { e.preventDefault(); downloadFile(fileName); }}>{fileName}</a></p>
+                    )}
                 </div>
-                {notice.fileUrl && (
-                    <p className="file-link">첨부 파일: <a href={fileDownloadUrl} download>{fileName}</a></p>
-                )}
                 <div className="content" dangerouslySetInnerHTML={{ __html: notice.content }}></div>
                 {MemberState === 'ADMIN' && (
                     <>

@@ -1,58 +1,267 @@
 .ReservationConfirmation-compo {
-    font-family: Arial, sans-serif;
-    width: 80%;
-    margin: 0 auto;
-}
-
-.ReservationConfirmation-compo h2 {
-    color: #333;
-    text-align: center;
-}
-
-.ReservationConfirmation-compo table {
     width: 100%;
-    border-collapse: collapse;
+    padding: 3% 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .reserve-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .size-label {
+        margin-top: 8px;
+        font-size: 13px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    thead {
+        background-color: #f2f2f2;
+    }
+    
+    th,
+    td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    
+    td {
+        width: 300px;
+        
+    }
+    
+    td:nth-child(1) {
+        width: 150px;
+    }
+    
+    td:nth-child(5),
+    td:nth-child(6),
+    td:nth-child(7),
+    td:nth-child(8) {
+        width: 50px;
+        text-align: center;
+    }
+    
+    
+    tr:hover {
+        background-color: #dddddd;
+    }
+
+    .btn-box {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+
+    .state-btn-box {
+        width: 50%;
+    }
+
+    .check {
+        padding: 4px 8px;
+        margin: 0 5px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .detail-btn {
+        width: 50%;
+        padding: 4px 8px;
+        margin: 0 5px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .approve ,
+    .deny {
+        padding: 6px 10px;
+        margin: 10px 30px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .approve {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    .deny {
+        background-color: #ff3030;
+        color: #fff;
+    }
+
+    .detail-btn-box {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 10px;
+    }
+    
+    /* Adjustments for responsive design */
+    @media screen and (max-width: 600px) {
+        table {
+        border: 0;
+        }
+    
+        table thead {
+        display: none;
+        }
+    
+        table tr {
+        margin-bottom: 10px;
+        display: block;
+        border: 1px solid #ddd;
+        }
+    
+        table td {
+        display: block;
+        text-align: right;
+        }
+    
+        table td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        }
+    }
+    
+    .management-button {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .management-button .de-active {
+        width: 200px;
+        margin: 0 10px;
+        padding: 8px 16px;
+        background-color: #55cdff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    .management-button .de-active:hover {
+        background-color: #3389e6;
+    }
+    
+    .management-button .active {
+        width: 200px;
+        margin: 0 10px;
+        padding: 8px 16px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    .management-button .active:hover {
+        background-color: #0056b3;
+    }
+    
+    
+    .add-button {
+            grid-column: 3;
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+    
+        h3 {
+            grid-column: 1;
+        }
+    
+    .middle-box {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr;
+    }
+    
+    .reserve {
+        width: 100%;
+    }
+    
+    img {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .hidden {
+        display: none;
+    }
+    
+    .pagination {
+        margin-top: 20px;
+        grid-column: 2;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .pagination button {
+        padding: 8px 16px;
+        margin: 0 5px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    .pagination button:hover {
+        background-color: #0056b3;
+    }
+    
+    .pagination button:disabled {
+        background-color: #ddd;
+        color: #666;
+        cursor: not-allowed;
+    }
+    
+    .size-label {
+        padding-top: 10px;
+        font-size: 13px;
+    }
+    
+    input[type="number"] {
+        margin-left: 10px;
+        margin-right: 10px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 35px;
+    }
+
+    select {
+        border: none;
+        font-size: 15px;
+        font-weight: bold;
+        width: 100%;
+        height: 30px;
+        background-color: #f1f1f1;
+    }
+    
 }
 
-.ReservationConfirmation-compo th,
-.ReservationConfirmation-compo td {
-    border: 1px solid #ddd;
-    padding: 8px;
-}
-
-.ReservationConfirmation-compo th {
-    background-color: #f2f2f2;
-    color: #333;
-}
-
-.ReservationConfirmation-compo tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-.ReservationConfirmation-compo tr:hover {
-    background-color: #ddd;
-}
-
-.ReservationConfirmation-compo td button {
-    padding: 5px 10px;
-    border: none;
-    cursor: pointer;
-}
-
-/* 상태에 따른 스타일링 */
-.status-신청 {
-    color: orange;
-}
-
-.status-검토중 {
-    color: blue;
-}
-
-.status-승인 {
-    color: green;
-}
-
-.status-거부 {
-    color: red;
-}
-  

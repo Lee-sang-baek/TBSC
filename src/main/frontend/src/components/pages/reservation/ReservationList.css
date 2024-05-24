@@ -1,12 +1,12 @@
+
 .ReservationList-copo {
-    padding: 20px;
-    background-color: #f4f4f4;
-}
-.ReservationList-copo {
+    padding: 0 4%;
+    display: flex;
+    width: 100%;
 
     .container {
-        max-width: 1200px;
-        margin: 0 auto;
+        width: 87%;
+        margin: 100px auto;
         background-color: #fff;
         padding: 20px;
         border-radius: 8px;

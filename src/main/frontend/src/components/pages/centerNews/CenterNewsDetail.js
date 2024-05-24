@@ -38,7 +38,29 @@ const CenterNewsDetail = () => {
         }
     };
 
-    if (!centerNews) return <div>Loading...</div>;
+    const downloadFile = async (fileName) => {
+        try {
+            const response = await axios.get(`/files/${fileName}`, {
+                responseType: 'blob',
+            });
+            const url = window.URL.createObjectURL(new Blob([response.data]));
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', fileName);
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+        } catch (error) {
+            console.error("파일 다운로드 중 오류가 발생했습니다.", error);
+            alert("파일 다운로드 중 오류가 발생했습니다.");
+        }
+    };
+
+    if (!centerNews) {
+        return null;
+    }
+
+    const fileName = centerNews.fileUrl ? centerNews.fileUrl.split(";").pop() : "";
 
     return (
         <div className="CenterNewsDetail-copo">
@@ -50,6 +72,11 @@ const CenterNewsDetail = () => {
                     <p><strong>작성자:</strong> {centerNews.member.id}</p>
                     <p><strong>조회수:</strong> {centerNews.view}</p>
                     <p>작성일: {new Date(centerNews.date).toLocaleString()}</p>
+                    {fileName && (
+                        <div className="file-download">
+                           첨부파일: <a href="#" onClick={(e) => { e.preventDefault(); downloadFile(fileName); }}>{fileName}</a>
+                        </div>
+                    )}
                 </div>
                 <div className="detail-content">
                     <p>{centerNews.content}</p>
@@ -59,11 +86,7 @@ const CenterNewsDetail = () => {
                         <img src={`/uploads/${centerNews.image}`} alt={centerNews.title} />
                     </div>
                 )}
-                {centerNews.fileUrl && (
-                    <div className="file-download">
-                        <a href={`http://localhost:8090/files/${centerNews.fileUrl}`} download>{centerNews.fileUrl}</a>
-                    </div>
-                )}
+
                 {MemberState === "ADMIN" && (
                     <div className="detail-actions">
                         <button onClick={handleEdit}>수정</button>

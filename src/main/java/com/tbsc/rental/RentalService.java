@@ -34,7 +34,7 @@ public class RentalService {
         return rentalRepository.findById(num);
     }
 
-    public List<Rental> findRentalsByMemberId(String memberId) {
+    public List<Rental> getRentalList(String memberId) {
         return rentalRepository.findByMemberId(memberId);
     }
 

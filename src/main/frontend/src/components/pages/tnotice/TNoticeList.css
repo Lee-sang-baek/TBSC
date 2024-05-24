@@ -1,10 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 .TNoticeList-copo {
-    font-family: 'Roboto', sans-serif;
     min-height: 100vh;
-    padding: 40px 0;
-
+    padding: 0;
+    display: flex;
+    width: 100%;
 
     .container {
         display: flex;
@@ -14,15 +13,16 @@
         background-color: #ffffff;
         border-radius: 15px;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        max-width: 1200px;
-        margin: 0 auto;
+        
+        margin: 100px auto;
         position: relative;
+        width: 87%;
     }
 
     .header {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
+        justify-content: center;
+        position: relative;
         width: 100%;
         margin-bottom: 30px;
     }
@@ -31,22 +31,28 @@
         font-size: 36px;
         font-weight: 700;
         color: #333;
+        text-align: center;
+        flex-grow: 1;
     }
 
     .header button {
+        position: absolute;
+        right: 0;
         padding: 12px 24px;
-        background-color: #007bff;
+        background-color: black;
         color: #fff;
         border: none;
-        border-radius: 50px;
         cursor: pointer;
         font-size: 16px;
         transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 100px;
+        height: 50px;
+        align-self: flex-end;
     }
 
     .header button:hover {
-        background-color: #0056b3;
+        background-color: gray;
         transform: translateY(-3px);
         box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
     }
@@ -54,7 +60,7 @@
     .info-bar {
         width: 100%;
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
         margin-bottom: 30px;
     }
@@ -81,32 +87,36 @@
     }
 
     .search-bar button {
-        padding: 12px 20px;
-        background-color: #007bff;
+        padding: 12px 24px;
+        background-color: black;
         color: #fff;
         border: none;
         border-radius: 0 30px 30px 0;
         cursor: pointer;
         transition: background-color 0.3s, transform 0.3s;
-        font-size: 16px;
+        font-size: 14px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        height: 45.23px;
+        width: 100px;
     }
 
     .search-bar button:hover {
         background-color: #0056b3;
         transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
     }
 
     .total-notices {
         font-size: 18px;
         color: #555;
         margin-bottom: 20px;
-        text-align: center;
+        text-align: left;
         width: 100%;
     }
 
     .notice-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-columns: repeat(4, 1fr);
         gap: 20px;
         width: 100%;
     }
@@ -122,6 +132,14 @@
         display: flex;
         flex-direction: column;
         position: relative;
+        height: 280px; /* 고정 높이 */
+    }
+
+    .notice-card.empty-card {
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+        pointer-events: none;
     }
 
     .notice-card:hover {
@@ -131,7 +149,7 @@
 
     .notice-card img {
         width: 100%;
-        height: 200px;
+        height: 140px;
         object-fit: cover;
     }
 
@@ -142,10 +160,14 @@
         flex: 1;
     }
 
-    .notice-card p {
-        font-size: 16px;
+    .notice-meta {
+        font-size: 14px;
         color: #777;
         margin: 0 15px 15px;
+    }
+
+    .notice-meta p {
+        margin: 5px 0;
     }
 
     .pagination {
@@ -171,7 +193,7 @@
     }
 
     .pagination button.active {
-        background-color: #007bff;
+        background-color: black;
         color: #fff;
     }
 
@@ -187,6 +209,10 @@
         .search-bar input {
             width: 70%;
         }
+
+        .notice-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
     }
 
     @media (max-width: 480px) {
@@ -200,6 +226,10 @@
 
         .search-bar input {
             width: 60%;
+        }
+
+        .notice-grid {
+            grid-template-columns: 1fr;
         }
     }
 }

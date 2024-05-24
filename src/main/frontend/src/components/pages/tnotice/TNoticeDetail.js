@@ -37,8 +37,11 @@ const TNoticeDetail = () => {
             }
         }
     };
+    const fileName = notice.fileUrl ? notice.fileUrl.split(";").pop() : "";
 
-    if (!notice) return <div>Loading...</div>;
+    if(!notice) {
+        return;
+    }
 
     return (
         <div className="TNoticedetail-copo">

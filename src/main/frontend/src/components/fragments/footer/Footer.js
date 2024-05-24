@@ -1,17 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Footer.css';
+import { useLocation } from 'react-router';
+import axios from 'axios';
 
 function Footer() {
+    const location = useLocation();
     const [showRelatedSites, setShowRelatedSites] = useState(false); // 상태 변수 추가
-
+    const create = () => {
+        axios.get("/create")
+            .then(response => {
+                alert(response.data);
+            })
+      }
+    
     // 관련 사이트 목록을 토글하는 함수
     const toggleRelatedSites = () => {
         setShowRelatedSites(!showRelatedSites);
     };
 
+    const [isFooterFixed, setIsFooterFixed] = useState(false);
+
+    const adjustFooter = () => {
+        const bodyHeight = document.body.scrollHeight;
+        const windowHeight = window.innerHeight;
+
+        if (bodyHeight < windowHeight) {
+            setIsFooterFixed(true);
+        } else {
+            setIsFooterFixed(false);
+        }
+    };
+
+    useEffect(() => {
+        adjustFooter();
+        window.addEventListener('resize', adjustFooter);
+        window.addEventListener('load', adjustFooter);
+        return () => {
+            window.removeEventListener('resize', adjustFooter);
+            window.removeEventListener('load', adjustFooter);
+        };
+    }, [location]);
+
     return (
         <div className="blank">
-            <footer className="Footer-compo">
+            <footer className={isFooterFixed ? 'Footer-compo fixed' : 'Footer-compo'}>
 
                 <div className="left-box">
                     <div className="ft-info">
@@ -33,10 +65,10 @@ function Footer() {
                                 <a href="/centerIntro">센터소개</a>
                             </li>
                             <li>
-                                <a href="/">이용약관</a>
+                                <a href="#">이용약관</a>
                             </li>
                             <li>
-                                <a href="/">개인정보처리방침</a>
+                                <a href="#" onClick={create}>개인정보처리방침</a>
                             </li>
                         </ul>
                     </div>

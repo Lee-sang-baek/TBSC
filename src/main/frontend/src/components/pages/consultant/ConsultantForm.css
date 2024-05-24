@@ -1,76 +1,85 @@
 .ConsultantForm-compo {
-    background: #f4f4f4;
-    padding: 20px;
-    width: 500px; /* Adjusted width to better fit the design */
-    margin: 20px auto;
+    background: #ffffff;
+    padding: 30px 10px;
+    margin: 100px 30px;
+    width: 81.4%;
     font-family: 'Arial', sans-serif;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border: 1px solid #000;
+    border-radius: 8px;
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    h2 {
+        background: #ffffff;
+        color: #000;
+        padding: 10px;
+        margin: 0 auto;
+        
+    }
+
+    .big-label {
+        
+        border-bottom: 1px solid #ccc;
+    }
+    
+    label {
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+    
+    label input[type="text"],
+    label input[type="number"],
+    label input[type="date"],
+    label input[type="datetime-local"],
+    label textarea {
+        width: calc(100% - 22px);
+        padding: 8px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    
+    label input[type="radio"] {
+        margin-right: 5px;
+    }
+    
+    button {
+        background: #007BFF;
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        margin-top: 20px;
+        border-radius: 4px;
+    }
+    
+    button:hover {
+        background: #0056b3;
+    }
+    
+    input[type="file"] {
+        border: 1px solid #ccc;
+        display: inline-block;
+        padding: 6px 12px;
+        cursor: pointer;
+        border-radius: 4px;
+        width: calc(100% - 22px);
+    }
+    
+    textarea {
+        height: 60px;
+        resize: none;
+    }
+    
+    .business {
+        margin-top: 20px;
+        border-top: 2px solid #ddd;
+        padding-top: 20px;
+    }
+    
 }
 
-.ConsultantForm-compo form {
-    display: flex;
-    flex-direction: column;
-}
-
-.ConsultantForm-compo h2 {
-    background: #f0f0f0;
-    color: #000;
-    padding: 10px;
-    margin: 0 0 20px 0;
-    border-bottom: 2px solid #ddd;
-}
-
-.ConsultantForm-compo label {
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-.ConsultantForm-compo label input[type="text"],
-.ConsultantForm-compo label input[type="number"],
-.ConsultantForm-compo label input[type="date"],
-.ConsultantForm-compo label input[type="datetime-local"],
-.ConsultantForm-compo label textarea {
-    width: calc(100% - 22px);
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.ConsultantForm-compo label input[type="radio"] {
-    margin-right: 5px;
-}
-
-.ConsultantForm-compo button {
-    background: #007BFF;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    margin-top: 20px;
-    border-radius: 4px;
-}
-
-.ConsultantForm-compo button:hover {
-    background: #0056b3;
-}
-
-.ConsultantForm-compo input[type="file"] {
-    border: 1px solid #ccc;
-    display: inline-block;
-    padding: 6px 12px;
-    cursor: pointer;
-    border-radius: 4px;
-    width: calc(100% - 22px);
-}
-
-.ConsultantForm-compo textarea {
-    height: 60px;
-    resize: none;
-}
-
-.ConsultantForm-compo .business {
-    margin-top: 20px;
-    border-top: 2px solid #ddd;
-    padding-top: 20px;
-}

@@ -1,74 +1,66 @@
 .CenterNewsDetail-copo {
     width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-}
+    margin: 4% 0;
 
-.CenterNewsDetail-copo .detail-container {
-    display: flex;
-    flex-direction: column;
-}
+    .detail-container {
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-.CenterNewsDetail-copo .detail-header {
-    margin-bottom: 20px;
-}
+    .detail-header h1 {
+        margin-bottom: 10px;
+    }
 
-.CenterNewsDetail-copo .detail-header h1 {
-    margin: 0;
-    font-size: 24px;
-}
+    .detail-meta p {
+        margin: 5px 0;
+    }
 
-.CenterNewsDetail-copo .detail-meta {
-    margin-bottom: 20px;
-}
+    .detail-content {
+        min-height: 200px;
+    }
 
-.CenterNewsDetail-copo .detail-meta p {
-    margin: 5px 0;
-}
+    .detail-content p {
+        white-space: pre-wrap;
+        line-height: 1.6;
+    }
 
-.CenterNewsDetail-copo .detail-content {
-    margin-bottom: 20px;
-}
+    .detail-image img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-top: 10px;
+    }
 
-.CenterNewsDetail-copo .detail-image img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 10px 0;
-}
+    .detail-actions {
+        margin-top: 20px;
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+    }
 
-.CenterNewsDetail-copo .file-download {
-    margin-bottom: 20px;
-}
+    button {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        font-size: 14px;
+        cursor: pointer;
+    }
 
-.CenterNewsDetail-copo .file-download a {
-    color: #007bff;
-    text-decoration: none;
-}
+    button:hover {
+        opacity: 0.9;
+    }
 
-.CenterNewsDetail-copo .file-download a:hover {
-    text-decoration: underline;
-}
+    button:first-of-type {
+        background-color: #007bff;
+        color: white;
+    }
 
-.CenterNewsDetail-copo .detail-actions {
-    display: flex;
-    gap: 10px;
-}
-
-.CenterNewsDetail-copo .detail-actions button {
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.CenterNewsDetail-copo .detail-actions button:hover {
-    background-color: #0056b3;
+    button:last-of-type {
+        background-color: #dc3545;
+        color: white;
+    }
 }

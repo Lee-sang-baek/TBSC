@@ -4,6 +4,11 @@ import "./AccessLog.css";
 import { exportToExcel } from "../../util/ExportToExcel";
 
 const AccessLog = () => {
+    useEffect(() => {
+        if (sessionStorage.getItem("state") !== "ADMIN") {
+            window.location.href = "/";
+        }
+    }, [])
     const [page, setPage] = useState(0);
     const [size, setSize] = useState(10);
     const [logList, setLogList] = useState([]);
@@ -119,6 +124,10 @@ const AccessLog = () => {
 
         return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}.${milliseconds}`;
     };
+
+    if (sessionStorage.getItem("state") !== "ADMIN") {
+        return null;
+    }
 
     return (
         <div className="AccessLog-compo">

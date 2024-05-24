@@ -1,6 +1,7 @@
 package com.tbsc.rental;
 
 import com.tbsc.member.Member;
+import com.tbsc.util.ReserveType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -35,6 +36,9 @@ public class Rental {
     @ManyToOne
     @JoinColumn(name = "member", referencedColumnName = "id", updatable = false)
     private Member member;
+
+    @Enumerated(EnumType.STRING)
+    private ReserveType state = ReserveType.RESERVE;
 
     public Rental() {}
 }

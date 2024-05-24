@@ -19,6 +19,8 @@ public class QMainImage extends EntityPathBase<MainImage> {
 
     public static final QMainImage mainImage = new QMainImage("mainImage");
 
+    public final StringPath content = createString("content");
+
     public final StringPath image = createString("image");
 
     public final NumberPath<Long> num = createNumber("num", Long.class);

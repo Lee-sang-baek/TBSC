@@ -8,4 +8,5 @@ import java.util.List;
 @Repository
 public interface NoticeRepository extends JpaRepository<Notice, Integer> {
     List<Notice> findByState(String state);
+    List<Notice> findByTitleContaining(String title);
 }

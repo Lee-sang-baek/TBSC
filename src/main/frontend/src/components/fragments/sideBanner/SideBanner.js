@@ -1,11 +1,47 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'; // 화살표 아이콘 import
 import './SideBanner.css'; // CSS 파일 import
+import axios from 'axios';
 
 function SideBanner() {
+    const [scrollY, setScrollY] = useState(0);
+    const containerRef = useRef(null);
+    const [imageList, setImageList] = useState([]);
+
+    useEffect(() => {
+        axios.get("/mainImage")
+        .then((res) => {
+            setImageList(res.data);
+            console.log(res.data);
+        });
+    }, []);
+
+
+    const handleScroll = () => {
+        if (containerRef.current) {
+            const containerTop = containerRef.current.getBoundingClientRect().top;
+            const scrollPosition = Math.max(0, window.scrollY - containerTop);
+            setScrollY(scrollPosition);
+        }
+    };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const bannerStyle = {
+    position: 'absolute',
+    top: `${scrollY / 2 - 50}px`,
+    right: '20px',
+    transition: 'top 0.1s ease-out',
+  };
+
     // 이전 화살표 컴포넌트
     const PrevArrow = (props) => {
         const { onClick } = props;
@@ -30,7 +66,7 @@ function SideBanner() {
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true, //자동 재생 여부
-        autoplaySpeed: 2000, // 자동 재생 시 슬라이드 간의 간격(초) 지정
+        autoplaySpeed: 5000, // 자동 재생 시 슬라이드 간의 간격(초) 지정
         prevArrow: <PrevArrow />, // 이전 화살표 설정
         nextArrow: <NextArrow /> // 다음 화살표 설정
 
@@ -38,26 +74,18 @@ function SideBanner() {
 
     return (
 
-
-        <div className="SideBanner-compo">
-
-
+    <div ref={containerRef} style={{ display: 'block', position: 'relative', height: 'fit-content', margin: '20px' }}>
+        <div className="SideBanner-compo" style={bannerStyle}>
             <Slider {...settings} className="autoplay">
-                <div>
-                    <img src="image/image1.jpg" alt="image1"/>
-                </div>
-                <div>
-                    <img src="image/image2.jpg" alt="image2"/>
-                </div>
-                <div>
-                    <img src="image/image3.jpg" alt="image3"/>
-                </div>
-
+                {imageList && imageList.map((item, index) => (
+                    <div key={index} className='image-box'>
+                        <img src={`/uploads/${item.image}`} alt={item.title} />
+                        <div className='content-box'>{item.content}</div>
+                    </div>
+                ))}
             </Slider>
-
         </div>
-
-
+    </div>
     );
 }
 

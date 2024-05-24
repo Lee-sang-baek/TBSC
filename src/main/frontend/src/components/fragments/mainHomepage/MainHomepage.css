@@ -1,31 +1,67 @@
-.outter {
+.Banner-compo {
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
-}
-.Banner-compo .slider-container {
-    width: 100%; /* 슬라이더 컨테이너의 너비 */
-    margin: auto; /* 가운데 정렬을 위한 마진 */
-    position: relative; /* 이전/다음 화살표의 위치 조정을 위한 상대 위치 설정 */
-}
 
-.Banner-compo .arrow {
-    position: absolute; /* 이전/다음 화살표의 절대 위치 설정 */
-    top: 50%; /* 슬라이더 컨테이너 상단에서의 위치를 조정 */
-    transform: translateY(-50%); /* 수직 가운데 정렬을 위한 위치 조정 */
-    cursor: pointer; /* 마우스 커서를 포인터로 변경하여 클릭 가능함을 나타냄 */
-    font-size: 2rem; /* 화살표 아이콘 크기 */
-    z-index: 1; /* 다른 내용 위에 화살표가 나타나도록 설정 */
-}
+    .slider-container {
+        margin: 30px 0;
+        width: 95%;
+        position: relative;
+        overflow: hidden;
+    }
 
-.Banner-compo .prev {
-    left: 0; /* 이전 화살표의 왼쪽 위치 설정 */
-}
+    .arrow {
+        position: absolute; /* 이전/다음 화살표의 절대 위치 설정 */
+        top: 50%; /* 슬라이더 컨테이너 상단에서의 위치를 조정 */
+        transform: translateY(-50%); /* 수직 가운데 정렬을 위한 위치 조정 */
+        cursor: pointer; /* 마우스 커서를 포인터로 변경하여 클릭 가능함을 나타냄 */
+        font-size: 3rem; /* 화살표 아이콘 크기 */
+        z-index: 1; /* 다른 내용 위에 화살표가 나타나도록 설정 */
+        color: #424242de;
+    }
 
-.Banner-compo .next {
-    right: 0; /* 다음 화살표의 오른쪽 위치 설정 */
-}
+    .prev {
+        left: 0; /* 이전 화살표의 왼쪽 위치 설정 */
+    }
 
-.Banner-compo img {
-    width: 100%; /* 이미지를 슬라이더 크기에 맞게 조정 */
-    height: 900px; /* 이미지 비율 유지를 위한 자동 높이 설정 */
+    .next {
+        right: 0; /* 다음 화살표의 오른쪽 위치 설정 */
+    }
+
+    .image-box {
+        display: flex;
+        height: 81vh;
+        position: relative;
+        overflow: hidden;
+        border-radius: 30px;
+        margin: 0 -2px;
+        border: 2px solid #000000;
+    }
+
+    img {
+
+        width: 100%;
+        position: absolute;
+        height: 100%;
+        object-fit: cover;
+        max-height: 750px;
+
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .content-box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        color: white;
+        font-size: 100px;
+        font-weight: bold;
+        text-shadow: 1px 1px 2px #000000, -1px -1px 2px #000000;
+
+    }
 }

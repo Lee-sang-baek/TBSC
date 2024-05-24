@@ -1,14 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR:wght@100..900&family=Poor+Story&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+
+  font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  
+  font-style: normal;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: linear-gradient(to left, #fddb92 0%, #d1fdff 100%);
+  background-color: #eeeefe;
+
+  button {
+    font-family: "Noto Sans KR", sans-serif;
+    font-optical-sizing: auto;
+    
+    font-style: normal;
+  }
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.outter {
+  display: grid;
+  grid-template-columns: 0.1fr 0.9fr;
+  justify-items: center;
+
+  @media (max-width: 1000px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+

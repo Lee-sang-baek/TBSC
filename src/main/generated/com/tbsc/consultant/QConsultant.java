@@ -48,6 +48,8 @@ public class QConsultant extends EntityPathBase<Consultant> {
 
     public final DatePath<java.time.LocalDate> startDate = createDate("startDate", java.time.LocalDate.class);
 
+    public final EnumPath<com.tbsc.util.ReserveType> state = createEnum("state", com.tbsc.util.ReserveType.class);
+
     public final StringPath support = createString("support");
 
     public final StringPath type = createString("type");
@@ -70,7 +72,7 @@ public class QConsultant extends EntityPathBase<Consultant> {
 
     public QConsultant(Class<? extends Consultant> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.member = inits.isInitialized("member") ? new com.tbsc.member.QMember(forProperty("member")) : null;
+        this.member = inits.isInitialized("member") ? new com.tbsc.member.QMember(forProperty("member"), inits.get("member")) : null;
     }
 
 }

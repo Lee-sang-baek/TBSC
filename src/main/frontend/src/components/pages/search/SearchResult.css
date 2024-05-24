@@ -1,0 +1,63 @@
+/* SearchResult.css */
+
+.SearchResult-compo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4% 0;
+}
+
+.SearchResult-compo .searchResultContainer {
+    width: 87%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.SearchResult-compo .searchResultTitle {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.SearchResult-compo .boardFilter {
+    display: block;
+    margin: 0 auto 20px auto;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.SearchResult-compo table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.SearchResult-compo tbody tr {
+    border-top: 1px solid #ccc;
+    background-color: #fafafa;
+}
+
+.SearchResult-compo .searchResultItem:hover {
+    background-color: #f1f1f1;
+}
+
+.SearchResult-compo td {
+    padding: 15px;
+    text-align: left;
+    vertical-align: middle;
+    border: none;
+}
+
+.SearchResult-compo .searchResultLink {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.SearchResult-compo .searchResultLink:hover {
+    text-decoration: underline;
+}

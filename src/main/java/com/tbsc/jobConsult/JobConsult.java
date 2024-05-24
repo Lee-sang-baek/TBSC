@@ -6,6 +6,7 @@ import com.tbsc.jobConsult.education.Education;
 import com.tbsc.jobConsult.experiences.Experiences;
 import com.tbsc.jobConsult.languages.Languages;
 import com.tbsc.member.Member;
+import com.tbsc.util.ReserveType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -31,16 +32,20 @@ public class JobConsult {
     private LocalDateTime date;
 
     @OneToOne
-    @JoinColumn(name = "education_num", referencedColumnName = "num", updatable = false)
+    @JsonIgnore
+    @JoinColumn(name = "education_num", referencedColumnName = "num")
     private Education education;
 
     @OneToMany(mappedBy = "jobConsult", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Experiences> experiences;
 
     @OneToMany(mappedBy = "jobConsult", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Certifications> certifications;
 
     @OneToMany(mappedBy = "jobConsult", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Languages> languages;
 
     private String other;
@@ -50,6 +55,9 @@ public class JobConsult {
     @ManyToOne
     @JoinColumn(name = "member", referencedColumnName = "id", updatable = false)
     private Member member;
+
+    @Enumerated(EnumType.STRING)
+    private ReserveType state = ReserveType.RESERVE;
 
     public void bind(JobConsultDto dto) {
         setCategory(dto.getCategory());

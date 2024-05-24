@@ -7,6 +7,7 @@ import com.tbsc.jobConsult.JobConsult;
 import com.tbsc.log.AccessLog;
 import com.tbsc.notice.Notice;
 import com.tbsc.pressrelease.PressRelease;
+import com.tbsc.registComp.RegistComp;
 import com.tbsc.rental.Rental;
 import com.tbsc.reservation.Reservation;
 import com.tbsc.tnotice.TNotice;
@@ -32,6 +33,9 @@ public class Member {
 
     @Column(nullable = false)
     private String address;
+
+    @Column(nullable = false)
+    private String detailAddress;
 
     @Column(nullable = false)
     private String name;
@@ -89,6 +93,10 @@ public class Member {
     @JsonIgnore
     private List<Consultant> consultants = new ArrayList<>();
 
+    @OneToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(referencedColumnName = "num")
+    @JsonIgnore
+    private RegistComp registComp;
 
     public Member bind(MemberDto memberDto, PasswordEncoder passwordEncoder) {
         this.setId(memberDto.getId());
@@ -99,6 +107,7 @@ public class Member {
         this.setRepresentative(memberDto.getRepresentative());
         this.setCompAddress(memberDto.getCompAddress());
         this.setAddress(memberDto.getAddress());
+        this.setDetailAddress(memberDto.getDetailAddress());
         this.setBirth(memberDto.getBirth());
         this.setEmail(memberDto.getEmail());
         this.setPhoneNum(memberDto.getPhoneNum());

@@ -1,6 +1,7 @@
 package com.tbsc.consultant;
 
 import com.tbsc.member.Member;
+import com.tbsc.util.ReserveType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -36,6 +37,9 @@ public class Consultant {
     private String difficulties;
     private String support;
     private String file;
+
+    @Enumerated(EnumType.STRING)
+    private ReserveType state = ReserveType.RESERVE;
 
     public void bind(ConsultantDto dto) {
         setCompName(dto.getCompName());

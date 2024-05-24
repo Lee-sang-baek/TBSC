@@ -38,7 +38,29 @@ const PressReleaseDetail = () => {
         }
     };
 
-    if (!pressRelease) return <div>Loading...</div>;
+    const downloadFile = async (fileName) => {
+        try {
+            const response = await axios.get(`/files/${fileName}`, {
+                responseType: 'blob',
+            });
+            const url = window.URL.createObjectURL(new Blob([response.data]));
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', fileName);
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+        } catch (error) {
+            console.error("파일 다운로드 중 오류가 발생했습니다.", error);
+            alert("파일 다운로드 중 오류가 발생했습니다.");
+        }
+    };
+
+    if (!pressRelease) {
+        return null;
+    }
+
+    const fileName = pressRelease.fileUrl ? pressRelease.fileUrl.split(";").pop() : "";
 
     return (
         <div className="PressReleaseDetail-copo">
@@ -50,6 +72,11 @@ const PressReleaseDetail = () => {
                     <p><strong>작성자:</strong> {pressRelease.member.id}</p>
                     <p><strong>조회수:</strong> {pressRelease.view}</p>
                     <p>작성일: {new Date(pressRelease.date).toLocaleString()}</p>
+                    {fileName && (
+                        <div className="file-download">
+                            첨부파일:<a href="#" onClick={(e) => { e.preventDefault(); downloadFile(fileName); }}>{fileName}</a>
+                        </div>
+                    )}
                 </div>
                 <div className="detail-content">
                     <p>{pressRelease.content}</p>
@@ -57,11 +84,6 @@ const PressReleaseDetail = () => {
                 {pressRelease.image && (
                     <div className="detail-image">
                         <img src={`/uploads/${pressRelease.image}`} alt={pressRelease.title} />
-                    </div>
-                )}
-                {pressRelease.fileUrl && (
-                    <div className="file-download">
-                        <a href={`http://localhost:8090/files/${pressRelease.fileUrl}`} download>첨부파일 다운로드</a>
                     </div>
                 )}
                 {MemberState === "ADMIN" && (

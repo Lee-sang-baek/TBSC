@@ -5,7 +5,7 @@ import "./FacilityGuide.css";
 
 const FacilityGuideMain = () => {
     return (
-        <div className="FacilityGuide-compo">
+        <div className="FacilityGuide-compo-outter">
 
             <FacilityHeader />
             <FacilityGuide />

@@ -1,10 +1,12 @@
 .ReservationForm-copo {
-    padding: 20px;
-    background-color: #f4f4f4;
+    padding: 5%;
+    
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    
+    width: 100%;
 }
 .ReservationForm-copo {
     form {
@@ -12,8 +14,8 @@
         padding: 20px;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        width: 100%;
-        max-width: 600px;
+        width: 70%;
+        
         display: flex;
         flex-direction: column;
     }
@@ -24,7 +26,7 @@
         margin-bottom: 20px;
         border: 1px solid #ccc;
         border-radius: 4px;
-        width: 100%;
+        width: 98%;
     }
 
     form textarea {

@@ -22,10 +22,13 @@ public class MainImage {
 
     private String title;
 
+    private String content;
+
     public MainImage bind(MainImageDto dto) {
         if (dto.getImage() != null) {
             setImage(dto.getImage());
         }
+        setContent(dto.getContent());
         setTitle(dto.getTitle());
         return this;
     }

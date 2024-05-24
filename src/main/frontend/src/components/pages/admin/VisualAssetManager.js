@@ -4,6 +4,11 @@ import Button from "../../baseComponents/Button";
 import "./VisualAssetManager.css";
 
 const VisualAssetManager = ({ asset, itemToEdit, close }) => {
+  useEffect(() => {
+    if (sessionStorage.getItem("state") !== "ADMIN") {
+        window.location.href = "/";
+    }
+  }, [])
   const [formData, setFormData] = useState({
     num: null,
     image: null,
@@ -100,6 +105,9 @@ const VisualAssetManager = ({ asset, itemToEdit, close }) => {
     }
   };
 
+  if (sessionStorage.getItem("state") !== "ADMIN") {
+    return null;
+  }
 
   return (
     <div className="VisualAssetManager-compo">
@@ -127,6 +135,15 @@ const VisualAssetManager = ({ asset, itemToEdit, close }) => {
             required
           />
         </label>
+        <label>
+            내용:
+            <textarea
+              name="content"
+              value={formData.content}
+              onChange={handleChange}
+              required
+            />
+          </label>
         {asset === "베너" && (
           <label>
             구분:
@@ -140,17 +157,6 @@ const VisualAssetManager = ({ asset, itemToEdit, close }) => {
               <option value="SIDE">사이드베너</option>
               <option value="MAIN">메인베너</option>
             </select>
-          </label>
-        )}
-        {asset === "베너" && (
-          <label>
-            내용:
-            <textarea
-              name="content"
-              value={formData.content}
-              onChange={handleChange}
-              required
-            />
           </label>
         )}
         {asset === "팝업" && (

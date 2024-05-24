@@ -1,19 +1,40 @@
-.notice-banner {
-    background-color: #f0f0f0;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.Notice-compo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .news{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .background{
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #000;
+    width: 95%;
+    height: 200px;
+  }
+
+  .title{
+    margin-left:30px;
+  }
+
+  .write{
+    display: flex;
+    flex-direction: row;
+  }
+
+
+  .content{
+    background: white;
+    width: 95%;
+    height: 150px;
+  }
 }
 
-.notice-list {
-    list-style: none;
-    padding: 0;
-}
 
-.notice-item {
-    margin-bottom: 10px;
-    padding: 10px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 3px;
-}
+
+

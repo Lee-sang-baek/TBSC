@@ -38,7 +38,9 @@ const ReservationDetail = () => {
         }
     };
 
-    if (!reservation) return <div>Loading...</div>;
+    if (!reservation) {
+        return;
+    }
 
     return (
         <div className="ReservationDetail-copo">

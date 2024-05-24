@@ -15,15 +15,15 @@
     }
 
     .button:disabled {
-        background-color: #28a745;
+        background-color: #000000;
         cursor: not-allowed;
     }
 
     .button-next {
-        background-color: #28a745;
+        background-color: #000000;
     }
 
     .button-next:hover {
-        background-color: #1e7e34;
+        background-color: #5f5f5f;
     }
 }

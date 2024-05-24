@@ -54,7 +54,7 @@ public class QTNotice extends EntityPathBase<TNotice> {
 
     public QTNotice(Class<? extends TNotice> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.member = inits.isInitialized("member") ? new com.tbsc.member.QMember(forProperty("member")) : null;
+        this.member = inits.isInitialized("member") ? new com.tbsc.member.QMember(forProperty("member"), inits.get("member")) : null;
     }
 
 }

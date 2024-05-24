@@ -1,61 +1,75 @@
 .CenterNewsForm-copo {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-}
-
-.CenterNewsForm-copo form {
     display: flex;
-    flex-direction: column;
-}
-
-.CenterNewsForm-copo input[type="text"],
-.CenterNewsForm-copo textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-}
-
-.CenterNewsForm-copo textarea {
-    height: 150px;
-    resize: none;
-}
-
-.CenterNewsForm-copo .file-input-label {
-    display: flex;
+    justify-content: center;
     align-items: center;
-    cursor: pointer;
-    margin-bottom: 10px;
+    padding: 20px;
+    
+    border-radius: 8px;
+    width: 100%;
+    margin: 4% 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    form {
+        padding: 20px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 70%;
+    }
+    
+    input[type="text"],
+    textarea {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        width: calc(100% - 22px);
+        
+    }
+    
+    textarea {
+        resize: vertical;
+        height: 150px;
+        min-height: 300px;
+    }
+    
+    .file-input-label {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        display: inline-block;
+        text-align: center;
+        font-size: 16px;
+    }
+    
+    button {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        font-size: 14px;
+        cursor: pointer;
+    }
+    
+    button[type="submit"] {
+        background-color: #007bff;
+        color: white;
+    }
+    
+    button:hover {
+        opacity: 0.9;
+    }
+    
+    .image-preview img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-top: 10px;
+    }
+    
 }
 
-.CenterNewsForm-copo .file-input-label input {
-    display: none;
-}
-
-.CenterNewsForm-copo button[type="submit"] {
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.CenterNewsForm-copo button[type="submit"]:hover {
-    background-color: #0056b3;
-}
-
-.image-preview img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin-top: 10px;
-}

@@ -3,6 +3,11 @@ import axios from "axios";
 import "./MemberList.css";
 
 const MemberList = () => {
+    useEffect(() => {
+        if (sessionStorage.getItem("state") !== "ADMIN") {
+            window.location.href = "/";
+        }
+    }, [])
     const [page, setPage] = useState(0);
     const [size, setSize] = useState(10);
     const [memberList, setMemberList] = useState([]);
@@ -52,6 +57,10 @@ const MemberList = () => {
             setPage(0);
         }
     };
+
+    if (sessionStorage.getItem("state") !== "ADMIN") {
+        return null;
+    }
 
     return (
         <div className="MemberList-compo">
