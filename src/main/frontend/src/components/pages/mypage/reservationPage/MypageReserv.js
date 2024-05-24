@@ -83,8 +83,6 @@ const ReservDetails = (props) => {
     }
 
     return (
-        <div className="outter">
-            <Sidebar/>
             <div className="ReservDetails-compo">
                 <h1 className="pageTitle">예약 내역</h1>
                 {memberInfo.map((reservation, index) => (
@@ -124,7 +122,6 @@ const ReservDetails = (props) => {
                     </div>
                 ))}
             </div>
-        </div>
     );
 };
 
