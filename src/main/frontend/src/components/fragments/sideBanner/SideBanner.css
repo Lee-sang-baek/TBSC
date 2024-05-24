@@ -24,11 +24,35 @@
     right: 0;
 }
 
+.SideBanner-compo path {
+    color: #fff;
+}
+
+.SideBanner-compo svg {
+    background-color: #0000007e;
+    border-radius: 12px;
+}
+
+
 /* 슬라이드 이미지 스타일 */
 .SideBanner-compo .slick-slide img {
     width: 100%;
+    position: relative;
     min-height: 230px;
-    object-fit: fill;
+    height: 230px;
+    object-fit: cover;
     border-radius: 30px;
     
+}
+
+.SideBanner-compo .slick-slide .content-box {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    position: absolute;
+    transform: translate(80%, -800%);
+    text-shadow: 2px -2px 8px #000000, -2px 2px 8px #000000;
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
 }

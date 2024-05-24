@@ -275,7 +275,7 @@ const ModiInfo = (props) => {
     }
 
     return (
-        <form>
+        <div className="MypageModify-compo">
             <h1 className="pageTitle">개인 정보 수정</h1>
 
             <div className="pageInfo">
@@ -350,7 +350,7 @@ const ModiInfo = (props) => {
                 </div>
             </div>
 
-        </form>
+        </div>
     );
 };
 

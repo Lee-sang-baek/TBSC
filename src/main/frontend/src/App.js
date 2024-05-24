@@ -314,20 +314,20 @@ function App() {
                 <Route path="/reservation/:num" element={
                     <div className="outter">
                     <Sidebar type="reserve" />
-                <ReservationDetail />
+                <   ReservationDetail />
                 </div>
                 } />
 
                 <Route path="/jobConsult" element={
                 <div className="outter">
-                <Sidebar type="reserve" />
-                <JobConsult />
+                    <Sidebar type="reserve" />
+                    <JobConsult />
                 </div>
                 } />
                 <Route path="/search-results" element={
                 <div className="outter">
-                <Sidebar type="reserve" />
-                <SearchResult />
+                    <Sidebar type="reserve" />
+                <   SearchResult />
                 </div>
                 }/>
 

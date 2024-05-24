@@ -50,7 +50,7 @@ function MainHomepage() {
 
     return (
 
-        <div className="Banner-compo">
+        <div className="MainHomepage-compo">
             <div className="slider-container">
                 <Slider {...settings} className="autoplay">
                     {imageList && imageList.map((item, index) => (

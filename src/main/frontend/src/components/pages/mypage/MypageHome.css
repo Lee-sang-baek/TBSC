@@ -1,5 +1,7 @@
-.detailsContainer {
-    margin: 5% 10%;
+.MypageHome-compo {
+    
+    .detailsContainer {
+        margin: 5% 10%;
 
     .reservDetailTitle {
         margin: 5% 0;
@@ -22,45 +24,47 @@
     .reservDetails:hover {
         background-color: rgba(0, 0, 0, 0.15);
     }
-}
+    }
 
-.profileModify {
-    position: relative;
-    display: flex;
-    justify-content: center;
-}
-
-.profileModify .userDelete {
-    position: absolute;
-    right: 5%;
-    top: 0;
-}
-
-.container {
-    .myTitle {
-        padding: 2%;
+    .profileModify {
+        position: relative;
         display: flex;
         justify-content: center;
     }
 
-    .profileImg{
-        height: 10%;
-        width: 10%;
+    .profileModify .userDelete {
+        position: absolute;
+        right: 5%;
+        top: 0;
     }
 
-    .profile {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+    .container {
+        .myTitle {
+            padding: 2%;
+            display: flex;
+            justify-content: center;
+        }
 
-    .profile .profileInfo {
-        display: flex;
-        align-items: center;
+        .profileImg{
+            height: 10%;
+            width: 10%;
+        }
 
-        div {
-            margin: 10px;
-            font-weight: bold;
+        .profile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile .profileInfo {
+            display: flex;
+            align-items: center;
+
+            div {
+                margin: 10px;
+                font-weight: bold;
+            }
         }
     }
 }
+

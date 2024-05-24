@@ -18,7 +18,7 @@ const NoticeBanner = () => {
     }, []);
 
     return (
-        <div className="notice-banner">
+        <div className="NoticeBanner-compo">
             <h1>Notice Banner</h1>
             <ul className="notice-list">
                 {notices.map((notice, index) => (

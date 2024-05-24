@@ -1,4 +1,4 @@
-.Banner-compo {
+.MainHomepage-compo {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -51,6 +51,16 @@
         left: 50%;
         transform: translate(-50%, -50%);
     }
+
+    path {
+        color: #fff;
+    }
+    
+    svg {
+        background-color: #0000007e;
+        border-radius: 12px;
+    }
+    
 
     .content-box {
         position: absolute;
