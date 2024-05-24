@@ -16,4 +16,5 @@ public class NoticeDto {
     private LocalDateTime date;
     private String id;
     private String content;
+
 }

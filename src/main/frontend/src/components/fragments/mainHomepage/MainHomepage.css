@@ -3,7 +3,7 @@
     flex-direction: column;
 }
 .Banner-compo .slider-container {
-    width: 90%; /* 슬라이더 컨테이너의 너비 */
+    width: 100%; /* 슬라이더 컨테이너의 너비 */
     margin: auto; /* 가운데 정렬을 위한 마진 */
     position: relative; /* 이전/다음 화살표의 위치 조정을 위한 상대 위치 설정 */
 }
@@ -27,5 +27,5 @@
 
 .Banner-compo img {
     width: 100%; /* 이미지를 슬라이더 크기에 맞게 조정 */
-    height: auto; /* 이미지 비율 유지를 위한 자동 높이 설정 */
+    height: 900px; /* 이미지 비율 유지를 위한 자동 높이 설정 */
 }

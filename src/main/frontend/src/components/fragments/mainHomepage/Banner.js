@@ -1,7 +1,5 @@
 import React from 'react';
 import Slider from 'react-slick';
-import Header from "./Components/Fragments/Header/Header";
-import Footer from "./Components/Fragments/Footer/Footer";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'; // 화살표 아이콘 import
@@ -38,8 +36,8 @@ function Banner() {
     };
 
     return (
-        <div>
-            <Header/>
+
+
             <div className="Banner-compo">
                 <div className="slider-container">
                     <Slider {...settings} className="autoplay">
@@ -54,10 +52,10 @@ function Banner() {
                         </div>
 
                     </Slider>
-                    <Footer/>
+
                 </div>
             </div>
-        </div>
+
     );
 }
 

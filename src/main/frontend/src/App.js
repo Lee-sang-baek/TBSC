@@ -46,6 +46,11 @@ import PressReleaseForm from "./components/pages/pressrelease/PressReleaseForm";
 import PressReleaseEdit from "./components/pages/pressrelease/PressReleaseEdit";
 import PressReleaseDetail from "./components/pages/pressrelease/PressReleaseDetail";
 import JobConsult from "./components/pages/jobConsult/JobConsult";
+import MainHomepage from "./components/fragments/mainHomepage/MainHomepage";
+import Startup from "./components/pages/explainpage/Startup";
+import Educonsult from "./components/pages/explainpage/Educonsult";
+import Tourism from "./components/pages/explainpage/Tourism";
+import NaverLogin from "./components/pages/logintest/NaverLogin";
 
 function App() {
 
@@ -96,6 +101,8 @@ function App() {
                 <Link to={"/facility"}> [시설 안내] </Link>
                 <Link to={"/notices"}> [공지사항] </Link>
                 <Link to={"/jobConsult"}> [jobConsult] </Link>
+                 <Link to={"/mainhome"}> 메인홈페이지 </Link>
+                 <Link to={"/tourism"}> 설명 </Link>
 
             </div>
             <Routes>
@@ -142,6 +149,8 @@ function App() {
                 <Route path="/myPage/delete-info" element={<DeleteInfo logout={logout} />} />
                 <Route path="/addAsset" element={<VisualAssetManager />} />
                 <Route path="/jobConsult" element={<JobConsult />} />
+                 <Route path="/mainhome" element={<MainHomepage />} />
+                 <Route path="/tourism" element={<Tourism />} />
             </Routes>
             <ChatbotToggle />
             <Footer />

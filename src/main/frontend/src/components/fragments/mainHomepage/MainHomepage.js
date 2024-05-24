@@ -5,10 +5,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'; // 화살표 아이콘 import
 import './MainHomepage.css'; // CSS 파일 import
 import NewsBanner from './NewsBanner'; // NewsBanner 컴포넌트를 import합니다.
-
-// NewsBanner 컴포넌트를 사용합니다.
-
-
+import NewsPicture from './NewsPicture';
 
 function MainHomepage() {
     // 이전 화살표 컴포넌트
@@ -58,6 +55,7 @@ function MainHomepage() {
                 </div>
                 <div className="outter">
                               <NewsBanner />
+                              <NewsPicture />
             </div>
     </div>
 

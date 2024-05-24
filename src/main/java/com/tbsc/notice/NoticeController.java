@@ -24,6 +24,11 @@ public class NoticeController {
     @Value("${file.upload-dir}")
     private String uploadDir;
 
+    @GetMapping("/banner")
+    public List<Notice> getNoticeBanner() {
+        return noticeService.getNoticeBanner();
+    }
+
     // 모든 공지사항 조회
     @GetMapping
     public List<Notice> getAllNotices() {

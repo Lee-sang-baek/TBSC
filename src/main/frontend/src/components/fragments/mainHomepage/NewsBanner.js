@@ -1,48 +1,32 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import './NewsBanner.css';
+import React, { useEffect, useState } from 'react';
 
-const NewsBanner = () => {
-  const [news, setNews] = useState([]);
+const NoticeBanner = () => {
+    const [notices, setNotices] = useState([]);
 
-  useEffect(() => {
-    axios.get('/api/news')
-      .then(response => {
-        setNews(response.data);
-      })
-      .catch(error => {
-        console.error('데이터를 가져오는 중 오류가 발생했습니다:', error);
-      });
-  }, []);
+    useEffect(() => {
+        const fetchNotices = async () => {
+            try {
+                const response = await fetch('/banner');
+                const data = await response.json();
+                setNotices(data?.notices || []); // 데이터가 없는 경우 빈 배열로 설정
+            } catch (error) {
+                console.error('Error fetching notices:', error);
+            }
+        };
 
-  return (
-    <div className="Notice-compo">
-      <div className="news">
-        <div className="background">
-          <div className="title">
-           <h3>뉴스</h3>
-             <div className='write'>
+        fetchNotices();
+    }, []);
 
-              <ul>
-              <li>공지사항</li>
-               <li>센터 소식</li>
-                <li>보도 자료</li>
-                 </ul>
-                 </div>
-
-          </div>
+    return (
+        <div className="notice-banner">
+            <h1>Notice Banner</h1>
+            <ul className="notice-list">
+                {notices.map((notice, index) => (
+                    <li key={index} className="notice-item">{notice.title}</li>
+                ))}
+            </ul>
         </div>
-      </div>
-      <div className="content">
-        {news.map(item => (
-          <div key={item.id}>
-            <h3>{item.title}</h3>
-            <p>{item.content}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+    );
 };
 
-export default NewsBanner;
+export default NoticeBanner;

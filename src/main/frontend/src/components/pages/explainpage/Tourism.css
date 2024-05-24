@@ -1,0 +1,88 @@
+/* Explain.css */
+
+.explain-info body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.explain-info {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.explain-info .block {
+    margin-bottom: 40px;
+}
+
+.explain-info .title h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #ff6f61;
+    padding-bottom: 10px;
+}
+
+.explain-info .box h3 {
+    font-size: 1.5em;
+    color: #333;
+    background: #ffebcd;
+    padding: 20px;
+    border-left: 6px solid #ff6f61;
+    margin-bottom: 30px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.explain-info .recruitment {
+    margin-top: 30px;
+}
+
+.explain-info .recruitment .container,
+.explain-info .recruitment .container2,
+.explain-info .recruitment .container3,
+.explain-info .recruitment .container4,
+.explain-info .recruitment .container5,
+.explain-info .recruitment .container6,{
+
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: #fafafa;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.explain-info .recruitment .line {
+    width: 5px;
+    height: 100%;
+    background: #ff6f61;
+    margin-right: 15px;
+}
+
+.explain-info .recruitment .text h2,
+.explain-info .recruitment .text h3 {
+    margin: 0;
+    padding: 10px 0;
+    color: #333;
+}
+
+.explain-info .recruitment .text h2 {
+    font-size: 1.8em;
+    border-bottom: 2px solid #ff6f61;
+}
+
+.explain-info .recruitment .text h3 {
+    font-size: 1.4em;
+    padding: 15px;
+
+}
+
+
+
