@@ -26,6 +26,7 @@ public class MemberControllerTest {
             member.setPassword(pe.encode("12345"));
             member.setName("dummy" + i + "'s name");
             member.setAddress("dummy" + i + "'s home");
+            member.setDetailAddress("detail" + i);
             member.setEmail("dummy" + i + "@dummy.com");
             member.setPhoneNum("010-0000-0000");
             member.setBirth(LocalDate.now());

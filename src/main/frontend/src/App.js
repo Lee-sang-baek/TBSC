@@ -15,18 +15,18 @@ import NoticeList from "./components/pages/commonBoard/NoticeList";
 import NoticeDetail from "./components/pages/commonBoard/NoticeDetail";
 import CreateNotice from "./components/pages/commonBoard/CreateNotice";
 import UpdateNotice from "./components/pages/commonBoard/UpdateNotice";
-import ModiInfo from "./components/pages/mypage/reservationPage/mypageModify";
-import MyHome from "./components/pages/mypage/mypageHome";
-import ReservDetails from "./components/pages/mypage/reservationPage/mypageReserv";
-import ModiCorp from "./components/pages/mypage/reservationPage/mypageModiCorp";
-import CorpInfo from "./components/pages/mypage/reservationPage/mypageCorpInfo";
+import ModiInfo from "./components/pages/mypage/reservationPage/MypageModify";
+import MyHome from "./components/pages/mypage/MypageHome";
+import ReservDetails from "./components/pages/mypage/reservationPage/MypageReserv";
+import ModiCorp from "./components/pages/mypage/reservationPage/MypageModiCorp";
+import CorpInfo from "./components/pages/mypage/reservationPage/MypageCorpInfo";
 import CenterIntroduction from "./components/pages/centerIntroduction/CenterIntroduction";
 import Rental from "./components/pages/rental/Rental";
 import FacilityGuide from "./components/pages/facilityGuide/FacilityGuide";
 import ConsultantForm from "./components/pages/consultant/ConsultantForm";
 import LogAccess from "./components/util/LogAccess";
 import VisualAssetManager from "./components/pages/admin/VisualAssetManager";
-import DeleteInfo from "./components/pages/mypage/functionPage/deleteInfo";
+import DeleteInfo from "./components/pages/mypage/functionPage/DeleteInfo";
 import FacilityGuideMain from "./components/pages/facilityGuide/FacilityGuideMain";
 import ChatbotToggle from "./components/pages/chatBot/ChatbotToggle";
 import TNoticeList from "./components/pages/tnotice/TNoticeList";
@@ -45,6 +45,7 @@ import PressReleaseList from "./components/pages/pressrelease/PressReleaseList";
 import PressReleaseForm from "./components/pages/pressrelease/PressReleaseForm";
 import PressReleaseEdit from "./components/pages/pressrelease/PressReleaseEdit";
 import PressReleaseDetail from "./components/pages/pressrelease/PressReleaseDetail";
+import ModifyReserv from "./components/pages/mypage/functionPage/ModifyReserv";
 import JobConsult from "./components/pages/jobConsult/JobConsult";
 import MainHomepage from "./components/fragments/mainHomepage/MainHomepage";
 import Sidebar from "./components/fragments/sidebar/Sidebar";
@@ -75,10 +76,10 @@ function App() {
         window.location.reload();
     }
 
-    
+
 
     return (
-        
+
         <BrowserRouter>
         <div className="main">
             <LogAccess />
@@ -123,7 +124,7 @@ function App() {
                     </div>
                 } />
 
-                
+
                 <Route path="/myPage" element={
                     <div className="outter">
                         <Sidebar type="mypage" />
@@ -274,7 +275,7 @@ function App() {
                         <PressReleaseDetail />
                     </div>
                 } />
-                
+
 
                 <Route path="/rental" element={
                     <div className="outter">
@@ -327,15 +328,15 @@ function App() {
                 <SearchResult />
                 </div>
                 }/>
-                
+
                 <Route path="/addAsset" element={<VisualAssetManager />} />
-                
+
             </Routes>
             <ChatbotToggle />
             </div>
             <Footer />
         </BrowserRouter>
-        
+
     );
 }
 

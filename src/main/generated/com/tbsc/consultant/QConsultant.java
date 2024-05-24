@@ -72,7 +72,7 @@ public class QConsultant extends EntityPathBase<Consultant> {
 
     public QConsultant(Class<? extends Consultant> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.member = inits.isInitialized("member") ? new com.tbsc.member.QMember(forProperty("member")) : null;
+        this.member = inits.isInitialized("member") ? new com.tbsc.member.QMember(forProperty("member"), inits.get("member")) : null;
     }
 
 }
