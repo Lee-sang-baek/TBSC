@@ -37,6 +37,7 @@ const TNoticeDetail = () => {
             }
         }
     };
+    const fileName = notice.fileUrl ? notice.fileUrl.split(";").pop() : "";
 
     if(!notice) {
         return;
