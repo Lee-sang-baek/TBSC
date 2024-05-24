@@ -8,12 +8,6 @@ const AdminPage = () => {
         window.location.href = "/";
     }
 }, [])
-  const create = () => {
-    axios.get("/create")
-        .then(response => {
-            alert(response.data);
-        })
-  }
 
   if (sessionStorage.getItem("state") !== "ADMIN") {
     return null;
@@ -21,7 +15,7 @@ const AdminPage = () => {
 
   return (
       <div className="AdminPage-compo">
-        <a href="#" onClick={create}>어드민 생성</a>
+        
       </div>
   );
 };

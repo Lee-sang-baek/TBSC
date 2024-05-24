@@ -21,25 +21,25 @@ public class RentalController {
 
     @PostMapping("/save")
     public ResponseEntity<Rental> createRental(@Valid @RequestBody Rental rental,
-                                               @RequestParam(name = "memberId") String memberId) {
+                                               @RequestParam("memberId") String memberId) {
         return rentalService.saveRental(rental, memberId);
     }
 
     @GetMapping("/{num}")
-    public ResponseEntity<Rental> getRentalById(@PathVariable Integer num) {
+    public ResponseEntity<Rental> getRentalById(@PathVariable("num") Integer num) {
         return rentalService.getRentalById(num)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @GetMapping("/member/{memberId}")
-    public ResponseEntity<List<Rental>> getRentalsByMemberId(@PathVariable String memberId) {
+    public ResponseEntity<List<Rental>> getRentalsByMemberId(@PathVariable("memberId") String memberId) {
         List<Rental> rentals = rentalService.getRentalList(memberId);
         return ResponseEntity.ok().body(rentals);
     }
 
     @DeleteMapping("/delete/{num}")
-    public ResponseEntity<?> deleteRental(@PathVariable Integer num) {
+    public ResponseEntity<?> deleteRental(@PathVariable("num") Integer num) {
         if (!rentalService.existsById(num)) {
             return ResponseEntity.notFound().build();
         }
