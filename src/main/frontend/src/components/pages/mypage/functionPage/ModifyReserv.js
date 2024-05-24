@@ -112,11 +112,11 @@ const ModifyReserv = () => {
         }
 
         const formData = {
-            gender, compName, person, place, startDate, endDate, purpose, prepare, memberId, num
+            gender, compName, person, place, startDate, endDate, purpose, prepare, memberId
         };
 
         try {
-            const response = await axios.put(`/rental/update?memberId=${memberId}&num=${num}`, formData);
+            const response = await axios.post(`/rental/save?memberId=${memberId}`, formData);
             alert("대관예약이 업데이트되었습니다.");
             console.log('서버 응답:', response.data);
             window.location.href = "/";

@@ -92,6 +92,7 @@ function App() {
                 <Route path="/signup/normal" element={<SignUp isComp={false} />} />
                 <Route path="/signup/company" element={<SignUp isComp={true} />} />
                 <Route path="/logout" element={<LoginForm />} />
+                <Route path="myPage/modify-reserv/:index" element={<ModifyReserv />} />
 
                 <Route path="/admin" element={
                     <div className="outter">

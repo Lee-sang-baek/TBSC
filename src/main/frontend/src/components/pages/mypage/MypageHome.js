@@ -77,7 +77,7 @@ const MyHome = () => {
     const navigate = useNavigate();
 
     const modifyLink = (index) => {
-        navigate(`/myPage/reserve/modifyReserv/${index}`);
+        navigate(`modify-reserv/${index}`);
     }
 
     if (!memberId) {
@@ -91,7 +91,7 @@ const MyHome = () => {
     }
 
     return (
-        <form>
+        <div className="mypage-container">
             <div className="container">
                 <h1 className="myTitle">마이페이지</h1>
                 <h3 className="profile">
@@ -159,7 +159,7 @@ const MyHome = () => {
                     </div>
                 ))}
             </div>
-        </form>
+        </div>
     );
 };
 
