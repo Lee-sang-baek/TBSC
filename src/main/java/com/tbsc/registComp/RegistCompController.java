@@ -21,7 +21,6 @@ public class RegistCompController {
         return new ResponseEntity<>(savedRegistComp, HttpStatus.CREATED);
     }
 
-
     @GetMapping("/getComp")
     public ResponseEntity<RegistComp> getRegistCompById(@RequestParam("memberId") String memberId) {
         Optional<RegistComp> registComp = registCompService.getRegistCompById(memberId);

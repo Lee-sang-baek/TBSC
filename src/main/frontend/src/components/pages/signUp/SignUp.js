@@ -234,7 +234,7 @@ const SignUp = ({isComp}) => {
             const missingFieldsMessage = missingFields.join(", ");
             alert(`다음 값을 입력해주세요: ${missingFieldsMessage}`);
         } else {
-            if (idAvailable && passwordMatch && emailAvailable && verified && isValidPhoneNum) {
+            if (idAvailable && passwordMatch && emailAvailable && verified && isValidPhoneNum && ((formData.password).length >= 8)) {
                 // 회원가입 데이터를 서버로 전송
                 axios.post(isComp ? "/member/compSignup" : "/member/signup", formData)
                     .then(response => {
@@ -257,6 +257,8 @@ const SignUp = ({isComp}) => {
                     alert("이메일 중복확인이 필요합니다.");
                 } else if (!isValidPhoneNum) {
                     alert("휴대폰 번호의 형식이 잘못되었습니다.");
+                } else if (!((formData.password).length >= 8)) {
+                    alert("비밀번호는 8글자 이상이어야 합니다.");
                 }
             }
         }

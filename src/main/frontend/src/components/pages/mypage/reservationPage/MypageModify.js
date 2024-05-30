@@ -26,47 +26,38 @@ const ModiInfo = (props) => {
     const [passwordCheck, setPasswordCheck] = useState('');
 
     const [memberInfo, setMemberInfo] = useState((memberState === "COMP") ? {
-            id: "",
-            password: "",
-            confirmPassword: "",
-            name: "",
-            birth: "",
-            address: "",
-            detailAddress: "",
-            email: "",
-            phoneNum: "",
+                id: "",
+                password: "",
+                confirmPassword: "",
+                name: "",
+                birth: "",
+                address: "",
+                detailAddress: "",
+                email: "",
+                phoneNum: "",
 
-            compName: "",
-            businessNum: "",
-            representative: "",
-            compAddress: "",
+                compName: "",
+                businessNum: "",
+                representative: "",
+                compAddress: "",
 
-            verificationCode: "",
-            emailCode: ""
-        }
-        : {
-            id: "",
-            password: "",
-            confirmPassword: "",
-            name: "",
-            birth: "",
-            address: "",
-            detailAddress: "",
-            email: "",
-            phoneNum: "",
-            verificationCode: "",
-            emailCode: ""
-        });
-
-    // useEffect(() => {
-    //     getMemberInfo();
-    //
-    //     setName(memberInfo.name);
-    //     setBirth(memberInfo.birth);
-    //     setPhone(memberInfo.phoneNum);
-    //     setAddress(memberInfo.address);
-    //     setDetailAddress(memberInfo.detailAddress);
-    // }, []);
+                verificationCode: "",
+                emailCode: ""
+            }
+            : {
+                id: "",
+                password: "",
+                confirmPassword: "",
+                name: "",
+                birth: "",
+                address: "",
+                detailAddress: "",
+                email: "",
+                phoneNum: "",
+                verificationCode: "",
+                emailCode: ""
+            }
+    );
 
     useEffect(() => {
         if (memberId) {
@@ -115,7 +106,7 @@ const ModiInfo = (props) => {
                 detailAddress: "상세주소",
                 email: "이메일",
                 phoneNum: "전화번호",
-            
+
                 compName: "기업명",
                 businessNum: "사업자번호",
                 representative: "대표자명",
@@ -142,7 +133,7 @@ const ModiInfo = (props) => {
             }
         }
 
-        if (passwordMatch && isValidPhoneNum) {
+        if (passwordMatch && isValidPhoneNum && (password.length >= 8)) {
             // 회원가입 데이터를 서버로 전송
             axios.post("/member/membermodify", memberInfo)
                 .then(response => {
@@ -161,6 +152,8 @@ const ModiInfo = (props) => {
                 alert("비밀번호가 같지 않습니다.");
             } else if (!isValidPhoneNum) {
                 alert("휴대폰 번호의 형식이 잘못되었습니다.");
+            } else if (!(password.length >= 8)) {
+                alert("비밀번호는 8글자 이상이어야 합니다.");
             }
         }
     };
@@ -275,82 +268,264 @@ const ModiInfo = (props) => {
     }
 
     return (
-        <form>
+        <div className="infoModifyPage">
             <h1 className="pageTitle">개인 정보 수정</h1>
 
-            <div className="pageInfo">
+            <div className="modiPageInfo">
                 <div className="modiInfo">
-                    <div className="modiInfoHeader">
-                        <h3 className="idText">아이디</h3>
-                        <Input type="text" className="idTextBox" value={memberInfo.id || ""} readOnly/>
-                        <h3 className="emailText">이메일</h3>
-                        <Input type="text" className="emailTextBox" value={memberInfo.email || ""} readOnly/>
-                        <h3 className="passwordText">비밀번호</h3>
-                        <Input type="password" className="passwordTextBox" value={password || ""}
+                    <div className="wave-group">
+                        <input required type="text" className="modiInfoInput" value={memberInfo.id || ""}/>
+                        <span className="bar"></span>
+                        <label className="label">
+                            <span className="label-char" style={{'--index': 0}}>I</span>
+                            <span className="label-char" style={{'--index': 1}}>D</span>
+                        </label>
+                    </div>
+
+                    <div className="wave-group">
+                        <input required type="text" className="modiInfoInput" value={memberInfo.email || ""}/>
+                        <span className="bar"></span>
+                        <label className="label">
+                            <span className="label-char" style={{'--index': 0}}>E</span>
+                            <span className="label-char" style={{'--index': 1}}>m</span>
+                            <span className="label-char" style={{'--index': 2}}>a</span>
+                            <span className="label-char" style={{'--index': 3}}>i</span>
+                            <span className="label-char" style={{'--index': 4}}>l</span>
+                        </label>
+                    </div>
+
+                    {/*<h3 className="passwordText">비밀번호</h3>*/}
+                    {/*<Input type="password" className="passwordTextBox" value={password || ""}*/}
+                    {/*       onChange={handleChangePassword}/>*/}
+                    <div className="wave-group">
+                        <input required type="password" className="modiInfoInput" value={password || ""}
                                onChange={handleChangePassword}/>
-                        <h3 className="passcheckText">
-                            비밀번호 확인
-                            <p className={checkSignal ? "match" : "unmatch"}>
-                                비밀번호 불일치
-                            </p>
-                        </h3>
-                        <Input type="password" className="checkTextBox" value={passwordCheck || ""}
+                        <span className="bar"></span>
+                        <label className="label">
+                            <span className="label-char" style={{'--index': 0}}>P</span>
+                            <span className="label-char" style={{'--index': 1}}>a</span>
+                            <span className="label-char" style={{'--index': 2}}>s</span>
+                            <span className="label-char" style={{'--index': 3}}>s</span>
+                            <span className="label-char" style={{'--index': 4}}>w</span>
+                            <span className="label-char" style={{'--index': 5}}>o</span>
+                            <span className="label-char" style={{'--index': 6}}>r</span>
+                            <span className="label-char" style={{'--index': 7}}>d</span>
+                        </label>
+                    </div>
+
+                    {/*<h3 className="passcheckText">*/}
+                    {/*    비밀번호 확인*/}
+                    {/*    <p className={checkSignal ? "match" : "unmatch"}>*/}
+                    {/*        비밀번호 불일치*/}
+                    {/*    </p>*/}
+                    {/*</h3>*/}
+                    {/*<Input type="password" className="checkTextBox" value={passwordCheck || ""}*/}
+                    {/*       onChange={handleChangePasswordCh}/>*/}
+                    <div className="wave-group">
+                        <input required type="password" className="modiInfoInput" value={passwordCheck || ""}
                                onChange={handleChangePasswordCh}/>
-                        <h3 className="nameText">이름</h3>
-                        <Input type="text" className="nameTextBox" value={name || ""} onChange={handleChangeName}/>
-                        <h3 className="birthText">생년월일</h3>
-                        <Input type="date" className="birthTextBox" value={birth || ""} onChange={handleChangeBirth}/>
-                        <h3 className="phoneText">휴대폰 번호</h3>
-                        <Input type="text" maxLength={13} className="phoneTextBox" value={phone || ""}
+                        <span className="bar"></span>
+                        <label className="label">
+                            <span className="label-char" style={{'--index': 0}}>P</span>
+                            <span className="label-char" style={{'--index': 1}}>a</span>
+                            <span className="label-char" style={{'--index': 2}}>s</span>
+                            <span className="label-char" style={{'--index': 3}}>s</span>
+                            <span className="label-char" style={{'--index': 4}}>w</span>
+                            <span className="label-char" style={{'--index': 5}}>o</span>
+                            <span className="label-char" style={{'--index': 6}}>r</span>
+                            <span className="label-char" style={{'--index': 7}}>d</span>
+                            <span className="label-char" style={{'--index': 8}}>C</span>
+                            <span className="label-char" style={{'--index': 8}}>h</span>
+                            <span className="label-char" style={{'--index': 8}}>e</span>
+                            <span className="label-char" style={{'--index': 8}}>c</span>
+                            <span className="label-char" style={{'--index': 8}}>k</span>
+                        </label>
+                        <p className={checkSignal ? "match" : "unmatch"}>
+                            비밀번호 불일치
+                        </p>
+                    </div>
+                </div>
+                <div className="modiInfo">
+                    <div className="wave-group">
+                        <input required type="text" className="modiInfoInput" value={name || ""}
+                               onChange={handleChangeName}/>
+                        <span className="bar"></span>
+                        <label className="label">
+                            <span className="label-char" style={{'--index': 0}}>N</span>
+                            <span className="label-char" style={{'--index': 1}}>a</span>
+                            <span className="label-char" style={{'--index': 2}}>m</span>
+                            <span className="label-char" style={{'--index': 3}}>e</span>
+                        </label>
+                    </div>
+
+                    <div className="wave-group">
+                        <input required type="date" className="modiInfoInput" value={birth || ""}
+                               onChange={handleChangeBirth}/>
+                        <span className="bar"></span>
+                        <label className="label">
+                            <span className="label-char" style={{'--index': 0}}>B</span>
+                            <span className="label-char" style={{'--index': 1}}>i</span>
+                            <span className="label-char" style={{'--index': 2}}>r</span>
+                            <span className="label-char" style={{'--index': 3}}>t</span>
+                            <span className="label-char" style={{'--index': 4}}>h</span>
+                        </label>
+                    </div>
+
+                    <div className="wave-group">
+                        <input required type="text" maxLength={13} className="modiInfoInput" value={phone || ""}
                                onChange={handleChangePhone}/>
-                        <h3 className="addressText">주소</h3>
-                        <Input type="text" className="addressTextBox" value={address || ""}
+                        <span className="bar"></span>
+                        <label className="label">
+                            <span className="label-char" style={{'--index': 0}}>B</span>
+                            <span className="label-char" style={{'--index': 1}}>i</span>
+                            <span className="label-char" style={{'--index': 2}}>r</span>
+                            <span className="label-char" style={{'--index': 3}}>t</span>
+                            <span className="label-char" style={{'--index': 4}}>h</span>
+                        </label>
+                    </div>
+
+                    <div className="wave-group">
+                        <input required type="text" className="modiInfoInput" value={address || ""}
                                onChange={(e) => {
                                    setAddress(e.target.value);
                                    handleChangeAddress();
                                }}/>
-                        {/*<h3 className="addressText">상세주소</h3>*/}
-                        <Input type="text" className="detailAddressBox" value={detailAddress || ""}
+                        <span className="bar"></span>
+                        <label className="label">
+                            <span className="label-char" style={{'--index': 0}}>A</span>
+                            <span className="label-char" style={{'--index': 1}}>d</span>
+                            <span className="label-char" style={{'--index': 2}}>d</span>
+                            <span className="label-char" style={{'--index': 3}}>r</span>
+                            <span className="label-char" style={{'--index': 4}}>e</span>
+                            <span className="label-char" style={{'--index': 5}}>s</span>
+                            <span className="label-char" style={{'--index': 6}}>s</span>
+                        </label>
+                    </div>
+
+                    <div className="wave-group">
+                        <input required type="text" className="modiInfoInput" value={detailAddress || ""}
                                onChange={(e) => {
                                    setDetailAddress(e.target.value);
                                    handleChangeAddress();
                                }}/>
-                        {(memberState === "COMP") &&
-                            <>
-                                <h3 className="compNameText">기업명</h3>
-                                <Input type="text" className="compNameTextBox" value={compName || ""}
-                                       onChange={(e) => {
-                                           setCompName(e.target.value);
-                                           handleCompInfo();
-                                       }}/>
-                                <h3 className="compNameText">사업자번호</h3>
-                                <Input type="text" className="compNameTextBox" value={businessNum || ""}
-                                       onChange={(e) => {
-                                           setBusinessNum(e.target.value);
-                                           handleCompInfo();
-                                       }}/>
-                                <h3 className="compNameText">대표자명</h3>
-                                <Input type="text" className="compNameTextBox" value={representative || ""}
-                                       onChange={(e) => {
-                                           setRepresentative(e.target.value);
-                                           handleCompInfo();
-                                       }}/>
-                                <h3 className="compNameText">기업주소</h3>
-                                <Input type="text" className="compNameTextBox" value={compAddress || ""}
-                                       onChange={(e) => {
-                                           setCompAddress(e.target.value);
-                                           handleCompInfo();
-                                       }}/>
-                            </>
-                        }
-                    </div>
-                    <div className="button">
-                        <Button onClick={handleSignUp} text="수정"/>
+                        <span className="bar"></span>
+                        <label className="label">
+                            <span className="label-char" style={{'--index': 0}}>D</span>
+                            <span className="label-char" style={{'--index': 1}}>e</span>
+                            <span className="label-char" style={{'--index': 2}}>t</span>
+                            <span className="label-char" style={{'--index': 3}}>a</span>
+                            <span className="label-char" style={{'--index': 4}}>i</span>
+                            <span className="label-char" style={{'--index': 5}}>l</span>
+                            <span className="label-char" style={{'--index': 6}}>A</span>
+                            <span className="label-char" style={{'--index': 7}}>d</span>
+                            <span className="label-char" style={{'--index': 8}}>d</span>
+                            <span className="label-char" style={{'--index': 9}}>r</span>
+                            <span className="label-char" style={{'--index': 10}}>e</span>
+                            <span className="label-char" style={{'--index': 11}}>s</span>
+                            <span className="label-char" style={{'--index': 12}}>s</span>
+                        </label>
                     </div>
                 </div>
             </div>
 
-        </form>
+            {(memberState === "COMP") &&
+                <>
+                    <div className="userCompState">
+                        <h3>회사정보</h3>
+                    </div>
+
+                    <div className="userCompState">
+                        <div className="devidedGroup1">
+                            <div className="wave-group">
+                                <input required type="text" className="modiInfoInput" value={compName || ""}
+                                       onChange={(e) => {
+                                           setCompName(e.target.value);
+                                           handleCompInfo();
+                                       }}/>
+                                <span className="bar"></span>
+                                <label className="label">
+                                    <span className="label-char" style={{'--index': 0}}>C</span>
+                                    <span className="label-char" style={{'--index': 1}}>o</span>
+                                    <span className="label-char" style={{'--index': 2}}>m</span>
+                                    <span className="label-char" style={{'--index': 3}}>p</span>
+                                    <span className="label-char" style={{'--index': 4}}>a</span>
+                                    <span className="label-char" style={{'--index': 5}}>n</span>
+                                    <span className="label-char" style={{'--index': 6}}>y</span>
+                                    <span className="label-char" style={{'--index': 7}}>(회사명)</span>
+                                </label>
+                            </div>
+
+                            <div className="wave-group">
+                                <input required type="text" className="modiInfoInput" value={businessNum || ""}
+                                       onChange={(e) => {
+                                           setBusinessNum(e.target.value);
+                                           handleCompInfo();
+                                       }}/>
+                                <span className="bar"></span>
+                                <label className="label">
+                                    <span className="label-char" style={{'--index': 0}}>B</span>
+                                    <span className="label-char" style={{'--index': 1}}>u</span>
+                                    <span className="label-char" style={{'--index': 2}}>s</span>
+                                    <span className="label-char" style={{'--index': 3}}>i</span>
+                                    <span className="label-char" style={{'--index': 4}}>n</span>
+                                    <span className="label-char" style={{'--index': 5}}>e</span>
+                                    <span className="label-char" style={{'--index': 6}}>s</span>
+                                    <span className="label-char" style={{'--index': 7}}>s</span>
+                                    <span className="label-char" style={{'--index': 8}}>No.</span>
+                                    <span className="label-char" style={{'--index': 9}}>(사업자 번호)</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div className="devidedGroup2">
+                            <div className="wave-group">
+                                <input required type="text" className="modiInfoInput" value={representative || ""}
+                                       onChange={(e) => {
+                                           setRepresentative(e.target.value);
+                                           handleCompInfo();
+                                       }}/>
+                                <span className="bar"></span>
+                                <label className="label">
+                                    <span className="label-char" style={{'--index': 0}}>R</span>
+                                    <span className="label-char" style={{'--index': 1}}>e</span>
+                                    <span className="label-char" style={{'--index': 2}}>p</span>
+                                    <span className="label-char" style={{'--index': 3}}>r</span>
+                                    <span className="label-char" style={{'--index': 4}}>e</span>
+                                    <span className="label-char" style={{'--index': 5}}>s</span>
+                                    <span className="label-char" style={{'--index': 6}}>e</span>
+                                    <span className="label-char" style={{'--index': 7}}>n</span>
+                                    <span className="label-char" style={{'--index': 8}}>t</span>
+                                    <span className="label-char" style={{'--index': 9}}>(대표자 명)</span>
+                                </label>
+                            </div>
+
+                            <div className="wave-group">
+                                <input required type="text" className="modiInfoInput" value={compAddress || ""}
+                                       onChange={(e) => {
+                                           setCompAddress(e.target.value);
+                                           handleCompInfo();
+                                       }}/>
+                                <span className="bar"></span>
+                                <label className="label">
+                                    <span className="label-char" style={{'--index': 0}}>A</span>
+                                    <span className="label-char" style={{'--index': 1}}>d</span>
+                                    <span className="label-char" style={{'--index': 2}}>d</span>
+                                    <span className="label-char" style={{'--index': 3}}>r</span>
+                                    <span className="label-char" style={{'--index': 4}}>e</span>
+                                    <span className="label-char" style={{'--index': 5}}>s</span>
+                                    <span className="label-char" style={{'--index': 6}}>s</span>
+                                    <span className="label-char" style={{'--index': 7}}>(회사 주소)</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </>
+            }
+
+            <div className="button">
+                <Button onClick={handleSignUp} text="수정"/>
+            </div>
+        </div>
     );
 };
 

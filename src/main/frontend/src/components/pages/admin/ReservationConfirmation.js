@@ -331,7 +331,7 @@ const ReservationConfirmation = () => {
                   <div className="state-btn-box">
                     <button className="check"
                         onClick={() =>
-                          handleStatusChange(reserveType, reservation.num, "CEHCK")
+                          handleStatusChange(reserveType, reservation.num, "CHECK")
                         }
                       >
                         검토

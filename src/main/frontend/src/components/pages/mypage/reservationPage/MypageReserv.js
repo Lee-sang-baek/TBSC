@@ -69,7 +69,7 @@ const ReservDetails = (props) => {
     const navigate = useNavigate();
 
     const modifyLink = (index) => {
-        navigate(`modifyReserv/${index}`);
+        navigate(`/myPage/modify-reserv/${index}`);
     }
 
     if (!memberId) {
@@ -83,45 +83,62 @@ const ReservDetails = (props) => {
     }
 
     return (
-            <div className="ReservDetails-compo">
-                <h1 className="pageTitle">예약 내역</h1>
-                {memberInfo.map((reservation, index) => (
-                    <div className="pageInfo" onClick={() => modifyLink(index)} key={index}>
-                        <div className="reservContainer">
-                            <div className="reservHeader">
-                                <div className="reservTitle">
-                                    {reservation.place || ""}
-                                </div>
-                                <div className="reservDate">
-                                    <div className="startDate">
-                                        {formatDate(reservation.startDate) || ""}
-                                    </div>
-                                    <p>~</p>
-                                    <div className="endDate">
-                                        {formatDate(reservation.endDate) || ""}
-                                    </div>
-                                </div>
+        <div className="ReservDetails-compo">
+            <h1 className="pageTitle">예약 내역</h1>
+            {memberInfo.map((reservation, index) => (
+                <div className="pageInfo" onClick={() => modifyLink(index)} key={index}>
+                    <div className="reservContainer">
+                        <div className="reservHeader">
+                            <div className="reservTitle">
+                                {reservation.place || ""}
                             </div>
-                            <div className="detailContent">
-                                <img className="reservImg" src={img} alt=""/>
-                                <div className="reservTime">
-                                    <div className="startDate">
-                                        {formatTime(reservation.startDate) || ""}
-                                    </div>
-                                    <p>~</p>
-                                    <div className="endDate">
-                                        {formatTime(reservation.endDate) || ""}
-                                    </div>
+                            <div className="reservDate">
+                                <div className="startDate">
+                                    {formatDate(reservation.startDate) || ""}
                                 </div>
-                                <div className={reservation.state ? "true" : "false"}>
-                                    예약완료
+                                <p>~</p>
+                                <div className="endDate">
+                                    {formatDate(reservation.endDate) || ""}
                                 </div>
-                                <Button text="예약취소" onClick={() => cancelReservation(reservation.num)}/>
                             </div>
                         </div>
+                        <div className="detailContent">
+                            <img className="reservImg" src={img} alt=""/>
+                            <div className="reservTime">
+                                <div className="startDate">
+                                    {formatTime(reservation.startDate) || ""}
+                                </div>
+                                <p>~</p>
+                                <div className="endDate">
+                                    {formatTime(reservation.endDate) || ""}
+                                </div>
+                            </div>
+                            {(reservation.state === "RESERVE") &&
+                                <div className="RESERVE">
+                                    예약완료
+                                </div>
+                            }
+                            {(reservation.state === "CHECK") &&
+                                <div className="CHECK">
+                                    검토 중
+                                </div>
+                            }
+                            {(reservation.state === "APPROVE") &&
+                                <div className="APPROVE">
+                                    승인됨
+                                </div>
+                            }
+                            {(reservation.state === "DENY") &&
+                                <div className="DENY">
+                                    거절됨
+                                </div>
+                            }
+                            <Button text="예약취소" onClick={() => cancelReservation(reservation.num)}/>
+                        </div>
                     </div>
-                ))}
-            </div>
+                </div>
+            ))}
+        </div>
     );
 };
 

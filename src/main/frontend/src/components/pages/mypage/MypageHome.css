@@ -1,66 +1,100 @@
-.detailsContainer {
-    margin: 5% 10%;
+.mypage-container {
+    width: 100%;
 
-    .reservDetailTitle {
-        margin: 5% 0;
-    }
+    .detailsContainer {
+        margin: 5% 10%;
 
-    .reservDetails {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        .reservTitle {
-            width: 30%;
+        .reservDetailTitle {
+            margin: 5% 0;
         }
 
-        .reservDate {
-            font-size: 15px;
+        .reservDetails {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .reservTitle {
+                width: 30%;
+                cursor: pointer;
+            }
+            .reservTitle:hover {
+                font-size: 150%;
+            }
+
+            .reservDate {
+                font-size: 15px;
+            }
+
+            .reservState {
+                .RESERVE {
+                    color: #FF8C00;
+                    font-weight: bold;
+                    font-size: large;
+                }
+
+                .CHECK {
+                    color: #778899;
+                    font-weight: bold;
+                    font-size: large;
+                }
+
+                .APPROVE {
+                    color: #4169E1;
+                    font-weight: bold;
+                    font-size: large;
+                }
+
+                .DENY {
+                    color: #FF3333;
+                    font-weight: bold;
+                    font-size: large;
+                }
+            }
+        }
+
+        .reservDetails:hover {
+            background-color: rgba(0, 0, 0, 0.15);
         }
     }
 
-    .reservDetails:hover {
-        background-color: rgba(0, 0, 0, 0.15);
-    }
-}
-
-.profileModify {
-    position: relative;
-    display: flex;
-    justify-content: center;
-}
-
-.profileModify .userDelete {
-    position: absolute;
-    right: 5%;
-    top: 0;
-}
-
-.container {
-    .myTitle {
-        padding: 2%;
+    .profileModify {
+        position: relative;
         display: flex;
         justify-content: center;
     }
 
-    .profileImg{
-        height: 10%;
-        width: 10%;
+    .profileModify .userDelete {
+        position: absolute;
+        right: 5%;
+        top: 0;
     }
 
-    .profile {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+    .container {
+        .myTitle {
+            padding: 2%;
+            display: flex;
+            justify-content: center;
+        }
 
-    .profile .profileInfo {
-        display: flex;
-        align-items: center;
+        .profileImg {
+            height: 10%;
+            width: 10%;
+        }
 
-        div {
-            margin: 10px;
-            font-weight: bold;
+        .profile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile .profileInfo {
+            display: flex;
+            align-items: center;
+
+            div {
+                margin: 10px;
+                font-weight: bold;
+            }
         }
     }
 }

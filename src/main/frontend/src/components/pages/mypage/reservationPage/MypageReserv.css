@@ -1,8 +1,3 @@
-.outter {
-    display: flex;
-    flex-direction: row;
-}
-
 .ReservDetails-compo {
     /*padding:0 100px;*/
     width:100%;
@@ -40,8 +35,23 @@
         }
 
         .detailContent {
-            .true {
-                color: #054BFF;
+            .RESERVE {
+                color: #FF8C00;
+                font-weight: bold;
+                font-size: large;
+            }
+            .CHECK {
+                color: #778899;
+                font-weight: bold;
+                font-size: large;
+            }
+            .APPROVE {
+                color: #4169E1;
+                font-weight: bold;
+                font-size: large;
+            }
+            .DENY {
+                color: #FF3333;
                 font-weight: bold;
                 font-size: large;
             }
@@ -49,6 +59,7 @@
     }
 
     .reservContainer:hover {
+        cursor: pointer;
         background-color: #91cdd7;
         width: 95%;
         height: 220px;

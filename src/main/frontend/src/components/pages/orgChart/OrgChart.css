@@ -1,0 +1,95 @@
+.orgChart {
+    width: 100%;
+    height: 100%;
+
+    .orgChartContainer {
+        .orgChartTitle {
+            display: flex;
+            justify-content: center;
+        }
+
+        .personContainer {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            margin: 0 5%;
+
+            .orgChartName {
+                width: 30%;
+
+                .divisionLine {
+                    hr {
+                        width: 100%;
+                    }
+
+                    .linePoint {
+                        background-color: #3636ff;
+                        width: 50px;
+                        height: 4px;
+                        position: absolute;
+                        top: 6px;
+                        left: 0;
+                    }
+                }
+
+                .personName {
+                    display: flex;
+                    align-items: flex-end;
+
+                    .orgPosition {
+                        font-size: medium;
+                        font-weight: normal;
+                        padding: 0 10px;
+                    }
+                }
+            }
+
+            .orgChartDetail {
+                width: 60%;
+            }
+
+            .chartDetailContents {
+                display: flex;
+                justify-content: space-between;
+
+                .number {
+                    font-size: inherit;
+                    font-weight: bold;
+                    padding-left: 30px;
+
+                    img {
+                        height: 15px;
+                    }
+                    a {
+                        text-decoration-line: none;
+                    }
+                }
+            }
+        }
+
+        @media (max-width: 1310px) {
+            .personContainer {
+                display: inline-block;
+                margin: 0 5%;
+
+                .orgChartName {
+                    width: 100%;
+                }
+
+                .orgChartDetail {
+                    width: 100%;
+
+                    hr {
+                        display: none;
+                    }
+
+                    .chartDetailContents {
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+    }
+}
