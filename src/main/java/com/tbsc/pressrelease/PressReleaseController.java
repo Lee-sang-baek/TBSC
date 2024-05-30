@@ -1,6 +1,5 @@
 package com.tbsc.pressrelease;
 
-import com.tbsc.centerNews.CenterNews;
 import com.tbsc.member.Member;
 import com.tbsc.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -24,11 +23,6 @@ public class PressReleaseController {
 
     @Value("${file.upload-dir}")
     private String uploadDir;
-
-    @GetMapping("/banner")
-    public List<PressRelease> getPressReleaseBanner() {
-        return pressReleaseService.getAllPressReleases();
-    }
 
     @GetMapping
     public List<PressRelease> getAllPressReleases() {

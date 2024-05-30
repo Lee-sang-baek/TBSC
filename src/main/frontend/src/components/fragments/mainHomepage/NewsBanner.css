@@ -1,113 +1,37 @@
-.NoticeBanner-compo {
+.Notice-compo {
   display: flex;
   flex-direction: column;
-  width: 95%;
-  background-color: #ffe3ef;
-  border: 1px solid #ccc;
-  box-shadow: 15px 15px 30px #bebebe,
-             -15px -15px 30px #ffffff;
-  border-radius: 30px;
-  margin-bottom: 30px;
+  width: 100%;
 
-  .banner-box{
+  .news{
     display: flex;
-    flex-direction: row;
-    width: 100%;
-  }
-
-  .menu {
-    width: 5%;
-    margin: 0 30px;
-  }
-
-  .page-btn {
-    display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    
-  }
-
-  .page-btn .up,
-  .page-btn .down {
-    cursor: pointer;
-    font-size: 20px;
-  }
-
-  .page-btn .up {
-    margin-top: 40px;
-  }
-
-  .page-btn .down {
-    margin-top: 60px;
-  }
-
-  .page-btn .up:hover {
-    background-color: #aaa;
-    border-radius: 10px;
-  }
-
-  .page-btn .down:hover {
-    background-color: #aaa;
-    border-radius: 10px;
-  }
-
-  .write {
     width: 100%;
-    display: flex;
-    flex-direction: column;
   }
 
-  .title {
+  .background{
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #000;
+    width: 95%;
+    height: 200px;
+  }
+
+  .title{
+    margin-left:30px;
+  }
+
+  .write{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    margin-top: 20px;
-    margin-left: 30px;
-    text-align: start;
   }
 
-  .title h4 {
-    margin: 0;
-  }
 
-  .menu h4 {
-    cursor: pointer;
-  }
-
-  .menu h4:hover {
-    background-color: #ddd;
-    border-radius: 10px;
-  }
-
-  .active {
-    color: rgb(0, 89, 255);
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
-  }
-
-  .title p {
-    margin: 0 50px;
-  }
-
-  .content {
-    border: 1px solid #aaa;
-    background-color: #fff;
-    border-radius: 5px;
-    margin: 15px;
-    padding: 5px;
-    width: 96%;
-    height: 100%;
-    text-align: start;
-    transition: top 0.1s ease-out;
-  }
-
-  .content p { 
-    margin: 10px;
-  }
-
-  h1 {
-    text-align: center;
-    margin-top: 70px;
+  .content{
+    background: white;
+    width: 95%;
+    height: 150px;
   }
 }
 

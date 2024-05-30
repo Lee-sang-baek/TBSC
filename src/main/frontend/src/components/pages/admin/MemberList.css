@@ -15,8 +15,7 @@
   background-color: #f2f2f2;
 }
 
-.MemberList-compo th,
-.MemberList-compo td {
+.MemberList-compo th, td {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;

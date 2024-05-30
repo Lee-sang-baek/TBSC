@@ -21,13 +21,11 @@ public class QBanner extends EntityPathBase<Banner> {
 
     public final StringPath content = createString("content");
 
-    public final DateTimePath<java.time.LocalDateTime> end = createDateTime("end", java.time.LocalDateTime.class);
-
     public final StringPath image = createString("image");
 
     public final NumberPath<Long> num = createNumber("num", Long.class);
 
-    public final DateTimePath<java.time.LocalDateTime> start = createDateTime("start", java.time.LocalDateTime.class);
+    public final EnumPath<BannerType> state = createEnum("state", BannerType.class);
 
     public final StringPath title = createString("title");
 

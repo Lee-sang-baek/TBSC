@@ -15,9 +15,8 @@
         width: 100%;
         background-color: #fff;
         padding: 10px;
-        border: 1px solid #ccc;
+        border: 1px solid #777;
         border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
 
     .form-container {
@@ -38,7 +37,6 @@
         flex-direction: row;
         align-items: center;
         font-weight: bold;
-        min-width: 55px;
     }
 
     label input[type="radio"] {
@@ -118,7 +116,6 @@
 
 
     .remove-btn {
-        min-width: 65px;
         padding: 10px 20px;
         background-color: rgb(236, 54, 54);
         color: #fff;

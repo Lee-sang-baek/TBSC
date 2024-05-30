@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import '../../rental/Rental.css';
 import FacilityGuide from "../../facilityGuide/FacilityGuide";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 const ModifyReserv = () => {
     const { index } = useParams();
     const memberId = sessionStorage.getItem("id");
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (memberId) {
@@ -75,51 +77,47 @@ const ModifyReserv = () => {
             alert('성별을 선택해주세요.');
             return;
         }
-
         if (!compName) {
             alert('업체명을 작성해주세요.');
             return;
         }
-
         if (!person) {
             alert('참가 인원을 작성해주세요.');
             return;
         }
-
         if (!place) {
             alert('대관 장소를 선택해주세요.');
             return;
         }
-
         if (!startDate) {
             alert('대관 시작 기간을 선택해주세요.');
             return;
         }
-
         if (!endDate) {
             alert('대관 종료 기간을 선택해주세요.');
             return;
         }
-
         if (!purpose) {
             alert('대관 목적을 작성해주세요.');
             return;
         }
-
         if (!prepare) {
             alert('준비 사항을 작성해주세요.');
             return;
         }
 
         const formData = {
-            gender, compName, person, place, startDate, endDate, purpose, prepare, memberId, num
+            gender, compName, person, place, startDate, endDate, purpose, prepare, memberId
         };
 
         try {
-            const response = await axios.put(`/rental/update?memberId=${memberId}&num=${num}`, formData);
+            const response = await axios.put(`/rental/${num}?memberId=${memberId}`, formData);
             alert("대관예약이 업데이트되었습니다.");
             console.log('서버 응답:', response.data);
-            window.location.href = "/";
+
+            navigate(-1);
+
+            // window.location.href = "/";
         } catch (error) {
             console.error('서버 요청 실패:', error);
         }

@@ -17,13 +17,15 @@ public class PopupDto {
 
     private String image;
 
+    private LocalDate startDate;
+
+    private LocalTime startTime;
+
+    private LocalDate endDate;
+
+    private LocalTime endTime;
+
     private String title;
-
-    private String content;
-
-    private LocalDateTime start;
-
-    private LocalDateTime end;
 
 
 }

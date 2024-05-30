@@ -39,6 +39,8 @@ public class RegistCompService {
                     existing.setView(registComp.getView());
                     existing.setDate(registComp.getDate());
                     existing.setContent(registComp.getContent());
+                    existing.setWriter(registComp.getWriter());
+                    existing.setCorpName(registComp.getCorpName());
                     existing.setMember(registComp.getMember());
                     return registCompRepository.save(existing);
                 });

@@ -12,7 +12,7 @@ function SideBanner() {
     const [imageList, setImageList] = useState([]);
 
     useEffect(() => {
-        axios.get("/banner")
+        axios.get("/mainImage")
         .then((res) => {
             setImageList(res.data);
             console.log(res.data);
@@ -72,14 +72,12 @@ function SideBanner() {
 
     };
 
-    const modifiedImageList = imageList.length === 1 ? imageList.concat(imageList) : imageList;
-
     return (
 
     <div ref={containerRef} style={{ display: 'block', position: 'relative', height: 'fit-content', margin: '20px' }}>
         <div className="SideBanner-compo" style={bannerStyle}>
             <Slider {...settings} className="autoplay">
-                {modifiedImageList && modifiedImageList.map((item, index) => (
+                {imageList && imageList.map((item, index) => (
                     <div key={index} className='image-box'>
                         <img src={`/uploads/${item.image}`} alt={item.title} />
                         <div className='content-box'>{item.content}</div>

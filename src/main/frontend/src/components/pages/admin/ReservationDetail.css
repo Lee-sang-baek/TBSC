@@ -1,4 +1,4 @@
-.ReservationDetail-compo {
+.modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -9,66 +9,24 @@
     align-items: center;
     justify-content: center;
     z-index: 1000;
-
-    th {
-      width: 30%;
-    }
-
-    .modal {
-      background: white;
-      padding: 20px;
-      border-radius: 5px;
-      width: 80%;
-      max-width: 600px;
-      position: relative;
-    }
-    
-    .close-button {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: none;
-      border: none;
-      font-size: 20px;
-      cursor: pointer;
-    }
-    
-    .experiences-modal,
-    .certifications-modal,
-    .languages-modal {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-      max-height: 80vh;
-      overflow-y: auto;
-    }
-
-    .experiences-modal h3,
-    .certifications-modal h3,
-    .languages-modal h3 {
-      margin-top: 0;
-    }
-
-    .experiences-modal button,
-    .certifications-modal button,
-    .languages-modal button {
-      margin-top: 10px;
-    }
-
-    .experiences-modal div,
-    .certifications-modal div,
-    .languages-modal div {
-      margin-bottom: 10px;
-    }
-
-    .underline {
-      border-bottom: 1px solid #ccc;
-    }
   }
   
+  .modal {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
   

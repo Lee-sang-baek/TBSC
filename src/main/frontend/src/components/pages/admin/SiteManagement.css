@@ -189,27 +189,7 @@
       border-radius: 4px;
       width: 35px;
     }
-
-    .already,
-    .notyet,
-    .end {
-      font-weight: bold;
-      text-shadow: 1px -1px 1px rgba(0, 0, 0, 0.8), -1px -1px 1px rgba(0, 0, 0, 0.8);
-    }
-
-    .already {
-      color: rgb(0, 255, 0);
-    }
-
-    .notyet {
-      color: rgb(255, 255, 0);
-    }
     
-    .end {
-      color: red;
-    }
-
-
   /* 모달 스타일 */
   .modal {
     position: fixed;

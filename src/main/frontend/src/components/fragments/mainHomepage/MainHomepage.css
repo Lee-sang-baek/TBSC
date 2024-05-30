@@ -1,4 +1,4 @@
-.MainHomepage-compo {
+.Banner-compo {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -9,9 +9,6 @@
         width: 95%;
         position: relative;
         overflow: hidden;
-        border-radius: 30px;
-        box-shadow: 15px 15px 30px #bebebe,
-             -15px -15px 30px #ffffff;
     }
 
     .arrow {
@@ -42,7 +39,7 @@
         border: 2px solid #000000;
     }
 
-    .image-box img {
+    img {
 
         width: 100%;
         position: absolute;
@@ -54,16 +51,6 @@
         left: 50%;
         transform: translate(-50%, -50%);
     }
-
-    path {
-        color: #fff;
-    }
-    
-    svg {
-        background-color: #0000007e;
-        border-radius: 12px;
-    }
-    
 
     .content-box {
         position: absolute;

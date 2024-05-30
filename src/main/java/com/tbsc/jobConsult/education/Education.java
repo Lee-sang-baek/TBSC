@@ -1,6 +1,5 @@
 package com.tbsc.jobConsult.education;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tbsc.jobConsult.JobConsult;
 import jakarta.persistence.*;
 import lombok.*;
@@ -29,7 +28,6 @@ public class Education {
     private String academicStatus;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JsonIgnore
     @JoinColumn(name = "jobConsult_num", referencedColumnName = "num")
     private JobConsult jobConsult;
 }

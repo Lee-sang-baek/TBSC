@@ -1,0 +1,98 @@
+.wayToCome {
+    width: 100%;
+    height: 100%;
+
+    .wayToComeContainer {
+        .wayToComeTitle {
+            display: flex;
+            justify-content: center;
+        }
+
+        .locationMapContainer {
+            margin: 0 10%;
+        }
+
+        .routeContainer {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            margin: 0 5%;
+
+            .routeName {
+                width: 30%;
+
+                .divisionLine {
+                    hr {
+                        width: 100%;
+                    }
+
+                    .linePoint {
+                        background-color: #3636ff;
+                        width: 50px;
+                        height: 4px;
+                        position: absolute;
+                        top: 6px;
+                        left: 0;
+                    }
+                }
+
+                .routeType {
+                    display: flex;
+                    align-items: flex-end;
+                }
+            }
+
+            .routeDetail {
+                width: 65%;
+
+                .routeDetailContents {
+                    .busRoute {
+                        font-size: inherit;
+                        font-weight: bold;
+                        display: flex;
+                        align-items: center;
+                        margin: 0;
+
+                        > img {
+                            height: 30px;
+                        }
+
+                        > h3 {
+                            padding: 0 10px;
+                        }
+
+                        > h5 {
+                            font-size: 20px;
+                            font-weight: normal;
+                        }
+                    }
+                }
+            }
+        }
+
+        @media (max-width: 1410px) {
+            .routeContainer {
+                display: inline-block;
+                margin: 0 5%;
+
+                .routeName {
+                    width: 100%;
+                }
+
+                .routeDetail {
+                    width: 100%;
+
+                    hr {
+                        display: none;
+                    }
+
+                    .routeDetailContents {
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+    }
+}

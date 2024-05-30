@@ -59,22 +59,6 @@ const SearchResult = () => {
         }
     };
 
-    const getCount = () => {
-        let count = 0;
-        if (filteredResults) {
-            if (filteredResults.noticeResults && filteredResults.noticeResults.length > 0) {
-                count += filterResults.noticeResults.length;
-            }
-            if (filteredResults.tNoticeResults && filteredResults.tNoticeResults.length > 0) {
-                count += filterResults.tNoticeResults.length;
-            }
-            if (filteredResults.centerNewsResults && filteredResults.centerNewsResults.length > 0) {
-                count += filterResults.centerNewsResults.length;
-            }
-        }
-        return count;
-    };
-
     const formatDate = (dateString) => {
         return format(new Date(dateString), 'yyyy-MM-dd');
     };
@@ -90,7 +74,7 @@ const SearchResult = () => {
                     <option value="센터뉴스">센터뉴스</option>
                     <option value="보도자료">보도자료</option>
                 </select>
-                {getCount() > 0 && <p>총 {getCount()}개의 글을 찾았습니다.</p>}
+                <p>총 {filteredResults.noticeResults.length + filteredResults.tNoticeResults.length + filteredResults.centerNewsResults.length}개의 글을 찾았습니다.</p>
                 {filteredResults.noticeResults && filteredResults.noticeResults.length > 0 && (
                     <div>
                         <h2>공지사항</h2>
@@ -175,9 +159,12 @@ const SearchResult = () => {
                         </table>
                     </div>
                 )}
-                {getCount() === 0 &&
-                    <p>검색 결과가 없습니다.</p>
-                }
+                {(!filteredResults.noticeResults || filteredResults.noticeResults.length === 0) &&
+                    (!filteredResults.tNoticeResults || filteredResults.tNoticeResults.length === 0) &&
+                    (!filteredResults.centerNewsResults || filteredResults.centerNewsResults.length === 0) &&
+                    (!filteredResults.pressReleaseResults || filteredResults.pressReleaseResults.length === 0) && (
+                        <p>검색 결과가 없습니다.</p>
+                    )}
             </div>
         </div>
     );
