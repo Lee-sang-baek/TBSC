@@ -1,6 +1,10 @@
 .ReservDetails-compo {
-    /*padding:0 100px;*/
-    width:100%;
+    width: 87%;
+    margin: 100px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
     .pageInfo {
         padding: 1% 0;
@@ -16,9 +20,8 @@
     }
 
     .reservContainer {
-        background-color: #a3deef;
-        width: 90%;
         border-radius: 15px;
+        background: #e0e0e0;
 
         div {
             display: flex;
@@ -60,8 +63,9 @@
 
     .reservContainer:hover {
         cursor: pointer;
-        background-color: #91cdd7;
-        width: 95%;
-        height: 220px;
+        box-shadow: 15px 15px 30px #bebebe,
+        -15px -15px 30px #ffffff;
+        transform: scale(1.02);
+        transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 }
