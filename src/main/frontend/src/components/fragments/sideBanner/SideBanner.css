@@ -4,6 +4,7 @@
     border: 5px solid #fff;
     border-radius: 30px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    left: 15px;
 }
 
 /* 슬라이더 화살표 스타일 */
@@ -50,9 +51,10 @@
     text-align: center;
     justify-content: center;
     position: absolute;
-    transform: translate(80%, -800%);
+    transform: translate(0%, -800%);
     text-shadow: 2px -2px 8px #000000, -2px 2px 8px #000000;
     color: #fff;
     font-weight: bold;
     font-size: 20px;
+    width: 250px;
 }

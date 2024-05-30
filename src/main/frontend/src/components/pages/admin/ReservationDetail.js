@@ -1,8 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./ReservationDetail.css";
 import { DateFormat } from "../../util/DateFormat";
 
 const ReservationDetail = ({ reservation, reserveType, onClose, handleStatusChange }) => {
+  const [showExperiencesModal, setShowExperiencesModal] = useState(false);
+  const [showCertificationsModal, setShowCertificationsModal] = useState(false);
+  const [showLanguagesModal, setShowLanguagesModal] = useState(false);
+
   useEffect(() => {
     if (sessionStorage.getItem("state") !== "ADMIN") {
         window.location.href = "/";
@@ -24,8 +28,10 @@ const ReservationDetail = ({ reservation, reserveType, onClose, handleStatusChan
     return null;
   }
 
+  console.log(reservation.experiences);
+
   return (
-  <div className="modal-overlay">
+  <div className="ReservationDetail-compo">
     <div className="modal">
       <h2>예약 내역 자세히</h2>
       <button className="close-button" onClick={onClose}>X</button>
@@ -52,7 +58,7 @@ const ReservationDetail = ({ reservation, reserveType, onClose, handleStatusChan
               </tr>
               <tr>
                 <th>성별</th>
-                <td>{reservation.gender}</td>
+                <td>{reservation.gender === "Male" ? "남성" : "여성"}</td>
               </tr>
               <tr>
                 <th>소유구분</th>
@@ -115,6 +121,59 @@ const ReservationDetail = ({ reservation, reserveType, onClose, handleStatusChan
                 <td>{DateFormat(reservation.date)}</td>
               </tr>
               <tr>
+                <th>학력사항</th>
+                <td>{reservation.education && (
+                  <table>
+                    <tbody>
+                      <tr>
+                        <th>학교</th>
+                        <td>{reservation.education.schoolName}</td>
+                      </tr>
+                      <tr>
+                        <th>전공</th>
+                        <td>{reservation.education.major}</td>
+                      </tr>
+                      <tr>
+                        <th>입학일</th>
+                        <td>{reservation.education.admissionDate}</td>
+                      </tr>
+                      <tr>
+                        <th>졸업일</th>
+                        <td>{reservation.education.graduationDate}</td>
+                      </tr>
+                      <tr>
+                        <th>상태</th>
+                        <td>{reservation.education.academicStatus}</td>
+                      </tr>
+                    </tbody>
+                  </table>)}
+                </td>
+              </tr>
+              <tr>
+                <th>경험 및 경력</th>
+                <td>
+                  {reservation.experiences && (
+                    <button onClick={() => setShowExperiencesModal(true)}>자세히 보기</button>
+                  )}
+                </td>
+              </tr>
+              <tr>
+                <th>자격증</th>
+                <td>
+                  {reservation.certifications && (
+                    <button onClick={() => setShowCertificationsModal(true)}>자세히 보기</button>
+                  )}
+                </td>
+              </tr>
+              <tr>
+                <th>어학사항</th>
+                <td>
+                  {reservation.languages && (
+                    <button onClick={() => setShowLanguagesModal(true)}>자세히 보기</button>
+                  )}
+                </td>
+              </tr>
+              <tr>
                 <th>기타사항</th>
                 <td>{reservation.other}</td>
               </tr>
@@ -132,7 +191,7 @@ const ReservationDetail = ({ reservation, reserveType, onClose, handleStatusChan
               </tr>
               <tr>
                 <th>성별</th>
-                <td>{reservation.gender}</td>
+                <td>{reservation.gender === "Male" ? "남성" : "여성"}</td>
               </tr>
               <tr>
                 <th>참가인원</th>
@@ -162,6 +221,52 @@ const ReservationDetail = ({ reservation, reserveType, onClose, handleStatusChan
           )}
         </tbody>
       </table>
+
+      {showExperiencesModal && (
+          <div className="experiences-modal">
+            <h3>경험 및 경력</h3>
+            {reservation.experiences.map((experience, index) => (
+              <div className="underline" key={index}>
+                <p>구분: {experience.type}</p>
+                <p>소속: {experience.organization}</p>
+                <p>담당업무: {experience.duties}</p>
+                <p>근무 시작일: {DateFormat(experience.startDate)}</p>
+                <p>근무 종료일: {DateFormat(experience.endDate)}</p>
+              </div>
+            ))}
+            <button onClick={() => setShowExperiencesModal(false)}>닫기</button>
+          </div>
+        )}
+
+        {showCertificationsModal && (
+          <div className="certifications-modal">
+            <h3>자격증</h3>
+            {reservation.certifications.map((certification, index) => (
+              <div className="underline" key={index}>
+                <p>자격증명: {certification.name}</p>
+                <p>자격증번호: {certification.certificateNumber}</p>
+                <p>취득일: {DateFormat(certification.acquisitionDate)}</p>
+              </div>
+            ))}
+            <button onClick={() => setShowCertificationsModal(false)}>닫기</button>
+          </div>
+        )}
+
+        {showLanguagesModal && (
+          <div className="languages-modal">
+            <h3>어학사항</h3>
+            {reservation.languages.map((language, index) => (
+              <div className="underline" key={index}>
+                <p>구사언어: {language.language}</p>
+                <p>보유 공인시험: {language.certifiedExam}</p>
+                <p>회화: {language.conversation}</p>
+                <p>작문: {language.writing}</p>
+              </div>
+            ))}
+            <button onClick={() => setShowLanguagesModal(false)}>닫기</button>
+          </div>
+        )}
+
       <div className="detail-btn-box">
       <button className="approve"
         onClick={() => {

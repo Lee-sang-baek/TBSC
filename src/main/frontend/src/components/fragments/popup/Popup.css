@@ -1,0 +1,50 @@
+.Popup-compo {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2000;
+    background-color: #ccc;
+    border: 1px solid #555;
+    padding: 0;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+
+    .btn {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      
+    }
+
+    .test {
+      position: absolute;
+    }
+
+    img {
+      width: 350px;
+      height: 450px;
+      object-fit: fill;
+    }
+
+    .left {
+      cursor: pointer;
+      padding: 0 3px;
+      align-self: flex-start;
+    }
+
+    .right {
+      cursor: pointer;
+      padding: 0 5px;
+      align-self: flex-end;
+    }
+}
+
+.hidden {
+    display: none;
+}
+  
+  

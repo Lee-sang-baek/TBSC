@@ -22,9 +22,11 @@ public class Popup {
 
     private String image;
 
-    private LocalDateTime startDate;
+    private String content;
 
-    private LocalDateTime endDate;
+    private LocalDateTime start;
+
+    private LocalDateTime end;
 
     private String title;
 
@@ -32,9 +34,10 @@ public class Popup {
         if (dto.getImage() != null) {
             setImage(dto.getImage());
         }
-        setStartDate(LocalDateTime.of(dto.getStartDate(), dto.getStartTime()));
-        setEndDate(LocalDateTime.of(dto.getEndDate(), dto.getEndTime()));
         setTitle(dto.getTitle());
+        setContent(dto.getContent());
+        setStart(dto.getStart());
+        setEnd(dto.getEnd());
         return this;
     }
 }

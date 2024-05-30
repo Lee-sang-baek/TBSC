@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Getter
 @Setter
@@ -17,24 +19,22 @@ public class Banner {
 
     private String image;
 
-    @Enumerated(EnumType.STRING)
-    private BannerType state;
+    private String title;
 
     private String content;
 
-    private String title;
+    private LocalDateTime start;
+
+    private LocalDateTime end;
 
     public Banner bind(BannerDto dto) {
         if (dto.getImage() != null) {
             setImage(dto.getImage());
         }
-        if (dto.getState().equals("MAIN")) {
-            setState(BannerType.MAIN);
-        } else {
-            setState(BannerType.SIDE);
-        }
         setContent(dto.getContent());
         setTitle(dto.getTitle());
+        setStart(dto.getStart());
+        setEnd(dto.getEnd());
         return this;
     }
 

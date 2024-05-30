@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Getter
 @Setter
@@ -24,12 +26,18 @@ public class MainImage {
 
     private String content;
 
+    private LocalDateTime start;
+
+    private LocalDateTime end;
+
     public MainImage bind(MainImageDto dto) {
         if (dto.getImage() != null) {
             setImage(dto.getImage());
         }
         setContent(dto.getContent());
         setTitle(dto.getTitle());
+        setStart(dto.getStart());
+        setEnd(dto.getEnd());
         return this;
     }
 }

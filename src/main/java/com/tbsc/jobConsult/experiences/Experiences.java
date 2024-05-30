@@ -1,5 +1,6 @@
 package com.tbsc.jobConsult.experiences;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tbsc.jobConsult.JobConsult;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -29,6 +30,7 @@ public class Experiences {
     private LocalDate endDate;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "jobConsult_num", referencedColumnName = "num", updatable = false)
     private JobConsult jobConsult;
 }

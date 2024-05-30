@@ -1,12 +1,11 @@
 package com.tbsc.management.mainImg;
 
-import com.tbsc.management.banner.Banner;
-import com.tbsc.management.banner.BannerDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,7 +38,7 @@ public class MainImageService {
         }
     }
 
-    public List<MainImage> getListForBanner() {
-        return mainImageRepository.findAll();
+    public List<MainImage> getList() {
+        return mainImageRepository.findMainImagesWithinPeriod(LocalDateTime.now());
     }
 }

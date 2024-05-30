@@ -4,6 +4,7 @@ import com.tbsc.centerNews.CenterNews;
 import com.tbsc.centerNews.CenterNewsService;
 import com.tbsc.member.Member;
 import com.tbsc.member.MemberRepository;
+import com.tbsc.notice.Notice;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,6 +26,11 @@ public class CenterNewsController {
 
     @Value("${file.upload-dir}")
     private String uploadDir;
+
+    @GetMapping("/banner")
+    public List<CenterNews> getCenterNewsBanner() {
+        return centerNewsService.getAllCenterNews();
+    }
 
     @GetMapping
     public List<CenterNews> getAllCenterNews() {

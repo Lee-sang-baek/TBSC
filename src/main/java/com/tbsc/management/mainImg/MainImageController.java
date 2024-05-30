@@ -1,7 +1,5 @@
 package com.tbsc.management.mainImg;
 
-import com.tbsc.management.banner.Banner;
-import com.tbsc.management.banner.BannerDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -20,7 +18,7 @@ public class MainImageController {
 
     @GetMapping("/mainImage")
     public ResponseEntity<List<MainImage>> getListForBanner() {
-        return ResponseEntity.ok(mainImageService.getListForBanner());
+        return ResponseEntity.ok(mainImageService.getList());
     }
 
     @GetMapping("/admin/mainImage/list")

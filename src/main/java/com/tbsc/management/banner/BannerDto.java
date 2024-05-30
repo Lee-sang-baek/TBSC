@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @RequiredArgsConstructor
@@ -18,4 +20,8 @@ public class BannerDto {
     private String content;
 
     private String title;
+
+    private LocalDateTime start;
+
+    private LocalDateTime end;
 }

@@ -7,15 +7,20 @@ import './MainHomepage.css'; // CSS 파일 import
 import NewsBanner from './NewsBanner'; // NewsBanner 컴포넌트를 import합니다.
 import axios from 'axios';
 import NewsPicture from './NewsPicture';
+import Popup from '../popup/Popup';
 
 function MainHomepage() {
     const [imageList, setImageList] = useState([]);
+    const [popupList, setPopupList] = useState([]);
 
     useEffect(() => {
         axios.get("/mainImage")
         .then((res) => {
             setImageList(res.data);
-            console.log(res.data);
+        });
+        axios.get("/popup")
+        .then((res) => {
+            setPopupList(res.data);
         });
     }, []);
 
@@ -48,18 +53,46 @@ function MainHomepage() {
         nextArrow: <NextArrow /> // 다음 화살표 설정
     };
 
+    const modifiedImageList = imageList.length === 1 ? imageList.concat(imageList) : imageList;
+
+    const setRandomPositionNearCenter = () => {
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+        const popupWidth = 350;
+        const popupHeight = 450;
+    
+        const centerX = (windowWidth - popupWidth) / 2;
+        const centerY = (windowHeight - popupHeight) / 2;
+    
+        const randomOffsetX = (Math.random() - 0.5) * 400; // -200px ~ +200px
+        const randomOffsetY = (Math.random() - 0.5) * 400;
+    
+        const finalX = centerX + randomOffsetX;
+        const finalY = centerY + randomOffsetY;
+    
+        return {
+          top: `${finalY}px`,
+          left: `${finalX}px`,
+          width: `${popupWidth}px`,
+          height: `${popupHeight}px`,
+          position: 'fixed'
+        };
+      };
+
     return (
 
         <div className="MainHomepage-compo">
+            {popupList && popupList.map((item) => (
+                <Popup item={item} setRandomPositionNearCenter={setRandomPositionNearCenter} />
+            ))}
             <div className="slider-container">
                 <Slider {...settings} className="autoplay">
-                    {imageList && imageList.map((item, index) => (
+                    {modifiedImageList && modifiedImageList.map((item, index) => (
                         <div key={index} className='image-box'>
                             <img src={`/uploads/${item.image}`} alt={item.title} />
                             <div className='content-box'>{item.content}</div>
                         </div>
                     ))}
-
                 </Slider>
             </div>
             <NewsBanner />

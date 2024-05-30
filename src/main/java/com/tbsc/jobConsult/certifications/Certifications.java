@@ -1,5 +1,6 @@
 package com.tbsc.jobConsult.certifications;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tbsc.jobConsult.JobConsult;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -25,6 +26,7 @@ public class Certifications {
     private LocalDate acquisitionDate;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "jobConsult_num", referencedColumnName = "num", updatable = false)
     private JobConsult jobConsult;
 }

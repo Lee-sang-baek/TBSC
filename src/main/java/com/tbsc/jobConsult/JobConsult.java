@@ -32,20 +32,16 @@ public class JobConsult {
     private LocalDateTime date;
 
     @OneToOne
-    @JsonIgnore
     @JoinColumn(name = "education_num", referencedColumnName = "num")
     private Education education;
 
     @OneToMany(mappedBy = "jobConsult", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
-    @JsonIgnore
     private List<Experiences> experiences;
 
     @OneToMany(mappedBy = "jobConsult", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
-    @JsonIgnore
     private List<Certifications> certifications;
 
     @OneToMany(mappedBy = "jobConsult", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
-    @JsonIgnore
     private List<Languages> languages;
 
     private String other;
