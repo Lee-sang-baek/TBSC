@@ -53,6 +53,8 @@ import SearchResult from "./components/pages/search/SearchResult";
 import Startup from "./components/pages/explainpage/Startup";
 import Educonsult from "./components/pages/explainpage/Educonsult";
 import Tourism from "./components/pages/explainpage/Tourism";
+import OrgChart from "./components/pages/orgChart/OrgChart";
+import WayToCome from "./components/pages/wayToCome/WayToCome";
 
 function App() {
 
@@ -79,264 +81,281 @@ function App() {
     }
 
 
-
     return (
 
         <BrowserRouter>
-        <div className="main">
-            <LogAccess />
-            <Header />
+            <div className="main">
+                <LogAccess/>
+                <Header/>
 
-            <Routes>
-                <Route path='/' exact element={<MainHomepage />}/>
-                <Route path="/login" element={<LoginForm />} />
-                <Route path="/signup" element={<SignUpSelect />} />
-                <Route path="/signup/normal" element={<SignUp isComp={false} />} />
-                <Route path="/signup/company" element={<SignUp isComp={true} />} />
-                <Route path="/logout" element={<LoginForm />} />
+                <Routes>
+                    <Route path='/' exact element={<MainHomepage/>}/>
+                    <Route path="/login" element={<LoginForm/>}/>
+                    <Route path="/signup" element={<SignUpSelect/>}/>
+                    <Route path="/signup/normal" element={<SignUp isComp={false}/>}/>
+                    <Route path="/signup/company" element={<SignUp isComp={true}/>}/>
+                    <Route path="/logout" element={<LoginForm/>}/>
 
-                <Route path="/admin" element={
-                    <div className="outter">
-                        <Sidebar type="admin" />
-                        <MemberList />
-                    </div>
-                } />
-                <Route path="/admin/member-list" element={
-                    <div className="outter">
-                        <Sidebar type="admin" />
-                        <MemberList />
-                    </div>
-                } />
-                <Route path="/admin/site-management" element={
-                    <div className="outter">
-                        <Sidebar type="admin" />
-                        <SiteManagement />
-                    </div>
-                } />
-                <Route path="/admin/reservation-confirmation" element={
-                    <div className="outter">
-                        <Sidebar type="admin" />
-                        <ReservationConfirmation />
-                    </div>
-                } />
-                <Route path="/admin/access-log" element={
-                    <div className="outter">
-                        <Sidebar type="admin" />
-                        <AccessLog />
-                    </div>
-                } />
-
-
-                <Route path="/myPage" element={
-                    <div className="outter">
-                        <Sidebar type="mypage" />
-                        <MyHome/>
-                    </div>
-                }/>
-                <Route path="/myPage/reserve" element={
-                    <div className="outter">
-                        <Sidebar type="mypage" />
-                        <ReservDetails/>
-                    </div>
-                }/>
-                <Route path="/myPage/corp-info" element={
-                    <div className="outter">
-                        <Sidebar type="mypage" />
-                        <CorpInfo/>
-                    </div>
-                }/>
-                <Route path="/myPage/modify-info" element={
-                    <div className="outter">
-                        <Sidebar type="mypage" />
-                        <ModiInfo/>
-                    </div>
-                }/>
-                <Route path="/myPage/modify-corp" element={
-                    <div className="outter">
-                        <Sidebar type="mypage" />
-                        <ModiCorp/>
-                    </div>
-                }/>
-                <Route path="/myPage/delete-info" element={
-                    <div className="outter">
-                    <Sidebar type="mypage" />
-                <DeleteInfo logout={logout} />
-                </div>
-                } />
-
-                <Route path="/centerIntro" element={
-                    <div className="outter">
-                        <Sidebar type="center" />
-                        <CenterIntroduction />
-                    </div>
-                } />
-                <Route path="/facility" element={
-                    <div className="outter">
-                        <Sidebar type="center" />
-                        <FacilityGuideMain />
-                    </div>
-                } />
-
-                <Route path="/tnotice" element={
-                    <div className="outter">
-                        <Sidebar type="comp" />
-                        <TNoticeList />
-                    </div>
-                } />
-                <Route path="/tnotice/create" element={
-                    <div className="outter">
-                        <Sidebar type="comp" />
-                        <TNoticeForm />
-                    </div>
-                } />
-                <Route path="/tnotice/:num" element={
-                    <div className="outter">
-                        <Sidebar type="comp" />
-                        <TNoticeDetail />
-                    </div>
-                } />
-                <Route path="/tnotice/edit/:num" element={
-                    <div className="outter">
-                        <Sidebar type="comp" />
-                        <TNoticeEdit />
-                    </div>
-                } />
-
-
-                <Route path="/notices" element={
-                    <div className="outter">
-                        <Sidebar type="notices" />
-                        <NoticeList />
-                    </div>
-                } />
-                <Route path="/notices/:num" element={
-                    <div className="outter">
-                        <Sidebar type="notices" />
-                        <NoticeDetail />
-                    </div>
-                } />
-                <Route path="/notices/new" element={
-                    <div className="outter">
-                        <Sidebar type="notices" />
-                        <CreateNotice />
-                    </div>
-                } />
-                <Route path="/notices/update/:num" element={
-                    <div className="outter">
-                        <Sidebar type="notices" />
-                        <UpdateNotice />
-                    </div>
-                } />
-
-                <Route path="/centernews" element={
-                    <div className="outter">
-                        <Sidebar type="notices" />
-                        <CenterNewsList />
-                    </div>
-                } />
-                <Route path="/centernews/create" element={
-                    <div className="outter">
-                        <Sidebar type="notices" />
-                        <CenterNewsForm />
-                    </div>
-                } />
-                <Route path="/centernews/update/:num" element={
-                    <div className="outter">
-                        <Sidebar type="notices" />
-                        <CenterNewsEdit />
-                    </div>
-                } />
-                <Route path="/centernews/:num" element={
-                    <div className="outter">
-                        <Sidebar type="notices" />
-                        <CenterNewsDetail />
-                    </div>
-                } />
-
-                <Route path="/pressrelease" element={
-                    <div className="outter">
-                    <Sidebar type="notices" />
-                        <PressReleaseList />
+                    <Route path="/admin" element={
+                        <div className="outter">
+                            <Sidebar type="admin"/>
+                            <MemberList/>
                         </div>
-                } />
-                <Route path="/pressrelease/create" element={
-                    <div className="outter">
-                        <Sidebar type="notices" />
-                        <PressReleaseForm />
-                    </div>
-                } />
-                <Route path="/pressrelease/update/:num" element={
-                    <div className="outter">
-                        <Sidebar type="notices" />
-                        <PressReleaseEdit />
+                    }/>
+                    <Route path="/admin/member-list" element={
+                        <div className="outter">
+                            <Sidebar type="admin"/>
+                            <MemberList/>
                         </div>
-                } />
-                <Route path="/pressrelease/:num" element={
-                    <div className="outter">
-                        <Sidebar type="notices" />
-                        <PressReleaseDetail />
-                    </div>
-                } />
+                    }/>
+                    <Route path="/admin/site-management" element={
+                        <div className="outter">
+                            <Sidebar type="admin"/>
+                            <SiteManagement/>
+                        </div>
+                    }/>
+                    <Route path="/admin/reservation-confirmation" element={
+                        <div className="outter">
+                            <Sidebar type="admin"/>
+                            <ReservationConfirmation/>
+                        </div>
+                    }/>
+                    <Route path="/admin/access-log" element={
+                        <div className="outter">
+                            <Sidebar type="admin"/>
+                            <AccessLog/>
+                        </div>
+                    }/>
 
 
-                <Route path="/rental" element={
-                    <div className="outter">
-                        <Sidebar type="reserve" />
-                        <Rental />
-                    </div>
-                } />
+                    <Route path="/myPage" element={
+                        <div className="outter">
+                            <Sidebar type="mypage"/>
+                            <MyHome/>
+                        </div>
+                    }/>
+                    <Route path="/myPage/reserve" element={
+                        <div className="outter">
+                            <Sidebar type="mypage"/>
+                            <ReservDetails/>
+                        </div>
+                    }/>
+                    <Route path="/myPage/corp-info" element={
+                        <div className="outter">
+                            <Sidebar type="mypage"/>
+                            <CorpInfo/>
+                        </div>
+                    }/>
+                    <Route path="/myPage/modify-info" element={
+                        <div className="outter">
+                            <Sidebar type="mypage"/>
+                            <ModiInfo/>
+                        </div>
+                    }/>
+                    <Route path="/myPage/modify-corp" element={
+                        <div className="outter">
+                            <Sidebar type="mypage"/>
+                            <ModiCorp/>
+                        </div>
+                    }/>
+                    <Route path="/myPage/delete-info" element={
+                        <div className="outter">
+                            <Sidebar type="mypage"/>
+                            <DeleteInfo logout={logout}/>
+                        </div>
+                    }/>
+                    <Route path="myPage/modify-reserv/:index" element={
+                        <div className="outter">
+                            <Sidebar type="mypage"/>
+                            <ModifyReserv />
+                        </div>
+                    } />
 
-                <Route path="/consultants" element={
-                    <div className="outter">
-                        <Sidebar type="reserve" />
-                        <ConsultantForm />
-                    </div>
-                } />
+                    <Route path="/centerIntro" element={
+                        <div className="outter">
+                            <Sidebar type="center"/>
+                            <CenterIntroduction/>
+                        </div>
+                    }/>
+                    <Route path="/facility" element={
+                        <div className="outter">
+                            <Sidebar type="center"/>
+                            <FacilityGuideMain/>
+                        </div>
+                    }/>
+                    <Route path="/orgchart" element={
+                        <div className="outter">
+                            <Sidebar type="center"/>
+                            <OrgChart/>
+                        </div>
+                    }/>
+                    <Route path="/wayToCome" element={
+                        <div className="outter">
+                            <Sidebar type="center"/>
+                            <WayToCome/>
+                        </div>
+                    }/>
 
-                <Route path="/reservation" element={
-                    <div className="outter">
-                    <Sidebar type="reserve" />
-                <ReservationList />
-                </div>
-                } />
-                <Route path="/reservation/create" element={
-                    <div className="outter">
-                    <Sidebar type="reserve" />
-                <ReservationForm />
-                </div>
-                } />
-                <Route path="/reservation/update/:num" element={
-                    <div className="outter">
-                    <Sidebar type="reserve" />
-                <ReservationEdit />
-                </div>
-                } />
-                <Route path="/reservation/:num" element={
-                    <div className="outter">
-                    <Sidebar type="reserve" />
-                <   ReservationDetail />
-                </div>
-                } />
+                    <Route path="/tnotice" element={
+                        <div className="outter">
+                            <Sidebar type="comp"/>
+                            <TNoticeList/>
+                        </div>
+                    }/>
+                    <Route path="/tnotice/create" element={
+                        <div className="outter">
+                            <Sidebar type="comp"/>
+                            <TNoticeForm/>
+                        </div>
+                    }/>
+                    <Route path="/tnotice/:num" element={
+                        <div className="outter">
+                            <Sidebar type="comp"/>
+                            <TNoticeDetail/>
+                        </div>
+                    }/>
+                    <Route path="/tnotice/edit/:num" element={
+                        <div className="outter">
+                            <Sidebar type="comp"/>
+                            <TNoticeEdit/>
+                        </div>
+                    }/>
 
-                <Route path="/jobConsult" element={
-                <div className="outter">
-                    <Sidebar type="reserve" />
-                    <JobConsult />
-                </div>
-                } />
-                <Route path="/search-results" element={
-                <div className="outter">
-                    <Sidebar type="reserve" />
-                <   SearchResult />
-                </div>
-                }/>
 
-                <Route path="/addAsset" element={<VisualAssetManager />} />
-                <Route path="/tourism" element={<Tourism />} />
-            </Routes>
-            <ChatbotToggle />
+                    <Route path="/notices" element={
+                        <div className="outter">
+                            <Sidebar type="notices"/>
+                            <NoticeList/>
+                        </div>
+                    }/>
+                    <Route path="/notices/:num" element={
+                        <div className="outter">
+                            <Sidebar type="notices"/>
+                            <NoticeDetail/>
+                        </div>
+                    }/>
+                    <Route path="/notices/new" element={
+                        <div className="outter">
+                            <Sidebar type="notices"/>
+                            <CreateNotice/>
+                        </div>
+                    }/>
+                    <Route path="/notices/update/:num" element={
+                        <div className="outter">
+                            <Sidebar type="notices"/>
+                            <UpdateNotice/>
+                        </div>
+                    }/>
+
+                    <Route path="/centernews" element={
+                        <div className="outter">
+                            <Sidebar type="notices"/>
+                            <CenterNewsList/>
+                        </div>
+                    }/>
+                    <Route path="/centernews/create" element={
+                        <div className="outter">
+                            <Sidebar type="notices"/>
+                            <CenterNewsForm/>
+                        </div>
+                    }/>
+                    <Route path="/centernews/update/:num" element={
+                        <div className="outter">
+                            <Sidebar type="notices"/>
+                            <CenterNewsEdit/>
+                        </div>
+                    }/>
+                    <Route path="/centernews/:num" element={
+                        <div className="outter">
+                            <Sidebar type="notices"/>
+                            <CenterNewsDetail/>
+                        </div>
+                    }/>
+
+                    <Route path="/pressrelease" element={
+                        <div className="outter">
+                            <Sidebar type="notices"/>
+                            <PressReleaseList/>
+                        </div>
+                    }/>
+                    <Route path="/pressrelease/create" element={
+                        <div className="outter">
+                            <Sidebar type="notices"/>
+                            <PressReleaseForm/>
+                        </div>
+                    }/>
+                    <Route path="/pressrelease/update/:num" element={
+                        <div className="outter">
+                            <Sidebar type="notices"/>
+                            <PressReleaseEdit/>
+                        </div>
+                    }/>
+                    <Route path="/pressrelease/:num" element={
+                        <div className="outter">
+                            <Sidebar type="notices"/>
+                            <PressReleaseDetail/>
+                        </div>
+                    }/>
+
+
+                    <Route path="/rental" element={
+                        <div className="outter">
+                            <Sidebar type="reserve"/>
+                            <Rental/>
+                        </div>
+                    }/>
+
+                    <Route path="/consultants" element={
+                        <div className="outter">
+                            <Sidebar type="reserve"/>
+                            <ConsultantForm/>
+                        </div>
+                    }/>
+
+                    <Route path="/reservation" element={
+                        <div className="outter">
+                            <Sidebar type="reserve"/>
+                            <ReservationList/>
+                        </div>
+                    }/>
+                    <Route path="/reservation/create" element={
+                        <div className="outter">
+                            <Sidebar type="reserve"/>
+                            <ReservationForm/>
+                        </div>
+                    }/>
+                    <Route path="/reservation/update/:num" element={
+                        <div className="outter">
+                            <Sidebar type="reserve"/>
+                            <ReservationEdit/>
+                        </div>
+                    }/>
+                    <Route path="/reservation/:num" element={
+                        <div className="outter">
+                            <Sidebar type="reserve"/>
+                            <ReservationDetail/>
+                        </div>
+                    }/>
+
+                    <Route path="/jobConsult" element={
+                        <div className="outter">
+                            <Sidebar type="reserve"/>
+                            <JobConsult/>
+                        </div>
+                    }/>
+                    <Route path="/search-results" element={
+                        <div className="outter">
+                            <Sidebar type="reserve"/>
+                            <SearchResult/>
+                        </div>
+                    }/>
+
+                    <Route path="/addAsset" element={<VisualAssetManager/>}/>
+                    <Route path="/tourism" element={<Tourism/>}/>
+                </Routes>
+                <ChatbotToggle/>
             </div>
-            <Footer />
+            <Footer/>
         </BrowserRouter>
 
     );

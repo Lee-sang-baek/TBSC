@@ -1,16 +1,11 @@
 package com.tbsc.rental;
 
-import com.tbsc.member.Member;
-import com.tbsc.member.MemberRepository;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import jakarta.validation.Valid;
-
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,6 +18,11 @@ public class RentalController {
     public ResponseEntity<Rental> createRental(@Valid @RequestBody Rental rental,
                                                @RequestParam("memberId") String memberId) {
         return rentalService.saveRental(rental, memberId);
+    }
+
+    @PutMapping("/{num}")
+    public ResponseEntity<Rental> updateRental(@PathVariable Integer num, @RequestBody Rental rental, @RequestParam String memberId) {
+        return rentalService.updateRental(num, rental, memberId);
     }
 
     @GetMapping("/{num}")

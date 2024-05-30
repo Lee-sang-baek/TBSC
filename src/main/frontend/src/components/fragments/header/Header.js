@@ -22,8 +22,8 @@ const Header = () => {
             subs: [
                 { title: "센터소개", link: "/centerIntro" },
                 { title: "시설안내", link: "/facility" },
-                { title: "조직도", link: "" },
-                { title: "오시는 길", link: "" }
+                { title: "조직도", link: "/orgchart" },
+                { title: "오시는 길", link: "/wayToCome" }
             ]
         },
         {
@@ -136,7 +136,7 @@ const Header = () => {
                     </div>
                     <div className="search-icon" onClick={toggleSearch}>
                         <img src={searchImage} alt="search" className="searchImage"/>
-                        
+
                     </div>
                     {searchOpen && (
                             <div className="search-dropdown" onClick={handleSearchContainerClick}>
@@ -172,8 +172,14 @@ const Header = () => {
                         )}
                     </div>
 
-                    <div className="hamburger-menu" onClick={toggleMobileMenu}>
-                        &#9776; {/* 햄버거 아이콘 */}
+                    <div className="hamburger-menu">
+                        {/*&#9776; /!* 햄버거 아이콘 *!/*/}
+                        <label className="burger" htmlFor="burger">
+                            <input type="checkbox" id="burger" onClick={toggleMobileMenu}/>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </label>
                     </div>
                 </div>
                 {isOpen && (

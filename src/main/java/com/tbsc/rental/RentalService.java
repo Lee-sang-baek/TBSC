@@ -3,9 +3,7 @@ package com.tbsc.rental;
 import com.tbsc.member.Member;
 import com.tbsc.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +26,32 @@ public class RentalService {
         rental.setMember(optionalMember.get());
         rentalRepository.save(rental);
         return ResponseEntity.ok(rental);
+    }
+
+    public ResponseEntity<Rental> updateRental(Integer num, Rental updatedRental, String memberId) {
+        Optional<Rental> optionalRental = rentalRepository.findById(num);
+        if (optionalRental.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+
+        Optional<Member> optionalMember = memberRepository.findById(memberId);
+        if (optionalMember.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+
+        Rental existingRental = optionalRental.get();
+        existingRental.setMember(optionalMember.get());
+        existingRental.setCompName(updatedRental.getCompName());
+        existingRental.setEndDate(updatedRental.getEndDate());
+        existingRental.setGender(updatedRental.getGender());
+        existingRental.setPerson(updatedRental.getPerson());
+        existingRental.setPlace(updatedRental.getPlace());
+        existingRental.setPrepare(updatedRental.getPrepare());
+        existingRental.setPurpose(updatedRental.getPurpose());
+        existingRental.setStartDate(updatedRental.getStartDate());
+        rentalRepository.save(existingRental);
+
+        return ResponseEntity.ok(existingRental);
     }
 
     public Optional<Rental> getRentalById(Integer num) {

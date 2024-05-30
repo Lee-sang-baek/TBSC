@@ -21,7 +21,7 @@ const MyHome = () => {
         prepare: "",
         purpose: "",
         state: ""
-    }])
+    }]);
 
     useEffect(() => {
         console.log(memberId);
@@ -48,13 +48,13 @@ const MyHome = () => {
                 console.log(res.data);
                 setReserveList(res.data);
             })
-    }
+    };
 
     // 날짜와 시간 형식을 변환하는 함수
     const formatDate = (dateString) => {
         const date = new Date(dateString);
         return date.toLocaleDateString(); // 형식을 원하는 대로 변경할 수 있습니다.
-    }
+    };
 
     const formatTime = (dateString) => {
         const date = new Date(dateString);
@@ -77,7 +77,7 @@ const MyHome = () => {
     const navigate = useNavigate();
 
     const modifyLink = (index) => {
-        navigate(`/myPage/reserve/modifyReserv/${index}`);
+        navigate(`modify-reserv/${index}`);
     }
 
     if (!memberId) {
@@ -146,9 +146,26 @@ const MyHome = () => {
                             {reservation.place || ""}
                         </h3>
                         <h3 className="reservState">
-                            <div className={reservation.state ? "true" : "false"}>
-                                예약완료
-                            </div>
+                            {(reservation.state === "RESERVE") &&
+                                <div className="RESERVE">
+                                    예약완료
+                                </div>
+                            }
+                            {(reservation.state === "CHECK") &&
+                                <div className="CHECK">
+                                    검토 중
+                                </div>
+                            }
+                            {(reservation.state === "APPROVE") &&
+                                <div className="APPROVE">
+                                    승인됨
+                                </div>
+                            }
+                            {(reservation.state === "DENY") &&
+                                <div className="DENY">
+                                    거절됨
+                                </div>
+                            }
                         </h3>
                         {/*<Link to="/myPage/reserve">*/}
                         {/*    <Button onClick={() => {*/}

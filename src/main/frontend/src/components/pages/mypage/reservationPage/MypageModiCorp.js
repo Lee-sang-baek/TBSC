@@ -18,7 +18,7 @@ const ModiCorp = (props) => {
 
     const editorRef = useRef();
 
-    const [memberInfo, setMemberInfo] = useState([{
+    const [memberInfo, setMemberInfo] = useState({
         memberId: "",
         num: "",
         comp_name: "",
@@ -29,7 +29,8 @@ const ModiCorp = (props) => {
         prepare: "",
         purpose: "",
         state: ""
-    }]);
+    });
+
     const [formData, setFormData] = useState({
         title: "",
         content: "",
@@ -39,38 +40,49 @@ const ModiCorp = (props) => {
         corpName: "",
     });
 
-    // const [registInfo, setRegistInfo] = useState([{
-    //     title: "",
-    //     num: "",
-    //     corpImage: "",
-    //     view: "",
-    //     date: "",
-    //     content: "",
-    // }]);
+    const [registInfo, setRegistInfo] = useState({});
 
     useEffect(() => {
         if (memberId) {
             getMemberInfo();
+            getRegistInfo();
         }
-    }, [memberId]); // memberId가 변경되면 getMemberInfo 함수를 호출합니다.
+    }, [memberId]);
 
     const getMemberInfo = () => {
         axios.get("/myPage/member/getMember?id=" + memberId)
             .then((res) => {
                 console.log(res.data);
-                setMemberInfo({...res.data})
+                setMemberInfo({...res.data});
             });
     };
 
-    if (!memberId) {
-        return (
-            <div className="rental-compo">
-                <div className="rental-compo-in">
-                    <h1>로그인 후 이용해주세요</h1>
-                </div>
-            </div>
-        );
-    }
+    const getRegistInfo = () => {
+        axios.get("/registcomp/getComp?memberId=" + memberId)
+            .then((res) => {
+                console.log("res.data", res.data);
+                const {title, writer, compImage, corpName, content, num} = res.data;
+                setRegistInfo(res.data);
+                setFormData((prevFormData) => ({
+                    ...prevFormData,
+                    title,
+                    writer,
+                    compImage,
+                    corpName,
+                    content,
+                    num,
+                }));
+            })
+            .catch((error) => {
+                if (error.response && error.response.status === 404) {
+                    setRegistInfo({});
+                    console.log(registInfo);
+                } else {
+                    // 다른 오류에 대한 처리
+                    console.error("오류 발생:", error);
+                }
+            });
+    };
 
     const onChange = () => {
         const data = editorRef.current.getInstance().getHTML();
@@ -82,30 +94,26 @@ const ModiCorp = (props) => {
         setSelectedFile(file);
 
         if (file) {
+            // 파일이 선택되면 이미지 미리보기를 업데이트합니다.
             setCorpImage(URL.createObjectURL(file));
+            // 선택된 파일을 formData에도 설정합니다.
+            setFormData({...formData, compImage: file});
         }
     };
 
     const onUploadImage = async (blob, callback) => {
         try {
-            /*
-             * 1. 에디터에 업로드한 이미지를 FormData 객체에 저장
-             *    (이때, 컨트롤러 uploadEditorImage 메서드의 파라미터인 'image'와 formData에 append 하는 key('image')값은 동일해야 함)
-             */
             const formData = new FormData();
             formData.append('image', blob);
 
-            // 2. FileApiController - uploadEditorImage 메서드 호출
             const response = await fetch('/tui-editor/image-upload', {
                 method: 'POST',
                 body: formData,
             });
 
-            // 3. 컨트롤러에서 전달받은 디스크에 저장된 파일명
             const filename = await response.text();
             console.log('서버에 저장된 파일명 : ', filename);
 
-            // 4. addImageBlobHook의 callback 함수를 통해, 디스크에 저장된 이미지를 에디터에 렌더링
             const imageUrl = `/tui-editor/image-print?filename=${filename}`;
             callback(imageUrl, 'image alt attribute');
 
@@ -122,10 +130,9 @@ const ModiCorp = (props) => {
             const formDataToSend = new FormData();
             formDataToSend.append("file", selectedFile);
 
-            // axios를 이용해서 파일을 서버에 업로드합니다.
             const uploadResponse = await axios.post(`/upload/registCorp`, formDataToSend, {
                 headers: {
-                    "Content-Type": "multipart/form-data", // content type을 반드시 multipart/form-data로 설정해야 합니다.
+                    "Content-Type": "multipart/form-data",
                 },
             });
             imageFile = uploadResponse.data;
@@ -141,9 +148,68 @@ const ModiCorp = (props) => {
         }
     };
 
+    const handleModify = async (e) => {
+        e.preventDefault();
+        let imageFile = "";
+        // 새로운 파일이 선택되었을 때에만 이미지를 업로드합니다.
+        if (selectedFile) {
+            const formDataToSend = new FormData();
+            formDataToSend.append("file", selectedFile);
+
+            const uploadResponse = await axios.post(`/upload/registCorp`, formDataToSend, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            });
+            imageFile = uploadResponse.data;
+        } else {
+            // 새로운 파일이 선택되지 않았을 때에는 이전 이미지를 사용합니다.
+            imageFile = registInfo.compImage;
+        }
+        try {
+            console.log(formData);
+            await axios.put(`/registcomp/${registInfo.num}`, {...registInfo, compImage: imageFile});
+            setFormData({});
+            alert('게시글이 작성되었습니다');
+            window.location.href = '/myPage/corp-info';
+        } catch (error) {
+            console.error("There was an error creating the notice!", error);
+        }
+    };
+
+    useEffect(() => {
+        console.log(formData);
+        console.log("registInfo", registInfo);
+        setRegistInfo({
+            ...registInfo,
+            title: formData.title,
+            writer: formData.writer,
+            compImage: formData.compImage,
+            corpName: formData.corpName,
+            content: formData.content,
+            num: formData.num
+        });
+    }, [formData])
+
+    useEffect(() => {
+        if (formData.content) {
+            editorRef.current.getInstance().setHTML(formData.content);
+        }
+    }, [formData.content]);
+
+    if (!memberId) {
+        return (
+            <div className="rental-compo">
+                <div className="rental-compo-in">
+                    <h1>로그인 후 이용해주세요</h1>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className="modiCorp-compo">
-            <h1 className="pageTitle">등록 기업정보</h1>
+            <h1 className="pageTitle">기업정보 수정/등록</h1>
 
             <div className="pageInfo">
                 <div className="corpContainer">
@@ -163,7 +229,7 @@ const ModiCorp = (props) => {
                             {corpImage ? (
                                 <img className="corpImg" src={corpImage} alt=""/>
                             ) : (
-                                <img className="corpImg" src={baseImage} alt=""/>
+                                <img className="corpImg" src={registInfo.compImage ? `/registFile/${registInfo.compImage}` : baseImage} alt=""/>
                             )}
 
                             <label htmlFor="file">
@@ -219,10 +285,15 @@ const ModiCorp = (props) => {
                             </div>
                         </div>
                     </div>
-
-                    <div className="submitButton">
-                        <Button text="등록" onClick={handleSubmit}/>
-                    </div>
+                    {!registInfo.num || Object.keys(registInfo).length === 0 ? (
+                        <div className="submitButton">
+                            <Button text="등록" onClick={handleSubmit}/>
+                        </div>
+                    ) : (
+                        <div className="submitButton">
+                            <Button text="수정" onClick={handleModify}/>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
