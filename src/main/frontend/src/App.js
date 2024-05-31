@@ -351,33 +351,29 @@ function App() {
                             <SearchResult/>
                         </div>
                     }/>
+                    
 
-                  <Route path="/tourism" element={
+                    <Route path="/startup" element={
                         <div className="outter">
-                            <Sidebar type="reserve" />
+                            <Sidebar type="programs" />
+                            <Startup />
+                        </div>
+                    }/>
+                    <Route path="/eduConsult" element={
+                        <div className="outter">
+                            <Sidebar type="programs" />
+                            <Educonsult />
+                        </div>
+                    }/>
+                    <Route path="/tourism" element={
+                        <div className="outter">
+                            <Sidebar type="programs" />
                             <Tourism />
                         </div>
-                  }/>
-
-
-                  <Route path="/Educonsult" element={
-                      <div className="outter">
-                          <Sidebar type="reserve" />
-                          <Educonsult />
-                      </div>
-                  }/>
-
-
-                  <Route path="/startup" element={
-                      <div className="outter">
-                          <Sidebar type="reserve" />
-                          <Startup />
-                      </div>
-                  }/>
-
+                    }/>
+                    
 
                 <Route path="/addAsset" element={<VisualAssetManager />} />
-                <Route path="/tourism" element={<Tourism/>}/>
                 <Route path="/find-id" element={<FindId />} />
                 <Route path="/find-pwd" element={<FindPwd />} />
 

@@ -27,11 +27,11 @@ const Header = () => {
             ]
         },
         {
-            main: { title: "운영 프로그램", link: "" },
+            main: { title: "운영 프로그램", link: "/startup" },
             subs: [
                 { title: "창업 및 성장지원", link: "/startup" },
-                { title: "교육 및 컨설팅", link: "/Educonsult" },
-                { title: "관광일자리 지원", link: "/Tourism" }
+                { title: "교육 및 컨설팅", link: "/eduConsult" },
+                { title: "관광일자리 지원", link: "/tourism" }
             ]
         },
         {

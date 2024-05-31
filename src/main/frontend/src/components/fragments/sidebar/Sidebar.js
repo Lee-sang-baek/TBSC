@@ -67,15 +67,15 @@ const Sidebar = ({ type }) => {
         {
           type: 'main',
           items: [
-            { label: '운영 프로그램', link: '#' }
+            { label: '운영 프로그램', link: '/startup' }
           ]
         },
         {
           type: 'list',
           items: [
-            { label: '창업 및 성장지원', link: "#" },
-            { label: '교육 및 컨설팅', link: "#" },
-            { label: '관광일자리 지원', link: "#" },
+            { label: '창업 및 성장지원', link: "/startup" },
+            { label: '교육 및 컨설팅', link: "/eduConsult" },
+            { label: '관광일자리 지원', link: "/tourism" },
           ]
         }
       ]);
