@@ -232,9 +232,9 @@ public class MemberService implements UserDetailsService {
         System.out.println(oldMember.get().getId());
 
         try {
-            memberRepository.deleteById(oldMember.get().getId());
+            memberRepository.delete(oldMember.get());
 
-            return ResponseEntity.status(HttpStatus.CREATED).body("삭제가 완료되었습니다.");
+            return ResponseEntity.ok("삭제가 완료되었습니다.");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("삭제 중 오류가 발생했습니다.");
         }

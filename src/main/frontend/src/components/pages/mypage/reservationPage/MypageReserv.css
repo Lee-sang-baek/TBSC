@@ -4,7 +4,7 @@
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 
     .pageInfo {
         padding: 1% 0;
@@ -21,7 +21,8 @@
 
     .reservContainer {
         border-radius: 15px;
-        background: #e0e0e0;
+        background: lightgrey;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 50px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 26px -18px inset;
 
         div {
             display: flex;
