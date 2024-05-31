@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 import java.util.regex.Pattern;
@@ -21,11 +22,17 @@ import java.util.regex.Pattern;
 public class MemberService implements UserDetailsService {
 
     private final MemberRepository memberRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
 
     @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
+
+
     }
+
 
     // 비밀번호 일치 확인 메서드
     public boolean isPasswordMatch(String password, String confirmPassword) {
@@ -63,9 +70,9 @@ public class MemberService implements UserDetailsService {
         }
 
         if (memberDto.getCompAddress() == null ||
-            memberDto.getBusinessNum() == null ||
-            memberDto.getRepresentative() == null ||
-            memberDto.getCompName() == null) {
+                memberDto.getBusinessNum() == null ||
+                memberDto.getRepresentative() == null ||
+                memberDto.getCompName() == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("기업정보를 전부 입력해주세요.");
         }
 
@@ -239,4 +246,30 @@ public class MemberService implements UserDetailsService {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("삭제 중 오류가 발생했습니다.");
         }
     }
+
+    //아이디 찾기
+    public String findIdByEmail(String email) {
+        Optional<Member> member = memberRepository.findByEmail(email);
+        return member.map(Member::getId).orElse(null);
+    }
+
+    public String findIdByPhoneNum(String phoneNum) {
+        Optional<Member> member = memberRepository.findByPhoneNum(phoneNum);
+        return member.map(Member::getId).orElse(null);
+    }
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+

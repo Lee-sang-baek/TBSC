@@ -55,6 +55,8 @@ import Educonsult from "./components/pages/explainpage/Educonsult";
 import Tourism from "./components/pages/explainpage/Tourism";
 import OrgChart from "./components/pages/orgChart/OrgChart";
 import WayToCome from "./components/pages/wayToCome/WayToCome";
+import FindId from "./components/pages/find/FindId";
+import FindPwd from "./components/pages/find/FindPwd";
 
 function App() {
 
@@ -350,10 +352,37 @@ function App() {
                         </div>
                     }/>
 
-                    <Route path="/addAsset" element={<VisualAssetManager/>}/>
-                    <Route path="/tourism" element={<Tourism/>}/>
-                </Routes>
-                <ChatbotToggle/>
+                  <Route path="/tourism" element={
+                        <div className="outter">
+                            <Sidebar type="reserve" />
+                            <Tourism />
+                        </div>
+                  }/>
+
+
+                  <Route path="/Educonsult" element={
+                      <div className="outter">
+                          <Sidebar type="reserve" />
+                          <Educonsult />
+                      </div>
+                  }/>
+
+
+                  <Route path="/startup" element={
+                      <div className="outter">
+                          <Sidebar type="reserve" />
+                          <Startup />
+                      </div>
+                  }/>
+
+
+                <Route path="/addAsset" element={<VisualAssetManager />} />
+                <Route path="/tourism" element={<Tourism/>}/>
+                <Route path="/find-id" element={<FindId />} />
+                <Route path="/find-pwd" element={<FindPwd />} />
+
+            </Routes>
+            <ChatbotToggle />
             </div>
             <Footer/>
         </BrowserRouter>

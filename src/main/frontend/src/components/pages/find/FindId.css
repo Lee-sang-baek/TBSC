@@ -1,0 +1,97 @@
+/* SignUp.css */
+
+.FindId-compo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form-box {
+  background-color: #f0f0f0;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  width: 400px;
+}
+
+.input-icon {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.input-icon img {
+  width: 80px;
+  height: auto;
+}
+
+.input-icon h2 {
+  margin-top: 10px;
+  font-size: 24px;
+  color: #333;
+}
+
+.input-box {
+  margin-bottom: 20px;
+}
+
+.input-box label {
+  font-size: 16px;
+  color: #333;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.long-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.phone-number-box {
+  display: flex;
+  align-items: center;
+}
+
+.phone-number-box h4 {
+  margin: 0 5px;
+}
+
+.btn-twice {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.btn-twice button {
+  width: 48%;
+}
+
+.findId-button {
+  text-align: center;
+}
+
+.findId-button button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.result-box {
+  margin-top: 20px;
+  background-color: #d4edda;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.result-box p {
+  margin: 0;
+  font-size: 16px;
+  color: #155724;
+}

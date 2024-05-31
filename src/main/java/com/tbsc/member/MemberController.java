@@ -44,7 +44,6 @@ public class MemberController {
     }
 
 
-
 //    @GetMapping("/member/login")
 //    public String loginForm() {
 //        return "loginForm";
@@ -157,4 +156,40 @@ public class MemberController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
     }
+
+    //아이디 찾기
+    @PostMapping("/member/findId")
+    public ResponseEntity<String> findId(@RequestBody Map<String, String> request) {
+        String email = request.get("email");
+        String phoneNum = request.get("phoneNum");
+        String foundId;
+
+        if (email != null) {
+            foundId = memberService.findIdByEmail(email);
+        } else if (phoneNum != null) {
+            foundId = memberService.findIdByPhoneNum(phoneNum);
+        } else {
+            return ResponseEntity.badRequest().body("이메일 또는 전화번호가 필요합니다.");
+        }
+
+        if (foundId != null) {
+            return ResponseEntity.ok(foundId);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("아이디를 찾을 수 없습니다.");
+        }
+    }
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+

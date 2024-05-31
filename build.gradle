@@ -48,7 +48,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'net.nurigo:sdk:4.2.7'
-	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+
 
 }
 

@@ -35,5 +35,9 @@ public class MemberDto {
 
     private String phoneNum;
 
+    private String newPassword;
+
+
     // 생성자, 게터, 세터 등 필요한 메서드를 추가할 수 있습니다.
+
 }

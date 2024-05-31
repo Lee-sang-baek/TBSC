@@ -29,9 +29,9 @@ const Header = () => {
         {
             main: { title: "운영 프로그램", link: "" },
             subs: [
-                { title: "창업 및 성장지원", link: "" },
-                { title: "교육 및 컨설팅", link: "" },
-                { title: "관광일자리 지원", link: "" }
+                { title: "창업 및 성장지원", link: "/startup" },
+                { title: "교육 및 컨설팅", link: "/Educonsult" },
+                { title: "관광일자리 지원", link: "/Tourism" }
             ]
         },
         {

@@ -9,12 +9,18 @@ import org.springframework.lang.NonNull;
 import java.util.Optional;
 
 public interface MemberRepository extends JpaRepository<Member, String> {
-    // 필요한 추가 메소드들
+
+    // 기존 메소드들
     Optional<Member> findByEmail(String email);
+    Optional<Member> findByPhoneNum(String phoneNum);
+
     @NonNull
     Optional<Member> findById(@NonNull String id);
 
     Optional<Member> findByIdAndPassword(String id, String hashedPassword);
+
+
+
 
     Page<Member> findAll(Pageable pageable);
 
@@ -27,5 +33,7 @@ public interface MemberRepository extends JpaRepository<Member, String> {
     Page<Member> findByRepresentativeContaining(String searchString, Pageable pageable);
     Page<Member> findByCompAddressContaining(String searchString, Pageable pageable);
     Page<Member> findAll(Specification<Member> spec, Pageable pageable);
+
+
 
 }
