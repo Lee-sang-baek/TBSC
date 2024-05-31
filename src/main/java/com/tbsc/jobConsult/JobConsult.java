@@ -31,7 +31,7 @@ public class JobConsult {
 
     private LocalDateTime date;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "education_num", referencedColumnName = "num")
     private Education education;
 
@@ -48,7 +48,7 @@ public class JobConsult {
 
     private String selfIntroduction;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "member", referencedColumnName = "id", updatable = false)
     private Member member;
 

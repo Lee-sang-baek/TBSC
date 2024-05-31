@@ -39,7 +39,7 @@ const DeleteInfo = (props) => {
                 .then(response => {
                     console.log(response.data);
                 });
-            alert("로그아웃 되었습니다.")
+            alert("계정 탈퇴처리 되었습니다.")
             sessionStorage.removeItem("id");
             sessionStorage.removeItem("state");
             window.location.href = "/";

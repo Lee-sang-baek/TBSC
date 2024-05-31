@@ -1,8 +1,12 @@
 package com.tbsc.consultant;
 
+import com.tbsc.jobConsult.JobConsult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -38,5 +42,12 @@ public class ConsultantController {
             e.printStackTrace();
             return ResponseEntity.status(500).body("Upload Failed: " + e.getMessage());
         }
+    }
+
+    @GetMapping("/member/pageable/{memberId}")
+    public ResponseEntity<Page<Consultant>> getConsultantsByMemberId(@PathVariable("memberId") String memberId, @RequestParam("page") Integer page) {
+        Pageable pageable = PageRequest.of(page, 5);
+        Page<Consultant> consultants = consultantService.getConsultantList(memberId, pageable);
+        return ResponseEntity.ok().body(consultants);
     }
 }

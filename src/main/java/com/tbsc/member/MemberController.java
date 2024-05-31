@@ -122,7 +122,7 @@ public class MemberController {
     public ResponseEntity<String> admin() {
         Member member = new Member();
         member.setId("admin");
-        member.setPassword(passwordEncoder.encode("12345"));
+        member.setPassword(passwordEncoder.encode("1"));
         member.setName("admin");
         member.setAddress("admin's ");
         member.setDetailAddress("home");

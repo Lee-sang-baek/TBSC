@@ -2,7 +2,10 @@ package com.tbsc.rental;
 
 import com.tbsc.member.Member;
 import com.tbsc.member.MemberRepository;
+import com.tbsc.util.ReserveType;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -54,12 +57,31 @@ public class RentalService {
         return ResponseEntity.ok(existingRental);
     }
 
+    public ResponseEntity<Rental> cancelRental(Integer num) {
+        Optional<Rental> optionalRental = rentalRepository.findById(num);
+        if (optionalRental.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+
+        Rental rental = optionalRental.get();
+
+        rental.setState(ReserveType.CANCEL);
+
+        rentalRepository.save(rental);
+
+        return ResponseEntity.ok(rental);
+    }
+
     public Optional<Rental> getRentalById(Integer num) {
         return rentalRepository.findById(num);
     }
 
     public List<Rental> getRentalList(String memberId) {
         return rentalRepository.findByMemberId(memberId);
+    }
+
+    public Page<Rental> getRentalList(String memberId, Pageable pageable) {
+        return rentalRepository.findByMemberId(memberId, pageable);
     }
 
     public boolean existsById(Integer num) {

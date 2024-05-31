@@ -134,7 +134,7 @@ const MyHome = () => {
 
             <div className="detailsContainer">
                 <h2 className="reservDetailTitle">
-                    예약내역
+                    진행중인 예약 목록
                 </h2>
                 <hr/>
                 {reserveList.map((reservation, index) => (

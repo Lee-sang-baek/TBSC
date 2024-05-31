@@ -6,6 +6,42 @@
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 
+    .management-button {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .management-button .de-active {
+        width: 200px;
+        margin: 0 10px;
+        padding: 8px 16px;
+        background-color: #55cdff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .management-button .de-active:hover {
+        background-color: #3389e6;
+    }
+
+    .management-button .active {
+        width: 200px;
+        margin: 0 10px;
+        padding: 8px 16px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .management-button .active:hover {
+        background-color: #0056b3;
+    }
+
     .pageInfo {
         padding: 1% 0;
     }
@@ -44,29 +80,110 @@
                 font-weight: bold;
                 font-size: large;
             }
+
             .CHECK {
                 color: #778899;
                 font-weight: bold;
                 font-size: large;
             }
+
             .APPROVE {
                 color: #4169E1;
                 font-weight: bold;
                 font-size: large;
             }
+
             .DENY {
                 color: #FF3333;
                 font-weight: bold;
                 font-size: large;
             }
+
+            .CANCEL {
+                color: #392f31;
+                font-weight: bold;
+                font-size: large;
+            }
         }
+
+        .cancelButton {
+            background-color: rgb(255, 255, 255);
+            border-radius: 10px;
+            color: #000;
+            height: 35px;
+            border: none;
+            box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+            cursor: pointer;
+        }
+
+        .cancelButton:hover {
+            background-color: #FF3333;
+            color: #fff;
+        }
+
     }
 
     .reservContainer:hover {
-        cursor: pointer;
+        /*cursor: pointer;*/
         box-shadow: 15px 15px 30px #bebebe,
         -15px -15px 30px #ffffff;
         transform: scale(1.02);
         transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .pagination button {
+        margin: 0 5px;
+        padding: 12px 18px;
+        border: none;
+        background-color: #e0e0e0;
+        cursor: pointer;
+        border-radius: 50px;
+        transition: background-color 0.3s, transform 0.3s;
+        font-size: 16px;
+    }
+
+    .pagination button:hover {
+        background-color: #d0d0d0;
+        transform: translateY(-2px);
+    }
+
+    .pagination button.active {
+        background-color: black;
+        color: #fff;
+    }
+
+    .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .modal-content p {
+        margin-bottom: 20px;
+    }
+
+    .modal-content div {
+        display: flex;
+        flex-direction: row;
+
     }
 }

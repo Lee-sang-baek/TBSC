@@ -25,10 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @SpringBootTest
 public class ReserveTest {
@@ -53,10 +50,13 @@ public class ReserveTest {
 
     @Test
     void reserve() {
+        Optional<Member> op = mr.findById("admin");
+        Member member = op.orElse(mr.findAll().get(0));
         for (int i = 1; i <= 10; i++) {
-            List<Member> list = mr.findAll();
-            Collections.shuffle(list);
-            Member member = list.get(0);
+//            List<Member> list = mr.findAll();
+//            Collections.shuffle(list);
+//            Member member = list.get(0);
+
             ReserveType rt;
             double r = Math.random();
             if (r < 0.25) {
@@ -88,9 +88,9 @@ public class ReserveTest {
         }
 
         for (int i = 1; i <= 20; i++) {
-            List<Member> list = mr.findAll();
-            Collections.shuffle(list);
-            Member member = list.get(0);
+//            List<Member> list = mr.findAll();
+//            Collections.shuffle(list);
+//            Member member = list.get(0);
             ReserveType rt;
             double r = Math.random();
             if (r < 0.25) {
@@ -174,9 +174,9 @@ public class ReserveTest {
         }
 
         for (int i = 1; i <= 30; i++) {
-            List<Member> list = mr.findAll();
-            Collections.shuffle(list);
-            Member member = list.get(0);
+//            List<Member> list = mr.findAll();
+//            Collections.shuffle(list);
+//            Member member = list.get(0);
             ReserveType rt;
             double r = Math.random();
             if (r < 0.25) {

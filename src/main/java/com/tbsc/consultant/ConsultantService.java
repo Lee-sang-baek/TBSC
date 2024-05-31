@@ -4,6 +4,8 @@ import com.tbsc.member.Member;
 import com.tbsc.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -29,5 +31,9 @@ public class ConsultantService {
             return ResponseEntity.ok(consultant);
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    }
+
+    public Page<Consultant> getConsultantList(String memberId, Pageable pageable) {
+        return consultantRepository.findByMemberId(memberId, pageable);
     }
 }
