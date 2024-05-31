@@ -53,6 +53,8 @@ import SearchResult from "./components/pages/search/SearchResult";
 import Startup from "./components/pages/explainpage/Startup";
 import Educonsult from "./components/pages/explainpage/Educonsult";
 import Tourism from "./components/pages/explainpage/Tourism";
+import FindId from "./components/pages/find/FindId";
+import FindPwd from "./components/pages/find/FindPwd";
 
 function App() {
 
@@ -324,6 +326,7 @@ function App() {
                 <JobConsult />
                 </div>
                 } />
+
                 <Route path="/search-results" element={
                 <div className="outter">
                 <Sidebar type="reserve" />
@@ -331,8 +334,34 @@ function App() {
                 </div>
                 }/>
 
+                  <Route path="/tourism" element={
+                  <div className="outter">
+                  <Sidebar type="reserve" />
+                  <Tourism />
+                  </div>
+                  }/>
+
+
+                  <Route path="/Educonsult" element={
+                  <div className="outter">
+                  <Sidebar type="reserve" />
+                  <Educonsult />
+                  </div>
+                  }/>
+
+
+                  <Route path="/startup" element={
+                  <div className="outter">
+                  <Sidebar type="reserve" />
+                  <Startup />
+                  </div>
+                  }/>
+
+
                 <Route path="/addAsset" element={<VisualAssetManager />} />
-                <Route path="/tourism" element={<Tourism />} />
+                  <Route path="/find-id" element={<FindId />} />
+                   <Route path="/find-pwd" element={<FindPwd />} />
+
             </Routes>
             <ChatbotToggle />
             </div>

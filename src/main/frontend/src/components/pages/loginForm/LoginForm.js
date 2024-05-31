@@ -32,6 +32,15 @@ const LoginForm = () => {
 
     };
 
+    const handleFindIdClick = () => {
+        navigate('/find-id');
+    };
+
+    const handleFindPwdClick = () => {
+            navigate('/find-pwd');
+        };
+
+
     const handleKeyPress = (e) => {
         if (e.key === "Enter") {
             onLogin(e);
@@ -44,37 +53,39 @@ const LoginForm = () => {
         }
     }, []);
 
-  return (
-    <div className="LoginForm-compo">
-      <div className="form-box">
-        <div className="login-text">
-            <h1>로그인</h1>
+    return (
+        <div className="LoginForm-compo">
+            <div className="form-box">
+                <div className="login-text">
+                    <h1>로그인</h1>
+                </div>
+                <div className="input-row">
+                    <input
+                        type="text"
+                        onChange={(e) => setLoginForm({ ...loginForm, id: e.target.value })}
+                        placeholder="아이디 입력"
+                        onKeyPress={handleKeyPress}
+                    />
+                    <input
+                        type="password"
+                        onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
+                        placeholder="비밀번호 입력"
+                        onKeyPress={handleKeyPress}
+                    />
+                </div>
+                <div className="button-row">
+                    <button onClick={onLogin}>로그인</button>
+                    <Link to="/signup">
+                        <button>회원가입</button>
+                    </Link>
+                </div>
+                <div className="extra-buttons">
+                    <button onClick={handleFindIdClick}>아이디 찾기</button>
+                    <button onClick={handleFindPwdClick}>비밀번호 찾기</button>
+                </div>
+            </div>
         </div>
-      <div className="input-row">
-        <input type="text" onChange={(e) => {setLoginForm({ ...loginForm, id: e.target.value })}} placeholder="아이디 입력" onKeyPress={handleKeyPress}/>
-        <input type="password" onChange={(e) => {setLoginForm({ ...loginForm, password: e.target.value })}} placeholder="비밀번호 입력" onKeyPress={handleKeyPress}/>
-      </div>
-      <div className="button-row">
-        <button onClick={onLogin}>로그인</button>
-        <Link to="/signup">
-            <button>회원가입</button>
-        </Link>
-      </div>
-      <div className="extra-buttons">
-          <button>아이디 찾기</button>
-          <button>비밀번호 찾기</button>
-        </div>
-      {/* <div className="social-login">
-        <p>통합 로그인</p>
-        <div className="social-icons">
-          <button>G</button>
-          <button>N</button>
-          <button>K</button>
-        </div>
-      </div> */}
-      </div>
-    </div>
-  );
+    );
 };
 
 export default LoginForm;

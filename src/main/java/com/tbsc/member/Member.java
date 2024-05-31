@@ -96,7 +96,10 @@ public class Member {
     @OneToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(referencedColumnName = "num")
     @JsonIgnore
-    private RegistComp registComp;
+    private RegistComp registComp;//
+
+
+
 
     public Member bind(MemberDto memberDto, PasswordEncoder passwordEncoder) {
         this.setId(memberDto.getId());
@@ -111,8 +114,8 @@ public class Member {
         this.setBirth(memberDto.getBirth());
         this.setEmail(memberDto.getEmail());
         this.setPhoneNum(memberDto.getPhoneNum());
+
         return this;
     }
-
 
 }
