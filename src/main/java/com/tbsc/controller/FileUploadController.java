@@ -48,7 +48,7 @@ public class FileUploadController {
     public ResponseEntity<String> uploadRegistFile(@RequestParam("file") MultipartFile file) {
         try {
             // uploadDir에 해당되는 디렉터리가 없으면, uploadDir에 포함되는 전체 디렉터리 생성
-            File dir = new File(uploadDir);
+            File dir = new File(registUploadDir);
             if (dir.exists() == false) {
                 dir.mkdirs();
             }
