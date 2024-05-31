@@ -6,10 +6,10 @@ import "./FacilityGuide.css";
 const FacilityGuideMain = () => {
     return (
         <div className="FacilityGuide-compo-outter">
-
-            <FacilityHeader />
-            <FacilityGuide />
-
+            <div className="box">
+                <FacilityHeader />
+                <FacilityGuide />
+            </div>
         </div>
     );
 }

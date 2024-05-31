@@ -1,17 +1,19 @@
 .ReservationDetail-copo {
-    padding: 5%;
     display: flex;
     width: 100%;
     
 }
 .ReservationDetail-copo {
     .detail-container {
-        width: 75%;
-        margin: 0 auto;
+        width: 87%;
+        margin: 100px auto;
         background-color: #fff;
         padding: 20px;
         border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        
     }
 
     .detail-header {

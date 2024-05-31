@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './FacilityGuide.css';
 import FacilityHeader from "./FacilityHeader";
+
 const facilitiesData = {
     1: {
         key: 1,
@@ -71,6 +72,7 @@ function FacilityGuide({ onSelectFacility }) {
 
     return (
         <div className="FacilityGuide-compo">
+            <div className='content'>
             <ul>
                 {Object.entries(facilitiesData).map(([id, data]) => (
                     <li key={id} onClick={() => handleTabClick(id)}
@@ -92,6 +94,7 @@ function FacilityGuide({ onSelectFacility }) {
                         ))}
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     );

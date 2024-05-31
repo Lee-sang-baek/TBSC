@@ -6,9 +6,9 @@ const OrgChart = () => {
     return (
         <div className="orgChart">
             <div className="orgChartContainer">
-                <h1 className="orgChartTitle">
+                <h2 className="orgChartTitle">
                     조직도
-                </h1>
+                </h2>
                 <div className="personContainer">
                     <div className="orgChartName">
                         <div className="divisionLine">

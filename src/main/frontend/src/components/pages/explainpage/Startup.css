@@ -1,112 +1,112 @@
-/* Explain.css */
-
-.Startup-info body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-}
-
 .Startup-info {
-    max-width: 1200px;
-    margin: 20px auto;
+    width: 87%;
+    margin: 100px auto;
+    background-color: #fff;
     padding: 20px;
-    background: #fff;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.Startup-info .block {
-    margin-bottom: 40px;
-}
-
-.Startup-info .title h1 {
-    font-size: 2.5em;
-    color: #333;
-    margin-bottom: 20px;
-    border-bottom: 3px solid #ff6f61;
-    padding-bottom: 10px;
-}
-
-.Startup-info .box h3 {
-    font-size: 1.5em;
-    color: #333;
-    background: #ffebcd;
-    padding: 20px;
-    border-left: 6px solid #ff6f61;
-    margin-bottom: 30px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-.Startup-info.recruitment {
-    margin-top: 30px;
-}
-
-.Startup-info .recruitment .container,
-.Startup-info .recruitment .container2,
-.Startup-info .recruitment .container3,
-.Startup-info .recruitment .container4,
-.Startup-info .recruitment .container5,
-.Startup-info .recruitment .container6,{
-
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-bottom: 20px;
-    padding: 10px;
-    background: #fafafa;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
 
-.Startup-info .recruitment .line {
-    width: 5px;
-    height: 100%;
-    background: #ff6f61;
-    margin-right: 15px;
-}
-
-.Startup-info .recruitment .text h2,
-.Startup-info .recruitment .text h3 {
-    margin: 0;
-    padding: 10px 0;
-    color: #333;
-}
-
-.Startup-info .recruitment .text h2 {
-    font-size: 1.8em;
-    border-bottom: 2px solid #ff6f61;
-}
-
-.Startup-info .recruitment .text h3 {
-    font-size: 1.4em;
-
-    padding: 15px;
-
-}
-
-
-/* 버튼 스타일 */
-.Startup-info .button {
-    display: inline-block;
-        width: 200px; /* 버튼의 너비를 조정할 수 있습니다 */
+    .block {
+        margin-top: 3%;
+        width: 95%;
+    }
+    
+    .title h1 {
+        font-size: 2.5em;
+        color: #333;
+        margin-bottom: 20px;
+        border-bottom: 3px solid #ff6f61;
+        padding-bottom: 10px;
+    }
+    
+    .box h3 {
+        font-size: 1.5em;
+        color: #333;
+        background: #ffebcd;
         padding: 20px;
-        margin: 20px 10px; /* 좌우 여백을 조정할 수 있습니다 */
-        font-size: 1em;
+        border-left: 6px solid #ff6f61;
+        margin-bottom: 30px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .Recruitment {
+        width: 95%;
+        margin-bottom: 50px;
+        margin-top: 30px;
+
+        .container,
+        .container2,
+        .container3,
+        .container4,
+        .container5,
+        .container6 {
+            display: flex;
+            border-bottom: 1px solid #ccc;
+        }
+    }
+    
+    .Recruitment .line {
+        width: 5px;
+        height: 100%;
+        background: #ff6f61;
+        margin-right: 15px;
+    }
+    
+    .Recruitment .text h2,
+    .Recruitment .text h3 {
+        margin: 0;
+        padding: 10px 0;
+        color: #333;
+        
+    }
+    
+    .Recruitment .text h2 {
+        font-size: 1.8em;
+        border-bottom: 2px solid #ff6f61;
+        margin: 30px 0;
+    }
+    
+    .Recruitment .text h3 {
+        font-size: 1.4em;
+        padding: 15px;
+        
+    }
+    
+    .title {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    /* 버튼 스타일 */
+    .button {
+        display: inline-block;
+        width: 15%;
+        padding: 20px;
+        margin: 40px 10px;
+        font-size: 1.2em;
         color: #fff;
         background-color: #ff6f61;
         border: none;
-        border-radius: 50px; /* 둥근 모서리 */
+        border-radius: 50px;
         text-align: center;
         cursor: pointer;
         text-decoration: none;
         transition: background-color 0.3s ease;
-        white-space: nowrap; /* 긴 텍스트가 버튼을 넘어가도 줄바꿈하지 않도록 설정합니다 */
-        overflow: hidden; /* 긴 텍스트가 버튼을 넘어갈 경우 숨깁니다 */
-        text-overflow: ellipsis; /* 긴 텍스트가 버튼을 넘어갈 경우 생략 부호(...)로 표시합니다 */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    /* 버튼에 마우스를 올렸을 때의 스타일 */
+    .button:hover {
+        background-color: #e55b50;
+    }
 }
 
-/* 버튼에 마우스를 올렸을 때의 스타일 */
-.Startup-info .button:hover {
-    background-color: #e55b50;
-}
+

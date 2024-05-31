@@ -9,9 +9,9 @@ const WayToCome = () => {
     return (
         <div className="wayToCome">
             <div className="wayToComeContainer">
-                <h1 className="wayToComeTitle">
+                <h2 className="wayToComeTitle">
                     오시는 길
-                </h1>
+                </h2>
                 <div className="locationMapContainer">
                     {/*<Wrapper apiKey="" render={render}/>*/}
                     <iframe

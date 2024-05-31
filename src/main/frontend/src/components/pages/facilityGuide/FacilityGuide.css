@@ -1,8 +1,20 @@
 .FacilityGuide-compo-outter {
-    width: 72%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    .box {
+        width: 87%;
+        margin: 100px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 .FacilityGuide-compo {
@@ -12,95 +24,99 @@
     width: 95%;
     flex-direction: column;
     margin-bottom: 20px;
+
+    .content {
+        width: 95%;
+    }
     
+    ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        margin-bottom: 20px;
+
+    }
+    
+    li {
+        display: flex;
+        justify-content: center;
+        margin-right: 10px;
+        padding: 10px;
+        cursor: pointer;
+        border: 1px solid #ccc;
+        background-color: #f9f9f9;
+    }
+    
+    li.active {
+        background-color: #e9e9e9;
+    }
+    
+    .facility-display {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 50px;
+    }
+    
+    .main-image {
+        width: 70%;
+        height: auto;
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-right: 20px;
+    }
+    
+    .thumbnails {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 100px;
+    }
+    
+    .thumbnail-image {
+        width: 100px;
+        height: auto;
+        cursor: pointer;
+        border: 1px solid #ccc;
+    }
+    
+    .facility-description {
+        clear: both;
+        padding-top: 10px;
+        white-space: pre-line;
+    }
+    
+    .tabMenu{
+        width: 100%;
+        height: 50px;
+        text-align: center;
+        font-size: 13px;
+    }
+    
+    .h2center {
+        display: flex;
+        padding-top: 30px;
+        justify-content: center;
+    }
+    
+    .ptag{
+        display: flex;
+        justify-content: center;
+    }
+    
+    .facility-text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 2.778rem;
+        height: 2.778rem;
+        background: #2F2C87;
+        border-radius: 100%;
+        text-align: center;
+        font-size: 1.811rem;
+        font-weight: 700;
+        letter-spacing: 0;
+        color: white;
+    }
 }
 
-.FacilityGuide-compo ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    margin-bottom: 20px;
-    width: 100%;
-}
-
-.FacilityGuide-compo li {
-    display: flex;
-    justify-content: center;
-    margin-right: 10px;
-    padding: 10px;
-    cursor: pointer;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-}
-
-.FacilityGuide-compo li.active {
-    background-color: #e9e9e9;
-}
-
-.FacilityGuide-compo .facility-display {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 50px;
-}
-
-.FacilityGuide-compo .main-image {
-    width: 70%;
-    height: auto;
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-right: 20px;
-}
-
-.FacilityGuide-compo .thumbnails {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-top: 100px;
-}
-
-.FacilityGuide-compo .thumbnail-image {
-    width: 100px;
-    height: auto;
-    cursor: pointer;
-    border: 1px solid #ccc;
-}
-
-.FacilityGuide-compo .facility-description {
-    clear: both;
-    padding-top: 10px;
-    white-space: pre-line;
-}
-
-.FacilityGuide-compo .tabMenu{
-    width: 150px;
-    height: 50px;
-    text-align: center;
-    font-size: 13px;
-}
-
-.FacilityGuide-compo .h2center {
-    display: flex;
-    padding-top: 100px;
-    justify-content: center;
-}
-
-.FacilityGuide-compo .ptag{
-    display: flex;
-    justify-content: center;
-}
-
-.FacilityGuide-compo .facility-text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 2.778rem;
-    height: 2.778rem;
-    background: #2F2C87;
-    border-radius: 100%;
-    text-align: center;
-    font-size: 1.811rem;
-    font-weight: 700;
-    letter-spacing: 0;
-    color: white;
-}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
-import './ReservationForm.css';
+import './ReservationEdit.css';
 
 const ReservationEdit = () => {
     const { num } = useParams();
@@ -80,14 +80,14 @@ const ReservationEdit = () => {
     // Check if the user is an ADMIN
     if (MemberState !== "ADMIN") {
         return (
-            <div className="ReservationForm-copo">
+            <div className="ReservationEdit-copo">
                 <h2>권한이 없습니다</h2>
             </div>
         );
     }
 
     return (
-        <div className="ReservationForm-copo">
+        <div className="ReservationEdit-copo">
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"

@@ -65,9 +65,6 @@ const ReservationList = () => {
             <div className="container">
                 <div className="header">
                     <h1>이용예약 안내</h1>
-                    {MemberState === "ADMIN" && (
-                        <button onClick={handleWriteClick}>글쓰기</button>
-                    )}
                 </div>
                 <div className="info-bar">
                     <div className="search-bar">
@@ -82,6 +79,9 @@ const ReservationList = () => {
                 </div>
                 <div className="total-reservations">
                     <p>총 게시글 {filteredReservations.length}개</p>
+                    {MemberState === "ADMIN" && (
+                        <button onClick={handleWriteClick}>글쓰기</button>
+                    )}
                 </div>
                 <div className="reservation-table">
                     <div className="reservation-header">
