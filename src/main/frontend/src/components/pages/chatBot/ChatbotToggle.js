@@ -50,7 +50,7 @@ const ChatbotToggle = () => {
                 </div>
             )}
             <button className="chatbot-button" onClick={handleToggle}>
-                <img src="/chatbot-icon.png" alt="Chatbot Icon" />
+                <img src="/logo192.png" alt="Chatbot Icon" />
             </button>
         </div>
     );

@@ -25,7 +25,7 @@ class ActionProvider {
 
     handlePhoneNumber() {
         const message = this.createChatBotMessage(
-            "광주관광기업지원센터 번호는 000-0000-0000입니다."
+            "광주관광기업지원센터 번호는 062-367-0641입니다."
         );
         this.updateChatbotState(message);
     }

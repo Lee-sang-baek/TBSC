@@ -8,6 +8,7 @@ import NewsBanner from './NewsBanner'; // NewsBanner 컴포넌트를 import합�
 import axios from 'axios';
 import NewsPicture from './NewsPicture';
 import Popup from '../popup/Popup';
+import CompBanner from './CompBanner';
 
 function MainHomepage() {
     const [imageList, setImageList] = useState([]);
@@ -82,8 +83,10 @@ function MainHomepage() {
     return (
 
         <div className="MainHomepage-compo">
-            {popupList && popupList.map((item) => (
-                <Popup item={item} setRandomPositionNearCenter={setRandomPositionNearCenter} />
+            {popupList && popupList.map((item, index) => (
+                <div key={index}>
+                    <Popup item={item} setRandomPositionNearCenter={setRandomPositionNearCenter} />
+                </div>
             ))}
             <div className="slider-container">
                 <Slider {...settings} className="autoplay">
@@ -93,12 +96,19 @@ function MainHomepage() {
                             <div className='content-box'>{item.content}</div>
                         </div>
                     ))}
+                    {(!modifiedImageList || modifiedImageList.length < 1) &&
+                        <div className='image-box'>
+                            <div className='content-box'>. . .</div>
+                        </div>
+                    }
                 </Slider>
             </div>
             <NewsBanner />
-            <NewsPicture />
+            <div className='bottom-banner'>
+                <NewsPicture />
+                <CompBanner />
+            </div>
         </div>
-
 
     );
 }

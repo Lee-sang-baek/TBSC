@@ -1,17 +1,18 @@
 import React from 'react';
-import './NewsPicture.css'; // CSS 파일 import
+import './CompBanner.css'; // CSS 파일 import
 
-function NewsPicture() {
+function CompBanner() {
 
 
     return (
-        <div class="NewsPicture-compo">
+        <div class="CompBanner-compo">
             <div className='shape'></div>
             <div className='content'>
                 content
             </div>
+            
         </div>
     );
 }
 
-export default NewsPicture;
+export default CompBanner;

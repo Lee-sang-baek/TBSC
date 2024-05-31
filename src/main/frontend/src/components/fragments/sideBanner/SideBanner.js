@@ -15,7 +15,6 @@ function SideBanner() {
         axios.get("/banner")
         .then((res) => {
             setImageList(res.data);
-            console.log(res.data);
         });
     }, []);
 
@@ -85,6 +84,11 @@ function SideBanner() {
                         <div className='content-box'>{item.content}</div>
                     </div>
                 ))}
+                {(!modifiedImageList || modifiedImageList.length < 1) && 
+                    <div className='image-box'>
+                        <div className='content-box'>. . .</div>
+                    </div>
+                }
             </Slider>
         </div>
     </div>

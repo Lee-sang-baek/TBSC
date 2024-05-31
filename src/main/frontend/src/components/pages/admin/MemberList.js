@@ -72,6 +72,7 @@ const MemberList = () => {
                     <option value="name">이름</option>
                     <option value="email">이메일</option>
                     <option value="address">주소</option>
+                    <option value="detailAddress">주소</option>
                     <option value="phoneNum">전화번호</option>
                     <option value="compName">기업명</option>
                     <option value="businessNum">기업번호</option>
@@ -106,6 +107,7 @@ const MemberList = () => {
                         <th>이름</th>
                         <th>이메일</th>
                         <th>주소</th>
+                        <th>상세주소</th>
                         <th>전화번호</th>
                         <th>생년월일</th>
                         <th>기업명</th>
@@ -123,6 +125,7 @@ const MemberList = () => {
                             <td>{item.name}</td>
                             <td>{item.email}</td>
                             <td>{item.address}</td>
+                            <td>{item.detailAddress}</td>
                             <td>{item.phoneNum}</td>
                             <td>{item.birth}</td>
                             <td>{item.compName}</td>

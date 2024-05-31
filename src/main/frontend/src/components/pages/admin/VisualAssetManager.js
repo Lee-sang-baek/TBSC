@@ -42,8 +42,11 @@ const VisualAssetManager = ({ asset, itemToEdit, close }) => {
       assetStr = "mainImage";
     } else if (asset === "베너") {
       assetStr = "banner";
-    } else {
+    } else if (asset === "팝업") {
       assetStr = "popup";
+    } else {
+      console.log(asset);
+      return;
     }
 
     try {

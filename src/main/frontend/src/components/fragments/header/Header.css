@@ -251,11 +251,15 @@
 }
 
 .Header-compo .mobile-menu-main {
-    font-weight: bold;
-    color: #007bff;
     display: block;
     padding: 10px 0;
+}
 
+.Header-compo .mobile-menu-main a {
+    font-weight: bold;
+    color: #007bff;
+    color: #007bff;
+    text-decoration: none;
 }
 
 .Header-compo .mobile-sub-menu {

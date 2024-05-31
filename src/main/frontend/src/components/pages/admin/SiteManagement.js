@@ -175,7 +175,7 @@ const SiteManagement = () => {
   );
 };
 
-const TableComponent = ({ itemList, toggleUpdateManager, setDeleteItemId, setShowDeleteModal, isUpdateManagerOpen }) => {
+const TableComponent = ({ asset, itemList, toggleUpdateManager, setDeleteItemId, setShowDeleteModal, isUpdateManagerOpen }) => {
 
     const getStatus = (start, end) => {
         const now = new Date();
@@ -217,7 +217,7 @@ const TableComponent = ({ itemList, toggleUpdateManager, setDeleteItemId, setSho
                         <td>
                             <Button text="수정" className="btn-two blue rounded" onClick={() => toggleUpdateManager(item.num)} />
                             {isUpdateManagerOpen === item.num && (
-                                <VisualAssetManager asset="이미지" itemToEdit={item} close={() => toggleUpdateManager(0)} />
+                                <VisualAssetManager asset={asset} itemToEdit={item} close={() => toggleUpdateManager(0)} />
                             )}
                         </td>
                         <td>
@@ -240,6 +240,7 @@ const SectionComponent = ({ section, title, itemList, isAssetManagerOpen, toggle
             </div>
         </div>
         <TableComponent
+            asset={title}
             itemList={itemList}
             toggleUpdateManager={toggleUpdateManager}
             setDeleteItemId={setDeleteItemId}

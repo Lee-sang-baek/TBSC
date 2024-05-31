@@ -18,7 +18,7 @@ const Header = () => {
 
     const menus = [
         {
-            main: "광주관광기업지원센터",
+            main: { title: "광주관광기업지원센터", link: "/centerIntro" },
             subs: [
                 { title: "센터소개", link: "/centerIntro" },
                 { title: "시설안내", link: "/facility" },
@@ -27,7 +27,7 @@ const Header = () => {
             ]
         },
         {
-            main: "운영 프로그램",
+            main: { title: "운영 프로그램", link: "" },
             subs: [
                 { title: "창업 및 성장지원", link: "" },
                 { title: "교육 및 컨설팅", link: "" },
@@ -35,14 +35,14 @@ const Header = () => {
             ]
         },
         {
-            main: "입주기업 홍보관",
+            main: { title: "입주기업 홍보관", link: "" },
             subs: [
                 { title: "기업 소개", link: "" },
                 { title: "기업 홍보", link: "/tnotice" }
             ]
         },
         {
-            main: "센터 이용예약",
+            main: { title: "센터 이용예약", link: "/reservation" },
             subs: [
                 { title: "이용예약 안내", link: "/reservation" },
                 { title: "기업 컨설팅 신청", link: "/consultants" },
@@ -51,7 +51,7 @@ const Header = () => {
             ]
         },
         {
-            main: "알림마당",
+            main: { title: "알림마당", link: "/notices" },
             subs: [
                 { title: "공지사항", link: "/notices" },
                 { title: "센터소식", link: "/centernews" },
@@ -130,7 +130,7 @@ const Header = () => {
                     <div className="gnb_1dul" onMouseEnter={handleGnbWrapEnter} onMouseLeave={handleGnbWrapLeave}>
                         {menus.map((menu, index) => (
                             <div key={index} className="gnb_1dli">
-                                <a href="#" className="gnb_1da">{menu.main}</a>
+                                <a href={menu.main.link} className="gnb_1da">{menu.main.title}</a>
                             </div>
                         ))}
                     </div>
@@ -205,7 +205,7 @@ const Header = () => {
                     <ul className="mobile-menu-list">
                         {menus.map((menu, index) => (
                             <li key={index} className="mobile-menu-item">
-                                <span className="mobile-menu-main">{menu.main}</span>
+                                <span className="mobile-menu-main"><Link to={menu.main.link}>{menu.main.title}</Link></span>
                                 <ul className="mobile-sub-menu">
                                     {menu.subs.map((sub, subIdx) => (
                                         <li key={subIdx} className="mobile-sub-menu-item">

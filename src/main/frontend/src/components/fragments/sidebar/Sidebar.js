@@ -31,7 +31,7 @@ const Sidebar = ({ type }) => {
         {
           type: 'main',
           items: [
-            { label: '관리자 페이지', link: '/admin' }
+            { label: '관리자 페이지', link: '/admin/member-list' }
           ]
         },
         {
@@ -49,7 +49,7 @@ const Sidebar = ({ type }) => {
         {
           type: 'main',
           items: [
-            { label: '광주관광기업지원센터', link: '#' }
+            { label: '광주관광기업지원센터', link: '/centerIntro' }
           ]
         },
         {
@@ -57,8 +57,8 @@ const Sidebar = ({ type }) => {
           items: [
             { label: '센터소개', link: "/centerIntro" },
             { label: '시설안내', link: "/facility" },
-            { label: '조직도', link: "#" },
-            { label: '오시는 길', link: "#" },
+            { label: '조직도', link: "/orgchart" },
+            { label: '오시는 길', link: "/wayToCome" },
           ]
         }
       ]);
@@ -100,7 +100,7 @@ const Sidebar = ({ type }) => {
         {
           type: 'main',
           items: [
-            { label: '센터 이용예약', link: '#' }
+            { label: '센터 이용예약', link: '/reservation' }
           ]
         },
         {
@@ -118,7 +118,7 @@ const Sidebar = ({ type }) => {
         {
           type: 'main',
           items: [
-            { label: '알림마당', link: '#' }
+            { label: '알림마당', link: '/notices' }
           ]
         },
         {
@@ -141,8 +141,8 @@ const Sidebar = ({ type }) => {
       {menuItems.map((menu, index) => (
         <div key={index} className={menu.type === 'main' ? 'main' : 'list'}>
             {menu.items.map((item, subIndex) => (
-              <a href={item.link}>
-                <div key={subIndex}>
+              <a href={item.link} key={subIndex}>
+                <div>
                   {item.label}
                 </div>
               </a>

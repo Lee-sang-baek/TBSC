@@ -48,18 +48,12 @@ public class AccessLogController {
                                                    @RequestParam("category") String category,
                                                    @RequestParam("menu") String menu,
                                                    @RequestParam("sort") String sortStr,
-                                                   @RequestParam(value = "fromDate", required = false) LocalDate fromDate,
-                                                   @RequestParam(value = "toDate", required = false) LocalDate toDate) {
+                                                   @RequestParam(value = "fromDate", required = false) LocalDateTime fromDate,
+                                                   @RequestParam(value = "toDate", required = false) LocalDateTime toDate) {
 
-        LocalDateTime startDate = null;
-        LocalDateTime endDate = null;
-        if (fromDate != null && toDate != null) {
-            startDate = fromDate.atStartOfDay();
-            endDate = toDate.atStartOfDay();
-        }
         Sort sort = sortStr.equals("asc") ? Sort.by(Sort.Direction.ASC, "time") : Sort.by(Sort.Direction.DESC, "time");
         Pageable pageable = PageRequest.of(page, size, sort);
-        Page<AccessLog> logs = accessLogService.getList(pageable, searchTerm, category, menu, startDate, endDate);
+        Page<AccessLog> logs = accessLogService.getList(pageable, searchTerm, category, menu, fromDate, toDate);
         return ResponseEntity.ok(logs);
     }
 }

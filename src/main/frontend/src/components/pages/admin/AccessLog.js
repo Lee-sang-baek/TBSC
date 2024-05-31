@@ -41,6 +41,7 @@ const AccessLog = () => {
             .then(response => {
                 setLogList(response.data.content);
                 setTotalPages(response.data.totalPages);
+                setTotal(response.data.totalElements);
             })
             .catch(error => {
                 console.error("로그 목록을 가져오는 중 에러 발생:", error);
@@ -156,8 +157,8 @@ const AccessLog = () => {
                 </label>
 
                 <div className="time-filters">
-                    <input type="date" value={fromDate} onChange={handleFromDateChange} /> 부터
-                    <input type="date" value={toDate} onChange={handleToDateChange} /> 까지
+                    <input type="datetime-local" value={fromDate} onChange={handleFromDateChange} /> 부터
+                    <input type="datetime-local" value={toDate} onChange={handleToDateChange} /> 까지
                 </div>
             </div>
 
@@ -183,14 +184,29 @@ const AccessLog = () => {
                         <th>
                             <select value={menu} onChange={handleMenuChange}>
                                 <option value="all">접속 메뉴</option>
+
                                 <option value="admin">관리자 메뉴</option>
+
                                 <option value="login">로그인 창</option>
                                 <option value="signup">회원가입</option>
                                 <option value="myPage">마이페이지</option>
-                                <option value="member">회원 메뉴</option>
-                                <option value="notices">공지 사항</option>
+
+                                <option value="notices">공지사항</option>
+                                <option value="centernews">센터소식</option>
+                                <option value="pressrelease">보도자료</option>
+
                                 <option value="centerIntro">센터 소개</option>
                                 <option value="facility">시설 안내</option>
+                                <option value="orgchart">조직도</option>
+                                <option value="wayToCome">오시는 길</option>
+
+                                <option value="tnotice">기업 홍보</option>
+
+                                <option value="reservation">이용예약 안내</option>
+                                <option value="consultants">기업 컨설팅 신청</option>
+                                <option value="jobConsult">일자리 상담신청</option>
+                                <option value="rental">회의실 대관신청</option>
+
                             </select>
                         </th>
                         <th onClick={handleSortToggle} style={{ cursor: "pointer" }}>

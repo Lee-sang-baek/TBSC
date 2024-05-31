@@ -37,7 +37,7 @@ const Popup = ({ item, setRandomPositionNearCenter }) => {
   }
 
   return (
-    <div className="Popup-compo" style={popupStyle}>
+    <div className="Popup-compo" style={popupStyle} key={item.num}>
         
         <img src={`/uploads/${item.image}`} alt={item.image} />
       

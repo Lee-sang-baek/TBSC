@@ -73,6 +73,7 @@
 
   .menu h4 {
     cursor: pointer;
+    text-align: center;
   }
 
   .menu h4:hover {
