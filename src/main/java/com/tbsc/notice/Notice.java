@@ -31,7 +31,7 @@
         private Member member;
 
         @Lob
-        @Column(columnDefinition = "TEXT")
+        @Column(columnDefinition = "LONGTEXT")
         private String content;
 
         public void bind(NoticeDto noticeDto) {

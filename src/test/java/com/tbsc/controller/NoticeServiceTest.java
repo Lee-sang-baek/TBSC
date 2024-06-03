@@ -33,7 +33,6 @@ public class NoticeServiceTest {
             notice.setDate(LocalDateTime.now());
             Member member = new Member();
             member.setId("admin");
-            notice.setMember(member);
             notice.setContent("글테스트 " + i);
             notices.add(notice);
         }
