@@ -57,8 +57,8 @@ const Sidebar = ({ type }) => {
           items: [
             { label: '센터소개', link: "/centerIntro" },
             { label: '시설안내', link: "/facility" },
-            { label: '조직도', link: "#" },
-            { label: '오시는 길', link: "#" },
+            { label: '조직도', link: "/orgchart" },
+            { label: '오시는 길', link: "/wayToCome" },
           ]
         }
       ]);

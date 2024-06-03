@@ -23,6 +23,7 @@ public class ConsultantService {
 
     public ResponseEntity<Consultant> saveConsultant(ConsultantDto consultantDto) {
         Optional<Member> optionalMember = memberRepository.findById(consultantDto.getId());
+
         if (optionalMember.isPresent()) {
             Consultant consultant = new Consultant();
             consultant.bind(consultantDto);
@@ -30,6 +31,7 @@ public class ConsultantService {
             consultantRepository.save(consultant);
             return ResponseEntity.ok(consultant);
         }
+
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 

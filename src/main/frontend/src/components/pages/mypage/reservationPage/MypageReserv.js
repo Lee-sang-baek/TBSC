@@ -193,10 +193,11 @@ const ReservDetails = (props) => {
                         <button onClick={handleNextGroup}>&raquo;</button>
                     )}
                 </div>)}
-
             {selectedSection === "consultant" && consultantList && consultantList.map((reservation, index) => (
-                <ReservesViewer reservation={reservation} index={index} handleCancelClick={handleCancelClick} modifyLink={modifyLink}/>
+                <ReservesViewer reservation={reservation} index={index} selectedSection={selectedSection}
+                                handleCancelClick={handleCancelClick} modifyLink={modifyLink}/>
             ))}
+
             {selectedSection === "jobConsult" && (
                 <div className="pagination">
                     {(jobConsultStartPage > 1) && (
@@ -220,10 +221,11 @@ const ReservDetails = (props) => {
                     )}
                 </div>
             )}
-
             {selectedSection === "jobConsult" && jobConsultList && jobConsultList.map((reservation, index) => (
-                <ReservesViewer reservation={reservation} index={index} handleCancelClick={handleCancelClick} modifyLink={modifyLink}/>
+                <ReservesViewer reservation={reservation} index={index} selectedSection={selectedSection}
+                                handleCancelClick={handleCancelClick} modifyLink={modifyLink}/>
             ))}
+
             {selectedSection === "rental" && (
                 <div className="pagination">
                     {(rentalStartPage > 1) && (
@@ -248,7 +250,8 @@ const ReservDetails = (props) => {
                 </div>
             )}
             {selectedSection === "rental" && rentalList && rentalList.map((reservation, index) => (
-                <ReservesViewer reservation={reservation} index={index} handleCancelClick={handleCancelClick} modifyLink={modifyLink}/>
+                <ReservesViewer reservation={reservation} index={index} selectedSection={selectedSection} handleCancelClick={handleCancelClick}
+                                modifyLink={modifyLink}/>
             ))}
 
             {showDeleteModal && (
@@ -264,7 +267,7 @@ const ReservDetails = (props) => {
     );
 };
 
-const ReservesViewer = ({reservation, index, handleCancelClick, modifyLink}) => {
+const ReservesViewer = ({reservation, index, handleCancelClick, modifyLink, selectedSection}) => {
 
     // 날짜와 시간 형식을 변환하는 함수
     const formatDate = (dateString) => {
@@ -277,67 +280,99 @@ const ReservesViewer = ({reservation, index, handleCancelClick, modifyLink}) => 
         return date.toLocaleTimeString(); // 형식을 원하는 대로 변경할 수 있습니다.
     }
 
+    console.log(reservation);
+    console.log(selectedSection);
+
     return (
-    <div className="pageInfo" key={index}>
-        <div className="reservContainer">
-            <div className="reservHeader">
-                <div className="reservTitle">
-                    {reservation.place || ""}
+        <div className="pageInfo" key={index}>
+            <div className="reservContainer">
+                <div className="reservHeader">
+                    <div className="reservTitle">
+                        {reservation.place || ""}
+                    </div>
+
+                    <div className="reservDate">
+                        {selectedSection === "rental" &&
+                            <>
+                                <div className="startDate">
+                                    {formatDate(reservation.startDate) || ""}
+                                </div>
+                                <p>~</p>
+                                <div className="endDate">
+                                    {formatDate(reservation.endDate) || ""}
+                                </div>
+                            </>
+                        }
+                        {selectedSection === "consultant" &&
+                            <>
+                                <div className="startDate">
+                                    {formatDate(reservation.appDate) || ""}
+                                </div>
+                                <p>(</p>
+                                <div className="endDate">
+                                    {formatTime(reservation.appDate) || ""}
+                                </div>
+                                <p>)</p>
+                            </>
+                        }
+                        {selectedSection === "jobConsult" &&
+                            <>
+                            <div className="startDate">
+                                    {formatDate(reservation.startDate) || ""}
+                                </div>
+                                <p>~</p>
+                                <div className="endDate">
+                                    {formatDate(reservation.endDate) || ""}
+                                </div>
+                            </>
+                        }
+                    </div>
                 </div>
-                <div className="reservDate">
-                    <div className="startDate">
-                        {formatDate(reservation.startDate) || ""}
+                <div className="detailContent">
+                    <img className="reservImg" src={img} alt=""/>
+                    <div className="reservTime">
+                        <div className="startDate">
+                            {formatTime(reservation.startDate) || ""}
+                        </div>
+                        <p>~</p>
+                        <div className="endDate">
+                            {formatTime(reservation.endDate) || ""}
+                        </div>
                     </div>
-                    <p>~</p>
-                    <div className="endDate">
-                        {formatDate(reservation.endDate) || ""}
-                    </div>
-                </div>
-            </div>
-            <div className="detailContent">
-                <img className="reservImg" src={img} alt=""/>
-                <div className="reservTime">
-                    <div className="startDate">
-                        {formatTime(reservation.startDate) || ""}
-                    </div>
-                    <p>~</p>
-                    <div className="endDate">
-                        {formatTime(reservation.endDate) || ""}
-                    </div>
-                </div>
-                {(reservation.state === "RESERVE") &&
-                    <div className="RESERVE">
-                        예약완료
-                    </div>
-                }
-                {(reservation.state === "CHECK") &&
-                    <div className="CHECK">
-                        검토 중
-                    </div>
-                }
-                {(reservation.state === "APPROVE") &&
-                    <div className="APPROVE">
-                        승인됨
-                    </div>
-                }
-                {(reservation.state === "DENY") &&
-                    <div className="DENY">
-                        거절됨
-                    </div>
-                }
-                {(reservation.state === "CANCEL") &&
-                    <div className="CANCEL">
+                    {(reservation.state === "RESERVE") &&
+                        <div className="RESERVE">
+                            예약완료
+                        </div>
+                    }
+                    {(reservation.state === "CHECK") &&
+                        <div className="CHECK">
+                            검토 중
+                        </div>
+                    }
+                    {(reservation.state === "APPROVE") &&
+                        <div className="APPROVE">
+                            승인됨
+                        </div>
+                    }
+                    {(reservation.state === "DENY") &&
+                        <div className="DENY">
+                            거절됨
+                        </div>
+                    }
+                    {(reservation.state === "CANCEL") &&
+                        <div className="CANCEL">
+                            예약취소
+                        </div>
+                    }
+                    <button type="button" className="cancelButton"
+                            onClick={() => handleCancelClick(reservation.num)}>
                         예약취소
-                    </div>
-                }
-                <button type="button" className="cancelButton"
-                        onClick={() => handleCancelClick(reservation.num)}>
-                    예약취소
-                </button>
-                <Button text="예약수정" onClick={() => modifyLink(index)}/>
+                    </button>
+                    <Button text="예약수정" onClick={() => modifyLink(index)}/>
+                </div>
             </div>
         </div>
-    </div>
-)};
+    )
+};
 
 export default ReservDetails;

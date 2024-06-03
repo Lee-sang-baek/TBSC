@@ -77,7 +77,7 @@ public class ReserveTest {
             consultant.setManagement("management" + i);
             consultant.setCategory("category" + i);
             consultant.setAppDate(LocalDateTime.now());
-            consultant.setGender(i % 2 == 0 ? "남성" : "여성");
+            consultant.setGender(i % 2 == 0 ? "Male" : "Female");
             consultant.setEmployees(i * 10);
             consultant.setMember(member);
             consultant.setOwnerShip("ownership" + i);
@@ -192,7 +192,7 @@ public class ReserveTest {
             Rental rental = new Rental();
             rental.setMember(member);
             rental.setStartDate(LocalDateTime.now());
-            rental.setGender(i % 2 == 0 ? "남성" : "여성");
+            rental.setGender(i % 2 == 0 ? "Male" : "Female");
             rental.setState(rt);
             rental.setEndDate(LocalDateTime.now());
             rental.setCompName("comp" + i);
