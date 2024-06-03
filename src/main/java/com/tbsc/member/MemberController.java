@@ -121,7 +121,7 @@ public class MemberController {
     public ResponseEntity<String> admin() {
         Member member = new Member();
         member.setId("admin");
-        member.setPassword(passwordEncoder.encode("12345"));
+        member.setPassword(passwordEncoder.encode("1"));
         member.setName("admin");
         member.setAddress("admin's ");
         member.setDetailAddress("home");
@@ -143,6 +143,7 @@ public class MemberController {
     public ResponseEntity<String> memberDelete(@RequestBody MemberDto memberDto) {
 
         String enteredPassword = memberDto.getPassword();
+        String enteredPasswordCheck = memberDto.getConfirmPassword();
 
         // 암호화된 패스워드
         String storedPasswordHash = memberService.getPassword(memberDto.getId());
@@ -151,8 +152,10 @@ public class MemberController {
         boolean passwordMatches = passwordEncoder.matches(enteredPassword, storedPasswordHash);
 
         if (passwordMatches) {
+            System.out.println("1");
             return memberService.memberDelete(memberDto, passwordEncoder);
         } else {
+            System.out.println("2");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
     }

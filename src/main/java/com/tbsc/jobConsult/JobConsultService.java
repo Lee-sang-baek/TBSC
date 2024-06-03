@@ -11,6 +11,8 @@ import com.tbsc.jobConsult.languages.LanguagesRepository;
 import com.tbsc.member.Member;
 import com.tbsc.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -69,5 +71,9 @@ public class JobConsultService {
 
     public List<JobConsult> selectJobConsult(String memberId) {
         return jobConsultRepository.findByMemberId(memberId);
+    }
+
+    public Page<JobConsult> getJobConsultList(String memberId, Pageable pageable) {
+        return jobConsultRepository.findByMemberId(memberId, pageable);
     }
 }

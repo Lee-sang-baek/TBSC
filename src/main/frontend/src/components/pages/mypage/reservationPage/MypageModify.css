@@ -1,9 +1,10 @@
-.infoModifyPage {
-    width: 100%;
-    background-color: #ffffff;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    margin: 100px;
+.ModifyPage-compo {
+    width: 87%;
+    margin: 100px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 
     .modiPageInfo {
         display: flex;

@@ -166,7 +166,7 @@ const ModiInfo = (props) => {
         setMemberInfo({...memberInfo, birth: currentValue});
     };
 
-    const handleChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChangeName = (e) => {
         const currentValue = e.target.value;
 
         console.log(currentValue);
@@ -268,7 +268,7 @@ const ModiInfo = (props) => {
     }
 
     return (
-        <div className="infoModifyPage">
+        <div className="ModifyPage-compo">
             <h1 className="pageTitle">개인 정보 수정</h1>
 
             <div className="modiPageInfo">

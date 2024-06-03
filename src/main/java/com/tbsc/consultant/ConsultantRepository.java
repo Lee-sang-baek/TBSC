@@ -16,4 +16,6 @@ public interface ConsultantRepository extends JpaRepository<Consultant, Integer>
     Page<Consultant> findAll(Pageable pageable);
 
     Page<Consultant> findByState(ReserveType state, Pageable pageable);
+
+    Page<Consultant> findByMemberId(String memberId, Pageable pageable);
 }

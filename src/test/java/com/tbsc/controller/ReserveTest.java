@@ -25,10 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @SpringBootTest
 public class ReserveTest {
@@ -53,10 +50,13 @@ public class ReserveTest {
 
     @Test
     void reserve() {
+        Optional<Member> op = mr.findById("admin");
+        Member member = op.orElse(mr.findAll().get(0));
         for (int i = 1; i <= 10; i++) {
-            List<Member> list = mr.findAll();
-            Collections.shuffle(list);
-            Member member = list.get(0);
+//            List<Member> list = mr.findAll();
+//            Collections.shuffle(list);
+//            Member member = list.get(0);
+
             ReserveType rt;
             double r = Math.random();
             if (r < 0.25) {
@@ -77,7 +77,7 @@ public class ReserveTest {
             consultant.setManagement("management" + i);
             consultant.setCategory("category" + i);
             consultant.setAppDate(LocalDateTime.now());
-            consultant.setGender(i % 2 == 0 ? "남성" : "여성");
+            consultant.setGender(i % 2 == 0 ? "Male" : "Female");
             consultant.setEmployees(i * 10);
             consultant.setMember(member);
             consultant.setOwnerShip("ownership" + i);
@@ -88,9 +88,9 @@ public class ReserveTest {
         }
 
         for (int i = 1; i <= 20; i++) {
-            List<Member> list = mr.findAll();
-            Collections.shuffle(list);
-            Member member = list.get(0);
+//            List<Member> list = mr.findAll();
+//            Collections.shuffle(list);
+//            Member member = list.get(0);
             ReserveType rt;
             double r = Math.random();
             if (r < 0.25) {
@@ -174,9 +174,9 @@ public class ReserveTest {
         }
 
         for (int i = 1; i <= 30; i++) {
-            List<Member> list = mr.findAll();
-            Collections.shuffle(list);
-            Member member = list.get(0);
+//            List<Member> list = mr.findAll();
+//            Collections.shuffle(list);
+//            Member member = list.get(0);
             ReserveType rt;
             double r = Math.random();
             if (r < 0.25) {
@@ -192,7 +192,7 @@ public class ReserveTest {
             Rental rental = new Rental();
             rental.setMember(member);
             rental.setStartDate(LocalDateTime.now());
-            rental.setGender(i % 2 == 0 ? "남성" : "여성");
+            rental.setGender(i % 2 == 0 ? "Male" : "Female");
             rental.setState(rt);
             rental.setEndDate(LocalDateTime.now());
             rental.setCompName("comp" + i);

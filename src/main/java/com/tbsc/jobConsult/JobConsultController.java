@@ -1,6 +1,10 @@
 package com.tbsc.jobConsult;
 
+import com.tbsc.rental.Rental;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,5 +26,12 @@ public class JobConsultController {
     public ResponseEntity<List<JobConsult>> getListJobConsult(@RequestParam("memberId") String memberId) {
         List<JobConsult> jobConsultList = jobConsultService.selectJobConsult(memberId);
         return ResponseEntity.ok(jobConsultList);
+    }
+
+    @GetMapping("/jobConsult/member/pageable/{memberId}")
+    public ResponseEntity<Page<JobConsult>> getJobConsultsByMemberId(@PathVariable("memberId") String memberId, @RequestParam("page") Integer page) {
+        Pageable pageable = PageRequest.of(page, 5);
+        Page<JobConsult> jobConsults = jobConsultService.getJobConsultList(memberId, pageable);
+        return ResponseEntity.ok().body(jobConsults);
     }
 }

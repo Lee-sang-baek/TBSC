@@ -13,6 +13,8 @@ public interface RentalRepository extends JpaRepository<Rental, Integer> {
 
     List<Rental> findByMemberId(String memberId);
 
+    Page<Rental> findByMemberId(String memberId, Pageable pageable);
+
     Optional<Rental> findByNum(Long num);
 
     Page<Rental> findAll(Pageable pageable);

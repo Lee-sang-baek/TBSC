@@ -208,7 +208,7 @@ const ModiCorp = (props) => {
     }
 
     return (
-        <div className="modiCorp-compo">
+        <div className="ModiCorp-compo">
             <h1 className="pageTitle">기업정보 수정/등록</h1>
 
             <div className="pageInfo">

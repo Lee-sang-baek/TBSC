@@ -12,6 +12,8 @@ import java.util.Optional;
 public interface JobConsultRepository extends JpaRepository<JobConsult, Long> {
     List<JobConsult> findByMemberId(String memberId);
 
+    Page<JobConsult> findByMemberId(String memberId, Pageable pageable);
+
     Optional<JobConsult> findByNum(long num);
 
     Page<JobConsult> findAll(Pageable pageable);

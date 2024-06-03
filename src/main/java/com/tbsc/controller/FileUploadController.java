@@ -22,6 +22,12 @@ public class FileUploadController {
     @PostMapping("/upload")
     public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file) {
         try {
+            // uploadDir에 해당되는 디렉터리가 없으면, uploadDir에 포함되는 전체 디렉터리 생성
+            File dir = new File(uploadDir);
+            if (dir.exists() == false) {
+                dir.mkdirs();
+            }
+
             // 파일이 저장되는 경로에 파일의 오리지널 이름을 붙여 전체 경로를 생성
             String filePath = uploadDir + File.separator + file.getOriginalFilename();
             File dest = new File(filePath);
@@ -41,10 +47,17 @@ public class FileUploadController {
     @PostMapping("/upload/registCorp")
     public ResponseEntity<String> uploadRegistFile(@RequestParam("file") MultipartFile file) {
         try {
+            // uploadDir에 해당되는 디렉터리가 없으면, uploadDir에 포함되는 전체 디렉터리 생성
+            File dir = new File(registUploadDir);
+            if (dir.exists() == false) {
+                dir.mkdirs();
+            }
+
             // 파일이 저장되는 경로에 파일의 오리지널 이름을 붙여 전체 경로를 생성
             String filePath = registUploadDir + File.separator + file.getOriginalFilename();
             File dest = new File(filePath);
             file.transferTo(dest);
+
 
             // 데이터베이스에 저장할 때는 파일명만 저장
             String fileNameOnly = file.getOriginalFilename();

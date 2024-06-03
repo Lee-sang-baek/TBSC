@@ -31,24 +31,24 @@ public class JobConsult {
 
     private LocalDateTime date;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "education_num", referencedColumnName = "num")
     private Education education;
 
-    @OneToMany(mappedBy = "jobConsult", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "jobConsult", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Experiences> experiences;
 
-    @OneToMany(mappedBy = "jobConsult", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "jobConsult", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Certifications> certifications;
 
-    @OneToMany(mappedBy = "jobConsult", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "jobConsult", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Languages> languages;
 
     private String other;
 
     private String selfIntroduction;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "member", referencedColumnName = "id", updatable = false)
     private Member member;
 

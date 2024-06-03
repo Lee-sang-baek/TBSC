@@ -30,7 +30,7 @@ public class RegistComp {
     @Column(nullable = false)
     private LocalDateTime date = LocalDateTime.now();
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition="LONGTEXT")
     private String content;
 
     @OneToOne

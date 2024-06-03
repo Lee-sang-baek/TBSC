@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from "react";
 import "./DeleteInfo.css";
 import Button from "../../../baseComponents/Button";
-import Input from "../../../baseComponents/Input";
 import axios from "axios";
 
 const DeleteInfo = (props) => {
-    const [location, setLocation] = React.useState({ ...window.location });
+    const [location, setLocation] = React.useState({...window.location});
 
     const memberId = sessionStorage.getItem("id");
 
@@ -35,16 +34,15 @@ const DeleteInfo = (props) => {
     useEffect(() => {
         console.log("Updated memberInfo:", memberInfo);
         // memberInfo가 업데이트 되면 여기에서 처리하면 됩니다.
-        if (memberInfo === '') {
-            navigate("/home");
+        if (!memberInfo) {
             axios.get("/logout")
                 .then(response => {
                     console.log(response.data);
                 });
+            alert("계정 탈퇴처리 되었습니다.")
             sessionStorage.removeItem("id");
             sessionStorage.removeItem("state");
-            window.location.reload();
-            alert("삭제 완료")
+            window.location.href = "/";
         }
     }, [memberInfo]); // memberInfo가 변경될 때마다 실행됩니다.
 
@@ -58,11 +56,6 @@ const DeleteInfo = (props) => {
 
             });
     }
-
-    const navigate = (path) => {
-        window.history.pushState({}, "", path);
-        setLocation({ ...window.location });
-    };
 
     const handleDelete = () => {
         const missingFields = [];
@@ -85,20 +78,14 @@ const DeleteInfo = (props) => {
             axios.post("/member/memberdelete", memberInfo)
                 .then(response => {
                     console.log(memberInfo);
-                    alert(response.data);
 
-                    if (response.status === 200) {
-                        console.log(response.data);
-                        // alert("삭제 완료")
-                        // window.location.reload(); //삭제 후 페이지가 새로고침 되며 빈 정보 가져와서 else 문으로 빠짐
-                    } else {
-                        alert("알 수 없는 오류")
-                    }
+                    window.location.reload();
                 })
                 .catch(error => {
                     alert(error.response.data);
                     console.error(error); // 오류 발생 시 처리
                     // 오류 발생에 대한 추가적인 작업을 수행할 수 있습니다.
+                    window.location.reload();
                 });
         } else {
             if (!passwordMatch) {
@@ -132,35 +119,77 @@ const DeleteInfo = (props) => {
     }, [password, passwordCheck]);
 
     return (
-        <form>
-            <h1 className="pageTitle">개인 정보 수정</h1>
+        <div className="DeleteInfo-compo">
+            <h1 className="DeleteTitle">계정 탈퇴</h1>
 
-            <div className="pageInfo">
-                <div className="modiInfo">
-                    <div className="modiInfoHeader">
-                        <h3 className="idText">아이디</h3>
-                        <Input type="text" className="idTextBox" value={memberInfo.id} readOnly/>
-                        <h3 className="emailText">이메일</h3>
-                        <Input type="text" className="emailTextBox" value={memberInfo.email} readOnly/>
-                        <h3 className="passwordText">비밀번호</h3>
-                        <Input type="password" className="passwordTextBox" value={password}
-                               onChange={handleChangePassword}/>
-                        <h3 className="passcheckText">
-                            비밀번호 확인
-                            <p className={checkSignal ? "match" : "unmatch"}>
-                                비밀번호 불일치
-                            </p>
-                        </h3>
-                        <Input type="password" className="checkTextBox" value={passwordCheck}
-                               onChange={handleChangePasswordCh}/>
+            <div className="DeleteInfo">
+                <div className="deleteInfoDetails">
+                    <div className="wave-group">
+                        <input required type="text" className="deleteInfoInput" value={memberInfo.id}/>
+                        <span className="bar"></span>
+                        <label className="label">
+                            <span className="label-char" style={{'--index': 0}}>I</span>
+                            <span className="label-char" style={{'--index': 1}}>D</span>
+                        </label>
                     </div>
-                    <div className="button">
-                        <Button onClick={handleDelete} text="삭제"/>
+
+                    <div className="wave-group">
+                        <input required type="text" className="deleteInfoInput" value={memberInfo.email}/>
+                        <span className="bar"></span>
+                        <label className="label">
+                            <span className="label-char" style={{'--index': 0}}>E</span>
+                            <span className="label-char" style={{'--index': 1}}>m</span>
+                            <span className="label-char" style={{'--index': 2}}>a</span>
+                            <span className="label-char" style={{'--index': 3}}>i</span>
+                            <span className="label-char" style={{'--index': 4}}>l</span>
+                        </label>
+                    </div>
+
+                    <div className="wave-group">
+                        <input required type="password" className="deleteInfoInput" value={password}
+                               onChange={handleChangePassword}/>
+                        <span className="bar"></span>
+                        <label className="label">
+                            <span className="label-char" style={{'--index': 0}}>P</span>
+                            <span className="label-char" style={{'--index': 1}}>a</span>
+                            <span className="label-char" style={{'--index': 2}}>s</span>
+                            <span className="label-char" style={{'--index': 3}}>s</span>
+                            <span className="label-char" style={{'--index': 4}}>w</span>
+                            <span className="label-char" style={{'--index': 5}}>o</span>
+                            <span className="label-char" style={{'--index': 6}}>r</span>
+                            <span className="label-char" style={{'--index': 7}}>d</span>
+                        </label>
+                    </div>
+
+                    <div className="wave-group">
+                        <input required type="password" className="deleteInfoInput" value={passwordCheck}
+                               onChange={handleChangePasswordCh}/>
+                        <span className="bar"></span>
+                        <label className="label">
+                            <span className="label-char" style={{'--index': 0}}>P</span>
+                            <span className="label-char" style={{'--index': 1}}>a</span>
+                            <span className="label-char" style={{'--index': 2}}>s</span>
+                            <span className="label-char" style={{'--index': 3}}>s</span>
+                            <span className="label-char" style={{'--index': 4}}>w</span>
+                            <span className="label-char" style={{'--index': 5}}>o</span>
+                            <span className="label-char" style={{'--index': 6}}>r</span>
+                            <span className="label-char" style={{'--index': 7}}>d</span>
+                            <span className="label-char" style={{'--index': 8}}>C</span>
+                            <span className="label-char" style={{'--index': 8}}>h</span>
+                            <span className="label-char" style={{'--index': 8}}>e</span>
+                            <span className="label-char" style={{'--index': 8}}>c</span>
+                            <span className="label-char" style={{'--index': 8}}>k</span>
+                        </label>
+                        <p className={checkSignal ? "match" : "unmatch"}>
+                            비밀번호 불일치
+                        </p>
                     </div>
                 </div>
+                <div className="button">
+                    <Button onClick={handleDelete} text="삭제"/>
+                </div>
             </div>
-
-        </form>
+        </div>
     );
 };
 
