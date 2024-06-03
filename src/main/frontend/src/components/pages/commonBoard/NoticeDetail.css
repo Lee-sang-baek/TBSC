@@ -57,6 +57,8 @@
     line-height: 1.6;
     margin-bottom: 20px;
     min-height: 200px;
+    display: flex;
+    justify-content: center;
 }
 
 .NoticeDetail-compo .notice-detail .editButton {

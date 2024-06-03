@@ -22,8 +22,7 @@ import java.util.regex.Pattern;
 public class MemberService implements UserDetailsService {
 
     private final MemberRepository memberRepository;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+
 
 
     @Autowired
