@@ -2,15 +2,18 @@ package com.tbsc.member;
 
 import jakarta.persistence.criteria.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,8 +25,9 @@ import java.util.regex.Pattern;
 public class MemberService implements UserDetailsService {
 
     private final MemberRepository memberRepository;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+
+
+
 
 
     @Autowired
@@ -259,7 +263,25 @@ public class MemberService implements UserDetailsService {
     }
 
 
+    //비빔ㄹ번호
+    public boolean verifyUserDetails(String id, String name, String email) {
+        Optional<Member> member = memberRepository.findByIdAndNameAndEmail(id, name, email);
+        return member.isPresent();
+    }
 
+    public boolean verifyUserDetails(String id, String name) {
+        Optional<Member> member = memberRepository.findByIdAndName(id, name);
+        return member.isPresent();
+    }
+
+    public void resetPassword(String id, String newPassword, PasswordEncoder passwordEncoder) {
+        Optional<Member> optionalMember = memberRepository.findById(id);
+        if (optionalMember.isPresent()) {
+            Member member = optionalMember.get();
+            member.setPassword(passwordEncoder.encode(newPassword));
+            memberRepository.save(member);
+        }
+    }
 }
 
 
