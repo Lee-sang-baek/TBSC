@@ -1,10 +1,8 @@
 package com.tbsc.member;
 
-import jakarta.persistence.criteria.*;
+import jakarta.persistence.criteria.Predicate;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
@@ -15,9 +13,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 import java.util.regex.Pattern;
 
 @Service
@@ -250,7 +248,6 @@ public class MemberService implements UserDetailsService {
         return member.map(Member::getId).orElse(null);
     }
 
-
     public ResponseEntity<String> adminMemberRemove(String memberId) {
         memberRepository.deleteById(memberId);
         return ResponseEntity.ok(memberId + " 회원이 강제 탈퇴되었습니다.");
@@ -267,6 +264,25 @@ public class MemberService implements UserDetailsService {
             return ResponseEntity.ok(memberDto.getId() + " 회원의 정보가 수정되었습니다.");
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("회원이 존재하지 않습니다.");
+    }
+
+    public boolean verifyUserDetails(String id, String name, String email) {
+        Optional<Member> member = memberRepository.findByIdAndNameAndEmail(id, name, email);
+        return member.isPresent();
+    }
+
+    public boolean verifyUserDetails(String id, String name) {
+        Optional<Member> member = memberRepository.findByIdAndName(id, name);
+        return member.isPresent();
+    }
+
+    public void resetPassword(String id, String newPassword, PasswordEncoder passwordEncoder) {
+        Optional<Member> optionalMember = memberRepository.findById(id);
+        if (optionalMember.isPresent()) {
+            Member member = optionalMember.get();
+            member.setPassword(passwordEncoder.encode(newPassword));
+            memberRepository.save(member);
+        }
     }
 }
 

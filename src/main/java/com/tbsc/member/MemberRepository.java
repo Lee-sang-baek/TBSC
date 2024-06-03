@@ -19,6 +19,8 @@ public interface MemberRepository extends JpaRepository<Member, String> {
 
     Optional<Member> findByIdAndPassword(String id, String hashedPassword);
 
+    Optional<Member> findByIdAndNameAndEmail(String id, String name, String email);
+
 
 
 
@@ -35,5 +37,5 @@ public interface MemberRepository extends JpaRepository<Member, String> {
     Page<Member> findAll(Specification<Member> spec, Pageable pageable);
 
 
-
+    Optional<Member> findByIdAndName(String id, String name);
 }
