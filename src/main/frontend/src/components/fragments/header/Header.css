@@ -100,16 +100,18 @@
 }
 
 .Header-compo .gnb_1dul {
+    width: 100%;
     height: 100%;
     display: flex;
-    align-items: center;
     list-style: none;
-    gap: 40px;
-    position: absolute;
+    /* gap: 40px; */
+    /* position: absolute; */
+    align-items: center;
+    justify-content: center;
 }
 
 .Header-compo .gnb_1dli {
-    width: 200px;
+    width: 13%;
 }
 
 .Header-compo .gnb_1da {
@@ -145,11 +147,11 @@
     width: 100%;
     margin: 0 auto;
     list-style: none;
-    gap: 40px;
+    /* gap: 40px; */
 }
 
 .Header-compo .gnb_2dcol {
-    width: 200px;
+    width: 13%;
     position: relative;
     text-align: center;
 }
@@ -180,13 +182,14 @@
 }
 
 .Header-compo .gnb_2dli {
+    height: 40px;
     margin: 0;
     padding: 0;
 }
 
 .Header-compo .gnb_2da {
-    width: 200px;
-    display: block;
+    width: 13%;
+    
     padding: 8px 15px;
     text-decoration: none;
     font-weight: bold;
@@ -290,8 +293,7 @@
 }
 
 
-
-@media (max-width: 1600px) {
+@media (max-width: 1200px) {
     .Header-compo .login-dropdown {
         right: 30px;
     }
@@ -373,6 +375,14 @@
         
     }
 }
+
+@media (max-width: 500px) {
+    .Header-compo .logo-img {
+        width: 180px;
+        right: 20px;
+    }
+}
+
 
 /*햄버거 메뉴*/
 .burger {

@@ -101,6 +101,11 @@ function MainHomepage() {
                             <div className='content-box'>. . .</div>
                         </div>
                     }
+                    {(!modifiedImageList || modifiedImageList.length < 1) &&
+                        <div className='image-box'>
+                            <div className='content-box'>. . .</div>
+                        </div>
+                    }
                 </Slider>
             </div>
             <NewsBanner />

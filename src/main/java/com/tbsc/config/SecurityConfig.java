@@ -1,6 +1,7 @@
 package com.tbsc.config;
 
 import com.tbsc.member.MemberService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,10 +17,10 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class SecurityConfig {
 
-    @Autowired
-    MemberService memberService;
+    private final MemberService memberService;
 
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http

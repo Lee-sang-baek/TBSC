@@ -2,8 +2,9 @@
     display: flex;
     bottom: 0;
     left: 0;
-    height: 150px;
+    height: 100%;
     width: 100%;
+    padding-bottom: 30px;
     background-color: rgb(255, 255, 255);
     
     .list{
@@ -13,7 +14,7 @@
     .list ul{
         text-align: right;
         list-style: none;
-        display:flex; /*가로로 정렬*/
+        display: flex; /*가로로 정렬*/
     }
     
     .list ul li{
@@ -45,14 +46,14 @@
 
     #ft_copy{
         margin: 0 20px;
-        text-wrap: nowrap;
+        text-wrap: wrap;
         font-weight: 600;
     }
 
     .ft-info ul{
         list-style: none;
         padding-left: 20px;
-        text-wrap: nowrap;
+        text-wrap: wrap;
         font-weight: 600;
     }
 
@@ -83,6 +84,14 @@
 
         .related-sites button {
             margin: 20px 30px;
+        }
+
+        .left-box {
+            width: 70%;
+        }
+        
+        .right-box {
+            width: 30%;
         }
     }
 }

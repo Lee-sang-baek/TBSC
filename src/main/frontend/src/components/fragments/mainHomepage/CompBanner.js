@@ -6,11 +6,11 @@ function CompBanner() {
 
     return (
         <div class="CompBanner-compo">
-            <div className='shape'></div>
+            <div className='shape'>
             <div className='content'>
                 content
             </div>
-            
+            </div>
         </div>
     );
 }

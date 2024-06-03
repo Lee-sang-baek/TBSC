@@ -76,6 +76,7 @@ function SideBanner() {
     return (
 
     <div ref={containerRef} style={{ display: 'block', position: 'relative', height: 'fit-content', margin: '20px' }}>
+        {(modifiedImageList && modifiedImageList.length >= 1) && 
         <div className="SideBanner-compo" style={bannerStyle}>
             <Slider {...settings} className="autoplay">
                 {modifiedImageList && modifiedImageList.map((item, index) => (
@@ -84,13 +85,9 @@ function SideBanner() {
                         <div className='content-box'>{item.content}</div>
                     </div>
                 ))}
-                {(!modifiedImageList || modifiedImageList.length < 1) && 
-                    <div className='image-box'>
-                        <div className='content-box'>. . .</div>
-                    </div>
-                }
             </Slider>
         </div>
+        }
     </div>
     );
 }

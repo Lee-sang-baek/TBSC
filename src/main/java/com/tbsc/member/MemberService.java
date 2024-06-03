@@ -1,8 +1,10 @@
 package com.tbsc.member;
 
 import jakarta.persistence.criteria.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
@@ -19,20 +21,10 @@ import java.util.*;
 import java.util.regex.Pattern;
 
 @Service
+@RequiredArgsConstructor
 public class MemberService implements UserDetailsService {
 
     private final MemberRepository memberRepository;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
-
-    @Autowired
-    public MemberService(MemberRepository memberRepository) {
-        this.memberRepository = memberRepository;
-
-
-    }
-
 
     // 비밀번호 일치 확인 메서드
     public boolean isPasswordMatch(String password, String confirmPassword) {
@@ -259,7 +251,23 @@ public class MemberService implements UserDetailsService {
     }
 
 
+    public ResponseEntity<String> adminMemberRemove(String memberId) {
+        memberRepository.deleteById(memberId);
+        return ResponseEntity.ok(memberId + " 회원이 강제 탈퇴되었습니다.");
+    }
 
+    public ResponseEntity<String> adminMemberUpdate(String memberId, MemberDto memberDto) {
+        Optional<Member> optionalMember = memberRepository.findById(memberId);
+        if (optionalMember.isPresent()) {
+            Member member = optionalMember.get();
+            memberDto.setId(memberId);
+            memberDto.setPassword(member.getPassword());
+            member.bindElseIdAndPassword(memberDto);
+            memberRepository.save(member);
+            return ResponseEntity.ok(memberDto.getId() + " 회원의 정보가 수정되었습니다.");
+        }
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("회원이 존재하지 않습니다.");
+    }
 }
 
 

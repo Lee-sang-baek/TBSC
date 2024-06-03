@@ -1,7 +1,7 @@
 .NewsPicture-compo {
     width: 50%;
-    height: 700px;
-    margin: 30px 2.5%;
+    aspect-ratio: 1 / 0.8;
+    margin: 2.5%;
     background-color: #e4ffe3;
     border: 1px solid #ccc;
     box-shadow: 15px 15px 30px #bebebe,
@@ -11,7 +11,8 @@
     .shape {
         position: absolute;
         width: 37.5%;
-        height: 700px;
+        
+        aspect-ratio: 1 / 0.958;
         left: 9.9%;
         border-top-left-radius: 100%;
         border-bottom-left-radius: 100%;

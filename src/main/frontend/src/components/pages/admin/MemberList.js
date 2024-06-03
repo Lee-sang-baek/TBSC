@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import MemberEditModal from "./MemberEditModal";
 import "./MemberList.css";
 
 const MemberList = () => {
@@ -7,7 +8,7 @@ const MemberList = () => {
         if (sessionStorage.getItem("state") !== "ADMIN") {
             window.location.href = "/";
         }
-    }, [])
+    }, []);
     const [page, setPage] = useState(0);
     const [size, setSize] = useState(10);
     const [memberList, setMemberList] = useState([]);
@@ -15,6 +16,7 @@ const MemberList = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [category, setCategory] = useState("all");
     const [total, setTotal] = useState(0);
+    const [selectedMember, setSelectedMember] = useState(null);
 
     useEffect(() => {
         fetchMemberList();
@@ -25,7 +27,7 @@ const MemberList = () => {
             .then(response => {
                 setMemberList(response.data.content);
                 setTotalPages(response.data.totalPages);
-                setTotal(response.data.totalElements)
+                setTotal(response.data.totalElements);
             })
             .catch(error => {
                 console.error("회원 목록을 가져오는 중 에러 발생:", error);
@@ -58,6 +60,23 @@ const MemberList = () => {
         }
     };
 
+    const handleEditClick = (member) => {
+        setSelectedMember(member);
+    };
+
+    const handleModalClose = () => {
+        setSelectedMember(null);
+        fetchMemberList();
+    };
+
+    const handleUpdate = () => {
+        fetchMemberList();
+    };
+
+    const handleDelete = () => {
+        fetchMemberList();
+    };
+
     if (sessionStorage.getItem("state") !== "ADMIN") {
         return null;
     }
@@ -72,7 +91,7 @@ const MemberList = () => {
                     <option value="name">이름</option>
                     <option value="email">이메일</option>
                     <option value="address">주소</option>
-                    <option value="detailAddress">주소</option>
+                    <option value="detailAddress">상세주소</option>
                     <option value="phoneNum">전화번호</option>
                     <option value="compName">기업명</option>
                     <option value="businessNum">기업번호</option>
@@ -138,13 +157,21 @@ const MemberList = () => {
                                 {item.state === "NORMAL" && "일반회원"}
                             </td>
                             <td>
-                                <a href="#">수정</a>
+                                <button onClick={() => handleEditClick(item)}>수정</button>
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
             <h4>총 {total}명의 회원 조회됨</h4>
+            {selectedMember && (
+                <MemberEditModal
+                    member={selectedMember}
+                    onClose={handleModalClose}
+                    onUpdate={handleUpdate}
+                    onDelete={handleDelete}
+                />
+            )}
         </div>
     );
 };

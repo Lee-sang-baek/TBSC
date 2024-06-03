@@ -6,9 +6,10 @@ function NewsPicture() {
 
     return (
         <div class="NewsPicture-compo">
-            <div className='shape'></div>
+            <div className='shape'>
             <div className='content'>
                 content
+            </div>
             </div>
         </div>
     );

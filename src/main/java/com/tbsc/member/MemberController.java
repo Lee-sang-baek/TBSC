@@ -157,6 +157,17 @@ public class MemberController {
         }
     }
 
+    @DeleteMapping("/admin/member/{memberId}")
+    public ResponseEntity<String> adminMemberDelete(@PathVariable("memberId") String memberId) {
+        return memberService.adminMemberRemove(memberId);
+    }
+
+    @PutMapping("/admin/member/{memberId}")
+    public ResponseEntity<String> adminMemberModify(@PathVariable("memberId") String memberId,
+                                                    @RequestBody MemberDto memberDto) {
+        return memberService.adminMemberUpdate(memberId, memberDto);
+    }
+
     //아이디 찾기
     @PostMapping("/member/findId")
     public ResponseEntity<String> findId(@RequestBody Map<String, String> request) {
