@@ -61,6 +61,18 @@
         background: lightgrey;
         box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 50px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 26px -18px inset;
 
+        .reservHeader {
+            .reservTitle {
+                display: flex;
+                flex-direction: column;
+
+
+                text:first-child {
+                    font-weight: bold;
+                }
+            }
+        }
+
         div {
             display: flex;
             align-items: center;
@@ -76,6 +88,11 @@
         }
 
         .detailContent {
+            .consultantTime {
+                display: flex;
+                flex-direction: column;
+            }
+
             .RESERVE {
                 color: #FF8C00;
                 font-weight: bold;

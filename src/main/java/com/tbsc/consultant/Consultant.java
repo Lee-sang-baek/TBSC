@@ -18,7 +18,7 @@ public class Consultant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer num;
+    private Long num;
 
     @ManyToOne
     @JoinColumn(name = "member", referencedColumnName = "id")

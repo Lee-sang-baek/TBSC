@@ -46,6 +46,8 @@ import PressReleaseForm from "./components/pages/pressrelease/PressReleaseForm";
 import PressReleaseEdit from "./components/pages/pressrelease/PressReleaseEdit";
 import PressReleaseDetail from "./components/pages/pressrelease/PressReleaseDetail";
 import ModifyReserv from "./components/pages/mypage/functionPage/ModifyReserv";
+import ModifyConsultant from "./components/pages/mypage/functionPage/ModifyConsultant";
+import ModifyJobConsult from "./components/pages/mypage/functionPage/ModifyJobConsult";
 import JobConsult from "./components/pages/jobConsult/JobConsult";
 import MainHomepage from "./components/fragments/mainHomepage/MainHomepage";
 import Sidebar from "./components/fragments/sidebar/Sidebar";
@@ -170,6 +172,18 @@ function App() {
                         <div className="outter">
                             <Sidebar type="mypage"/>
                             <ModifyReserv />
+                        </div>
+                    } />
+                    <Route path="myPage/modify-consultant/:num" element={
+                        <div className="outter">
+                            <Sidebar type="mypage"/>
+                            <ModifyConsultant />
+                        </div>
+                    } />
+                    <Route path="myPage/modify-jobConsult/:num" element={
+                        <div className="outter">
+                            <Sidebar type="mypage"/>
+                            <ModifyJobConsult />
                         </div>
                     } />
 
