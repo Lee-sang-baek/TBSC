@@ -6,6 +6,7 @@ import loginImage from "../../imgs/login.png";
 import searchImage from "../../imgs/search.png";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
+
 const Header = () => {
     const location = useLocation();
     const [isOpen, setIsOpen] = useState(false);

@@ -209,7 +209,7 @@ public class MemberController {
                 memberService.resetPassword(memberDto.getId(), memberDto.getNewPassword() , passwordEncoder);
                 return ResponseEntity.ok("비밀번호가 재설정되었습니다.");
             }
-    }
+}
 
 
 

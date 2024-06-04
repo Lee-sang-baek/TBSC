@@ -19,7 +19,6 @@
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
         private Integer num;
-
         private String title;
         private String state;
         private Integer view = 0;

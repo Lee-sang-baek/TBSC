@@ -377,12 +377,12 @@ const SignUp = ({isComp}) => {
                     </div>
                 </label>
             </div>
-            
+
             <div className="input-box">
                 <button type="button" onClick={handleIsEmailChange}>{isEmail ? "휴대폰 인증으로 변경" : "이메일 인증으로 변경"}</button>
             </div>
 
-            {isEmail && 
+            {isEmail &&
             <div className="input-box">
                 <label>
                     이메일 인증번호 입력:
@@ -398,7 +398,7 @@ const SignUp = ({isComp}) => {
                     <button onClick={handleEmailCode}>인증하기</button>
                 </div>
             </div>}
-            
+
             {!isEmail &&
             <div className="input-box">
                 <label>
