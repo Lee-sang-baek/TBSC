@@ -38,6 +38,8 @@ const Sidebar = ({ type }) => {
           type: 'list',
           items: [
             { label: '회원 목록', link: "/admin/member-list" },
+            { label: '기업 회원 신청 관리', link: "/admin/member-management" },
+
             { label: '사이트 관리', link: "/admin/site-management" },
             { label: '예약 신청 확인', link: "/admin/reservation-confirmation" },
             { label: '접속 로그 확인', link: "/admin/access-log" },

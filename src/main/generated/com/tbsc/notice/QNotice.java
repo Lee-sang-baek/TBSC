@@ -28,6 +28,8 @@ public class QNotice extends EntityPathBase<Notice> {
 
     public final StringPath fileUrl = createString("fileUrl");
 
+    public final StringPath imageUrl = createString("imageUrl");
+
     public final com.tbsc.member.QMember member;
 
     public final NumberPath<Integer> num = createNumber("num", Integer.class);

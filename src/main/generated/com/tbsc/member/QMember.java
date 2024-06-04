@@ -46,6 +46,8 @@ public class QMember extends EntityPathBase<Member> {
 
     public final ListPath<com.tbsc.jobConsult.JobConsult, com.tbsc.jobConsult.QJobConsult> jobConsults = this.<com.tbsc.jobConsult.JobConsult, com.tbsc.jobConsult.QJobConsult>createList("jobConsults", com.tbsc.jobConsult.JobConsult.class, com.tbsc.jobConsult.QJobConsult.class, PathInits.DIRECT2);
 
+    public final com.tbsc.company.QMemberRequest memberRequest;
+
     public final StringPath name = createString("name");
 
     public final ListPath<com.tbsc.notice.Notice, com.tbsc.notice.QNotice> notices = this.<com.tbsc.notice.Notice, com.tbsc.notice.QNotice>createList("notices", com.tbsc.notice.Notice.class, com.tbsc.notice.QNotice.class, PathInits.DIRECT2);
@@ -86,6 +88,7 @@ public class QMember extends EntityPathBase<Member> {
 
     public QMember(Class<? extends Member> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
+        this.memberRequest = inits.isInitialized("memberRequest") ? new com.tbsc.company.QMemberRequest(forProperty("memberRequest"), inits.get("memberRequest")) : null;
         this.registComp = inits.isInitialized("registComp") ? new com.tbsc.registComp.QRegistComp(forProperty("registComp"), inits.get("registComp")) : null;
     }
 

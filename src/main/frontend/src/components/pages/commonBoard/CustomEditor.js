@@ -2,24 +2,27 @@ import React, { useState, useEffect, useRef } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css"; // Ensure Quill CSS is included
 
-const CustomEditor = ({ initialContent, handleContentChange, initialFileUrl, handleFileUrlChange }) => {
+const CustomEditor = ({ initialContent, handleContentChange, initialFileUrl, handleFileUrlChange, handleImageUrlChange }) => {
     const [content, setContent] = useState(initialContent || "");
-    const [fileUrl, setFileUrl] = useState(initialFileUrl);
     const quillRef = useRef(null);
+    const [imagePreview, setImagePreview] = useState(null);
 
     useEffect(() => {
         setContent(initialContent);
-        setFileUrl(initialFileUrl);
     }, [initialContent, initialFileUrl]);
+
 
     const handleChange = (value) => {
         setContent(value);
         handleContentChange(value);
     };
 
-    const handleFileUpload = (e) => {
+    const handleFileUpload = (e, isImage) => {
         const file = e.target.files[0];
         if (file) {
+            if (isImage) {
+                setImagePreview(URL.createObjectURL(file));
+            }
             const formData = new FormData();
             formData.append("file", file);
 
@@ -31,8 +34,11 @@ const CustomEditor = ({ initialContent, handleContentChange, initialFileUrl, han
                 .then(url => {
                     if (url) {
                         console.log("Received URL: ", url);
-                        setFileUrl(url);
-                        handleFileUrlChange(url);
+                        if (isImage) {
+                            handleImageUrlChange(url);
+                        } else {
+                            handleFileUrlChange(url);
+                        }
                     } else {
                         console.error("Received empty URL");
                     }
@@ -54,18 +60,29 @@ const CustomEditor = ({ initialContent, handleContentChange, initialFileUrl, han
                 modules={CustomEditor.modules}
                 formats={CustomEditor.formats}
             />
-            {fileUrl && (
-                <div>
-
-                    Current File: <a href={fileUrl} target="_blank" rel="noopener noreferrer">View</a>
+            {imagePreview && (
+                <div className="detail-image">
+                    <img
+                        src={imagePreview}
+                        alt="selected image"
+                    />
                 </div>
             )}
+
             <input
                 type="file"
-                onChange={handleFileUpload}
+                onChange={(e) => handleFileUpload(e, true)}
                 className="file-upload-input"
                 style={{position: 'relative', zIndex: 1000}}
             />
+
+            <input
+                type="file"
+                onChange={(e) => handleFileUpload(e, false)}
+                className="file-upload-input"
+                style={{position: 'relative', zIndex: 1000}}
+            />
+
         </div>
 
     );
@@ -78,7 +95,6 @@ CustomEditor.modules = {
         [{"size": []}],
         ["bold", "italic", "underline", "strike", "blockquote"],
         [{"list": "ordered"}, {"list": "bullet"}, {"indent": "-1"}, {"indent": "+1"}],
-        ["link", "image", "video"],
         ["clean"]
     ],
 };
