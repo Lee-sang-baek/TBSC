@@ -57,6 +57,7 @@ import OrgChart from "./components/pages/orgChart/OrgChart";
 import WayToCome from "./components/pages/wayToCome/WayToCome";
 import FindId from "./components/pages/find/FindId";
 import FindPwd from "./components/pages/find/FindPwd";
+import BusinessUpgrade from "./components/pages/mypage/businessUpgrade/BusinessUpgrade";
 
 function App() {
 
@@ -376,6 +377,7 @@ function App() {
                 <Route path="/addAsset" element={<VisualAssetManager />} />
                 <Route path="/find-id" element={<FindId />} />
                 <Route path="/find-pwd" element={<FindPwd />} />
+                <Route path="/businessUpgrade" element={<BusinessUpgrade />} />
 
             </Routes>
             <ChatbotToggle />

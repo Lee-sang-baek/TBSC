@@ -112,25 +112,27 @@ const MyHome = () => {
                 </h3>
 
             </div>
-            <div className="profileModify">
-                <Link to="/myPage/modify-info">
-                    <Button onClick={() => {
-                    }} text="개인정보수정" className="btn-two cyan rounded"/>
-                </Link>
-                {/*<a href="/#" className="btn-two cyan rounded">*/}
-                {/*    <button onClick={() => {*/}
-                {/*    }}>*/}
-                {/*        개인정보수정*/}
-                {/*    </button>*/}
-                {/*</a>*/}
-                <div className="userDelete">
-                    <Link to="/myPage/delete-info">
-                        <Button text="계정 탈퇴" onClick={() => {
-
-                        }}/>
-                    </Link>
-                </div>
-            </div>
+           <div className="profileModify">
+               <Link to="/myPage/modify-info">
+                   <Button onClick={() => { }} text="개인정보수정" className="btn-two cyan rounded" />
+               </Link>
+               {/*<a href="/#" className="btn-two cyan rounded">*/}
+               {/*    <button onClick={() => {*/}
+               {/*    }}>*/}
+               {/*        개인정보수정*/}
+               {/*    </button>*/}
+               {/*</a>*/}
+               <div className="userDelete">
+                   <Link to="/myPage/delete-info">
+                       <Button text="계정 탈퇴" onClick={() => { }} />
+                   </Link>
+               </div>
+               <div className="businessUpgrade">
+                   <Link to="/businessUpgrade">
+                       <Button onClick={() => { }} text="기업회원전환" className="btn-two cyan rounded" />
+                   </Link>
+               </div>
+           </div>
 
             <div className="detailsContainer">
                 <h2 className="reservDetailTitle">

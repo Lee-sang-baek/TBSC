@@ -21,9 +21,6 @@ public interface MemberRepository extends JpaRepository<Member, String> {
 
     Optional<Member> findByIdAndNameAndEmail(String id, String name, String email);
 
-
-
-
     Page<Member> findAll(Pageable pageable);
 
     Page<Member> findByNameContaining(String searchString, Pageable pageable);
