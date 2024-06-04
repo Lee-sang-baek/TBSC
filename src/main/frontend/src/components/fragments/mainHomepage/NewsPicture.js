@@ -10,8 +10,6 @@ import './NewsPicture.css';
 function NewsPicture() {
     const [selectedDataset, setSelectedDataset] = useState(EduconsultData.concat(StartUpData).concat(TourismData));
 
-
-
     const settings = {
         dots: true,
         infinite: true,
@@ -22,14 +20,17 @@ function NewsPicture() {
 
     return (
         <div className="NewsPicture-compo">
-            <div className='shape'>
-                <div className='content'>
-            <Slider {...settings}>
-                {selectedDataset.map((item, index) => (
-
-
-                            <div key={index} className="slide">
-
+            <div className='content'>
+                <Slider {...settings}>
+                    {selectedDataset.map((item, index) => (
+                        <div key={index} className="slide">
+                            <div className='back-box' style={{ 
+                                backgroundImage: `url("${item.image}")`,
+                                backgroundSize: 'cover', // or 'contain', 'fill', etc.
+                                backgroundPosition: 'center', // Optional for positioning the background
+                                backgroundRepeat: 'no-repeat' // Optional to prevent repeating the image
+                            }}>
+                            <div className='shape'>
                                 <h2>{item.title}</h2>
                                 <h3>{item.containerContent}</h3>
                                 <h4>{item.firtitle}</h4>
@@ -39,16 +40,14 @@ function NewsPicture() {
                                 {item.thrtitle && <h4>{item.thrtitle}</h4>}
                                 {item.thrcontent && <p>{item.thrcontent}</p>}
                             </div>
-
-                            ))
-                        }
-                        </Slider>
-
-
-</div></div>
-
-                    </div>
-                    );
-                }
+                            </div>
+                        </div>
+                        ))
+                    }
+                </Slider>
+            </div>
+        </div>
+    );
+}
 
 export default NewsPicture;

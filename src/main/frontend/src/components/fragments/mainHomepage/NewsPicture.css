@@ -1,52 +1,85 @@
 .NewsPicture-compo {
     width: 50%;
-    aspect-ratio: 1 / 0.8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 2.5%;
-    background-color: #e4ffe3;
-    border: 1px solid #ccc;
-    box-shadow: 15px 15px 30px #bebebe,
-                -15px -15px 30px #ffffff;
-    border-radius: 30px;
-    /*.slick-slider {*/
-    /*    width: fit-content;*/
-    /*    height: fit-content;*/
-    /*    position: absolute;*/
-    /*}*/
+
+    .content {
+        text-align: right;
+        width: 100%;
+        aspect-ratio: 1 / 0.8;
+        
+        
+        .slick-slider {
+            width: 100%;
+            height: fit-content;
+
+
+            div {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
     
     .shape {
-        position: absolute;
-        width: 37.5%;
         
-        aspect-ratio: 1 / 0.958;
-        left: 9.9%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        
         border-top-left-radius: 100%;
         border-bottom-left-radius: 100%;
         border-top-right-radius: 60px;
         border-bottom-right-radius: 60px;
         background-color: rgba(255, 255, 255, 0.7);
-        z-index: 1; 
+        z-index: 1000;
+        align-items: stretch;
+        justify-content: space-evenly;
+
+        h2, h3, h4, p {
+            padding-left: 50px;
+            padding-right: 30px;
+            margin: 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            color: blue;
+        }
+
+        h4 {
+            color: orangered;
+        }
     }
 
-    .content {
-        padding: 20px;
-        text-align: right;
-        position: relative;
-        z-index: 2;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        aspect-ratio: 1 / 0.958;
-
+    .back-box {
+        border: 1px solid #ccc;
+        border-radius: 30px;
     }
 
     .slide {
+        background-color: #e4ffe3;
+        border: 1px solid #ccc;
+        border-radius: 30px;
+        
         width: 100%;
-        height: 100%;
+        
+        
+        display: flex;
+        
+    }
+
+    .slick-initialized .slick-slide {
+        
+        aspect-ratio: 1 / 0.8;
+        display: flex;
     }
 
     .slick-prev:before, .slick-next:before {
         color: black;
-
+        
     }
 
 }
