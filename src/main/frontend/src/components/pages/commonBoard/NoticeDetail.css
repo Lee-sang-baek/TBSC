@@ -1,28 +1,24 @@
 /* 컴포넌트 일반 스타일 */
 .NoticeDetail-compo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin: 4% 0;
+    margin: 100px 0;
+    width: 87%;
+    background-color: #fff;
     padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .NoticeDetail-compo .notice-detail {
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+
     width: 100%;
-    transition: all 0.3s ease;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-.NoticeDetail-compo .notice-detail:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.NoticeDetail-compo .notice-detail .title {
+.NoticeDetail-compo .title {
     font-size: 28px;
     color: #333;
     border-bottom: 2px solid #eee;
@@ -31,7 +27,7 @@
     text-align: center;
 }
 
-.NoticeDetail-compo .notice-detail .meta {
+.NoticeDetail-compo .meta {
     display: flex;
     justify-content: space-between;
     color: #666;
@@ -39,29 +35,30 @@
     margin-bottom: 20px;
 }
 
-.NoticeDetail-compo .notice-detail .file-link {
+.NoticeDetail-compo .file-link {
     margin-bottom: 20px;
 }
 
-.NoticeDetail-compo .notice-detail .file-link a {
+.NoticeDetail-compo .file-link a {
     color: #007bff;
     text-decoration: none;
 }
 
-.NoticeDetail-compo .notice-detail .file-link a:hover {
+.NoticeDetail-compo .file-link a:hover {
     text-decoration: underline;
 }
 
-.NoticeDetail-compo .notice-detail .content {
+.NoticeDetail-compo .content {
     color: #444;
     line-height: 1.6;
     margin-bottom: 20px;
     min-height: 200px;
+    height: 75%;
     display: flex;
     justify-content: center;
 }
 
-.NoticeDetail-compo .notice-detail .editButton {
+.NoticeDetail-compo .editButton {
     display: block;
     margin: 0 auto;
     padding: 10px 20px;
@@ -75,7 +72,7 @@
     transition: background-color 0.3s ease;
 }
 
-.NoticeDetail-compo .notice-detail .editButton:hover {
+.NoticeDetail-compo .editButton:hover {
     background-color: #218838;
 }
 

@@ -76,7 +76,6 @@ function NoticeDetail() {
 
     return (
         <div className="NoticeDetail-compo">
-            <div className="notice-detail">
                 <h1 className="title">{notice.title}</h1>
                 <div className="meta">
                     <p>작성자: {notice.member.id}</p>
@@ -94,7 +93,6 @@ function NoticeDetail() {
                         <Button className="deleteButton" text="삭제하기" onClick={deleteNotice} />
                     </>
                 )}
-            </div>
         </div>
     );
 }

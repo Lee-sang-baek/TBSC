@@ -7,7 +7,12 @@ import './SearchResult.css'; // Import the CSS file
 const SearchResult = () => {
     const location = useLocation();
     const [results, setResults] = useState({});
-    const [filteredResults, setFilteredResults] = useState({});
+    const [filteredResults, setFilteredResults] = useState({
+        noticeResults: [],
+        tNoticeResults: [],
+        centerNewsResults: [],
+        pressReleaseResults: [],
+    });
     const [selectedBoard, setSelectedBoard] = useState('전체');
     const searchQuery = new URLSearchParams(location.search).get('title');
 
@@ -63,13 +68,16 @@ const SearchResult = () => {
         let count = 0;
         if (filteredResults) {
             if (filteredResults.noticeResults && filteredResults.noticeResults.length > 0) {
-                count += filterResults.noticeResults.length;
+                count += filteredResults.noticeResults.length;
             }
             if (filteredResults.tNoticeResults && filteredResults.tNoticeResults.length > 0) {
-                count += filterResults.tNoticeResults.length;
+                count += filteredResults.tNoticeResults.length;
             }
             if (filteredResults.centerNewsResults && filteredResults.centerNewsResults.length > 0) {
-                count += filterResults.centerNewsResults.length;
+                count += filteredResults.centerNewsResults.length;
+            }
+            if (filteredResults.pressReleaseResults && filteredResults.pressReleaseResults.length > 0) {
+                count += filteredResults.pressReleaseResults.length;
             }
         }
         return count;

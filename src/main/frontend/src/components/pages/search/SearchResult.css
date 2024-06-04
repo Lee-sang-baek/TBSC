@@ -1,19 +1,24 @@
 /* SearchResult.css */
 
 .SearchResult-compo {
-    width: 100%;
+    width: 87%;
+    margin: 100px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    padding: 4% 0;
 }
 
 .SearchResult-compo .searchResultContainer {
-    width: 87%;
+    width: 100%;
+    height: 100%;
     background-color: #fff;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
 }
 
 .SearchResult-compo .searchResultTitle {

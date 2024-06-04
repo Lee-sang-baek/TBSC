@@ -258,6 +258,16 @@ function JobConsult() {
     });
   };
 
+  if (!memberId) {
+    return (
+        <div className="JobConsult-compo-login">
+            <div>
+                <h1>로그인 후 이용해주세요</h1>
+            </div>
+        </div>
+    );
+  }
+
   return (
     <div className='JobConsult-compo'>
       <div className='form-box'>

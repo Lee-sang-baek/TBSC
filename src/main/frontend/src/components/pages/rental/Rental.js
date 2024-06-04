@@ -91,10 +91,8 @@ const Rental = () => {
 
     if (!memberId) {
         return (
-            <div className="rental-compo">
-                <div className="rental-compo-in">
+            <div className="rental-compo-login">
                     <h1>로그인 후 이용해주세요</h1>
-                </div>
             </div>
         );
     }

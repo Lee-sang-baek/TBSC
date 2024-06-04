@@ -1,20 +1,22 @@
 /* TNoticeList.css */
 
 .NoticeList-compo {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 0;
-    
-}
-
-.NoticeList-compo .noticeListContainer {
     margin: 100px 0;
     width: 87%;
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.NoticeList-compo .noticeListContainer {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .NoticeList-compo .noticeList h1 {
@@ -102,7 +104,8 @@
 }
 
 .NoticeList-compo td:nth-child(2) {
-    width: 200px;
+    min-width: 50px;
+    width: 50px;
     text-align: center;
     font-weight: bold;
     color: #333;
@@ -134,6 +137,7 @@
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    padding: 0;
 }
 
 .NoticeList-compo .pagination li {

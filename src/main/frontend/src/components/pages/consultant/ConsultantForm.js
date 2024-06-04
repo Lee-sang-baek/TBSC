@@ -79,10 +79,8 @@ const ConsultantForm = () => {
     };
     if (!id) {
         return (
-            <div className="rental-compo">
-                <div className="rental-compo-in">
+            <div className="ConsultantForm-compo-login">
                     <h1>로그인 후 이용해주세요</h1>
-                </div>
             </div>
         );
     }
