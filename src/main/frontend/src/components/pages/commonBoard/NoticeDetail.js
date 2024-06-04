@@ -87,6 +87,11 @@ function NoticeDetail() {
                     )}
                 </div>
                 <div className="content" dangerouslySetInnerHTML={{ __html: notice.content }}></div>
+                <div>
+                    {notice.imageUrl && (
+                        <img src={`/uploads/${notice.imageUrl}`} alt={notice.imageUrl} />
+                    )}
+                </div>
                 {MemberState === 'ADMIN' && (
                     <>
                         <Button className="editButton" text="수정하기" link={`/notices/update/${num}`} />

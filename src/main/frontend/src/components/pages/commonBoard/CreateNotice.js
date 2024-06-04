@@ -10,6 +10,7 @@ function CreateNotice() {
     const [state, setState] = useState("");
     const [content, setContent] = useState("");
     const [date, setDate] = useState(new Date());
+    const [imageUrl, setImageUrl] = useState("");
     const [fileUrl, setFileUrl] = useState("");
 
     // Handle input changes
@@ -29,6 +30,10 @@ function CreateNotice() {
         setFileUrl(url);
     };
 
+    const handleImageUrlChange = (url) => {
+        setImageUrl(url);
+    };
+
     const handleSubmit = async () => {
         const data = {
             title,
@@ -36,6 +41,7 @@ function CreateNotice() {
             state,
             content,
             fileUrl,
+            imageUrl,
             date
         };
 
@@ -88,7 +94,11 @@ function CreateNotice() {
                 <label>마감:</label>
                 <input type="radio" name="state" value="마감" checked={state === "마감"} onChange={handleStateChange} />
             </div>
-            <CustomEditor handleContentChange={handleContentChange} handleFileUrlChange={handleFileUrlChange} />
+            <CustomEditor
+                handleContentChange={handleContentChange}
+                handleFileUrlChange={handleFileUrlChange}
+                handleImageUrlChange={handleImageUrlChange}
+            />
 
             <Button onClick={handleSubmit} text="작성" />
         </div>

@@ -23,6 +23,7 @@
         private String title;
         private String state;
         private Integer view = 0;
+        private String imageUrl;
         private String fileUrl;
         private LocalDateTime date;
 
@@ -39,6 +40,7 @@
             setContent(noticeDto.getContent());
             setState(noticeDto.getState());
             setFileUrl(noticeDto.getFileUrl());
+            setImageUrl(noticeDto.getImageUrl());
             setTitle(noticeDto.getTitle());
         }
     }

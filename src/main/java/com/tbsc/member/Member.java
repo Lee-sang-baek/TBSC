@@ -2,6 +2,7 @@ package com.tbsc.member;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tbsc.centerNews.CenterNews;
+import com.tbsc.company.MemberRequest;
 import com.tbsc.consultant.Consultant;
 import com.tbsc.jobConsult.JobConsult;
 import com.tbsc.log.AccessLog;
@@ -97,6 +98,12 @@ public class Member {
     @JoinColumn(referencedColumnName = "num")
     @JsonIgnore
     private RegistComp registComp;//
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(referencedColumnName = "num")
+    @JsonIgnore
+    private MemberRequest memberRequest;
+
 
 
 

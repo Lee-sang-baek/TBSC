@@ -57,6 +57,7 @@ import OrgChart from "./components/pages/orgChart/OrgChart";
 import WayToCome from "./components/pages/wayToCome/WayToCome";
 import FindId from "./components/pages/find/FindId";
 import FindPwd from "./components/pages/find/FindPwd";
+import MemberManagement from "./components/pages/admin/MemberManagement";
 
 function App() {
 
@@ -110,6 +111,13 @@ function App() {
                             <MemberList/>
                         </div>
                     }/>
+                    <Route path="/admin/member-management" element={
+                        <div className="outter">
+                            <Sidebar type="admin"/>
+                            <MemberManagement />
+                        </div>
+                    }/>
+
                     <Route path="/admin/site-management" element={
                         <div className="outter">
                             <Sidebar type="admin"/>
