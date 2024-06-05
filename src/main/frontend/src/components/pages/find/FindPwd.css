@@ -1,57 +1,127 @@
-.input-form {
-    width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-}
+.FindPwd-compo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  
+    
+    .form-box {
+      background-color: #fff;
+      margin: 100px 0;
+      padding: 50px 100px;
+      border: 1px solid #ccc;
+      border-radius: 30px;
+      width: 400px;
+    }
+  
+    .input-icon {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  
+    .input-icon img {
+      width: 200px;
+      margin-bottom: 50px;
+      height: auto;
+    }
+  
+    .input-icon h2 {
+      margin-top: 10px;
+      font-size: 24px;
+      color: #333;
+    }
 
-.input-icon {
-    text-align: center;
-    margin-bottom: 20px;
-}
+    .btn-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 15px 0;
+    }
 
-.input-icon img {
-    width: 100px;
-    height: auto;
-}
+    button {
+        width: 50%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
 
-.input-box {
-    margin-bottom: 15px;
-}
-
-.input-box label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.input-box input {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.center-button {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.center-button:hover {
-    background-color: #0056b3;
-}
-
-.error {
-    color: red;
-    font-size: 12px;
-}
+    .input-box label {
+      font-size: 16px;
+      color: #333;
+      display: flex;
+      margin-bottom: 5px;
+      flex-direction: column;
+    }
+  
+    input {
+      width: 95%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      display: inline-block;
+    }
+  
+    .phone-number-box {
+      display: flex;
+      align-items: center;
+  
+      select, input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        display: inline-block;
+      }
+    }
+  
+    .phone-number-box h4 {
+      margin: 0 5px;
+    }
+  
+    .btn-twice {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+  
+    .btn-twice button {
+      width: 48%;
+      margin-bottom: 15px;
+    }
+  
+    .findId-button {
+      text-align: center;
+    }
+  
+    .findId-button button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  
+    .result-box {
+      margin-top: 20px;
+      background-color: #d4edda;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  
+    .result-box p {
+      margin: 0;
+      font-size: 16px;
+      color: #155724;
+    }
+  
+  }
+  

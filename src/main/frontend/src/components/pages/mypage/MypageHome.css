@@ -69,8 +69,8 @@
     }
 
     .profileModify .userDelete {
-        position: absolute;
-        right: 5%;
+        position: relative;
+        padding-left: 10%;
         top: 0;
     }
 

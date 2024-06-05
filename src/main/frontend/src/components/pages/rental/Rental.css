@@ -19,8 +19,7 @@
     border: 1px solid #ccc;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     border-radius: 5px;
-    min-width: 50%;
-    max-width: 80%;
+    width: 85%;
     margin: 100px;
 }
 

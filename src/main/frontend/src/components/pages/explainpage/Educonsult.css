@@ -85,7 +85,7 @@
     
     /* 버튼 스타일 */
     .button {
-        display: inline-block;
+        display: flex;
         width: 15%;
         padding: 20px;
         margin: 40px 10px;
@@ -98,9 +98,10 @@
         cursor: pointer;
         text-decoration: none;
         transition: background-color 0.3s ease;
-        white-space: nowrap;
-        overflow: hidden;
         text-overflow: ellipsis;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
     }
     
     /* 버튼에 마우스를 올렸을 때의 스타일 */

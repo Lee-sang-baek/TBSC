@@ -49,9 +49,16 @@ const FindPwd = () => {
 
     const handleSendCode = () => {
         if (isEmail) {
-            alert("인증번호가 발송되었습니다.");
-            axios.post('/auth/sendCode', { email: formData.email })
-                .catch(error => alert("인증번호 전송이 실패하였습니다."));
+            axios.get(`/member/isEmail?email=${formData.email}`)
+            .then((res) => {
+                alert("인증번호가 발송되었습니다.");
+                axios.post('/auth/sendCode', { email: formData.email })
+                    .catch(error => alert("인증번호 전송이 실패하였습니다."));
+            })
+            .catch((err) => {
+                alert("이메일이 회원 정보와 같지 않습니다.")
+            });
+            
         } else {
             const phoneNumber = `${formData.areaCode}${formData.phoneNum1}${formData.phoneNum2}`;
             alert('인증번호가 전송되었습니다.');
@@ -130,10 +137,11 @@ const FindPwd = () => {
     };
 
     return (
-        <div className="input-form">
+        <div className="FindPwd-compo">
+            <div className="form-box">
             <div className="input-icon">
                 <img src={logoImage} alt="Logo" />
-                <h2>비밀번호 재설정</h2>
+                <h2>비밀번호 찾기</h2>
             </div>
             <div className="input-box">
                 <label>
@@ -147,10 +155,12 @@ const FindPwd = () => {
                     <input type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
                 </label>
             </div>
-            <button type="button" onClick={verifyUserDetails}>사용자 확인</button>
+            <div className="btn-box">
+                <button type="button" onClick={verifyUserDetails}>사용자 확인</button>
+            </div>
             {verificationStatus.idVerified && verificationStatus.nameVerified && (
             <div>
-            <div className="input-box">
+            <div className="btn-box">
                 <button type="button" onClick={handleIsEmailChange}>
                     {isEmail ? "휴대폰 인증으로 변경" : "이메일 인증으로 변경"}
                 </button>
@@ -245,6 +255,7 @@ const FindPwd = () => {
                     <button className="center-button" onClick={handleResetPassword}>비밀번호 재설정</button>
                 </>
             )}
+            </div>
         </div>
     );
 };

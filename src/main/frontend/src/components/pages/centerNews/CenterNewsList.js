@@ -8,7 +8,7 @@ const CenterNewsList = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState('');
     const [filteredNews, setFilteredNews] = useState([]);
-    const newsPerPage = 6;
+    const newsPerPage = 8;
     const navigate = useNavigate();
     const MemberState = sessionStorage.getItem("state");
 
@@ -67,7 +67,7 @@ const CenterNewsList = () => {
         <div className="CenterNewsList-copo">
             <div className="container">
                 <div className="header">
-                    <h1>센터 뉴스</h1>
+                    <h1>센터 소식</h1>
                     {MemberState === "ADMIN" && (
                         <button onClick={handleWriteClick}>글쓰기</button>
                     )}

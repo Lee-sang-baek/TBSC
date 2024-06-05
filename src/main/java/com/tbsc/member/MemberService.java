@@ -284,4 +284,9 @@ public class MemberService implements UserDetailsService {
             memberRepository.save(member);
         }
     }
+
+    public ResponseEntity<String> currentEmail(String email) {
+        Optional<Member> optionalMember = memberRepository.findByEmail(email);
+        return ResponseEntity.ok("");
+    }
 }

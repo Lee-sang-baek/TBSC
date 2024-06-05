@@ -114,9 +114,9 @@ const Header = () => {
         event.stopPropagation();
     };
 
-    useEffect(() => {
-        setMobileMenuOpen(false);
-    }, [location]);
+    // useEffect(() => {
+    //     setMobileMenuOpen(false);
+    // }, [location]);
 
     const isLoggedIn = !!sessionStorage.getItem("id");
     const MemberState = sessionStorage.getItem("state");

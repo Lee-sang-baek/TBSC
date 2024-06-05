@@ -8,7 +8,7 @@ const PressReleaseList = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState('');
     const [filteredPressReleases, setFilteredPressReleases] = useState([]);
-    const pressReleasesPerPage = 6;
+    const pressReleasesPerPage = 8;
     const pagesPerGroup = 10;
     const navigate = useNavigate();
     const MemberState = sessionStorage.getItem("state");

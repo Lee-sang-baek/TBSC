@@ -93,7 +93,7 @@ const FindId = () => {
                     <h2>아이디 찾기</h2>
                 </div>
 
-                <div className="input-box">
+                <div className="input-box1">
                     <button type="button" onClick={handleIsEmailChange}>{isEmail ? "휴대폰 인증으로 변경" : "이메일 인증으로 변경"}</button>
                 </div>
 

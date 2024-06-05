@@ -48,6 +48,8 @@
 
 .LoginForm-compo .button-row {
     padding: 10px;
+    display: flex;
+    flex-wrap: nowrap;
 }
 
 .LoginForm-compo .button-row button {

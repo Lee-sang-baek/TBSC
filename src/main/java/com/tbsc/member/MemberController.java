@@ -43,6 +43,11 @@ public class MemberController {
         return memberService.checkEmail(email);
     }
 
+    @GetMapping("/member/email")
+    public ResponseEntity<String> isEmail(@RequestParam("email") String email) {
+        return memberService.currentEmail(email);
+    }
+
 
 //    @GetMapping("/member/login")
 //    public String loginForm() {

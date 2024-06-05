@@ -77,7 +77,7 @@ const TNoticeList = () => {
         <div className="TNoticeList-copo">
             <div className="container">
                 <div className="header">
-                    <h1>기업홍보</h1>
+                    <h1>기업 홍보</h1>
                     {MemberState === "ADMIN" && (
                         <button onClick={handleWriteClick}>글쓰기</button>
                     )}
