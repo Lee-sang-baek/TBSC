@@ -427,42 +427,23 @@ const ReservesViewer = ({reservation, index, handleCancelClick, modifyLink, sele
                         <div className="reservContainer">
                             <div className="reservHeader">
                                 <div className="reservTitle">
-                                    {reservation.place || ""}
+                                    일자리 상담 신청
                                 </div>
 
                                 <div className="reservDate">
 
                                     <div className="startDate">
-                                        {formatDate(reservation.startDate) || ""}
-                                    </div>
-                                    <p>~</p>
-                                    <div className="endDate">
-                                        {formatDate(reservation.endDate) || ""}
+                                        <p>작성일자:&nbsp;</p>
+                                        {formatDate(reservation.createDate) || ""}
                                     </div>
 
-                                    {selectedSection === "jobConsult" &&
-                                        <>
-                                            <div className="startDate">
-                                                {formatDate(reservation.startDate) || ""}
-                                            </div>
-                                            <p>~</p>
-                                            <div className="endDate">
-                                                {formatDate(reservation.endDate) || ""}
-                                            </div>
-                                        </>
-                                    }
                                 </div>
                             </div>
                             <div className="detailContent">
                                 <img className="reservImg" src={img} alt=""/>
                                 <div className="reservTime">
-                                    <div className="startDate">
-                                        {formatTime(reservation.startDate) || ""}
-                                    </div>
-                                    <p>~</p>
-                                    <div className="endDate">
-                                        {formatTime(reservation.endDate) || ""}
-                                    </div>
+                                    <p>상담일자:&nbsp;</p>
+                                    {formatDate(reservation.date) || ""}
                                 </div>
                                 {(reservation.state === "RESERVE") &&
                                     <div className="RESERVE">

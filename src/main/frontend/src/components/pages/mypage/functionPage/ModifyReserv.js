@@ -17,10 +17,10 @@ const ModifyReserv = () => {
     }, [memberId]);
 
     const getMemberInfo = () => {
-        axios.get(`/rental/member/${memberId}`)
+        axios.get(`/rental/${index}`)
             .then((res) => {
                 console.log(res.data);
-                const selectedData = res.data[index];
+                const selectedData = res.data;
                 console.log("selectedData: ", selectedData);
 
                 if (selectedData) {

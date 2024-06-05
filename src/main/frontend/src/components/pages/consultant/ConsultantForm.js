@@ -53,10 +53,9 @@ const ConsultantForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const uploadedFileName = await uploadFile();
-        if (!uploadedFileName) {
-            alert('파일 업로드 실패!');
-            return;
-        }
+        // if (!uploadedFileName) {
+        //     alert('파일 업로드 실패!');
+        // }
 
         const requestData = {
             ...formData,
@@ -258,7 +257,7 @@ const ConsultantForm = () => {
                         required
                     />
                 </label>
-                <button type="submit">제출</button>
+                <button type="button" onClick={handleSubmit}>제출</button>
             </form>
         </div>
     );

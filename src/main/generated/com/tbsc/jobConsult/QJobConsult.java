@@ -26,6 +26,8 @@ public class QJobConsult extends EntityPathBase<JobConsult> {
 
     public final ListPath<com.tbsc.jobConsult.certifications.Certifications, com.tbsc.jobConsult.certifications.QCertifications> certifications = this.<com.tbsc.jobConsult.certifications.Certifications, com.tbsc.jobConsult.certifications.QCertifications>createList("certifications", com.tbsc.jobConsult.certifications.Certifications.class, com.tbsc.jobConsult.certifications.QCertifications.class, PathInits.DIRECT2);
 
+    public final DateTimePath<java.time.LocalDateTime> createDate = createDateTime("createDate", java.time.LocalDateTime.class);
+
     public final DateTimePath<java.time.LocalDateTime> date = createDateTime("date", java.time.LocalDateTime.class);
 
     public final com.tbsc.jobConsult.education.QEducation education;

@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './JobConsult.css';
+import '../../jobConsult/JobConsult.css';
+import {useNavigate, useParams} from "react-router-dom";
 
 function ModifyJobConsult() {
+    const { num } = useParams();
     const memberId = sessionStorage.getItem("id");
+
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
         category: '',
         industry: '',
@@ -66,14 +71,28 @@ function ModifyJobConsult() {
             ...formData,
             memberId: memberId
         })
+        getMemberInfo();
     }, []);
+
+    const getMemberInfo = () => {
+        axios.get(`/jobConsult/${num}`)
+            .then((res) => {
+                console.log(res.data);
+                setFormData(res.data);
+            })
+            .catch(error => {
+                console.error("Error fetching member info: ", error);
+            });
+    };
 
     const submitForm = async () => {
         try {
-            const response = await axios.post('/jobConsult/add', formData);
+            const response = await axios.put(`/jobConsult/modify/${num}`, formData);
             console.log(response.data);
+            console.log(formData);
             alert(response.data);
-            window.location.href = "/";
+            // window.location.href = "/";
+            navigate("/myPage")
         } catch (error) {
             console.error('오류:', error);
         }
@@ -326,7 +345,7 @@ function ModifyJobConsult() {
                             <label>
                                 상담일자:
                                 <div>
-                                    <input type='datetime-local' name="date" value={formData.date} onChange={handleChange} ></input>
+                                    <input type='datetime-local' name="date" value={formData.date || ""} onChange={handleChange} />
                                 </div>
                             </label>
                         </div>
@@ -500,7 +519,7 @@ function ModifyJobConsult() {
                     </div>
 
                     <div className='btn-box'>
-                        <button type="button" className='btn' onClick={submitForm}>예약확정</button>
+                        <button type="button" className='btn' onClick={submitForm}>예약수정</button>
                     </div>
 
                 </form>

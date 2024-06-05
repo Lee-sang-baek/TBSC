@@ -52,12 +52,12 @@ public class ConsultantService {
         }
 
         Consultant existingConsultant = optionalConsultant.get();
-        existingConsultant.setMember(optionalMember.get());
-        existingConsultant.setCompName(updatedConsultant.getCompName());
-        existingConsultant.setGender(updatedConsultant.getGender());
-        existingConsultant.setStartDate(updatedConsultant.getStartDate());
-        consultantRepository.save(existingConsultant);
+        updatedConsultant.setNum(existingConsultant.getNum());
+        updatedConsultant.setState(existingConsultant.getState());
+        updatedConsultant.setMember(existingConsultant.getMember());
 
-        return ResponseEntity.ok(existingConsultant);
+        consultantRepository.save(updatedConsultant);
+
+        return ResponseEntity.ok(updatedConsultant);
     }
 }
