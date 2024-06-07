@@ -125,7 +125,7 @@ public class Member {
         return this;
     }
 
-    public void bindElseIdAndPassword(MemberDto memberDto) {
+    public void bindExceptIdAndPassword(MemberDto memberDto) {
         this.setName(memberDto.getName());
         this.setCompName(memberDto.getCompName());
         this.setBusinessNum(memberDto.getBusinessNum());

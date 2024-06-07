@@ -259,7 +259,7 @@ public class MemberService implements UserDetailsService {
             Member member = optionalMember.get();
             memberDto.setId(memberId);
             memberDto.setPassword(member.getPassword());
-            member.bindElseIdAndPassword(memberDto);
+            member.bindExceptIdAndPassword(memberDto);
             memberRepository.save(member);
             return ResponseEntity.ok(memberDto.getId() + " 회원의 정보가 수정되었습니다.");
         }
