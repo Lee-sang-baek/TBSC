@@ -30,11 +30,11 @@ const ModifyConsultant = () => {
 
     useEffect(() => {
         if (memberId) {
-            getMemberInfo();
+            getConsultantInfo();
         }
     }, [memberId]);
 
-    const getMemberInfo = () => {
+    const getConsultantInfo = () => {
         axios.get(`/consultants/${num}`)
             .then((res) => {
                 console.log(res.data);

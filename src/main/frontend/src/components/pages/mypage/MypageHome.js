@@ -9,18 +9,20 @@ const MyHome = () => {
 
     const memberId = sessionStorage.getItem("id");
     const [reserveList, setReserveList] = useState([]);
+    const [consultantList, setConsultantList] = useState([]);
+    const [jobConsultList, setJobConsultList] = useState([]);
 
     const [memberInfo, setMemberInfo] = useState([{
-        memberId: "",
-        num: "",
-        comp_name: "",
-        gender: "",
-        endDate: "",
-        startDate: "",
-        place: "",
-        prepare: "",
-        purpose: "",
-        state: ""
+        // memberId: "",
+        // num: "",
+        // comp_name: "",
+        // gender: "",
+        // endDate: "",
+        // startDate: "",
+        // place: "",
+        // prepare: "",
+        // purpose: "",
+        // state: ""
     }]);
 
     useEffect(() => {
@@ -45,8 +47,14 @@ const MyHome = () => {
 
         axios.get(`/rental/member/${memberId}`)
             .then((res) => {
-                console.log(res.data);
+                console.log("setReserveList", res.data);
                 setReserveList(res.data);
+            })
+
+        axios.get(`/consultants/member/${memberId}`)
+            .then((res) => {
+                console.log("setConsultantList", res.data);
+                setConsultantList(res.data);
             })
     };
 
@@ -138,7 +146,7 @@ const MyHome = () => {
                 </h2>
                 <hr/>
                 {reserveList.map((reservation, index) => (
-                    <div className="reservDetails" >
+                    <div className="reservDetails">
                         <h3 className="reservDate">
                             {formatDate(reservation.startDate) || ""} ~ {formatDate(reservation.endDate) || ""}
                         </h3>
@@ -172,6 +180,41 @@ const MyHome = () => {
                         {/*        console.log("dk");*/}
                         {/*    }} text="버틍" className="btn-two blue"/>*/}
                         {/*</Link>*/}
+                        <Button text="예약취소" onClick={() => cancelReservation(reservation.num)}/>
+                    </div>
+                ))}
+                {consultantList.map((reservation, index) => (
+                    <div className="reservDetails">
+                        <h3 className="reservDate">
+                            {formatDate(reservation.appDate) || ""}
+                        </h3>
+                        <h3 className="reservTitle" onClick={() => {
+                            navigate(`/myPage/modify-consultant/${index}`);
+                        }} key={index}>
+                            {reservation.management || ""}
+                        </h3>
+                        <h3 className="reservState">
+                            {(reservation.state === "RESERVE") &&
+                                <div className="RESERVE">
+                                    예약완료
+                                </div>
+                            }
+                            {(reservation.state === "CHECK") &&
+                                <div className="CHECK">
+                                    검토 중
+                                </div>
+                            }
+                            {(reservation.state === "APPROVE") &&
+                                <div className="APPROVE">
+                                    승인됨
+                                </div>
+                            }
+                            {(reservation.state === "DENY") &&
+                                <div className="DENY">
+                                    거절됨
+                                </div>
+                            }
+                        </h3>
                         <Button text="예약취소" onClick={() => cancelReservation(reservation.num)}/>
                     </div>
                 ))}

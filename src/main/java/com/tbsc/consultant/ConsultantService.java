@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -38,6 +39,10 @@ public class ConsultantService {
 
     public Optional<Consultant> getConsultant(Long num) {
         return consultantRepository.findByNum(num);
+    }
+
+    public List<Consultant> getConsultantList(String memberId) {
+        return consultantRepository.findByMemberId(memberId);
     }
 
     public ResponseEntity<Consultant> updateConsultant(Long num, Consultant updatedConsultant, String memberId) {

@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -41,6 +42,12 @@ public class ConsultantController {
             e.printStackTrace();
             return ResponseEntity.status(500).body("Upload Failed: " + e.getMessage());
         }
+    }
+
+    @GetMapping("/member/{memberId}")
+    public ResponseEntity<List<Consultant>> getConsultantsByMemberId(@PathVariable("memberId") String memberId) {
+        List<Consultant> consultants = consultantService.getConsultantList(memberId);
+        return ResponseEntity.ok().body(consultants);
     }
 
     @GetMapping("/member/pageable/{memberId}")
