@@ -1,10 +1,12 @@
 package com.tbsc.consultant;
 
+import com.tbsc.jobConsult.JobConsult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -57,6 +59,11 @@ public class ConsultantController {
         return ResponseEntity.ok().body(consultants);
     }
 
+    @PutMapping("/modify/{num}")
+    public ResponseEntity<Consultant> modifyConsultant(@PathVariable("num") Long num) {
+        return consultantService.cancelConsultant(num);
+    }
+
     @GetMapping("/{index}")
     public ResponseEntity<Optional<Consultant>> getConsultantsByNum(@PathVariable("index") Long num) {
         Optional<Consultant> consultant = consultantService.getConsultant(num);
@@ -64,7 +71,17 @@ public class ConsultantController {
     }
 
     @PutMapping("/{num}")
-    public ResponseEntity<Consultant> updateRental(@PathVariable Long num, @RequestBody Consultant consultant, @RequestParam String memberId) {
+    public ResponseEntity<Consultant> updateConsultant(@PathVariable Long num, @RequestBody Consultant consultant, @RequestParam String memberId) {
         return consultantService.updateConsultant(num, consultant, memberId);
+    }
+
+    @DeleteMapping("/delete/{num}")
+    public ResponseEntity<?> deleteConsultant(@PathVariable("num") Long num) {
+        if (!consultantService.existsByNum(num)) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("기업 컨설팅 신청이 없음");
+        }
+
+        consultantService.deleteConsultantByNum(num);
+        return ResponseEntity.ok("삭제 성공");
     }
 }

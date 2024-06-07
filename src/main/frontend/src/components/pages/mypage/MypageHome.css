@@ -21,6 +21,7 @@
             .reservTitle {
                 width: 30%;
                 cursor: pointer;
+                white-space: break-spaces;
             }
             .reservTitle:hover {
                 font-size: 150%;

@@ -158,7 +158,7 @@ const ModifyReserv = () => {
                     <label>
                         대관 장소:
                         <div className="facility-guide-wrapper">
-                            <FacilityGuide onSelectFacility={handlePlaceSelection} />
+                            <FacilityGuide onSelectFacility={handlePlaceSelection} name={place} />
                         </div>
                     </label>
                     <label>

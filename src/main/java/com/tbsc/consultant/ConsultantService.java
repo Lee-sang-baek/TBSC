@@ -2,6 +2,7 @@ package com.tbsc.consultant;// File: ConsultantService.java
 
 import com.tbsc.member.Member;
 import com.tbsc.member.MemberRepository;
+import com.tbsc.util.ReserveType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -64,5 +65,28 @@ public class ConsultantService {
         consultantRepository.save(updatedConsultant);
 
         return ResponseEntity.ok(updatedConsultant);
+    }
+
+    public boolean existsByNum(Long num) {
+        return consultantRepository.existsById(num);
+    }
+
+    public void deleteConsultantByNum(Long num) {
+        consultantRepository.deleteById(num);
+    }
+
+    public ResponseEntity<Consultant> cancelConsultant(Long num) {
+        Optional<Consultant> optionalConsultant = consultantRepository.findById(num);
+        if (optionalConsultant.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+
+        Consultant consultant = optionalConsultant.get();
+
+        consultant.setState(ReserveType.CANCEL);
+
+        consultantRepository.save(consultant);
+
+        return ResponseEntity.ok(consultant);
     }
 }

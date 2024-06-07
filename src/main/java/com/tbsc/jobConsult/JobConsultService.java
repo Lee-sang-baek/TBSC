@@ -13,10 +13,13 @@ import com.tbsc.jobConsult.languages.LanguagesDto;
 import com.tbsc.jobConsult.languages.LanguagesRepository;
 import com.tbsc.member.Member;
 import com.tbsc.member.MemberRepository;
+import com.tbsc.rental.Rental;
+import com.tbsc.util.ReserveType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -94,6 +97,21 @@ public class JobConsultService {
         return optionalJobConsult.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    public ResponseEntity<JobConsult> cancelJobConsult(Long num) {
+        Optional<JobConsult> optionalJobConsult = jobConsultRepository.findById(num);
+        if (optionalJobConsult.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+
+        JobConsult jobConsult = optionalJobConsult.get();
+
+        jobConsult.setState(ReserveType.CANCEL);
+
+        jobConsultRepository.save(jobConsult);
+
+        return ResponseEntity.ok(jobConsult);
+    }
+
     @Transactional
     public void updateJobConsult(JobConsultDto jobConsultDto, Long num) {
         Optional<JobConsult> optionalJobConsult = jobConsultRepository.findByNum(num);
@@ -166,5 +184,11 @@ public class JobConsultService {
 
     }
 
+    public boolean existsByNum(Long num) {
+        return jobConsultRepository.existsById(num);
+    }
 
+    public void deleteJobConsultByNum(Long num) {
+        jobConsultRepository.deleteById(num);
+    }
 }
