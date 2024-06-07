@@ -40,7 +40,7 @@ public class QConsultant extends EntityPathBase<Consultant> {
 
     public final com.tbsc.member.QMember member;
 
-    public final NumberPath<Integer> num = createNumber("num", Integer.class);
+    public final NumberPath<Long> num = createNumber("num", Long.class);
 
     public final StringPath ownerShip = createString("ownerShip");
 

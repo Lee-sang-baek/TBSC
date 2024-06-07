@@ -178,8 +178,8 @@ const ModiCorp = (props) => {
     };
 
     useEffect(() => {
-        console.log(formData);
-        console.log("registInfo", registInfo);
+        // console.log(formData);
+        // console.log("registInfo", registInfo);
         setRegistInfo({
             ...registInfo,
             title: formData.title,
@@ -195,7 +195,7 @@ const ModiCorp = (props) => {
         if (formData.content) {
             editorRef.current.getInstance().setHTML(formData.content);
         }
-    }, [formData.content]);
+    }, []);
 
     if (!memberId) {
         return (

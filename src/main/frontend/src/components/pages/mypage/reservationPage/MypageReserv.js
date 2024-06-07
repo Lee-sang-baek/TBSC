@@ -1,10 +1,8 @@
 import React, {useEffect, useState} from "react";
 import "./MypageReserv.css";
-import Sidebar from "../../../fragments/sidebar/Sidebar";
 import Button from "../../../baseComponents/Button";
 import axios from "axios";
 import img from "../../../imgs/login.png";
-import {useNavigate} from "react-router-dom";
 
 const ReservDetails = (props) => {
     const memberId = sessionStorage.getItem("id");
@@ -99,8 +97,14 @@ const ReservDetails = (props) => {
         setSelectedSection(section === selectedSection ? null : section); // 선택된 섹션이 현재 선택된 섹션과 같으면 null로 설정하여 토글
     };
 
-    const modifyLink = (index) => {
-        window.location.href = `/myPage/modify-reserv/${index}`;
+    const modifyLink = (num) => {
+        if (selectedSection === "consultant") {
+            window.location.href = `/myPage/modify-consultant/${num}`;
+        } else if (selectedSection === "jobConsult") {
+            window.location.href = `/myPage/modify-jobConsult/${num}`;
+        } else if (selectedSection === "rental") {
+            window.location.href = `/myPage/modify-reserv/${num}`;
+        }
     };
 
     const handlePageChange = (pageNumber) => {
@@ -140,8 +144,7 @@ const ReservDetails = (props) => {
                 </div>
             </div>
         );
-    }
-    ;
+    };
 
     return (
         <div className="ReservDetails-compo">
@@ -195,7 +198,7 @@ const ReservDetails = (props) => {
                 </div>)}
             {selectedSection === "consultant" && consultantList && consultantList.map((reservation, index) => (
                 <ReservesViewer reservation={reservation} index={index} selectedSection={selectedSection}
-                                handleCancelClick={handleCancelClick} modifyLink={modifyLink}/>
+                                handleCancelClick={handleCancelClick} modifyLink={() => modifyLink(reservation.num)}/>
             ))}
 
             {selectedSection === "jobConsult" && (
@@ -223,7 +226,7 @@ const ReservDetails = (props) => {
             )}
             {selectedSection === "jobConsult" && jobConsultList && jobConsultList.map((reservation, index) => (
                 <ReservesViewer reservation={reservation} index={index} selectedSection={selectedSection}
-                                handleCancelClick={handleCancelClick} modifyLink={modifyLink}/>
+                                handleCancelClick={handleCancelClick} modifyLink={() => modifyLink(reservation.num)}/>
             ))}
 
             {selectedSection === "rental" && (
@@ -250,8 +253,9 @@ const ReservDetails = (props) => {
                 </div>
             )}
             {selectedSection === "rental" && rentalList && rentalList.map((reservation, index) => (
-                <ReservesViewer reservation={reservation} index={index} selectedSection={selectedSection} handleCancelClick={handleCancelClick}
-                                modifyLink={modifyLink}/>
+                <ReservesViewer reservation={reservation} index={index} selectedSection={selectedSection}
+                                handleCancelClick={handleCancelClick}
+                                modifyLink={() => modifyLink(reservation.num)}/>
             ))}
 
             {showDeleteModal && (
@@ -284,94 +288,199 @@ const ReservesViewer = ({reservation, index, handleCancelClick, modifyLink, sele
     console.log(selectedSection);
 
     return (
-        <div className="pageInfo" key={index}>
-            <div className="reservContainer">
-                <div className="reservHeader">
-                    <div className="reservTitle">
-                        {reservation.place || ""}
-                    </div>
+        <>
+            {
+                ((selectedSection === "rental") && (
+                    <div className="pageInfo" key={index}>
+                        <div className="reservContainer">
+                            <div className="reservHeader">
+                                <div className="reservTitle">
+                                    {reservation.place || ""}
+                                </div>
 
-                    <div className="reservDate">
-                        {selectedSection === "rental" &&
-                            <>
-                                <div className="startDate">
-                                    {formatDate(reservation.startDate) || ""}
+                                <div className="reservDate">
+                                    <div className="startDate">
+                                        {formatDate(reservation.startDate) || ""}
+                                    </div>
+                                    <p>~</p>
+                                    <div className="endDate">
+                                        {formatDate(reservation.endDate) || ""}
+                                    </div>
                                 </div>
-                                <p>~</p>
-                                <div className="endDate">
-                                    {formatDate(reservation.endDate) || ""}
+                            </div>
+                            <div className="detailContent">
+                                <img className="reservImg" src={img} alt=""/>
+                                <div className="reservTime">
+                                    <div className="startDate">
+                                        {formatTime(reservation.startDate) || ""}
+                                    </div>
+                                    <p>~</p>
+                                    <div className="endDate">
+                                        {formatTime(reservation.endDate) || ""}
+                                    </div>
                                 </div>
-                            </>
-                        }
-                        {selectedSection === "consultant" &&
-                            <>
-                                <div className="startDate">
-                                    {formatDate(reservation.appDate) || ""}
-                                </div>
-                                <p>(</p>
-                                <div className="endDate">
-                                    {formatTime(reservation.appDate) || ""}
-                                </div>
-                                <p>)</p>
-                            </>
-                        }
-                        {selectedSection === "jobConsult" &&
-                            <>
-                            <div className="startDate">
-                                    {formatDate(reservation.startDate) || ""}
-                                </div>
-                                <p>~</p>
-                                <div className="endDate">
-                                    {formatDate(reservation.endDate) || ""}
-                                </div>
-                            </>
-                        }
+                                {(reservation.state === "RESERVE") &&
+                                    <div className="RESERVE">
+                                        예약완료
+                                    </div>
+                                }
+                                {(reservation.state === "CHECK") &&
+                                    <div className="CHECK">
+                                        검토 중
+                                    </div>
+                                }
+                                {(reservation.state === "APPROVE") &&
+                                    <div className="APPROVE">
+                                        승인됨
+                                    </div>
+                                }
+                                {(reservation.state === "DENY") &&
+                                    <div className="DENY">
+                                        거절됨
+                                    </div>
+                                }
+                                {(reservation.state === "CANCEL") &&
+                                    <div className="CANCEL">
+                                        예약취소
+                                    </div>
+                                }
+                                <button type="button" className="cancelButton"
+                                        onClick={() => handleCancelClick(reservation.num)}>
+                                    예약취소
+                                </button>
+                                <Button text="예약수정" onClick={() => modifyLink(reservation.num)}/>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div className="detailContent">
-                    <img className="reservImg" src={img} alt=""/>
-                    <div className="reservTime">
-                        <div className="startDate">
-                            {formatTime(reservation.startDate) || ""}
-                        </div>
-                        <p>~</p>
-                        <div className="endDate">
-                            {formatTime(reservation.endDate) || ""}
+                ))
+                ||
+                ((selectedSection === "consultant") && (
+                    <div className="pageInfo" key={index}>
+                        <div className="reservContainer">
+                            <div className="reservHeader">
+                                <div className="reservTitle">
+                                    <text>{reservation.compName || ""}</text>
+                                    <text>
+                                        직원 수:&nbsp;
+                                        {reservation.employees || ""}
+                                    </text>
+                                </div>
+
+                                <div className="reservDate">
+                                    <div className="startDate">
+                                        {formatDate(reservation.appDate) || ""}
+                                    </div>
+                                    <p>(</p>
+                                    <div className="endDate">
+                                        {formatTime(reservation.appDate) || ""}
+                                    </div>
+                                    <p>)</p>
+                                </div>
+                            </div>
+                            <div className="detailContent">
+                                <img className="reservImg" src={img} alt=""/>
+                                <div className="consultantTime">
+                                    <div className="startDate">
+                                        사업 개시 일자
+                                    </div>
+                                    <div className="endDate">
+                                        {formatDate(reservation.startDate) || ""}
+                                    </div>
+                                </div>
+                                {(reservation.state === "RESERVE") &&
+                                    <div className="RESERVE">
+                                        예약완료
+                                    </div>
+                                }
+                                {(reservation.state === "CHECK") &&
+                                    <div className="CHECK">
+                                        검토 중
+                                    </div>
+                                }
+                                {(reservation.state === "APPROVE") &&
+                                    <div className="APPROVE">
+                                        승인됨
+                                    </div>
+                                }
+                                {(reservation.state === "DENY") &&
+                                    <div className="DENY">
+                                        거절됨
+                                    </div>
+                                }
+                                {(reservation.state === "CANCEL") &&
+                                    <div className="CANCEL">
+                                        예약취소
+                                    </div>
+                                }
+                                <button type="button" className="cancelButton"
+                                        onClick={() => handleCancelClick(reservation.num)}>
+                                    예약취소
+                                </button>
+                                <Button text="예약수정" onClick={() => modifyLink(reservation.num)}/>
+                            </div>
                         </div>
                     </div>
-                    {(reservation.state === "RESERVE") &&
-                        <div className="RESERVE">
-                            예약완료
+                ))
+                ||
+                ((selectedSection === "jobConsult") && (
+                    <div className="pageInfo" key={index}>
+                        <div className="reservContainer">
+                            <div className="reservHeader">
+                                <div className="reservTitle">
+                                    일자리 상담 신청
+                                </div>
+
+                                <div className="reservDate">
+
+                                    <div className="startDate">
+                                        <p>작성일자:&nbsp;</p>
+                                        {formatDate(reservation.createDate) || ""}
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div className="detailContent">
+                                <img className="reservImg" src={img} alt=""/>
+                                <div className="reservTime">
+                                    <p>상담일자:&nbsp;</p>
+                                    {formatDate(reservation.date) || ""}
+                                </div>
+                                {(reservation.state === "RESERVE") &&
+                                    <div className="RESERVE">
+                                        예약완료
+                                    </div>
+                                }
+                                {(reservation.state === "CHECK") &&
+                                    <div className="CHECK">
+                                        검토 중
+                                    </div>
+                                }
+                                {(reservation.state === "APPROVE") &&
+                                    <div className="APPROVE">
+                                        승인됨
+                                    </div>
+                                }
+                                {(reservation.state === "DENY") &&
+                                    <div className="DENY">
+                                        거절됨
+                                    </div>
+                                }
+                                {(reservation.state === "CANCEL") &&
+                                    <div className="CANCEL">
+                                        예약취소
+                                    </div>
+                                }
+                                <button type="button" className="cancelButton"
+                                        onClick={() => handleCancelClick(reservation.num)}>
+                                    예약취소
+                                </button>
+                                <Button text="예약수정" onClick={() => modifyLink(reservation.num)}/>
+                            </div>
                         </div>
-                    }
-                    {(reservation.state === "CHECK") &&
-                        <div className="CHECK">
-                            검토 중
-                        </div>
-                    }
-                    {(reservation.state === "APPROVE") &&
-                        <div className="APPROVE">
-                            승인됨
-                        </div>
-                    }
-                    {(reservation.state === "DENY") &&
-                        <div className="DENY">
-                            거절됨
-                        </div>
-                    }
-                    {(reservation.state === "CANCEL") &&
-                        <div className="CANCEL">
-                            예약취소
-                        </div>
-                    }
-                    <button type="button" className="cancelButton"
-                            onClick={() => handleCancelClick(reservation.num)}>
-                        예약취소
-                    </button>
-                    <Button text="예약수정" onClick={() => modifyLink(index)}/>
-                </div>
-            </div>
-        </div>
+                    </div>
+                ))
+            }
+        </>
     )
 };
 

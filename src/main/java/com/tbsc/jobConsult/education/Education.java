@@ -15,7 +15,7 @@ import java.time.LocalDate;
 public class Education {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long num;
 
     private String schoolName;
@@ -32,4 +32,13 @@ public class Education {
     @JsonIgnore
     @JoinColumn(name = "jobConsult_num", referencedColumnName = "num")
     private JobConsult jobConsult;
+
+    public Education bind(Education education) {
+        this.schoolName = education.getSchoolName();
+        this.major = education.getMajor();
+        this.admissionDate = education.getAdmissionDate();
+        this.graduationDate = education.getGraduationDate();
+        this.academicStatus = education.getAcademicStatus();
+        return this;
+    }
 }

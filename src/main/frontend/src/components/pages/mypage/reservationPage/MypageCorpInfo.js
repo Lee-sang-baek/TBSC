@@ -108,7 +108,7 @@ const CorpInfo = (props) => {
                                     </div>
                                     <div className="corpInfoContent">
                                         <div className="contentText">
-                                            {corpInfo.content && <Viewer contents={corpInfo.content}/>}
+                                                {corpInfo.content && <Viewer contents={corpInfo.content} isTag={true}/>}
                                         </div>
                                     </div>
                                 </div>
