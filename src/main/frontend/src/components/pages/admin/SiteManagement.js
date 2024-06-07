@@ -4,6 +4,7 @@ import "./SiteManagement.css";
 import { DateFormat } from "../../util/DateFormat";
 import VisualAssetManager from "./VisualAssetManager";
 import axios from "axios";
+import ContentsViewer from "../../pages/mypage/functionPage/Viewer";
 
 const SiteManagement = () => {
     useEffect(() => {
@@ -208,7 +209,7 @@ const TableComponent = ({ asset, itemList, toggleUpdateManager, setDeleteItemId,
                     <tr key={index}>
                         <td><img src={`/uploads/${item.image}`} alt={item.image} /></td>
                         <td>{item.title}</td>
-                        <td>{item.content}</td>
+                        <td><ContentsViewer contents={item.content ? item.content : ""} isTag={false}/></td>
                         <td>
                             {getStatus(item.start, item.end)} <br /> 
                             {DateFormat(item.start)} ~ <br /> 

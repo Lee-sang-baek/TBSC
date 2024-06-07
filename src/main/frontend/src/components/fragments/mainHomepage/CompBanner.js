@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './CompBanner.css'; // CSS 파일 import
 import Slider from 'react-slick';
 import EduconsultData from '../../pages/explainpage/EduconsultData';
+import Viewer from "../../pages/mypage/functionPage/Viewer";
 import axios from 'axios';
 
 function CompBanner() {
@@ -45,10 +46,8 @@ function CompBanner() {
                                 backgroundRepeat: 'no-repeat' // Optional to prevent repeating the image
                             }}>
                                 <div className='shape'>
-                                    <h2>{item.title}</h2>
-                                    <h3>{item.corpName}</h3>
-                                    <h4>{item.writer}</h4>
-                                    <p>{item.content}</p>
+                                    <p>{item.content && (<Viewer contents={item.content} isTag={false} />)}</p>
+                                    <h4>{item.title} ({item.writer})</h4>
                                 </div>
                             </div>
                         </div>

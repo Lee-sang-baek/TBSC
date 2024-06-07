@@ -1,7 +1,13 @@
-import banner1 from '../../imgs/bus.png'
-import banner2 from '../../imgs/bus.png'
-import banner3 from '../../imgs/bus.png'
-import banner4 from '../../imgs/bus.png'
+import banner1 from '../../imgs/banner/banner1.jpg'
+import banner2 from '../../imgs/banner/banner2.jpg'
+import banner3 from '../../imgs/banner/banner3.jpg'
+import banner4 from '../../imgs/banner/banner4.jpg'
+import banner5 from '../../imgs/banner/banner5.jpg'
+import banner6 from '../../imgs/banner/banner6.jpg'
+import banner7 from '../../imgs/banner/banner7.jpg'
+import banner8 from '../../imgs/banner/banner8.jpg'
+import banner9 from '../../imgs/banner/banner9.jpg'
+import banner10 from '../../imgs/banner/banner10.jpg'
 
 const EduconsultData = [
     {

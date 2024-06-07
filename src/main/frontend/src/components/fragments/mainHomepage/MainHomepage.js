@@ -9,6 +9,7 @@ import axios from 'axios';
 import NewsPicture from './NewsPicture';
 import Popup from '../popup/Popup';
 import CompBanner from './CompBanner';
+import ContentsViewer from '../../pages/mypage/functionPage/Viewer';
 
 function MainHomepage() {
     const [imageList, setImageList] = useState([]);
@@ -93,7 +94,9 @@ function MainHomepage() {
                     {modifiedImageList && modifiedImageList.map((item, index) => (
                         <div key={index} className='image-box'>
                             <img src={`/uploads/${item.image}`} alt={item.title} />
-                            <div className='content-box'>{item.content}</div>
+                            <div className='content-box'>
+                                <ContentsViewer contents={item.content} />    
+                            </div>
                         </div>
                     ))}
                     {(!modifiedImageList || modifiedImageList.length < 1) &&

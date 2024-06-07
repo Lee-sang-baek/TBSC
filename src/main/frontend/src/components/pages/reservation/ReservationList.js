@@ -84,18 +84,13 @@ const ReservationList = () => {
                     )}
                 </div>
                 <div className="reservation-table">
-                    <div className="reservation-header">
-                        <span>제목</span>
-                        <span>내용</span>
-                        <span>작성일</span>
-                    </div>
                     {currentReservations.map(reservation => (
                         <div key={reservation.num} className="reservation-row">
+                            <span>{reservation.num}</span>
                             <span>
                                 <Link to={`/reservation/${reservation.num}`}>{reservation.title}</Link>
                             </span>
-                            <span>{reservation.content}</span>
-                            <span>{new Date(reservation.date).toLocaleDateString()}</span>
+                            <span className='date'>{new Date(reservation.date).toLocaleDateString()}</span>
                         </div>
                     ))}
                 </div>

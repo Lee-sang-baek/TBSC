@@ -92,11 +92,10 @@ function NoticeDetail() {
                     )}
                 </div>
                 {MemberState === 'ADMIN' && (
-                    <>
-                        <Button className="editButton" text="수정하기" link={`/notices/update/${num}`} />
-                        <br/>
-                        <Button className="deleteButton" text="삭제하기" onClick={deleteNotice} />
-                    </>
+                    <div className="btn-box">
+                        <button className="btns" link={`/notices/update/${num}`}>수정하기</button>
+                        <button className="btns" onClick={deleteNotice}>삭제하기</button>
+                    </div>
                 )}
         </div>
     );

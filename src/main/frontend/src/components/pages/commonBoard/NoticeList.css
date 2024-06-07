@@ -7,159 +7,160 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
 
-.NoticeList-compo .noticeListContainer {
-    display: flex;
-    flex-direction: column;
-
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-.NoticeList-compo .noticeList h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.NoticeList-compo .topBar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.NoticeList-compo .statusFilter, .searchInput {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-}
-
-.NoticeList-compo .searchButton, .writeButton {
-    padding: 8px 12px;
-    margin-left: 10px;
-    background-color: #000;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.NoticeList-compo .searchButton:hover, .writeButton:hover {
-    background-color: #444;
-}
-
-.NoticeList-compo table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
-
-.NoticeList-compo thead th {
-    border: none; /* Remove borders from table header */
-    padding: 10px;
-    background-color: #e0e0e0;
-    text-align: left;
-    font-size: 14px;
-    color: #333;
-}
-
-.NoticeList-compo .totalCount {
-    display: block;
-    margin-bottom: 10px;
-    font-size: 14px;
-    color: #333;
-    width: 100px;
-}
-
-.NoticeList-compo tbody tr {
-    border-top: 1px solid #ccc;
-    background-color: #fafafa;
-}
-
-.NoticeList-compo .noticeRow:hover {
-    background-color: #f1f1f1;
-}
-
-.NoticeList-compo td {
-    padding: 15px;
-    text-align: left;
-    vertical-align: middle;
-    border: none; /* Remove border from table cells */
-}
-
-.NoticeList-compo .noticeTag {
-    display: inline-block;
-    padding: 5px 10px;
-    background-color: #007bff;
-    color: #fff;
-    border-radius: 3px;
-    font-size: 12px;
-    width: 50%;
-    text-align: center;
-}
-
-.NoticeList-compo td:nth-child(2) {
-    min-width: 50px;
-    width: 50px;
-    text-align: center;
-    font-weight: bold;
-    color: #333;
-}
-
-.NoticeList-compo td:nth-child(3) {
-    width: 70%;
-}
-
-.NoticeList-compo td:nth-child(4) {
-    width: 300px;
-    text-align: center;
-    font-size: 14px;
-    color: #666;
-
-}
-
-.NoticeList-compo a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-.NoticeList-compo a:hover {
-    text-decoration: underline;
-}
-
-/* Centering Pagination */
-.NoticeList-compo .pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    padding: 0;
-}
-
-.NoticeList-compo .pagination li {
-    list-style: none;
-    margin: 0 5px;
-    display: flex;
-}
-
-.NoticeList-compo .pagination li a {
-    text-decoration: none;
-    color: #007bff;
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-.NoticeList-compo .pagination li a:hover {
-    background-color: #f1f1f1;
-}
-
-.NoticeList-compo .pagination .active a {
-    background-color: #007bff;
-    color: white;
-    border: 1px solid #007bff;
+    .noticeListContainer {
+        display: flex;
+        flex-direction: column;
+    
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .noticeList h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    
+    .topBar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    
+    .statusFilter, .searchInput {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+    
+    .searchButton, .writeButton {
+        padding: 8px 12px;
+        margin-left: 10px;
+        background-color: #000;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    .searchButton:hover, .writeButton:hover {
+        background-color: #444;
+    }
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+    
+    thead th {
+        border: none; /* Remove borders from table header */
+        padding: 10px;
+        background-color: #e0e0e0;
+        text-align: left;
+        font-size: 14px;
+        color: #333;
+    }
+    
+    .totalCount {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 14px;
+        color: #333;
+        width: 100px;
+    }
+    
+    tbody tr {
+        border-top: 1px solid #ccc;
+        background-color: #fafafa;
+    }
+    
+    .noticeRow:hover {
+        background-color: #f1f1f1;
+    }
+    
+    td {
+        padding: 15px;
+        text-align: left;
+        vertical-align: middle;
+        border: none; /* Remove border from table cells */
+    }
+    
+    .noticeTag {
+        display: inline-block;
+        padding: 5px 10px;
+        background-color: #007bff;
+        color: #fff;
+        border-radius: 3px;
+        font-size: 12px;
+        width: 50%;
+        text-align: center;
+    }
+    
+    td:nth-child(2) {
+        min-width: 50px;
+        width: 50px;
+        text-align: center;
+        font-weight: bold;
+        color: #333;
+    }
+    
+    td:nth-child(3) {
+        width: 70%;
+    }
+    
+    td:nth-child(4) {
+        width: 300px;
+        text-align: center;
+        font-size: 14px;
+        color: #666;
+    
+    }
+    
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+    
+    a:hover {
+        text-decoration: underline;
+    }
+    
+    /* Centering Pagination */
+    .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        padding: 0;
+    }
+    
+    .pagination li {
+        list-style: none;
+        margin: 0 5px;
+        display: flex;
+    }
+    
+    .pagination li a {
+        text-decoration: none;
+        color: #007bff;
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+    
+    .pagination li a:hover {
+        background-color: #f1f1f1;
+    }
+    
+    .pagination .active a {
+        background-color: #007bff;
+        color: white;
+        border: 1px solid #007bff;
+    }
+    
 }

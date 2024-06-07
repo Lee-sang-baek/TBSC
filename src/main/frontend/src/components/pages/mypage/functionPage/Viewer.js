@@ -25,6 +25,7 @@ function ContentsViewer({ contents, isTag }) {
 }
 
 ContentsViewer.defaultProps = {
+    contents: "내용이 입력되지 않음!!",
     isTag: true
 };
 

@@ -15,7 +15,7 @@ const ModiCorp = (props) => {
 
     const [selectedFile, setSelectedFile] = useState(null);
     const [corpImage, setCorpImage] = useState(null);
-
+    const [content, setContent] = useState("");
     const editorRef = useRef();
 
     const [memberInfo, setMemberInfo] = useState({
@@ -72,6 +72,7 @@ const ModiCorp = (props) => {
                     content,
                     num,
                 }));
+                setContent(content);
             })
             .catch((error) => {
                 if (error.response && error.response.status === 404) {
@@ -141,7 +142,7 @@ const ModiCorp = (props) => {
             console.log(formData);
             await axios.post('/registcomp/create', {...formData, compImage: imageFile});
             setFormData({});
-            alert('게시글이 작성되었습니다');
+            alert('기업 정보가 작성되었습니다');
             window.location.href = '/myPage/corp-info';
         } catch (error) {
             console.error("There was an error creating the notice!", error);
@@ -170,7 +171,7 @@ const ModiCorp = (props) => {
             console.log(formData);
             await axios.put(`/registcomp/${registInfo.num}`, {...registInfo, compImage: imageFile});
             setFormData({});
-            alert('게시글이 작성되었습니다');
+            alert('기업 정보가 작성되었습니다');
             window.location.href = '/myPage/corp-info';
         } catch (error) {
             console.error("There was an error creating the notice!", error);
@@ -195,7 +196,7 @@ const ModiCorp = (props) => {
         if (formData.content) {
             editorRef.current.getInstance().setHTML(formData.content);
         }
-    }, []);
+    }, [content]);
 
     if (!memberId) {
         return (
@@ -281,6 +282,13 @@ const ModiCorp = (props) => {
                                     hooks={{
                                         addImageBlobHook: onUploadImage
                                     }}
+                                    toolbarItems={[
+                                        ['heading', 'bold', 'italic', 'strike'],
+                                        ['hr', 'quote'],
+                                        ['ul', 'ol', 'task'],
+                                        ['table', 'link'],
+                                        ['code', 'codeblock'],
+                                    ]}
                                 />
                             </div>
                         </div>

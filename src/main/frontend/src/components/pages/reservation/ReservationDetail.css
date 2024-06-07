@@ -26,6 +26,9 @@
     }
 
     .detail-meta {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
         margin-bottom: 20px;
     }
 
@@ -35,7 +38,8 @@
     }
 
     .detail-content {
-        margin-bottom: 20px;
+        height: 100%;
+        margin: 20px 0;
         min-height: 200px;
     }
 

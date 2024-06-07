@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Button from "../../baseComponents/Button";
 import "./VisualAssetManager.css";
+import {Editor} from '@toast-ui/react-editor';
+import colorSyntax from '@toast-ui/editor-plugin-color-syntax';
 
 const VisualAssetManager = ({ asset, itemToEdit, close }) => {
   useEffect(() => {
@@ -9,6 +11,7 @@ const VisualAssetManager = ({ asset, itemToEdit, close }) => {
         window.location.href = "/";
     }
   }, [])
+
   const [formData, setFormData] = useState({
     num: null,
     image: null,
@@ -18,16 +21,30 @@ const VisualAssetManager = ({ asset, itemToEdit, close }) => {
     start: "",
     end: "",
   });
+  const [content, setContent] = useState("");
+  const editorRef = useRef();
 
   useEffect(() => {
     if (itemToEdit) {
       setFormData(itemToEdit);
+      setContent(itemToEdit.content)
     }
   }, [itemToEdit]);
+
+  useEffect(() => {
+    if (formData.content) {
+      editorRef.current.getInstance().setHTML(formData.content);
+    }
+  }, [content]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  const handleContentChange = () => {
+    const data = editorRef.current.getInstance().getHTML();
+    setFormData({...formData, content: data});
+};
 
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
@@ -102,6 +119,11 @@ const VisualAssetManager = ({ asset, itemToEdit, close }) => {
     }
   };
 
+  const handleFocus = () => {
+    console.log('Editor focused');
+  };
+  
+
   if (sessionStorage.getItem("state") !== "ADMIN") {
     return null;
   }
@@ -113,7 +135,7 @@ const VisualAssetManager = ({ asset, itemToEdit, close }) => {
         <Button text="닫기" onClick={close} className='btn-two cyan rounded' />
       </div>
       <form onSubmit={handleSubmit}>
-        <label>
+        <label className="lab">
           이미지 파일:
           <input
             type="file"
@@ -122,7 +144,7 @@ const VisualAssetManager = ({ asset, itemToEdit, close }) => {
             required={!itemToEdit}
           />
         </label>
-        <label>
+        <label className="lab">
           제목:
           <input
             type="text"
@@ -132,16 +154,30 @@ const VisualAssetManager = ({ asset, itemToEdit, close }) => {
             required
           />
         </label>
-        <label>
+        <div className="lab">
             내용:
-            <textarea
-              name="content"
-              value={formData.content}
-              onChange={handleChange}
-              required
+            <Editor
+              placeholder="내용 입력"
+              previewStyle="vertical"
+              height="300px"
+              initialEditType="wysiwyg"
+              hideModeSwitch="true"
+              plugins={[colorSyntax]}
+              useCommandShortcut={false}
+              language="ko-KR"
+              ref={editorRef}
+              onChange={handleContentChange}
+              onFocus={handleFocus}
+              toolbarItems={[
+                  ['heading', 'bold', 'italic', 'strike'],
+                  ['hr', 'quote'],
+                  ['ul', 'ol', 'task'],
+                  ['table', 'link'],
+                  ['code', 'codeblock'],
+              ]}
             />
-          </label>
-          <label>
+          </div>
+          <label className="lab">
             시작일:
             <input
               type="datetime-local"
@@ -151,7 +187,7 @@ const VisualAssetManager = ({ asset, itemToEdit, close }) => {
               required
             />
           </label>
-          <label>
+          <label className="lab">
             종료일:
             <input
               type="datetime-local"

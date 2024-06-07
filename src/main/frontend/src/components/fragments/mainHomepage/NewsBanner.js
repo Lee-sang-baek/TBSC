@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import './NewsBanner.css';
 import { DateFormatExceptTime } from "../../util/DateFormat";
+import { Link } from 'react-router-dom';
 
 const NoticeBanner = () => {
     const [notices, setNotices] = useState([]);
@@ -69,7 +70,7 @@ const NoticeBanner = () => {
                 return notices;
             case 'centerNews':
                 return centerNews;
-            case 'pressReleases':
+            case 'pressrelease':
                 return pressReleases;
             default:
                 return [];
@@ -86,7 +87,7 @@ const NoticeBanner = () => {
                     <h3>News</h3>
                     <h4 onClick={() => handleCategoryChange('notices')} className={selectedCategory === 'notices' ? 'active' : ''}>공지사항</h4>
                     <h4 onClick={() => handleCategoryChange('centerNews')} className={selectedCategory === 'centerNews' ? 'active' : ''}>센터소식</h4>
-                    <h4 onClick={() => handleCategoryChange('pressReleases')} className={selectedCategory === 'pressReleases' ? 'active' : ''}>보도자료</h4>
+                    <h4 onClick={() => handleCategoryChange('pressrelease')} className={selectedCategory === 'pressrelease' ? 'active' : ''}>보도자료</h4>
                 </div>
                 <div className='page-btn'>
                     <div className='up' onClick={() => {handlePageChange(-1)}}> ▲ </div>
@@ -96,8 +97,10 @@ const NoticeBanner = () => {
                     {currentItem ? (
                         <>
                             <div className='title'>
-                                <h4>{currentItem.title}</h4>
-                                <p>{DateFormatExceptTime(currentItem.date)}</p>
+                                <h4>
+                                    <Link to={`/${selectedCategory}/${currentItem.num}`}>{currentItem.title}</Link>
+                                </h4>
+                                <p>작성일 : {DateFormatExceptTime(currentItem.date)}</p>
                             </div>
                             {selectedCategory === 'notices' && (
                                 <div className='content' dangerouslySetInnerHTML={{ __html: currentItem.content }}></div>

@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: column;
   width: 95%;
-  background-color: #ffe3ef;
-  border: 1px solid #ccc;
+  background-color: #e6e6e6;
+  
   box-shadow: 15px 15px 30px #bebebe,
              -15px -15px 30px #ffffff;
   border-radius: 30px;
@@ -24,7 +24,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
   }
 
   .page-btn {
@@ -81,6 +81,15 @@
     margin: 0;
   }
 
+  a {
+    text-decoration: none;
+    color: #0033c0;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
   .menu h4 {
     margin: 10px 0; 
     text-wrap: wrap;
@@ -88,16 +97,17 @@
     min-width: 35px;
     cursor: pointer;
     text-align: center;
+    border-radius: 10px;
   }
 
   .menu h4:hover {
     background-color: #ddd;
-    border-radius: 10px;
+    
   }
 
   .active {
-    color: rgb(0, 89, 255);
-    background-color: #ffc9df;
+    color: rgb(0, 61, 175);
+    background-color: #cfcfcf;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
   }
 
@@ -106,13 +116,14 @@
   }
 
   .content {
+    overflow: scroll;
     border: 1px solid #aaa;
     background-color: #fff;
     border-radius: 5px;
     margin: 15px;
     padding: 5px;
     width: 95%;
-    height: 100%;
+    height: 250px;
     text-align: start;
     transition: top 0.1s ease-out;
   }
