@@ -94,8 +94,7 @@ const ReservDetails = (props) => {
                 });
             setShowDeleteModal(false);
 
-        }
-        else if (selectedSection === "jobConsult") {
+        } else if (selectedSection === "jobConsult") {
             axios.put(`/jobConsult/cancle/${cancelReserve}`)
                 .then((res) => {
                     console.log("JobConsult cancelled successfully");
@@ -107,8 +106,7 @@ const ReservDetails = (props) => {
                 });
             setShowDeleteModal(false);
 
-        }
-        else if (selectedSection === "rental") {
+        } else if (selectedSection === "rental") {
             axios.put(`/rental/modify/${cancelReserve}`)
                 .then((res) => {
                     console.log("Reservation cancelled successfully");
@@ -173,7 +171,8 @@ const ReservDetails = (props) => {
                 </div>
             </div>
         );
-    };
+    }
+    ;
 
     return (
         <div className="ReservDetails-compo">
@@ -224,7 +223,8 @@ const ReservDetails = (props) => {
                     {consultantEndPage < consultantTotalPages && (
                         <button onClick={handleNextGroup}>&raquo;</button>
                     )}
-                </div>)}
+                </div>
+            )}
             {selectedSection === "consultant" && consultantList && consultantList.map((reservation, index) => (
                 <ReservesViewer reservation={reservation} index={index} selectedSection={selectedSection}
                                 handleCancelClick={handleCancelClick} modifyLink={() => modifyLink(reservation.num)}/>
@@ -292,8 +292,9 @@ const ReservDetails = (props) => {
                     <div className="modal-content">
                         <h2>정말 예약을 취소하시겠습니까?</h2>
                         <div className="btn-box">
-                            <Button  text="확인" className="btn-two red rounded" onClick={cancelReservation}/>
-                            <Button  text="취소" className="btn-two cyan rounded"  onClick={() => setShowDeleteModal(false)}/>
+                            <Button text="확인" className="btn-two red rounded" onClick={cancelReservation}/>
+                            <Button text="취소" className="btn-two cyan rounded"
+                                    onClick={() => setShowDeleteModal(false)}/>
                         </div>
                     </div>
                 </div>

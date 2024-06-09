@@ -20,7 +20,7 @@ public class MemberControllerTest {
 
     @Test
     void signUp() {
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 30; i++) {
             Member member = new Member();
             member.setId("dummy" + i);
             member.setPassword(pe.encode("12345"));

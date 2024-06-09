@@ -29,6 +29,7 @@ import VisualAssetManager from "./components/pages/admin/VisualAssetManager";
 import DeleteInfo from "./components/pages/mypage/functionPage/DeleteInfo";
 import FacilityGuideMain from "./components/pages/facilityGuide/FacilityGuideMain";
 import ChatbotToggle from "./components/pages/chatBot/ChatbotToggle";
+import CompIntroPage from "./components/pages/compIntro/CompIntroPage";
 import TNoticeList from "./components/pages/tnotice/TNoticeList";
 import TNoticeForm from "./components/pages/tnotice/TNoticeForm";
 import TNoticeDetail from "./components/pages/tnotice/TNoticeDetail";
@@ -212,6 +213,12 @@ function App() {
                         </div>
                     }/>
 
+                    <Route path="/compIntroPage" element={
+                        <div className="outter">
+                            <Sidebar type="comp"/>
+                            <CompIntroPage/>
+                        </div>
+                    }/>
                     <Route path="/tnotice" element={
                         <div className="outter">
                             <Sidebar type="comp"/>

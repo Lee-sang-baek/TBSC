@@ -158,9 +158,7 @@ const MyHome = () => {
 
                 <div className="userDelete">
                     <Link to="/myPage/delete-info">
-                        <Button text="계정 탈퇴" onClick={() => {
-
-                        }}/>
+                        <Button text="계정 탈퇴"/>
                     </Link>
                 </div>
             </div>

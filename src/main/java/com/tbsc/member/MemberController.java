@@ -139,7 +139,7 @@ public class MemberController {
         return memberService.memberModify(memberDto, passwordEncoder);
     }
 
-    @PostMapping("/member/memberdelete")
+    @PostMapping("/member/memberDelete")
     public ResponseEntity<String> memberDelete(@RequestBody MemberDto memberDto) {
 
         String enteredPassword = memberDto.getPassword();
@@ -152,11 +152,11 @@ public class MemberController {
         boolean passwordMatches = passwordEncoder.matches(enteredPassword, storedPasswordHash);
 
         if (passwordMatches) {
-            System.out.println("1");
+//            System.out.println("1");
             return memberService.memberDelete(memberDto, passwordEncoder);
         } else {
-            System.out.println("2");
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+//            System.out.println("2");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Wrong password");
         }
     }
 
@@ -195,7 +195,7 @@ public class MemberController {
 
 
     @PostMapping("/member/verify")
-    public ResponseEntity<String> verifyUserDetails (@RequestBody MemberDto memberDto){
+    public ResponseEntity<String> verifyUserDetails(@RequestBody MemberDto memberDto) {
         boolean isVerified = memberService.verifyUserDetails(memberDto.getId(), memberDto.getName());
         if (isVerified) {
             return ResponseEntity.ok("사용자 정보가 확인되었습니다.");
@@ -204,12 +204,12 @@ public class MemberController {
         }
     }
 
-        @PostMapping("/member/resetPassword")
-            public ResponseEntity<String> resetPassword(@RequestBody MemberDto memberDto) {
-                memberService.resetPassword(memberDto.getId(), memberDto.getNewPassword() , passwordEncoder);
-                return ResponseEntity.ok("비밀번호가 재설정되었습니다.");
-            }
+    @PostMapping("/member/resetPassword")
+    public ResponseEntity<String> resetPassword(@RequestBody MemberDto memberDto) {
+        memberService.resetPassword(memberDto.getId(), memberDto.getNewPassword(), passwordEncoder);
+        return ResponseEntity.ok("비밀번호가 재설정되었습니다.");
     }
+}
 
 
 

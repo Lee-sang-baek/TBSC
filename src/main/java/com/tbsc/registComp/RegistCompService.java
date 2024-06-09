@@ -3,6 +3,8 @@ package com.tbsc.registComp;
 import com.tbsc.member.Member;
 import com.tbsc.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -52,5 +54,9 @@ public class RegistCompService {
                     registCompRepository.delete(registComp);
                     return true;
                 }).orElse(false);
+    }
+
+    public Page<RegistComp> getRegistCompList(Pageable pageable) {
+        return registCompRepository.findAll(pageable);
     }
 }

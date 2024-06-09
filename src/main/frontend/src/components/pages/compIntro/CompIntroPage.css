@@ -1,0 +1,35 @@
+.CompIntroPage-compo {
+    width: 87%;
+    margin: 100px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .pagination button {
+        margin: 0 5px;
+        padding: 12px 18px;
+        border: none;
+        background-color: #e0e0e0;
+        cursor: pointer;
+        border-radius: 50px;
+        transition: background-color 0.3s, transform 0.3s;
+        font-size: 16px;
+    }
+
+    .pagination button:hover {
+        background-color: #d0d0d0;
+        transform: translateY(-2px);
+    }
+
+    .pagination button.active {
+        background-color: black;
+        color: #fff;
+    }
+}
