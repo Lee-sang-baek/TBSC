@@ -8,7 +8,7 @@ const CenterNewsList = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState('');
     const [filteredNews, setFilteredNews] = useState([]);
-    const newsPerPage = 6;
+    const newsPerPage = 8;
     const navigate = useNavigate();
     const MemberState = sessionStorage.getItem("state");
 

@@ -158,6 +158,10 @@
         color: #333;
         flex: 1;
     }
+    .pressRelease-card a {
+        color: black;
+        text-decoration-line: none;
+    }
 
     .pressRelease-meta {
         font-size: 14px;

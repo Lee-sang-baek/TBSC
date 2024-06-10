@@ -1,4 +1,4 @@
-package com.tbsc.controller;
+package com.tbsc.controller.board;
 
 import com.tbsc.member.Member;
 import com.tbsc.member.MemberRepository;

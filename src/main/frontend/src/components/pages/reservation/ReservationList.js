@@ -7,7 +7,7 @@ const ReservationList = () => {
     const [reservations, setReservations] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState('');
-    const reservationsPerPage = 6;
+    const reservationsPerPage = 10;
     const navigate = useNavigate();
     const MemberState = sessionStorage.getItem("state");
 
@@ -94,7 +94,11 @@ const ReservationList = () => {
                             <span>
                                 <Link to={`/reservation/${reservation.num}`}>{reservation.title}</Link>
                             </span>
-                            <span>{reservation.content}</span>
+                            <span>
+                                <Link to={`/reservation/${reservation.num}`}>
+                                    {reservation.content.split('\n')[0]}
+                                </Link>
+                            </span>
                             <span>{new Date(reservation.date).toLocaleDateString()}</span>
                         </div>
                     ))}

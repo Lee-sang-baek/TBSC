@@ -159,6 +159,10 @@
         color: #333;
         flex: 1;
     }
+    .notice-card a {
+        color: black;
+        text-decoration-line: none;
+    }
 
     .notice-meta {
         font-size: 14px;
