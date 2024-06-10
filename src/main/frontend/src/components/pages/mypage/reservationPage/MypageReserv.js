@@ -82,16 +82,43 @@ const ReservDetails = (props) => {
 
     // 예약 취소 버튼 클릭 시 호출되는 함수
     const cancelReservation = () => {
-        axios.put(`/rental/modify/${cancelReserve}`)
-            .then((res) => {
-                console.log("Reservation cancelled successfully");
-                // 예약 정보를 다시 가져옵니다. (업데이트된 정보 반영)
-                getReserve();
-            })
-            .catch((error) => {
-                console.error("Error cancelling reservation:", error);
-            });
-        setShowDeleteModal(false);
+
+        if (selectedSection === "consultant") {
+            axios.put(`/consultants/modify/${cancelReserve}`)
+                .then((res) => {
+                    console.log("Consultant cancelled successfully");
+                    // 예약 정보를 다시 가져옵니다. (업데이트된 정보 반영)
+                    getReserve();
+                })
+                .catch((error) => {
+                    console.error("Error cancelling reservation:", error);
+                });
+            setShowDeleteModal(false);
+
+        } else if (selectedSection === "jobConsult") {
+            axios.put(`/jobConsult/cancle/${cancelReserve}`)
+                .then((res) => {
+                    console.log("JobConsult cancelled successfully");
+                    // 예약 정보를 다시 가져옵니다. (업데이트된 정보 반영)
+                    getReserve();
+                })
+                .catch((error) => {
+                    console.error("Error cancelling reservation:", error);
+                });
+            setShowDeleteModal(false);
+
+        } else if (selectedSection === "rental") {
+            axios.put(`/rental/modify/${cancelReserve}`)
+                .then((res) => {
+                    console.log("Reservation cancelled successfully");
+                    // 예약 정보를 다시 가져옵니다. (업데이트된 정보 반영)
+                    getReserve();
+                })
+                .catch((error) => {
+                    console.error("Error cancelling reservation:", error);
+                });
+            setShowDeleteModal(false);
+        }
     }
 
     const toggleSection = (section) => {
@@ -141,7 +168,8 @@ const ReservDetails = (props) => {
         return (
             <NeedLoginForm />
         );
-    };
+    }
+    ;
 
     return (
         <div className="ReservDetails-compo">
@@ -192,7 +220,8 @@ const ReservDetails = (props) => {
                     {consultantEndPage < consultantTotalPages && (
                         <button onClick={handleNextGroup}>&raquo;</button>
                     )}
-                </div>)}
+                </div>
+            )}
             {selectedSection === "consultant" && consultantList && consultantList.map((reservation, index) => (
                 <ReservesViewer reservation={reservation} index={index} selectedSection={selectedSection}
                                 handleCancelClick={handleCancelClick} modifyLink={() => modifyLink(reservation.num)}/>
@@ -259,8 +288,11 @@ const ReservDetails = (props) => {
                 <div className="modal">
                     <div className="modal-content">
                         <h2>정말 예약을 취소하시겠습니까?</h2>
-                        <button onClick={cancelReservation}>예</button>
-                        <button onClick={() => setShowDeleteModal(false)}>아니오</button>
+                        <div className="btn-box">
+                            <Button text="확인" className="btn-two red rounded" onClick={cancelReservation}/>
+                            <Button text="취소" className="btn-two cyan rounded"
+                                    onClick={() => setShowDeleteModal(false)}/>
+                        </div>
                     </div>
                 </div>
             )}

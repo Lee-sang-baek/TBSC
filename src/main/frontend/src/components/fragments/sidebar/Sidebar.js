@@ -86,13 +86,13 @@ const Sidebar = ({ type }) => {
         {
           type: 'main',
           items: [
-            { label: '입주기업 홍보관', link: '#' }
+            { label: '입주기업 홍보관', link: '/compIntroPage' }
           ]
         },
         {
           type: 'list',
           items: [
-            { label: '기업 소개', link: "#" },
+            { label: '기업 소개', link: "/compIntroPage" },
             { label: '기업 홍보', link: "/tnotice" },
           ]
         }

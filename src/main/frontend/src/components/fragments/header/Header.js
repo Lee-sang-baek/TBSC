@@ -36,9 +36,9 @@ const Header = () => {
             ]
         },
         {
-            main: { title: "입주기업 홍보관", link: "" },
+            main: { title: "입주기업 홍보관", link: "/compIntroPage" },
             subs: [
-                { title: "기업 소개", link: "" },
+                { title: "기업 소개", link: "/compIntroPage" },
                 { title: "기업 홍보", link: "/tnotice" }
             ]
         },
@@ -206,10 +206,16 @@ const Header = () => {
                     <ul className="mobile-menu-list">
                         {menus.map((menu, index) => (
                             <li key={index} className="mobile-menu-item">
-                                <span className="mobile-menu-main"><Link to={menu.main.link}>{menu.main.title}</Link></span>
+                                <span className="mobile-menu-main" onClick={() => {
+                                    document.getElementById("burger").checked = false;
+                                }}>
+                                    <Link to={menu.main.link}>{menu.main.title}</Link>
+                                </span>
                                 <ul className="mobile-sub-menu">
                                     {menu.subs.map((sub, subIdx) => (
-                                        <li key={subIdx} className="mobile-sub-menu-item">
+                                        <li key={subIdx} className="mobile-sub-menu-item" onClick={() => {
+                                            document.getElementById("burger").checked = false;
+                                        }}>
                                             <Link to={sub.link}>{sub.title}</Link>
                                         </li>
                                     ))}

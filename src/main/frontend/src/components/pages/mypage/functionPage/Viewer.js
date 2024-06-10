@@ -19,7 +19,7 @@ function ContentsViewer({ contents, isTag }) {
 
         return withoutNBSP ? withoutNBSP : '';
     } else {
-        return <Viewer initialValue={contents || ''} />;
+        return <Viewer key={contents} initialValue={contents || ''} />;
     }
 }
 

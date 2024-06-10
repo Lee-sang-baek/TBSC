@@ -56,7 +56,7 @@ public class JobConsult extends BaseEntity {
 
     private String selfIntroduction;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "member", referencedColumnName = "id", updatable = false)
     private Member member;
 

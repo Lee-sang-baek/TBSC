@@ -75,7 +75,7 @@ const DeleteInfo = (props) => {
 
         if (passwordMatch) {
             // 회원가입 데이터를 서버로 전송
-            axios.post("/member/memberdelete", memberInfo)
+            axios.post("/member/memberDelete", memberInfo)
                 .then(response => {
                     console.log(memberInfo);
 

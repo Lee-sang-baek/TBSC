@@ -10,7 +10,7 @@
         margin: 5% 10%;
 
         .reservDetailTitle {
-            margin: 5% 0;
+            /*margin: 5% 0;*/
         }
 
         .reservDetails {
@@ -21,9 +21,13 @@
             .reservTitle {
                 width: 30%;
                 cursor: pointer;
+                white-space: break-spaces;
+                transition: all 0.3s ease-out;
             }
+
             .reservTitle:hover {
                 font-size: 150%;
+                transition: all 0.3s ease-out;
             }
 
             .reservDate {

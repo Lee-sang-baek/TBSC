@@ -57,6 +57,12 @@ const MyHome = () => {
                 console.log("setConsultantList", res.data);
                 setConsultantList(res.data);
             })
+
+        axios.get(`/jobConsult/list?memberId=${memberId}`)
+            .then((res) => {
+                console.log("setJobConsultList", res.data);
+                setJobConsultList(res.data);
+            })
     };
 
     // 날짜와 시간 형식을 변환하는 함수
@@ -68,7 +74,7 @@ const MyHome = () => {
     const formatTime = (dateString) => {
         const date = new Date(dateString);
         return date.toLocaleTimeString(); // 형식을 원하는 대로 변경할 수 있습니다.
-    }
+    };
 
     // 예약 취소 버튼 클릭 시 호출되는 함수
     const cancelReservation = (num) => {
@@ -81,7 +87,31 @@ const MyHome = () => {
             .catch((error) => {
                 console.error("Error cancelling reservation:", error);
             });
-    }
+    };
+
+    const cancelConsultant = (num) => {
+        axios.delete(`/consultants/delete/${num}`)
+            .then((res) => {
+                console.log("Consultant cancelled successfully");
+                // 예약 정보를 다시 가져옵니다. (업데이트된 정보 반영)
+                getMemberInfo();
+            })
+            .catch((error) => {
+                console.error("Error cancelling consultant:", error);
+            });
+    };
+
+    const cancelJobConsult = (num) => {
+        axios.delete(`/jobConsult/delete/${num}`)
+            .then((res) => {
+                console.log("Consultant cancelled successfully");
+                // 예약 정보를 다시 가져옵니다. (업데이트된 정보 반영)
+                getMemberInfo();
+            })
+            .catch((error) => {
+                console.error("Error cancelling consultant:", error);
+            });
+    };
 
     const navigate = useNavigate();
 
@@ -117,28 +147,24 @@ const MyHome = () => {
                 </h3>
 
             </div>
-           <div className="profileModify">
-               <Link to="/myPage/modify-info">
-                   <Button onClick={() => { }} text="개인정보수정" className="btn-two cyan rounded" />
-               </Link>
-               {/*<a href="/#" className="btn-two cyan rounded">*/}
-               {/*    <button onClick={() => {*/}
-               {/*    }}>*/}
-               {/*        개인정보수정*/}
-               {/*    </button>*/}
-               {/*</a>*/}
-               <div className="businessUpgrade">
+            <div className="profileModify">
+                <Link to="/myPage/modify-info">
+                    <Button onClick={() => {
+                    }} text="개인정보수정" className="btn-two cyan rounded"/>
+                </Link>
+
+                <div className="businessUpgrade">
                    <Link to="/businessUpgrade">
-                       <Button onClick={() => { }} text="기업회원전환" className="btn-two cyan rounded" />
+                       <Button text="기업회원전환" className="btn-two cyan rounded" />
                    </Link>
                </div>
-               <div className="userDelete">
-                   <Link to="/myPage/delete-info">
-                       <Button text="계정 탈퇴" onClick={() => { }} />
-                   </Link>
-               </div>
-               
-           </div>
+
+                <div className="userDelete">
+                    <Link to="/myPage/delete-info">
+                        <Button text="계정 탈퇴"/>
+                    </Link>
+                </div>
+            </div>
 
             <div className="detailsContainer">
                 <h2 className="reservDetailTitle">
@@ -150,7 +176,9 @@ const MyHome = () => {
                         <h3 className="reservDate">
                             {formatDate(reservation.startDate) || ""} ~ {formatDate(reservation.endDate) || ""}
                         </h3>
-                        <h3 className="reservTitle" onClick={() => modifyLink(index)} key={index}>
+
+                        <h3>회의실 대관 신청</h3>
+                        <h3 className="reservTitle" onClick={() => modifyLink(reservation.num)} key={index}>
                             {reservation.place || ""}
                         </h3>
                         <h3 className="reservState">
@@ -175,11 +203,6 @@ const MyHome = () => {
                                 </div>
                             }
                         </h3>
-                        {/*<Link to="/myPage/reserve">*/}
-                        {/*    <Button onClick={() => {*/}
-                        {/*        console.log("dk");*/}
-                        {/*    }} text="버틍" className="btn-two blue"/>*/}
-                        {/*</Link>*/}
                         <Button text="예약취소" onClick={() => cancelReservation(reservation.num)}/>
                     </div>
                 ))}
@@ -188,8 +211,10 @@ const MyHome = () => {
                         <h3 className="reservDate">
                             {formatDate(reservation.appDate) || ""}
                         </h3>
+
+                        <h3>기업 컨설팅 신청</h3>
                         <h3 className="reservTitle" onClick={() => {
-                            navigate(`/myPage/modify-consultant/${index}`);
+                            navigate(`/myPage/modify-consultant/${reservation.num}`);
                         }} key={index}>
                             {reservation.management || ""}
                         </h3>
@@ -215,7 +240,48 @@ const MyHome = () => {
                                 </div>
                             }
                         </h3>
-                        <Button text="예약취소" onClick={() => cancelReservation(reservation.num)}/>
+                        <Button text="예약취소" onClick={() => cancelConsultant(reservation.num)}/>
+                    </div>
+                ))}
+                {jobConsultList.map((reservation, index) => (
+                    <div className="reservDetails">
+                        <h3 className="reservDate">
+                            {formatDate(reservation.createDate) || ""}
+                        </h3>
+
+                        <h3>일자리 상담 신청</h3>
+                        <h3 className="reservTitle" onClick={() => {
+                            navigate(`/myPage/modify-jobConsult/${reservation.num}`);
+                        }} key={index}>
+                            {
+                                (
+                                    "구분: " + reservation.category + "\n" +
+                                    "업종: " + reservation.industry + "\n" + "...."
+                                ) || ""}
+                        </h3>
+                        <h3 className="reservState">
+                            {(reservation.state === "RESERVE") &&
+                                <div className="RESERVE">
+                                    예약완료
+                                </div>
+                            }
+                            {(reservation.state === "CHECK") &&
+                                <div className="CHECK">
+                                    검토 중
+                                </div>
+                            }
+                            {(reservation.state === "APPROVE") &&
+                                <div className="APPROVE">
+                                    승인됨
+                                </div>
+                            }
+                            {(reservation.state === "DENY") &&
+                                <div className="DENY">
+                                    거절됨
+                                </div>
+                            }
+                        </h3>
+                        <Button text="예약취소" onClick={() => cancelJobConsult(reservation.num)}/>
                     </div>
                 ))}
             </div>

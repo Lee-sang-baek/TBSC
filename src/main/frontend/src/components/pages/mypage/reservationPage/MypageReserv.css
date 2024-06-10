@@ -186,22 +186,28 @@
         display: flex;
         justify-content: center;
         align-items: center;
-    }
 
-    .modal-content {
-        background-color: white;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
-    .modal-content p {
-        margin-bottom: 20px;
-    }
+            > p {
+                margin-bottom: 20px;
+            }
 
-    .modal-content div {
-        display: flex;
-        flex-direction: row;
+            > div {
+                display: flex;
+                flex-direction: row;
+            }
 
+            .btn-box {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-around;
+            }
+        }
     }
 }
