@@ -7,7 +7,7 @@ const ReservationList = () => {
     const [reservations, setReservations] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState('');
-    const reservationsPerPage = 6;
+    const reservationsPerPage = 10;
     const navigate = useNavigate();
     const MemberState = sessionStorage.getItem("state");
 

@@ -12,7 +12,7 @@
         background-color: #ffffff;
         border-radius: 15px;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        
+
         margin: 100px auto;
         position: relative;
         width: 87%;
@@ -157,6 +157,10 @@
         font-size: 22px;
         color: #333;
         flex: 1;
+    }
+    .pressRelease-card a {
+        color: black;
+        text-decoration-line: none;
     }
 
     .pressRelease-meta {

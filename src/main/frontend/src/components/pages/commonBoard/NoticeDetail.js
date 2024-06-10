@@ -86,9 +86,9 @@ function NoticeDetail() {
                     )}
                 </div>
                 <div className="content" dangerouslySetInnerHTML={{ __html: notice.content }}></div>
-                <div>
+                <div className="imgWidth">
                     {notice.imageUrl && (
-                        <img src={`/uploads/${notice.imageUrl}`} alt={notice.imageUrl} />
+                        <img className="imgWidth" src={`/uploads/${notice.imageUrl}`} alt={notice.imageUrl} />
                     )}
                 </div>
                 {MemberState === 'ADMIN' && (

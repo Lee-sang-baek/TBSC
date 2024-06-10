@@ -155,8 +155,11 @@
     .news-card h3 {
         margin: 15px;
         font-size: 22px;
-        color: #333;
         flex: 1;
+    }
+    .news-card a {
+        color: black;
+        text-decoration-line: none;
     }
 
     .news-meta {
