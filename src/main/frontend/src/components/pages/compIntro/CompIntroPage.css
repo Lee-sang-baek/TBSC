@@ -32,4 +32,62 @@
         background-color: black;
         color: #fff;
     }
+
+    .compIntroDetails {
+        display: grid;
+        gap: 20px;
+        width: 100%;
+        margin-top: 5%;
+
+        .introDetailCard {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            height: 300px;
+            align-items: center;
+            flex-wrap: wrap;
+
+            .introDetailImage {
+                margin: 2%;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+                > img {
+                    width: 300px;
+                    height: 100%;
+                }
+            }
+
+            .introDetailContent-box {
+                margin: 5%;
+                width: 40%;
+                position: relative;
+                right: -10%;
+
+                .introDetailTitle {
+                    text-align: center;
+                }
+
+                .introDetailSubTitle {
+                    display: flex;
+                    justify-content: space-between;
+                    margin: 5% 0;
+                }
+
+                .introDetailContent {
+                    overflow-wrap: break-word;
+                    overflow: auto;
+                    height: 100px;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                }
+            }
+        }
+
+        .introDetailCard:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+    }
 }

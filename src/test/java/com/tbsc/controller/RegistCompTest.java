@@ -31,7 +31,7 @@ public class RegistCompTest {
 
             registCompDto.setMemberId(member.getId());
             registCompDto.setTitle("test" + i);
-            registCompDto.setCompImage("화면 캡처 2023-02-11 084334.png");
+            registCompDto.setCompImage("wallhaven-g7qzdl.png");
             registCompDto.setWriter("dummy" + i);
             registCompDto.setCorpName("dummy" + i + "comp");
             registCompDto.setContent("content" + i);

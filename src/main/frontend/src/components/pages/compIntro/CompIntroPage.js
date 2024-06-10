@@ -1,6 +1,8 @@
 import "./CompIntroPage.css"
 import React, {useEffect, useState} from "react";
 import axios from "axios";
+import Viewer from "../mypage/functionPage/Viewer";
+import ContentsViewer from "../mypage/functionPage/Viewer";
 
 const CompIntroPage = () => {
     const [compInfoList, setCompInfoList] = useState([]);
@@ -18,11 +20,14 @@ const CompIntroPage = () => {
 
     const pagesPerGroup = 5; // 5페이지씩 보이게
 
+    const [isTag, setIsTag] = useState(true);
+
     useEffect(() => {
-        axios.get(`/registcomp/pageable?page=${currentPage-1}`)
+        axios.get(`/registcomp/pageable?page=${currentPage - 1}`)
             .then((res) => {
                 console.log(res.data);
                 setCompInfoList(res.data);
+                console.log("compInfoList", res.data);
                 setregistTotalPages(res.data.totalPages);
             });
     }, [currentPage]);
@@ -72,11 +77,32 @@ const CompIntroPage = () => {
                 )}
             </div>
 
-            {compInfoList.content && compInfoList.content.map((reservation, index) => (
-                <div key={index}>
-                    {reservation.title || ""}
-                </div>
-            ))}
+            <div className="compIntroDetails">
+                {compInfoList.content && compInfoList.content.map((reservation, index) => (
+                    <div className="introDetailCard" key={index}>
+                        <div className="introDetailImage">
+                            <img className="corpImg" src={`/registFile/${reservation.compImage}`} alt=""/>
+                        </div>
+
+                        <div className="introDetailContent-box">
+                            <h3 className="introDetailTitle">
+                                {reservation.title || ""}
+                            </h3>
+                            <div className="introDetailSubTitle">
+                                <div className="introWriter">
+                                    작성자: {reservation.writer}
+                                </div>
+                                <div className="introCorpName">
+                                    소속: {reservation.corpName}
+                                </div>
+                            </div>
+                            <div className="introDetailContent">
+                                <ContentsViewer contents={reservation.content} isTag={isTag}/>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };
