@@ -167,7 +167,6 @@ const VisualAssetManager = ({ asset, itemToEdit, close }) => {
               language="ko-KR"
               ref={editorRef}
               onChange={handleContentChange}
-              onFocus={handleFocus}
               toolbarItems={[
                   ['heading', 'bold', 'italic', 'strike'],
                   ['hr', 'quote'],
