@@ -110,8 +110,9 @@ const VisualAssetManager = ({ asset, itemToEdit, close }) => {
         start: "",
         end: "",
       });
-
-      window.location.reload();
+      
+      close();
+      // window.location.reload();
 
     } catch (error) {
       console.error("파일 업로드 및 추가 요청 오류:", error);

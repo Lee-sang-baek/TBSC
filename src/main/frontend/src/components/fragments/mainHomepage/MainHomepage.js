@@ -10,6 +10,7 @@ import NewsPicture from './NewsPicture';
 import Popup from '../popup/Popup';
 import CompBanner from './CompBanner';
 import ContentsViewer from '../../pages/mypage/functionPage/Viewer';
+import MainBanner from './MainBanner';
 
 function MainHomepage() {
     const [imageList, setImageList] = useState([]);
@@ -60,14 +61,14 @@ function MainHomepage() {
     const setRandomPositionNearCenter = () => {
         const windowWidth = window.innerWidth;
         const windowHeight = window.innerHeight;
-        const popupWidth = 350;
-        const popupHeight = 450;
+        const popupWidth = 500;
+        const popupHeight = 650;
     
         const centerX = (windowWidth - popupWidth) / 2;
         const centerY = (windowHeight - popupHeight) / 2;
     
         const randomOffsetX = (Math.random() - 0.5) * 400; // -200px ~ +200px
-        const randomOffsetY = (Math.random() - 0.5) * 400;
+        const randomOffsetY = (Math.random() - 0.5) * 200;
     
         const finalX = centerX + randomOffsetX;
         const finalY = centerY + randomOffsetY;
@@ -89,28 +90,7 @@ function MainHomepage() {
                     <Popup item={item} setRandomPositionNearCenter={setRandomPositionNearCenter} />
                 </div>
             ))}
-            <div className="slider-container">
-                <Slider {...settings} className="autoplay">
-                    {modifiedImageList && modifiedImageList.map((item, index) => (
-                        <div key={index} className='image-box'>
-                            <img src={`/uploads/${item.image}`} alt={item.title} />
-                            <div className='content-box'>
-                                <ContentsViewer contents={item.content} />    
-                            </div>
-                        </div>
-                    ))}
-                    {(!modifiedImageList || modifiedImageList.length < 1) &&
-                        <div className='image-box'>
-                            <div className='content-box'>. . .</div>
-                        </div>
-                    }
-                    {(!modifiedImageList || modifiedImageList.length < 1) &&
-                        <div className='image-box'>
-                            <div className='content-box'>. . .</div>
-                        </div>
-                    }
-                </Slider>
-            </div>
+            <MainBanner settings={settings} modifiedImageList={modifiedImageList}/>
             <NewsBanner />
             <div className='bottom-banner'>
                 <NewsPicture />

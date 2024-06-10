@@ -10,6 +10,7 @@
     align-items: center;
 
     .block {
+        animation: fadeInUp 1s ease-out;
         margin-top: 3%;
         width: 95%;
     }
@@ -33,6 +34,7 @@
     }
     
     .Recruitment {
+        animation: fadeInUp 1s ease-out;
         width: 95%;
         margin-bottom: 50px;
         margin-top: 30px;

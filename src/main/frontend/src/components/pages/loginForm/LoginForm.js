@@ -20,7 +20,7 @@ const LoginForm = () => {
                 alert(response.data.id + "님 안녕하세요.")
                 sessionStorage.setItem("id", response.data.id);
                 sessionStorage.setItem("state", response.data.state);
-                window.location.reload();
+                navigate(-1);
             } else {
                 alert("알 수 없는 오류")
             }

@@ -4,6 +4,7 @@ import Button from "../../baseComponents/Button";
 import axios from "axios";
 import React, {useEffect, useState} from "react";
 import {Link, useNavigate,} from "react-router-dom";
+import NeedLoginForm from "../../baseComponents/NeedLoginForm";
 
 const MyHome = () => {
 
@@ -90,11 +91,7 @@ const MyHome = () => {
 
     if (!memberId) {
         return (
-            <div className="rental-compo">
-                <div className="rental-compo-in">
-                    <h1>로그인 후 이용해주세요</h1>
-                </div>
-            </div>
+            <NeedLoginForm />
         );
     }
 

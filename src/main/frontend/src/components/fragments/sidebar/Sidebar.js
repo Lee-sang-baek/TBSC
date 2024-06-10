@@ -109,9 +109,9 @@ const Sidebar = ({ type }) => {
           type: 'list',
           items: [
             { label: '이용예약 안내', link: "/reservation" },
-            { label: '기업 컨설팅 신청', link: "/consultants" },
-            { label: '일자리 상담신청', link: "/jobConsult" },
-            { label: '회의실 대관신청', link: "/rental" },
+            { label: '기업 컨설팅 신청', link: "/reserve/consultants" },
+            { label: '일자리 상담신청', link: "/reserve/jobConsult" },
+            { label: '회의실 대관신청', link: "/reserve/rental" },
           ]
         }
       ]);

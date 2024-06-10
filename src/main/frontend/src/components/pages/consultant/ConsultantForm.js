@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import "./ConsultantForm.css"
+import NeedLoginForm from '../../baseComponents/NeedLoginForm';
 
 const ConsultantForm = () => {
     const id = sessionStorage.getItem("id");
@@ -78,9 +79,7 @@ const ConsultantForm = () => {
     };
     if (!id) {
         return (
-            <div className="ConsultantForm-compo-login">
-                    <h1>로그인 후 이용해주세요</h1>
-            </div>
+            <NeedLoginForm />
         );
     }
 

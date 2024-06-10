@@ -46,9 +46,9 @@ const Header = () => {
             main: { title: "센터 이용예약", link: "/reservation" },
             subs: [
                 { title: "이용예약 안내", link: "/reservation" },
-                { title: "기업 컨설팅 신청", link: "/consultants" },
-                { title: "일자리 상담신청", link: "/jobConsult" },
-                { title: "회의실 대관신청", link: "/rental" }
+                { title: "기업 컨설팅 신청", link: "/reserve/consultants" },
+                { title: "일자리 상담신청", link: "/reserve/jobConsult" },
+                { title: "회의실 대관신청", link: "/reserve/rental" }
             ]
         },
         {

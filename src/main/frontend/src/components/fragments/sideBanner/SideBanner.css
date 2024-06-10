@@ -51,10 +51,11 @@
     text-align: center;
     justify-content: center;
     position: absolute;
-    transform: translate(0%, -800%);
+    top: 30px;
+    margin-left: 25px;
     text-shadow: 2px -2px 8px #000000, -2px 2px 8px #000000;
     color: #fff;
     font-weight: bold;
     font-size: 20px;
-    width: 250px;
+    width: 200px;
 }

@@ -70,12 +70,24 @@ function NoticeList() {
                             className="searchInput"
                         />
                         <Button className="searchButton" text="검색" onClick={handleSearchClick} />
+                        
+                    </div>
+                    <div className="count-write">
+                        <span className="totalCount">총게시물:{filteredNotices.length}개</span>
                         {MemberState === 'ADMIN' && (
-                            <Button className="writeButton" text="글쓰기" link="notices/new" />
+                                <Button className="writeButton" text="글쓰기" link="notices/new" />
                         )}
                     </div>
                     <table>
-                        <span className="totalCount">총게시물:{filteredNotices.length}개</span>
+                        
+                        <thead className="notice-header">
+                            <tr>
+                                <td>공지</td>
+                                <td>상태</td>
+                                <td>제목</td>
+                                <td>작성일</td>
+                            </tr>
+                        </thead>
                         <tbody>
                         {currentNotices.map((notice) => (
                             <tr key={notice.num} className="noticeRow">

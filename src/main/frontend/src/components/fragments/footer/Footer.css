@@ -37,6 +37,7 @@
     
     .related-sites button {
         background-color: #007bff;
+        border-radius: 8px;
         color: #fff;
         border: none;
         padding: 5px 20px; /* 수정된 버튼 사이즈 */

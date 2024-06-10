@@ -58,6 +58,11 @@
         margin-bottom: 20px;
     }
 
+    .notice-header {
+        background-color: #f4f4f4;
+        font-weight: bold;
+    }
+
     thead th {
         border: none; /* Remove borders from table header */
         padding: 10px;
@@ -84,6 +89,13 @@
         background-color: #f1f1f1;
     }
 
+    .count-write {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+
     td {
         padding: 15px;
         text-align: left;
@@ -100,6 +112,14 @@
         font-size: 12px;
         width: 50%;
         text-align: center;
+    }
+
+    td:nth-child(1) {
+        min-width: 50px;
+        width: 50px;
+        text-align: center;
+        font-weight: bold;
+        color: #333;
     }
 
     td:nth-child(2) {

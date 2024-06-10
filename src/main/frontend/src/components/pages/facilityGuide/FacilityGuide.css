@@ -18,7 +18,7 @@
 }
 
 .FacilityGuide-compo {
-    
+    animation: fadeInUp 1s ease-out;
     display: flex;
     align-items: center;
     width: 95%;

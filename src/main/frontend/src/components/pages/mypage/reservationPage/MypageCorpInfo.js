@@ -4,6 +4,7 @@ import Button from "../../../baseComponents/Button";
 import axios from "axios";
 import Viewer from "../functionPage/Viewer";
 import {useNavigate} from "react-router-dom";
+import NeedLoginForm from "../../../baseComponents/NeedLoginForm";
 
 const CorpInfo = (props) => {
     const memberId = sessionStorage.getItem("id");
@@ -61,11 +62,7 @@ const CorpInfo = (props) => {
 
     if (!memberId) {
         return (
-            <div className="rental-compo">
-                <div className="rental-compo-in">
-                    <h1>로그인 후 이용해주세요</h1>
-                </div>
-            </div>
+            <NeedLoginForm />
         );
     };
 

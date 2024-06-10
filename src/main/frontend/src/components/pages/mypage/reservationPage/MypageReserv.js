@@ -3,6 +3,7 @@ import "./MypageReserv.css";
 import Button from "../../../baseComponents/Button";
 import axios from "axios";
 import img from "../../../imgs/login.png";
+import NeedLoginForm from "../../../baseComponents/NeedLoginForm";
 
 const ReservDetails = (props) => {
     const memberId = sessionStorage.getItem("id");
@@ -138,11 +139,7 @@ const ReservDetails = (props) => {
 
     if (!memberId) {
         return (
-            <div className="rental-compo">
-                <div className="rental-compo-in">
-                    <h1>로그인 후 이용해주세요</h1>
-                </div>
-            </div>
+            <NeedLoginForm />
         );
     };
 

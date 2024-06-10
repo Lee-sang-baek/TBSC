@@ -1,7 +1,8 @@
 .Popup-compo {
     position: fixed;
-    width: 100%;
-    height: 100%;
+    width: 500px;
+    height: 600px;
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -17,7 +18,8 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      
+      background-color: #ccc;
+    border: 1px solid #555;
     }
 
     .test {
@@ -25,8 +27,8 @@
     }
 
     img {
-      width: 350px;
-      height: 450px;
+      width: 100%;
+      height: 100%;
       object-fit: fill;
     }
 

@@ -5,7 +5,7 @@ import redbus from "../../imgs/redbus.png"
 import subway from "../../imgs/subway.png"
 
 const WayToCome = () => {
-
+    const iframeSrc = "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d203.87991615586523!2d126.854493!3d35.154659!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3571890047b9b08f%3A0xcb86229dd6f9b934!2z6rSR7KO86rSA6rSR6riw7JeF7KeA7JuQ7IS87YSw!5e0!3m2!1sko!2sus!4v1716874170525!5m2!1sko!2sus";
     return (
         <div className="wayToCome">
             <div className="wayToComeContainer">
@@ -13,11 +13,15 @@ const WayToCome = () => {
                     오시는 길
                 </h2>
                 <div className="locationMapContainer">
-                    {/*<Wrapper apiKey="" render={render}/>*/}
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d203.87991615586523!2d126.854493!3d35.154659!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3571890047b9b08f%3A0xcb86229dd6f9b934!2z6rSR7KO86rSA6rSR6riw7JeF7KeA7JuQ7IS87YSw!5e0!3m2!1sko!2sus!4v1716874170525!5m2!1sko!2sus"
-                        width="100%" height="600" allowFullScreen="" loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe 
+                        title="map" 
+                        src={iframeSrc} 
+                        width="100%" 
+                        height="600" 
+                        allowFullScreen="" 
+                        loading="lazy" 
+                        referrerPolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
                 <div className="routeContainer">
                     <div className="routeName">

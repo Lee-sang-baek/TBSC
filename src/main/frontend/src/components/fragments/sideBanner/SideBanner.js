@@ -5,6 +5,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'; // 화살표 아이콘 import
 import './SideBanner.css'; // CSS 파일 import
 import axios from 'axios';
+import ContentsViewer from '../../pages/mypage/functionPage/Viewer';
 
 function SideBanner() {
     const [scrollY, setScrollY] = useState(0);
@@ -82,7 +83,9 @@ function SideBanner() {
                 {modifiedImageList && modifiedImageList.map((item, index) => (
                     <div key={index} className='image-box'>
                         <img src={`/uploads/${item.image}`} alt={item.title} />
-                        <div className='content-box'>{item.content}</div>
+                        <div className='content-box'>
+                            <ContentsViewer contents={item.content} isTag={true}/>
+                        </div>
                     </div>
                 ))}
             </Slider>

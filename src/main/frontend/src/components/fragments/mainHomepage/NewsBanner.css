@@ -1,4 +1,5 @@
 .NoticeBanner-compo {
+  animation: fadeInUp 1s ease-out;
   display: flex;
   flex-direction: column;
   width: 95%;

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Rental.css';
 import FacilityGuide from "../facilityGuide/FacilityGuide";
 import axios from "axios";
+import NeedLoginForm from '../../baseComponents/NeedLoginForm';
 
 const Rental = () => {
     const [startDate, setStartDate] = useState(new Date().toISOString().slice(0, 16));
@@ -91,9 +92,7 @@ const Rental = () => {
 
     if (!memberId) {
         return (
-            <div className="rental-compo-login">
-                    <h1>로그인 후 이용해주세요</h1>
-            </div>
+            <NeedLoginForm />
         );
     }
 

@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import './JobConsult.css';
 import {useNavigate} from "react-router-dom";
+import NeedLoginForm from '../../baseComponents/NeedLoginForm';
 
 function JobConsult() {
     const memberId = sessionStorage.getItem("id");
@@ -265,11 +266,7 @@ function JobConsult() {
 
   if (!memberId) {
     return (
-        <div className="JobConsult-compo-login">
-            <div>
-                <h1>로그인 후 이용해주세요</h1>
-            </div>
-        </div>
+        <NeedLoginForm />
     );
   }
 

@@ -41,9 +41,9 @@ function CompBanner() {
                         <div key={index} className="slide">
                             <div className='back-box' style={{ 
                                 backgroundImage: `url("/uploads/${item.compImage}")`,
-                                backgroundSize: 'cover', // or 'contain', 'fill', etc.
-                                backgroundPosition: 'center', // Optional for positioning the background
-                                backgroundRepeat: 'no-repeat' // Optional to prevent repeating the image
+                                backgroundSize: 'certain',
+                                backgroundPosition: 'center',
+                                backgroundRepeat: 'no-repeat'
                             }}>
                                 <div className='shape'>
                                     <p>{item.content && (<Viewer contents={item.content} isTag={false} />)}</p>

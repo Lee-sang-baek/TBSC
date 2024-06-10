@@ -57,6 +57,7 @@ const SiteManagement = () => {
 
     const toggleAssetManager = () => {
         setIsAssetManagerOpen(!isAssetManagerOpen); // VisualAssetManager 창 열림/닫힘 상태를 토글
+        loadList();
     };
 
     const toggleUpdateManager = (num) => {
@@ -65,6 +66,7 @@ const SiteManagement = () => {
         } else {
             setIsUpdateManagerOpen(num);
         }
+        loadList();
     };
 
     const handlePageChange = (newPage) => {

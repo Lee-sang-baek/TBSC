@@ -3,6 +3,7 @@ import "./MypageModify.css";
 import Button from "../../../baseComponents/Button";
 import Input from "../../../baseComponents/Input";
 import axios from "axios";
+import NeedLoginForm from "../../../baseComponents/NeedLoginForm";
 // import Form from "../../../util/addressSearch/Form";
 
 const ModiInfo = (props) => {
@@ -259,11 +260,7 @@ const ModiInfo = (props) => {
 
     if (!memberId) {
         return (
-            <div className="rental-compo">
-                <div className="rental-compo-in">
-                    <h1>로그인 후 이용해주세요</h1>
-                </div>
-            </div>
+            <NeedLoginForm />
         );
     }
 

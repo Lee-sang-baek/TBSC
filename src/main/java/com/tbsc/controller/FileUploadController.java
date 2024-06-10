@@ -19,6 +19,9 @@ public class FileUploadController {
     @Value("${file.upload-dir}\\compinfo")
     private String registUploadDir;
 
+    @Value("${file.upload-dir}\\notice")
+    private String noticeDir;
+
     @PostMapping("/upload")
     public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file) {
         try {

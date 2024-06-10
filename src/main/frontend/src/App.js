@@ -61,6 +61,7 @@ import FindId from "./components/pages/find/FindId";
 import FindPwd from "./components/pages/find/FindPwd";
 import MemberManagement from "./components/pages/admin/MemberManagement";
 import BusinessUpgrade from "./components/pages/mypage/businessUpgrade/BusinessUpgrade";
+import ReserveForm from "./components/baseComponents/ReserveForm";
 
 function App() {
 
@@ -319,6 +320,13 @@ function App() {
                         <div className="outter">
                             <Sidebar type="notices"/>
                             <PressReleaseDetail/>
+                        </div>
+                    }/>
+
+                    <Route path="/reserve/:type" element={
+                        <div className="outter">
+                            <Sidebar type="reserve"/>
+                            <ReserveForm/>
                         </div>
                     }/>
 
