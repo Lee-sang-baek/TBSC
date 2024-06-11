@@ -47,11 +47,11 @@
         }
 
         h2 {
-            color: rgb(0, 88, 4);
+            color: rgb(0, 38, 88);
         }
 
         h4 {
-            color: rgb(0, 88, 4);
+            color: rgb(0, 38, 88);
         }
 
         h2, h3, h4 {
@@ -60,7 +60,7 @@
 
         p {
             white-space: break-spaces;
-            font-size: 1.8em;
+            font-size: 1.7em;
         }
         
         @media (max-width: 1200px) {
@@ -92,6 +92,10 @@
         height: 100%;
         border: 1px solid #ccc;
         border-radius: 30px;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: antiquewhite;
     }
 
     .slide {

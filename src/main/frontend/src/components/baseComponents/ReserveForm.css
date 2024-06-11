@@ -22,7 +22,7 @@
             border: 1px solid #ccc;
             margin: 5px;
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 2fr 1fr 2fr;
             text-align: center;
         }
     }
@@ -46,6 +46,7 @@
 
                 p {
                     margin: 5px;
+                    margin-left: 10px;
                 }
 
                 h3 {
@@ -73,6 +74,10 @@
             border-radius: 8px;
             border: 1px solid #ccc;
             margin: 5px;
+
+            p {
+                margin: 10px;
+            }
         }
     }
 

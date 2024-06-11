@@ -4,11 +4,10 @@ import axios from "axios"; // Axios 임포트 추가
 import "./NoticeDetail.css";
 import Button from "../../baseComponents/Button";
 
-function NoticeDetail() {
+function NoticeDetail({memberState}) {
     const { num } = useParams();
     const navigate = useNavigate();
     const [notice, setNotice] = useState(null);
-    const MemberState = sessionStorage.getItem("state");
 
     useEffect(() => {
         const fetchNotice = async () => {
@@ -91,7 +90,7 @@ function NoticeDetail() {
                         <img className="imgWidth" src={`/uploads/${notice.imageUrl}`} alt={notice.imageUrl} />
                     )}
                 </div>
-                {MemberState === 'ADMIN' && (
+                {memberState === 'ADMIN' && (
                     <div className="btn-box">
                         <button className="btns" link={`/notices/update/${num}`}>수정하기</button>
                         <button className="btns" onClick={deleteNotice}>삭제하기</button>

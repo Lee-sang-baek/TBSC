@@ -7,7 +7,7 @@ import searchImage from "../../imgs/search.png";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
 
-const Header = () => {
+const Header = ({ logout, isLoggedIn, memberState }) => {
     const location = useLocation();
     const [isOpen, setIsOpen] = useState(false);
     const [loginMenuOpen, setLoginMenuOpen] = useState(false);
@@ -61,17 +61,6 @@ const Header = () => {
         }
     ];
 
-    const logout = () => {
-        axios.get("/logout")
-            .then(response => {
-                console.log(response.data);
-            });
-        alert("로그아웃 되었습니다.")
-        sessionStorage.removeItem("id");
-        sessionStorage.removeItem("state");
-        window.location.reload();
-    }
-
     const handleGnbWrapEnter = () => {
         setIsOpen(true);
     };
@@ -114,24 +103,18 @@ const Header = () => {
         event.stopPropagation();
     };
 
-    // useEffect(() => {
-    //     setMobileMenuOpen(false);
-    // }, [location]);
-
-    const isLoggedIn = !!sessionStorage.getItem("id");
-    const MemberState = sessionStorage.getItem("state");
 
     return (
         <div className="Header-compo" onClick={() => setSearchOpen(false)}>
             <div id="gnb_wrap">
                 <div id="gnb_container">
                     <div className="logo-container">
-                        <a href="/"> <img src={logoImage} alt="Logo" className="logo-img"/></a>
+                        <Link to="/"> <img src={logoImage} alt="Logo" className="logo-img"/></Link>
                     </div>
                     <div className="gnb_1dul" onMouseEnter={handleGnbWrapEnter} onMouseLeave={handleGnbWrapLeave}>
                         {menus.map((menu, index) => (
                             <div key={index} className="gnb_1dli">
-                                <a href={menu.main.link} className="gnb_1da">{menu.main.title}</a>
+                                <Link to={menu.main.link} className="gnb_1da">{menu.main.title}</Link>
                             </div>
                         ))}
                     </div>
@@ -166,7 +149,7 @@ const Header = () => {
                                     <>
                                         <a href="#" onClick={logout}>로그아웃</a>
                                         <Link to="/myPage">마이페이지</Link>
-                                        {MemberState === "ADMIN" && <Link to="/admin">관리자 페이지</Link>}
+                                        {memberState === "ADMIN" && <Link to="/admin">관리자 페이지</Link>}
                                     </>
                                 )}
                             </div>
@@ -191,7 +174,7 @@ const Header = () => {
                                     <div className="gnb_2dul">
                                         {menu.subs.map((sub, subIdx) => (
                                             <div key={subIdx} className="gnb_2dli">
-                                                <a href={sub.link} className="gnb_2da">{sub.title}</a>
+                                                <Link to={sub.link} className="gnb_2da">{sub.title}</Link>
                                             </div>
                                         ))}
                                     </div>

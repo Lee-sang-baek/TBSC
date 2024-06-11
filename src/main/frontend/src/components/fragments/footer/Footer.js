@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Footer.css';
 import { useLocation } from 'react-router';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function Footer() {
     const location = useLocation();
@@ -59,10 +60,10 @@ function Footer() {
                     <div className="list">
                         <ul>
                             <li>
-                                <a href="/">홈</a>
+                                <Link to="/">홈</Link>
                             </li>
                             <li>
-                                <a href="/centerIntro">센터소개</a>
+                                <Link to="/centerIntro">센터소개</Link>
                             </li>
                             <li>
                                 <a href="#">이용약관</a>

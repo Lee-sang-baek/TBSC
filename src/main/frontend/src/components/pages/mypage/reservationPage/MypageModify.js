@@ -6,10 +6,8 @@ import axios from "axios";
 import NeedLoginForm from "../../../baseComponents/NeedLoginForm";
 // import Form from "../../../util/addressSearch/Form";
 
-const ModiInfo = (props) => {
-    const memberId = sessionStorage.getItem("id");
-    const memberState = sessionStorage.getItem("state");
-
+const ModiInfo = ({memberId, memberState}) => {
+    
     const [passwordMatch, setPasswordMatch] = useState(true);
     const [birth, setBirth] = useState('');
     const [name, setName] = useState('');

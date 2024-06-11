@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './PressReleaseForm.css';
 
-const PressReleaseForm = ({ onFormToggle }) => {
+const PressReleaseForm = ({ memberId, memberState }) => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [selectedFile, setSelectedFile] = useState(null);
@@ -24,9 +24,8 @@ const PressReleaseForm = ({ onFormToggle }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const id = sessionStorage.getItem("id");
         const formData = new FormData();
-        formData.append('pressRelease', new Blob([JSON.stringify({ title, content, member: { id } })], { type: 'application/json' }));
+        formData.append('pressRelease', new Blob([JSON.stringify({ title, content, member: { memberId } })], { type: 'application/json' }));
         if (selectedFile) {
             formData.append('file', selectedFile);
         }
@@ -51,6 +50,14 @@ const PressReleaseForm = ({ onFormToggle }) => {
             console.error("There was an error creating the pressRelease!", error);
         }
     };
+
+    if (memberState !== "ADMIN") {
+        return (
+            <div className="PressReleaseForm-copo">
+                <h2>권한이 없습니다.</h2>
+            </div>
+        )
+    }
 
     return (
         <div className="PressReleaseForm-copo">

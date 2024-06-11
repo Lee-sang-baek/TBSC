@@ -3,13 +3,12 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import './ReservationList.css';
 
-const ReservationList = () => {
+const ReservationList = ({memberState}) => {
     const [reservations, setReservations] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState('');
     const reservationsPerPage = 10;
     const navigate = useNavigate();
-    const MemberState = sessionStorage.getItem("state");
 
     useEffect(() => {
         fetchReservations();
@@ -79,7 +78,7 @@ const ReservationList = () => {
                 </div>
                 <div className="total-reservations">
                     <p>총 게시글 {filteredReservations.length}개</p>
-                    {MemberState === "ADMIN" && (
+                    {memberState === "ADMIN" && (
                         <button onClick={handleWriteClick}>글쓰기</button>
                     )}
                 </div>

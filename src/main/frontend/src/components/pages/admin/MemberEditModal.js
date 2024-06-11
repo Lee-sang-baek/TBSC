@@ -3,11 +3,6 @@ import axios from "axios";
 import "./MemberEditModal.css";
 
 const MemberEditModal = ({ member, onClose, onUpdate, onDelete }) => {
-    useEffect(() => {
-        if (sessionStorage.getItem("state") !== "ADMIN") {
-            window.location.href = "/";
-        }
-    }, []);
     const [formData, setFormData] = useState(member);
 
     useEffect(() => {

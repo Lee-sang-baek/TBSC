@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import './CenterNewsForm.css';
 
-const CenterNewsEdit = () => {
+const CenterNewsEdit = ({memberState}) => {
     const { num } = useParams();
     const [centerNews, setCenterNews] = useState({
         title: '',
@@ -13,7 +13,6 @@ const CenterNewsEdit = () => {
     const [attachment, setAttachment] = useState(null);
     const [imagePreview, setImagePreview] = useState(null);
     const navigate = useNavigate();
-    const MemberState = sessionStorage.getItem("state");
 
     useEffect(() => {
         fetchCenterNews();
@@ -78,7 +77,7 @@ const CenterNewsEdit = () => {
     };
 
     // Check if the user is an ADMIN
-    if (MemberState !== "ADMIN") {
+    if (memberState !== "ADMIN") {
         return (
             <div className="CenterNewsForm-copo">
                 <h2>권한이 없습니다</h2>

@@ -4,7 +4,10 @@ import "./SignUpSelect.css";
 import userProfile from "../../imgs/userProfile.png";
 import compProfile from "../../imgs/pngwing.com.png";
 
-const SignUpSelect = () => {
+const SignUpSelect = ({ isLoggedIn }) => {
+  if (isLoggedIn) {
+    window.location.href = "/";
+  }
   return (
     <div className="SignUpSelect-compo">
         <div className="left-section">

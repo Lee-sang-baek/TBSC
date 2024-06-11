@@ -7,12 +7,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.SecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.DefaultSecurityFilterChain;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
@@ -21,39 +25,21 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig {
 
     private final MemberService memberService;
+    private final JwtRequestFilter jwtRequestFilter;
 
+    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-       //         .csrf().disable()   // 배포 시 주석 처리
-//                .formLogin(formLogin -> formLogin
-//                        .loginPage("/member/login")
-//                        .usernameParameter("id")
-//                        .passwordParameter("password")
-//                        .defaultSuccessUrl("/")
-//                        .failureUrl("/login/error"))
-
-                .logout(logout -> logout
-                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                        .logoutSuccessUrl("/"))
-
+                .csrf(AbstractHttpConfigurer::disable) // 배포 시 설정
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers(new AntPathRequestMatcher("/member/**")).permitAll()
-                        .requestMatchers(new AntPathRequestMatcher("/**/**/**")).permitAll()
-                        .requestMatchers(new AntPathRequestMatcher("/**/**")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/**")).permitAll()
-                        // .requestMatchers(new AntPathRequestMatcher("/admin/**")).hasRole("ADMIN")
-                        .requestMatchers(new AntPathRequestMatcher("/admin/**")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/member/**")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/admin/**")).hasRole("ADMIN")
                         .anyRequest().authenticated())
-
                 .sessionManagement(sm -> sm
                         .maximumSessions(1)
-                        .maxSessionsPreventsLogin(false));
-
-//                .exceptionHandling(handling -> handling
-//                        .authenticationEntryPoint(authenticationEntryPoint()));
-//                .csrf(csrf -> csrf
-//                    .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-//                );
+                        .maxSessionsPreventsLogin(false))
+                .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
@@ -63,8 +49,6 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-
-
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
@@ -72,16 +56,4 @@ public class SecurityConfig {
         provider.setPasswordEncoder(passwordEncoder());
         return provider;
     }
-
-    @Bean
-    public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().requestMatchers("/**");
-    }
-
-
-//    @Bean
-//    public AuthenticationEntryPoint authenticationEntryPoint() {
-//        return new CustomAuthenticationEntryPoint();
-//    }
-
 }

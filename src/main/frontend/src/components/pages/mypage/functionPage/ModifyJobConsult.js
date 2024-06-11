@@ -3,9 +3,8 @@ import axios from 'axios';
 import '../../jobConsult/JobConsult.css';
 import {useNavigate, useParams} from "react-router-dom";
 
-function ModifyJobConsult() {
+function ModifyJobConsult({memberId}) {
     const { num } = useParams();
-    const memberId = sessionStorage.getItem("id");
 
     const navigate = useNavigate();
 

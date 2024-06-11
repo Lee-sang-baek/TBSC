@@ -119,7 +119,7 @@ public class MemberService implements UserDetailsService {
         }
         Member member = optionalMember.get();
         return User.builder()
-                .username(member.getEmail())
+                .username(member.getId())
                 .password(member.getPassword())
                 .roles(member.getState().toString())
                 .build();

@@ -6,9 +6,8 @@ import React, {useEffect, useState} from "react";
 import {Link, useNavigate,} from "react-router-dom";
 import NeedLoginForm from "../../baseComponents/NeedLoginForm";
 
-const MyHome = () => {
+const MyHome = ({ memberId, memberState }) => {
 
-    const memberId = sessionStorage.getItem("id");
     const [reserveList, setReserveList] = useState([]);
     const [consultantList, setConsultantList] = useState([]);
     const [jobConsultList, setJobConsultList] = useState([]);
@@ -27,11 +26,10 @@ const MyHome = () => {
     }]);
 
     useEffect(() => {
-        console.log(memberId);
         if (memberId) {
             getMemberInfo();
         }
-    }, [memberId]); // memberId가 변경되면 getMemberInfo 함수를 호출합니다.
+    }, [memberId]);
 
     useEffect(() => {
         console.log("Updated memberInfo:", memberInfo);
@@ -152,12 +150,13 @@ const MyHome = () => {
                     <Button onClick={() => {
                     }} text="개인정보수정" className="btn-two cyan rounded"/>
                 </Link>
-
-                <div className="businessUpgrade">
-                   <Link to="/businessUpgrade">
-                       <Button text="기업회원전환" className="btn-two cyan rounded" />
-                   </Link>
-               </div>
+                {memberState === "NORMAL" && (
+                    <div className="businessUpgrade">
+                    <Link to="/businessUpgrade">
+                        <Button text="기업회원전환" className="btn-two cyan rounded" />
+                    </Link>
+                </div>
+                )}
 
                 <div className="userDelete">
                     <Link to="/myPage/delete-info">
@@ -173,9 +172,10 @@ const MyHome = () => {
                 <hr/>
                 {reserveList.map((reservation, index) => (
                     <div className="reservDetails">
-                        <h3 className="reservDate">
-                            {formatDate(reservation.startDate) || ""} ~ {formatDate(reservation.endDate) || ""}
-                        </h3>
+                        <div>
+                            <h3 className="reservDate">{formatDate(reservation.startDate) || ""} ~ </h3>
+                            <h3 className="reservDate">{formatDate(reservation.endDate) || ""} </h3>
+                        </div>
 
                         <h3>회의실 대관 신청</h3>
                         <h3 className="reservTitle" onClick={() => modifyLink(reservation.num)} key={index}>
@@ -255,7 +255,7 @@ const MyHome = () => {
                         }} key={index}>
                             {
                                 (
-                                    "구분: " + reservation.category + "\n" +
+                                    "구분: " + reservation.category + "|" +
                                     "업종: " + reservation.industry + "\n" + "...."
                                 ) || ""}
                         </h3>

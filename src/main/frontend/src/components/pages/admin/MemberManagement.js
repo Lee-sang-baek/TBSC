@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./MemberManagement.css";
+import { useNavigate } from "react-router";
 
-const MemberManagement = () => {
+const MemberManagement = ({ isLoggedIn, memberState }) => {
+    const navigate = useNavigate();
     useEffect(() => {
-        if (sessionStorage.getItem("state") !== "ADMIN") {
-            window.location.href = "/";
+        if (!isLoggedIn || memberState !== "ADMIN") {
+            navigate("/");
         }
     }, []);
     const [page, setPage] = useState(0);
@@ -71,7 +73,7 @@ const MemberManagement = () => {
 
 
 
-    if (sessionStorage.getItem("state") !== "ADMIN") {
+    if (!isLoggedIn || memberState !== "ADMIN") {
         return null;
     }
 
@@ -131,8 +133,8 @@ const MemberManagement = () => {
                         <td>
                             {item.status !== "APPROVE" && (
                                 <div>
-                                    <button type="button" onClick={() => handleApprove(item.num)}>승인</button>
-                                    <button type="button" onClick={() => handleDeny(item.num)}>거절</button>
+                                    <button type="button" className="approve" onClick={() => handleApprove(item.num)}>승인</button>
+                                    <button type="button" className="deny" onClick={() => handleDeny(item.num)}>거절</button>
                                 </div>
                             )}
                         </td>

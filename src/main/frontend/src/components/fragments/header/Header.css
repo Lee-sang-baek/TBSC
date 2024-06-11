@@ -50,9 +50,9 @@
 
 .Header-compo .login-img {
     position: absolute;
-    top: -25px;
+    top: -34px;
     width: fit-content;
-    height: 50px;
+    height: 70px;
     object-fit: contain;
 }
 .Header-compo .search-icon {
@@ -344,8 +344,13 @@
     .Header-compo .login-img {
         display: flex;
         right: 10px;
-        top: -22.5px;
+        top: -27.5px;
+        height: 60px;
         width: fit-content;
+    }
+
+    .Header-compo .searchImage {
+        transform: translate(-20%, 0%);
     }
 
     .Header-compo .mobile-menu {

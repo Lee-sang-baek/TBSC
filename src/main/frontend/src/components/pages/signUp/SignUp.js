@@ -1,10 +1,15 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 import "./SignUp.css";
-import logoImage from "../../imgs/logo.png";
+import userProfile from "../../imgs/userProfile.png";
+import compProfile from "../../imgs/pngwing.com.png";
 import AddressInput from "../../util/addressSearch/AddressInput";
 
-const SignUp = ({isComp}) => {
+const SignUp = ({ isLoggedIn, isComp }) => {
+    if (isLoggedIn) {
+        window.location.href = "/";
+    }
+    
     const [formData, setFormData] = useState(isComp ? {
             id: "",
             password: "",
@@ -272,7 +277,11 @@ const SignUp = ({isComp}) => {
         <div className="SignUp-compo">
             <div className="form-box">
             <div className="input-icon">
-                <img src={logoImage} alt={logoImage}/>
+                {isComp ? (
+                    <img src={compProfile} alt={compProfile}/>
+                ) : (
+                    <img src={userProfile} alt={userProfile}/>
+                )}
                 <h2>{isComp ? "기업" : "일반"} 회원 가입</h2>
             </div>
             <div className="input-box">

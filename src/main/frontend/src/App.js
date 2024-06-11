@@ -77,15 +77,67 @@ function App() {
         }
     }, []);
 
-    const logout = () => {
-        axios.get("/logout")
-            .then(response => {
-                console.log(response.data);
-            });
-        alert("로그아웃 되었습니다.")
-        sessionStorage.removeItem("id");
-        sessionStorage.removeItem("state");
-        window.location.reload();
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [memberId, setMemberId] = useState("");
+    const [memberState, setMemberState] = useState("");
+
+    useEffect(() => {
+        const checkLoginStatus = async () => {
+            console.log("check");
+            try {
+                const token = localStorage.getItem("token"); // 로컬 스토리지에서 토큰을 가져옴
+                if (token) {
+                    // 토큰이 존재하면 로그인 상태로 설정
+                    setIsLoggedIn(true);
+                    axios.all([
+                        axios.get("/state", { headers: { 'Authorization': 'Bearer ' + token } }),
+                        axios.get("/id", { headers: { 'Authorization': 'Bearer ' + token } })
+                    ])
+                    .then(axios.spread((stateRes, idRes) => {
+                        setMemberState(stateRes.data);
+                        setMemberId(idRes.data);
+                    }))
+                    .catch((err) => {
+                        console.error("요청 중 에러: ", err);
+                    });
+                }
+            } catch (error) {
+                console.error("로그인 상태 확인 중 에러: ", error);
+            }
+        };
+        checkLoginStatus();
+    }, [isLoggedIn]);
+
+    // useEffect(() => {
+    //     const token = localStorage.getItem("token");
+    //     if (token) {
+    //         axios.all([
+    //             axios.get("/state", { headers: { 'Authorization': 'Bearer ' + token } }),
+    //             axios.get("/id", { headers: { 'Authorization': 'Bearer ' + token } })
+    //         ])
+    //         .then(axios.spread((stateRes, idRes) => {
+    //             setMemberState(stateRes.data);
+    //             setMemberId(idRes.data);
+    //         }))
+    //         .catch((err) => {
+    //             console.error("요청 중 에러: ", err);
+    //         });
+    //     } else {
+    //         console.error("토큰이 없습니다.");
+    //     }
+    // }, [isLoggedIn]);
+
+    const logout = async () => {
+        try {
+            localStorage.removeItem("token"); // 로컬 스토리지에서 토큰을 제거
+            setIsLoggedIn(false);
+            setMemberId("");
+            setMemberState("");
+            alert("로그아웃 되었습니다.");
+            window.location.reload();
+        } catch (error) {
+            console.error("로그아웃 중 에러 발생:", error);
+        }
     }
 
 
@@ -94,298 +146,300 @@ function App() {
         <BrowserRouter>
             <div className="main">
                 <LogAccess/>
-                <Header/>
+                <Header logout={logout} isLoggedIn={isLoggedIn} memberState={memberState}/>
 
                 <Routes>
                     <Route path='/' exact element={<MainHomepage/>}/>
-                    <Route path="/login" element={<LoginForm/>}/>
-                    <Route path="/signup" element={<SignUpSelect/>}/>
-                    <Route path="/signup/normal" element={<SignUp isComp={false}/>}/>
-                    <Route path="/signup/company" element={<SignUp isComp={true}/>}/>
+                    <Route path="/login" element={<LoginForm isLoggedIn={isLoggedIn} setIsLoggedIn={(value) => setIsLoggedIn(value)}/>}/>
+                    <Route path="/signup" element={<SignUpSelect isLoggedIn={isLoggedIn}/>}/>
+                    <Route path="/signup/normal" element={<SignUp isLoggedIn={isLoggedIn} isComp={false}/>}/>
+                    <Route path="/signup/company" element={<SignUp isLoggedIn={isLoggedIn} isComp={true}/>}/>
                     <Route path="/logout" element={<LoginForm/>}/>
 
                     <Route path="/admin" element={
                         <div className="outter">
-                            <Sidebar type="admin"/>
-                            <MemberList/>
+                            <Sidebar memberState={memberState} type="admin"/>
+                            <MemberList isLoggedIn={isLoggedIn} memberState={memberState}/>
                         </div>
                     }/>
                     <Route path="/admin/member-list" element={
                         <div className="outter">
-                            <Sidebar type="admin"/>
-                            <MemberList/>
+                            <Sidebar memberState={memberState} type="admin"/>
+                            <MemberList isLoggedIn={isLoggedIn} memberState={memberState}/>
                         </div>
                     }/>
                     <Route path="/admin/member-management" element={
                         <div className="outter">
-                            <Sidebar type="admin"/>
-                            <MemberManagement />
+                            <Sidebar memberState={memberState} type="admin"/>
+                            <MemberManagement isLoggedIn={isLoggedIn} memberState={memberState}/>
                         </div>
                     }/>
 
                     <Route path="/admin/site-management" element={
                         <div className="outter">
-                            <Sidebar type="admin"/>
-                            <SiteManagement/>
+                            <Sidebar memberState={memberState} type="admin"/>
+                            <SiteManagement isLoggedIn={isLoggedIn} memberState={memberState}/>
                         </div>
                     }/>
                     <Route path="/admin/reservation-confirmation" element={
                         <div className="outter">
-                            <Sidebar type="admin"/>
-                            <ReservationConfirmation/>
+                            <Sidebar memberState={memberState} type="admin"/>
+                            <ReservationConfirmation isLoggedIn={isLoggedIn} memberState={memberState}/>
                         </div>
                     }/>
                     <Route path="/admin/access-log" element={
                         <div className="outter">
-                            <Sidebar type="admin"/>
-                            <AccessLog/>
+                            <Sidebar memberState={memberState} type="admin"/>
+                            <AccessLog isLoggedIn={isLoggedIn} memberState={memberState}/>
                         </div>
                     }/>
 
 
                     <Route path="/myPage" element={
                         <div className="outter">
-                            <Sidebar type="mypage"/>
-                            <MyHome/>
+                            <Sidebar memberState={memberState} type="mypage"/>
+                            <MyHome memberId={memberId} memberState={memberState}/>
                         </div>
                     }/>
                     <Route path="/myPage/reserve" element={
                         <div className="outter">
-                            <Sidebar type="mypage"/>
-                            <ReservDetails/>
+                            <Sidebar memberState={memberState} type="mypage"/>
+                            <ReservDetails memberId={memberId} />
                         </div>
                     }/>
                     <Route path="/myPage/corp-info" element={
                         <div className="outter">
-                            <Sidebar type="mypage"/>
-                            <CorpInfo/>
+                            <Sidebar memberState={memberState} type="mypage"/>
+                            <CorpInfo memberId={memberId} memberState={memberState}/>
                         </div>
                     }/>
                     <Route path="/myPage/modify-info" element={
                         <div className="outter">
-                            <Sidebar type="mypage"/>
-                            <ModiInfo/>
+                            <Sidebar memberState={memberState} type="mypage"/>
+                            <ModiInfo memberId={memberId} memberState={memberState}/>
                         </div>
                     }/>
                     <Route path="/myPage/modify-corp" element={
                         <div className="outter">
-                            <Sidebar type="mypage"/>
-                            <ModiCorp/>
+                            <Sidebar memberState={memberState} type="mypage"/>
+                            <ModiCorp memberId={memberId} memberState={memberState}/>
                         </div>
                     }/>
                     <Route path="/myPage/delete-info" element={
                         <div className="outter">
-                            <Sidebar type="mypage"/>
-                            <DeleteInfo logout={logout}/>
+                            <Sidebar memberState={memberState} type="mypage"/>
+                            <DeleteInfo logout={logout} memberId={memberId} memberState={memberState}/>
                         </div>
                     }/>
                     <Route path="myPage/modify-reserv/:index" element={
                         <div className="outter">
-                            <Sidebar type="mypage"/>
-                            <ModifyReserv />
+                            <Sidebar memberState={memberState} type="mypage"/>
+                            <ModifyReserv memberId={memberId} memberState={memberState}/>
                         </div>
                     } />
                     <Route path="myPage/modify-consultant/:num" element={
                         <div className="outter">
-                            <Sidebar type="mypage"/>
-                            <ModifyConsultant />
+                            <Sidebar memberState={memberState} type="mypage"/>
+                            <ModifyConsultant memberId={memberId} memberState={memberState}/>
                         </div>
                     } />
                     <Route path="myPage/modify-jobConsult/:num" element={
                         <div className="outter">
-                            <Sidebar type="mypage"/>
-                            <ModifyJobConsult />
+                            <Sidebar memberState={memberState} type="mypage"/>
+                            <ModifyJobConsult memberId={memberId} memberState={memberState}/>
                         </div>
                     } />
 
                     <Route path="/centerIntro" element={
                         <div className="outter">
-                            <Sidebar type="center"/>
+                            <Sidebar memberState={memberState} type="center"/>
                             <CenterIntroduction/>
                         </div>
                     }/>
                     <Route path="/facility" element={
                         <div className="outter">
-                            <Sidebar type="center"/>
+                            <Sidebar memberState={memberState} type="center"/>
                             <FacilityGuideMain/>
                         </div>
                     }/>
                     <Route path="/orgchart" element={
                         <div className="outter">
-                            <Sidebar type="center"/>
+                            <Sidebar memberState={memberState} type="center"/>
                             <OrgChart/>
                         </div>
                     }/>
                     <Route path="/wayToCome" element={
                         <div className="outter">
-                            <Sidebar type="center"/>
+                            <Sidebar memberState={memberState} type="center"/>
                             <WayToCome/>
                         </div>
                     }/>
 
                     <Route path="/compIntroPage" element={
                         <div className="outter">
-                            <Sidebar type="comp"/>
+                            <Sidebar memberState={memberState} type="comp"/>
                             <CompIntroPage/>
                         </div>
                     }/>
                     <Route path="/tnotice" element={
                         <div className="outter">
-                            <Sidebar type="comp"/>
-                            <TNoticeList/>
+                            <Sidebar memberState={memberState} type="comp"/>
+                            <TNoticeList memberState={memberState}/>
                         </div>
                     }/>
                     <Route path="/tnotice/create" element={
                         <div className="outter">
-                            <Sidebar type="comp"/>
-                            <TNoticeForm/>
+                            <Sidebar memberState={memberState} type="comp"/>
+                            <TNoticeForm memberId={memberId} memberState={memberState}/>
                         </div>
                     }/>
                     <Route path="/tnotice/:num" element={
                         <div className="outter">
-                            <Sidebar type="comp"/>
-                            <TNoticeDetail/>
+                            <Sidebar memberState={memberState} type="comp"/>
+                            <TNoticeDetail memberState={memberState}/>
                         </div>
                     }/>
                     <Route path="/tnotice/edit/:num" element={
                         <div className="outter">
-                            <Sidebar type="comp"/>
-                            <TNoticeEdit/>
+                            <Sidebar memberState={memberState} type="comp"/>
+                            <TNoticeEdit memberState={memberState}/>
                         </div>
                     }/>
 
 
                     <Route path="/notices" element={
                         <div className="outter">
-                            <Sidebar type="notices"/>
-                            <NoticeList/>
+                            <Sidebar memberState={memberState} type="notices"/>
+                            <NoticeList memberState={memberState}/>
                         </div>
                     }/>
                     <Route path="/notices/:num" element={
                         <div className="outter">
-                            <Sidebar type="notices"/>
-                            <NoticeDetail/>
+                            <Sidebar memberState={memberState} type="notices"/>
+                            <NoticeDetail  memberState={memberState}/>
                         </div>
                     }/>
                     <Route path="/notices/new" element={
                         <div className="outter">
-                            <Sidebar type="notices"/>
-                            <CreateNotice/>
+                            <Sidebar memberState={memberState} type="notices"/>
+                            <CreateNotice memberState={memberState}/>
                         </div>
                     }/>
                     <Route path="/notices/update/:num" element={
                         <div className="outter">
-                            <Sidebar type="notices"/>
-                            <UpdateNotice/>
+                            <Sidebar memberState={memberState} type="notices"/>
+                            <UpdateNotice memberState={memberState}/>
                         </div>
                     }/>
 
                     <Route path="/centernews" element={
                         <div className="outter">
-                            <Sidebar type="notices"/>
-                            <CenterNewsList/>
+                            <Sidebar memberState={memberState} type="notices"/>
+                            <CenterNewsList memberState={memberState}/>
                         </div>
                     }/>
                     <Route path="/centernews/create" element={
                         <div className="outter">
-                            <Sidebar type="notices"/>
-                            <CenterNewsForm/>
+                            <Sidebar memberState={memberState} type="notices"/>
+                            <CenterNewsForm memberId={memberId} memberState={memberState}/>
                         </div>
                     }/>
                     <Route path="/centernews/update/:num" element={
                         <div className="outter">
-                            <Sidebar type="notices"/>
-                            <CenterNewsEdit/>
+                            <Sidebar memberState={memberState} type="notices"/>
+                            <CenterNewsEdit memberState={memberState}/>
                         </div>
                     }/>
                     <Route path="/centernews/:num" element={
                         <div className="outter">
-                            <Sidebar type="notices"/>
-                            <CenterNewsDetail/>
+                            <Sidebar memberState={memberState} type="notices"/>
+                            <CenterNewsDetail memberState={memberState}/>
                         </div>
                     }/>
 
                     <Route path="/pressrelease" element={
                         <div className="outter">
-                            <Sidebar type="notices"/>
-                            <PressReleaseList/>
+                            <Sidebar memberState={memberState} type="notices"/>
+                            <PressReleaseList memberState={memberState}/>
                         </div>
                     }/>
                     <Route path="/pressrelease/create" element={
                         <div className="outter">
-                            <Sidebar type="notices"/>
-                            <PressReleaseForm/>
+                            <Sidebar memberState={memberState} type="notices"/>
+                            <PressReleaseForm memberId={memberId} memberState={memberState}/>
                         </div>
                     }/>
                     <Route path="/pressrelease/update/:num" element={
                         <div className="outter">
-                            <Sidebar type="notices"/>
-                            <PressReleaseEdit/>
+                            <Sidebar memberState={memberState} type="notices"/>
+                            <PressReleaseEdit memberState={memberState}/>
                         </div>
                     }/>
                     <Route path="/pressrelease/:num" element={
                         <div className="outter">
-                            <Sidebar type="notices"/>
-                            <PressReleaseDetail/>
+                            <Sidebar memberState={memberState} type="notices"/>
+                            <PressReleaseDetail memberState={memberState}/>
                         </div>
                     }/>
 
                     <Route path="/reserve/:type" element={
                         <div className="outter">
-                            <Sidebar type="reserve"/>
-                            <ReserveForm/>
+                            <Sidebar memberState={memberState} type="reserve"/>
+                            <ReserveForm />
                         </div>
                     }/>
 
 
                     <Route path="/rental" element={
                         <div className="outter">
-                            <Sidebar type="reserve"/>
-                            <Rental/>
-                        </div>
-                    }/>
-
-                    <Route path="/consultants" element={
-                        <div className="outter">
-                            <Sidebar type="reserve"/>
-                            <ConsultantForm/>
-                        </div>
-                    }/>
-
-                    <Route path="/reservation" element={
-                        <div className="outter">
-                            <Sidebar type="reserve"/>
-                            <ReservationList/>
-                        </div>
-                    }/>
-                    <Route path="/reservation/create" element={
-                        <div className="outter">
-                            <Sidebar type="reserve"/>
-                            <ReservationForm/>
-                        </div>
-                    }/>
-                    <Route path="/reservation/update/:num" element={
-                        <div className="outter">
-                            <Sidebar type="reserve"/>
-                            <ReservationEdit/>
-                        </div>
-                    }/>
-                    <Route path="/reservation/:num" element={
-                        <div className="outter">
-                            <Sidebar type="reserve"/>
-                            <ReservationDetail/>
+                            <Sidebar memberState={memberState} type="reserve"/>
+                            <Rental memberId={memberId}/>
                         </div>
                     }/>
 
                     <Route path="/jobConsult" element={
                         <div className="outter">
-                            <Sidebar type="reserve"/>
-                            <JobConsult/>
+                            <Sidebar memberState={memberState} type="reserve"/>
+                            <JobConsult memberId={memberId}/>
                         </div>
                     }/>
+
+                    <Route path="/consultants" element={
+                        <div className="outter">
+                            <Sidebar memberState={memberState} type="reserve"/>
+                            <ConsultantForm memberId={memberId}/>
+                        </div>
+                    }/>
+
+                    <Route path="/reservation" element={
+                        <div className="outter">
+                            <Sidebar memberState={memberState} type="reserve"/>
+                            <ReservationList memberState={memberState}/>
+                        </div>
+                    }/>
+                    <Route path="/reservation/create" element={
+                        <div className="outter">
+                            <Sidebar memberState={memberState} type="reserve"/>
+                            <ReservationForm memberId={memberId} memberState={memberState}/>
+                        </div>
+                    }/>
+                    <Route path="/reservation/update/:num" element={
+                        <div className="outter">
+                            <Sidebar memberState={memberState} type="reserve"/>
+                            <ReservationEdit memberState={memberState}/>
+                        </div>
+                    }/>
+                    <Route path="/reservation/:num" element={
+                        <div className="outter">
+                            <Sidebar memberState={memberState} type="reserve"/>
+                            <ReservationDetail memberState={memberState}/>
+                        </div>
+                    }/>
+
+                    
                     <Route path="/search-results" element={
                         <div className="outter">
-                            <Sidebar type="reserve"/>
+                            <Sidebar memberState={memberState} type="reserve"/>
                             <SearchResult/>
                         </div>
                     }/>
@@ -393,28 +447,26 @@ function App() {
 
                     <Route path="/startup" element={
                         <div className="outter">
-                            <Sidebar type="programs" />
+                            <Sidebar memberState={memberState} type="programs" />
                             <Startup />
                         </div>
                     }/>
                     <Route path="/eduConsult" element={
                         <div className="outter">
-                            <Sidebar type="programs" />
+                            <Sidebar memberState={memberState} type="programs" />
                             <Educonsult />
                         </div>
                     }/>
                     <Route path="/tourism" element={
                         <div className="outter">
-                            <Sidebar type="programs" />
+                            <Sidebar memberState={memberState} type="programs" />
                             <Tourism />
                         </div>
                     }/>
                     
-
-                <Route path="/addAsset" element={<VisualAssetManager />} />
                 <Route path="/find-id" element={<FindId />} />
                 <Route path="/find-pwd" element={<FindPwd />} />
-                <Route path="/businessUpgrade" element={<BusinessUpgrade />} />
+                <Route path="/businessUpgrade" element={<BusinessUpgrade memberId={memberId} memberState={memberState}/>} />
 
             </Routes>
             <ChatbotToggle />

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './TNoticeForm.css';
 
-const TNoticeForm = ({ onFormToggle }) => {
+const TNoticeForm = ({ memberId, memberState }) => {
     const [selectedFile, setSelectedFile] = useState(null);
     const [imagePreview, setImagePreview] = useState(null);
     const [title, setTitle] = useState('');
@@ -19,10 +19,9 @@ const TNoticeForm = ({ onFormToggle }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const id = sessionStorage.getItem("id");
         const formData = new FormData();
         formData.append('file', selectedFile);
-        formData.append('notice', new Blob([JSON.stringify({ title, content, id })], { type: 'application/json' }));
+        formData.append('notice', new Blob([JSON.stringify({ title, content, memberId })], { type: 'application/json' }));
 
         try {
             await axios.post('/tnotice/create', formData, {
@@ -40,6 +39,14 @@ const TNoticeForm = ({ onFormToggle }) => {
             console.error("There was an error creating the notice!", error);
         }
     };
+
+    if (memberState !== "ADMIN") {
+        return (
+            <div className="TNoticeForm-copo">
+                <h2>권한이 없습니다.</h2>
+            </div>
+        );
+    }
 
     return (
         <div className="TNoticeForm-copo">

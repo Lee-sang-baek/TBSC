@@ -1,13 +1,23 @@
 package com.tbsc.member;
 
+import com.tbsc.config.AuthenticationRequest;
+import com.tbsc.config.AuthenticationResponse;
+import com.tbsc.config.JwtTokenUtil;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -63,40 +73,41 @@ public class MemberController {
 //        return ResponseEntity.ok("로그인 성공");
 //    }
 
-    @PostMapping("/login")
-    public ResponseEntity<Member> login(@RequestBody Map<String, String> request, HttpServletRequest httpRequest) {
-        String id = request.get("id");
-        String enteredPassword = request.get("password");
+//    @PostMapping("/login")
+//    public ResponseEntity<Member> login(@RequestBody Map<String, String> request, HttpServletRequest httpRequest) {
+//        String id = request.get("id");
+//        String enteredPassword = request.get("password");
+//
+//        // 암호화된 패스워드
+//        String storedPasswordHash = memberService.getPassword(id);
+//
+//        // 입력된 비밀번호, 암호화된 비밀번호 비교
+//        boolean passwordMatches = passwordEncoder.matches(enteredPassword, storedPasswordHash);
+//
+//        if (passwordMatches) {
+//            Member member = memberService.login(id, storedPasswordHash);
+//
+//            HttpSession session = httpRequest.getSession();
+////            if (session.getAttribute("id") != null) {
+////                System.out.println("id: " + session.getAttribute("id"));
+////            }
+//            session.setAttribute("id", id);
+//            session.setAttribute("state", member.getState());
+//
+//            return ResponseEntity.ok(member);
+//        } else {
+//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+//        }
+//    }
 
-        // 암호화된 패스워드
-        String storedPasswordHash = memberService.getPassword(id);
 
-        // 입력된 비밀번호, 암호화된 비밀번호 비교
-        boolean passwordMatches = passwordEncoder.matches(enteredPassword, storedPasswordHash);
-
-        if (passwordMatches) {
-            Member member = memberService.login(id, storedPasswordHash);
-
-            HttpSession session = httpRequest.getSession();
-//            if (session.getAttribute("id") != null) {
-//                System.out.println("id: " + session.getAttribute("id"));
-//            }
-            session.setAttribute("id", id);
-            session.setAttribute("state", member.getState());
-
-            return ResponseEntity.ok(member);
-        } else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-        }
-    }
-
-    @GetMapping("/logout")
-    public ResponseEntity<String> logout(HttpServletRequest httpRequest) {
-        HttpSession session = httpRequest.getSession();
-        session.removeAttribute("id");
-        session.removeAttribute("state");
-        return ResponseEntity.ok("로그아웃 성공");
-    }
+//    @GetMapping("/logout")
+//    public ResponseEntity<String> logout(HttpServletRequest httpRequest) {
+//        HttpSession session = httpRequest.getSession();
+//        session.removeAttribute("id");
+//        session.removeAttribute("state");
+//        return ResponseEntity.ok("로그아웃 성공");
+//    }
 
     @GetMapping("/member/list") // 회원 정보 리스트 조회 (어드민전용)
     public ResponseEntity<Page<Member>> memberList(HttpServletRequest request,

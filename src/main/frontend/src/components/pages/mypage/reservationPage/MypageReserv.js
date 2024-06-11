@@ -5,8 +5,7 @@ import axios from "axios";
 import img from "../../../imgs/login.png";
 import NeedLoginForm from "../../../baseComponents/NeedLoginForm";
 
-const ReservDetails = (props) => {
-    const memberId = sessionStorage.getItem("id");
+const ReservDetails = ({ memberId }) => {
 
     const [selectedSection, setSelectedSection] = useState("consultant"); // 현재 선택된 섹션 상태
 
@@ -226,6 +225,11 @@ const ReservDetails = (props) => {
                 <ReservesViewer reservation={reservation} index={index} selectedSection={selectedSection}
                                 handleCancelClick={handleCancelClick} modifyLink={() => modifyLink(reservation.num)}/>
             ))}
+            {selectedSection === "consultant" && (!consultantList || consultantList.length < 1) && (
+                <div className="center">
+                    <h2>예약 내역이 없습니다.</h2>
+                </div>
+            )}
 
             {selectedSection === "jobConsult" && (
                 <div className="pagination">
@@ -254,6 +258,11 @@ const ReservDetails = (props) => {
                 <ReservesViewer reservation={reservation} index={index} selectedSection={selectedSection}
                                 handleCancelClick={handleCancelClick} modifyLink={() => modifyLink(reservation.num)}/>
             ))}
+            {selectedSection === "jobConsult" && (!jobConsultList || jobConsultList.length < 1) && (
+                <div className="center">
+                    <h2>예약 내역이 없습니다.</h2>
+                </div>
+            )}
 
             {selectedSection === "rental" && (
                 <div className="pagination">
@@ -283,6 +292,11 @@ const ReservDetails = (props) => {
                                 handleCancelClick={handleCancelClick}
                                 modifyLink={() => modifyLink(reservation.num)}/>
             ))}
+            {selectedSection === "rental" && (!rentalList || rentalList.length < 1) && (
+                <div className="center">
+                    <h2>예약 내역이 없습니다.</h2>
+                </div>
+            )}
 
             {showDeleteModal && (
                 <div className="modal">
@@ -373,11 +387,11 @@ const ReservesViewer = ({reservation, index, handleCancelClick, modifyLink, sele
                                         예약취소
                                     </div>
                                 }
+                                <Button text="예약수정" onClick={() => modifyLink(reservation.num)}/>
                                 <button type="button" className="cancelButton"
                                         onClick={() => handleCancelClick(reservation.num)}>
                                     예약취소
                                 </button>
-                                <Button text="예약수정" onClick={() => modifyLink(reservation.num)}/>
                             </div>
                         </div>
                     </div>
@@ -441,11 +455,11 @@ const ReservesViewer = ({reservation, index, handleCancelClick, modifyLink, sele
                                         예약취소
                                     </div>
                                 }
+                                <Button text="예약수정" onClick={() => modifyLink(reservation.num)}/>
                                 <button type="button" className="cancelButton"
                                         onClick={() => handleCancelClick(reservation.num)}>
                                     예약취소
                                 </button>
-                                <Button text="예약수정" onClick={() => modifyLink(reservation.num)}/>
                             </div>
                         </div>
                     </div>
@@ -471,7 +485,7 @@ const ReservesViewer = ({reservation, index, handleCancelClick, modifyLink, sele
                             <div className="detailContent">
                                 <img className="reservImg" src={img} alt=""/>
                                 <div className="reservTime">
-                                    <p>상담일자:&nbsp;</p>
+                                    <p>상담일자&nbsp;</p>
                                     {formatDate(reservation.date) || ""}
                                 </div>
                                 {(reservation.state === "RESERVE") &&
@@ -499,11 +513,11 @@ const ReservesViewer = ({reservation, index, handleCancelClick, modifyLink, sele
                                         예약취소
                                     </div>
                                 }
+                                <Button text="예약수정" onClick={() => modifyLink(reservation.num)}/>
                                 <button type="button" className="cancelButton"
                                         onClick={() => handleCancelClick(reservation.num)}>
                                     예약취소
                                 </button>
-                                <Button text="예약수정" onClick={() => modifyLink(reservation.num)}/>
                             </div>
                         </div>
                     </div>

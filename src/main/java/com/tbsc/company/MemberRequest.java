@@ -49,4 +49,12 @@ public class MemberRequest {
     protected void onUpdate() {
         updatedDate = LocalDateTime.now();
     }
+
+    public MemberRequest bind(MemberRequestDto memberRequestDto) {
+        setBusinessNum(memberRequestDto.getBusinessNum());
+        setCompName(memberRequestDto.getCompName());
+        setCompAddress(memberRequestDto.getCompAddress());
+        setRepresentative(memberRequestDto.getRepresentative());
+        return this;
+    }
 }

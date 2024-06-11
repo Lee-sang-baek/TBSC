@@ -11,8 +11,7 @@ import '@toast-ui/editor/dist/i18n/ko-kr';
 import baseImage from "../../../imgs/pngwing.com (1).png";
 import NeedLoginForm from "../../../baseComponents/NeedLoginForm";
 
-const ModiCorp = (props) => {
-    const memberId = sessionStorage.getItem("id");
+const ModiCorp = ({memberId, memberState}) => {
 
     const [selectedFile, setSelectedFile] = useState(null);
     const [corpImage, setCorpImage] = useState(null);
@@ -53,7 +52,6 @@ const ModiCorp = (props) => {
     const getMemberInfo = () => {
         axios.get("/myPage/member/getMember?id=" + memberId)
             .then((res) => {
-                console.log(res.data);
                 setMemberInfo({...res.data});
             });
     };
@@ -61,7 +59,6 @@ const ModiCorp = (props) => {
     const getRegistInfo = () => {
         axios.get("/registcomp/getComp?memberId=" + memberId)
             .then((res) => {
-                console.log("res.data", res.data);
                 const {title, writer, compImage, corpName, content, num} = res.data;
                 setRegistInfo(res.data);
                 setFormData((prevFormData) => ({
@@ -78,7 +75,6 @@ const ModiCorp = (props) => {
             .catch((error) => {
                 if (error.response && error.response.status === 404) {
                     setRegistInfo({});
-                    console.log(registInfo);
                 } else {
                     // 다른 오류에 대한 처리
                     console.error("오류 발생:", error);
@@ -114,7 +110,6 @@ const ModiCorp = (props) => {
             });
 
             const filename = await response.text();
-            console.log('서버에 저장된 파일명 : ', filename);
 
             const imageUrl = `/tui-editor/image-print?filename=${filename}`;
             callback(imageUrl, 'image alt attribute');
@@ -122,7 +117,6 @@ const ModiCorp = (props) => {
         } catch (error) {
             console.error('업로드 실패 : ', error);
         }
-        console.log(blob);
     };
 
     const handleSubmit = async (e) => {
@@ -140,7 +134,6 @@ const ModiCorp = (props) => {
             imageFile = uploadResponse.data;
         }
         try {
-            console.log(formData);
             await axios.post('/registcomp/create', {...formData, compImage: imageFile});
             setFormData({});
             alert('기업 정보가 작성되었습니다');
@@ -169,7 +162,6 @@ const ModiCorp = (props) => {
             imageFile = registInfo.compImage;
         }
         try {
-            console.log(formData);
             await axios.put(`/registcomp/${registInfo.num}`, {...registInfo, compImage: imageFile});
             setFormData({});
             alert('기업 정보가 작성되었습니다');
@@ -180,8 +172,6 @@ const ModiCorp = (props) => {
     };
 
     useEffect(() => {
-        console.log(formData);
-        // console.log("registInfo", registInfo);
         setRegistInfo({
             ...registInfo,
             title: formData.title,
@@ -205,6 +195,14 @@ const ModiCorp = (props) => {
         );
     }
 
+    if (memberState === "NORMAL") {
+        return (
+            <div className="ModiCorp-compo">
+                <h2>기업 회원이 아닙니다.</h2>
+            </div>
+        );
+    }
+
     return (
         <div className="ModiCorp-compo">
             <h1 className="pageTitle">기업정보 수정/등록</h1>
@@ -212,17 +210,6 @@ const ModiCorp = (props) => {
             <div className="pageInfo">
                 <div className="corpContainer">
                     <div className="corpHeader">
-                        <div className="corpTitle">
-                            <input
-                                type="text"
-                                value={formData.title}
-                                onChange={(e) => setFormData({...formData, title: e.target.value})}
-                                placeholder="기업제목"
-                                required
-                            />
-                        </div>
-                    </div>
-                    <div className="corpContent">
                         <div className="corpImgContainer">
                             {corpImage ? (
                                 <img className="corpImg" src={corpImage} alt=""/>
@@ -234,11 +221,27 @@ const ModiCorp = (props) => {
                                 <div className="btn-upload">기업 이미지 선택</div>
                             </label>
                             <input type="file" name="file" id="file" accept="image/*" onChange={handleFileChange}
-                                   required/>
-                        </div>
+                                    required/>
+                        
+                    </div>
+                    <div className="corpContent">
+                        
+                    </div>
 
                         <div className="corpInfo">
                             <div className="corpInfoTitle">
+                                <div className="corpTitle">
+                                    <div className="title">기업 이름:</div>
+                                    <div className="titleBox">
+                                        <input
+                                            type="text"
+                                            value={formData.title}
+                                            onChange={(e) => setFormData({...formData, title: e.target.value})}
+                                            placeholder="기업 이름"
+                                            required
+                                        />
+                                    </div>
+                                </div>
                                 <div className="corpWriter">
                                     <div className="writerName">작성자:</div>
                                     <div className="writerNameBox">
@@ -268,7 +271,7 @@ const ModiCorp = (props) => {
                                 <Editor
                                     placeholder="내용 입력"
                                     previewStyle="vertical"
-                                    height="600px"
+                                    height="400px"
                                     initialEditType="wysiwyg"
                                     hideModeSwitch="true"
                                     plugins={[colorSyntax]}

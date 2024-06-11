@@ -31,6 +31,11 @@ public class MemberRequestController {
         return memberRequestService.rejectApplication(num);
     }
 
+    @PostMapping("/member/compUpgrade")
+    public ResponseEntity<String> allRequest(@RequestBody MemberRequestDto memberRequestDto) {
+        return memberRequestService.addMemberRequest(memberRequestDto);
+    }
+
     private ApplicationStatus getStatus(String category) {
         switch (category) {
             case "WAIT" -> {

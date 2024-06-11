@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import './PressReleaseList.css';
 
-const PressReleaseList = () => {
+const PressReleaseList = ({memberState}) => {
     const [pressReleases, setPressReleases] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState('');
@@ -11,7 +11,6 @@ const PressReleaseList = () => {
     const pressReleasesPerPage = 8;
     const pagesPerGroup = 10;
     const navigate = useNavigate();
-    const MemberState = sessionStorage.getItem("state");
 
     useEffect(() => {
         fetchPressReleases();
@@ -77,8 +76,8 @@ const PressReleaseList = () => {
         <div className="PressReleaseList-copo">
             <div className="container">
                 <div className="header">
-                    <h1>보도자료</h1>
-                    {MemberState === "ADMIN" && (
+                    <h2>보도자료</h2>
+                    {memberState === "ADMIN" && (
                         <button onClick={handleWriteClick}>글쓰기</button>
                     )}
                 </div>

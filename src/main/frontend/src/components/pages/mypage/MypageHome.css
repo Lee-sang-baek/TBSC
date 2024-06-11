@@ -7,19 +7,21 @@
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 
     .detailsContainer {
-        margin: 5% 10%;
+        margin: 5%;
 
         .reservDetailTitle {
             /*margin: 5% 0;*/
         }
 
         .reservDetails {
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: 2fr 2fr 3fr 1fr 2fr;
             align-items: center;
+            justify-items: center;
 
             .reservTitle {
-                width: 30%;
+                text-align: center;
+                width: 100%;
                 cursor: pointer;
                 white-space: break-spaces;
                 transition: all 0.3s ease-out;

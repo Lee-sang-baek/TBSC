@@ -4,8 +4,7 @@ import './JobConsult.css';
 import {useNavigate} from "react-router-dom";
 import NeedLoginForm from '../../baseComponents/NeedLoginForm';
 
-function JobConsult() {
-    const memberId = sessionStorage.getItem("id");
+function JobConsult({memberId}) {
 
     const navigate = useNavigate();
 

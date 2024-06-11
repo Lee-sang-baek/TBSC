@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import './TNoticeEdit.css';
 
-const TNoticeEdit = () => {
+const TNoticeEdit = ({memberState}) => {
     const { num } = useParams();
     const [notice, setNotice] = useState({
         title: '',
@@ -12,7 +12,6 @@ const TNoticeEdit = () => {
     });
     const [selectedFile, setSelectedFile] = useState(null);
     const navigate = useNavigate();
-    const MemberState = sessionStorage.getItem("state");
 
     useEffect(() => {
         fetchNotice();
@@ -62,7 +61,7 @@ const TNoticeEdit = () => {
     };
 
 
-    if (MemberState !== "ADMIN") {
+    if (memberState !== "ADMIN") {
         return (
             <div className="TNoticeForm-copo">
                 <h2>권한이 없습니다</h2>

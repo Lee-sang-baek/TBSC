@@ -2,13 +2,15 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./ReservationConfirmation.css";
 import ReservationDetail from "./ReservationDetail";
+import { useNavigate } from "react-router";
 
-const ReservationConfirmation = () => {
-  useEffect(() => {
-    if (sessionStorage.getItem("state") !== "ADMIN") {
-        window.location.href = "/";
-    }
-  }, [])
+const ReservationConfirmation = ({ isLoggedIn, memberState }) => {
+  const navigate = useNavigate();
+    useEffect(() => {
+        if (!isLoggedIn || memberState !== "ADMIN") {
+            navigate("/");
+        }
+    }, []);
   const [reserveType, setReserveType] = useState("Consultant");
   const [consultants, setConsultants] = useState([]);
   const [jobConsult, setJobConsult] = useState([]);
@@ -108,7 +110,7 @@ const ReservationConfirmation = () => {
     }
   };
 
-  if (sessionStorage.getItem("state") !== "ADMIN") {
+  if (!isLoggedIn || memberState !== "ADMIN") {
     return null;
   }
 

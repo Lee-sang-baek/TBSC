@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import './ReservationEdit.css';
 
-const ReservationEdit = () => {
+const ReservationEdit = ({memberState}) => {
     const { num } = useParams();
     const [reservation, setReservation] = useState({
         title: '',
@@ -13,7 +13,7 @@ const ReservationEdit = () => {
     const [attachment, setAttachment] = useState(null);
     const [imagePreview, setImagePreview] = useState(null);
     const navigate = useNavigate();
-    const MemberState = sessionStorage.getItem("state");
+
 
     useEffect(() => {
         fetchReservation();
@@ -77,8 +77,7 @@ const ReservationEdit = () => {
         }
     };
 
-    // Check if the user is an ADMIN
-    if (MemberState !== "ADMIN") {
+    if (memberState !== "ADMIN") {
         return (
             <div className="ReservationEdit-copo">
                 <h2>권한이 없습니다</h2>

@@ -3,11 +3,10 @@ import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import './ReservationDetail.css';
 
-const ReservationDetail = () => {
+const ReservationDetail = ({memberState}) => {
     const { num } = useParams();
     const [reservation, setReservation] = useState(null);
     const navigate = useNavigate();
-    const MemberState = sessionStorage.getItem("state");
 
     useEffect(() => {
         fetchReservation();
@@ -63,10 +62,10 @@ const ReservationDetail = () => {
                 )}
                 {reservation.fileUrl && (
                     <div className="file-download">
-                        <a href={`http://localhost:8090/files/${reservation.fileUrl}`} download>첨부파일 다운로드</a>
+                        <a href={`/files/${reservation.fileUrl}`} download>첨부파일 다운로드</a>
                     </div>
                 )}
-                {MemberState === "ADMIN" && (
+                {memberState === "ADMIN" && (
                     <div className="detail-actions">
                         <button onClick={handleEdit}>수정</button>
                         <button onClick={handleDelete}>삭제</button>

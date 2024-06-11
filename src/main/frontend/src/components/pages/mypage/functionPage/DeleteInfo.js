@@ -3,10 +3,8 @@ import "./DeleteInfo.css";
 import Button from "../../../baseComponents/Button";
 import axios from "axios";
 
-const DeleteInfo = (props) => {
+const DeleteInfo = ({memberId}) => {
     const [location, setLocation] = React.useState({...window.location});
-
-    const memberId = sessionStorage.getItem("id");
 
     const [passwordMatch, setPasswordMatch] = useState(true);
 
@@ -26,7 +24,7 @@ const DeleteInfo = (props) => {
     // }, []);
 
     useEffect(() => {
-        if (memberId !== '') {
+        if (memberId) {
             getMemberInfo();
         }
     }, [memberId]); // memberId가 변경되면 getMemberInfo 함수를 호출합니다.

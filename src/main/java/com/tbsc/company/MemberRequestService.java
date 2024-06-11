@@ -30,6 +30,9 @@ public class MemberRequestService {
         if (optionalMemberRequest.isPresent()) {
             MemberRequest memberRequest = optionalMemberRequest.get();
             Member member = memberRequest.getMember();
+            if (member.getState() == MemberType.ADMIN) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("이미 관리자 회원입니다.");
+            }
             member.setCompName(memberRequest.getCompName());
             member.setBusinessNum(memberRequest.getBusinessNum());
             member.setRepresentative(memberRequest.getRepresentative());
@@ -70,5 +73,23 @@ public class MemberRequestService {
         }
         return ResponseEntity.ok(list);
 
+    }
+
+    public ResponseEntity<String> addMemberRequest(MemberRequestDto memberRequestDto) {
+        Optional<Member> optionalMember = memberRepository.findById(memberRequestDto.getMemberId());
+        if (optionalMember.isPresent()) {
+            Member member = optionalMember.get();
+            Optional<MemberRequest> optionalMemberRequest = memberRequestRepository.findByMember(member);
+            if (optionalMemberRequest.isPresent()) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("이미 신청중입니다.");
+            }
+            MemberRequest memberRequest = new MemberRequest();
+            memberRequest.bind(memberRequestDto);
+            memberRequest.setMember(member);
+            memberRequestRepository.save(memberRequest);
+            return ResponseEntity.ok("신청이 완료되었습니다.");
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("존재하지 않는 회원입니다.");
+        }
     }
 }

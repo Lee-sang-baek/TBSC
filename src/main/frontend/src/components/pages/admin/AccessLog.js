@@ -2,13 +2,15 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./AccessLog.css";
 import { exportToExcel } from "../../util/ExportToExcel";
+import { useNavigate } from "react-router";
 
-const AccessLog = () => {
+const AccessLog = ({ isLoggedIn, memberState }) => {
+    const navigate = useNavigate();
     useEffect(() => {
-        if (sessionStorage.getItem("state") !== "ADMIN") {
-            window.location.href = "/";
+        if (!isLoggedIn || memberState !== "ADMIN") {
+            navigate("/");
         }
-    }, [])
+    }, []);
     const [page, setPage] = useState(0);
     const [size, setSize] = useState(10);
     const [logList, setLogList] = useState([]);
@@ -126,7 +128,7 @@ const AccessLog = () => {
         return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}.${milliseconds}`;
     };
 
-    if (sessionStorage.getItem("state") !== "ADMIN") {
+    if (!isLoggedIn || memberState !== "ADMIN") {
         return null;
     }
 
@@ -195,11 +197,16 @@ const AccessLog = () => {
                                 <option value="centernews">센터소식</option>
                                 <option value="pressrelease">보도자료</option>
 
+                                <option value="startup">창업 및 성장지원</option>
+                                <option value="eduConsult">교육 및 컨설팅</option>
+                                <option value="tourism">관광일자리 지원</option>
+
                                 <option value="centerIntro">센터 소개</option>
                                 <option value="facility">시설 안내</option>
                                 <option value="orgchart">조직도</option>
                                 <option value="wayToCome">오시는 길</option>
 
+                                <option value="compIntroPage">기업 소개</option>
                                 <option value="tnotice">기업 홍보</option>
 
                                 <option value="reservation">이용예약 안내</option>

@@ -7,11 +7,6 @@ const ReservationDetail = ({ reservation, reserveType, onClose, handleStatusChan
   const [showCertificationsModal, setShowCertificationsModal] = useState(false);
   const [showLanguagesModal, setShowLanguagesModal] = useState(false);
 
-  useEffect(() => {
-    if (sessionStorage.getItem("state") !== "ADMIN") {
-        window.location.href = "/";
-    }
-  }, [])
   const getStringState = (state) => {
     if (state === "RESERVE") {
       return "예약";
@@ -23,11 +18,7 @@ const ReservationDetail = ({ reservation, reserveType, onClose, handleStatusChan
       return "거절";
     }
   };
-
-  if (sessionStorage.getItem("state") !== "ADMIN") {
-    return null;
-  }
-
+  
   console.log(reservation.experiences);
 
   return (

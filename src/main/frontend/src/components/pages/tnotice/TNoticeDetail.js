@@ -3,11 +3,10 @@ import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import './TNoticeDetail.css';
 
-const TNoticeDetail = () => {
+const TNoticeDetail = ({memberState}) => {
     const { num } = useParams();
     const [notice, setNotice] = useState(null);
     const navigate = useNavigate();
-    const MemberState = sessionStorage.getItem("state"); // Retrieve state from sessionStorage
 
     useEffect(() => {
         fetchNotice();
@@ -64,7 +63,7 @@ const TNoticeDetail = () => {
                         />
                     </div>
                 )}
-                {MemberState === "ADMIN" && (
+                {memberState === "ADMIN" && (
                     <div className="detail-actions">
                         <button onClick={handleEdit}>수정</button>
                         <button onClick={handleDelete}>삭제</button>

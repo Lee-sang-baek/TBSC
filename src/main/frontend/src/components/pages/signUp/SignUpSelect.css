@@ -38,8 +38,12 @@
     height: 250px;
 }
 
-.SignUpSelect-compo .right-section {
+.SignUpSelect-compo .left-section {
+  animation: fadeInRight 1s ease-in-out;
+}
 
+.SignUpSelect-compo .right-section {
+  animation: fadeInLeft 1s ease-in-out;
   background-size: cover;
   background-position: center;
 }

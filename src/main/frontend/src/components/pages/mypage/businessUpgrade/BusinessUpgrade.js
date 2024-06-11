@@ -1,9 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./BusinessUpgrade.css";
+import { useNavigate } from "react-router";
 
-const BusinessUpgrade = () => {
+const BusinessUpgrade = ({memberId, memberState}) => {
+    const navigate = useNavigate();
+
+    if (memberId === null || memberState === "COMP") {
+        window.location.href = "/";
+    }
+
     const [formData, setFormData] = useState({
+        memberId: memberId,
         compName: "",
         businessNum: "",
         representative: "",
@@ -20,63 +28,67 @@ const BusinessUpgrade = () => {
         axios.post("/member/compUpgrade", formData)
             .then(response => {
                 alert(response.data);
-                // 업그레이드 성공 시 추가적인 로직을 작성할 수 있음
+                navigate("/myPage");
             })
             .catch(error => {
-                alert("기업 회원 업그레이드 실패");
-                console.error(error);
+                alert(error.data);
+                navigate("/myPage");
             });
     };
 
     return (
-        <div className="BusinessUpgrade-container">
-            <h2>기업 회원으로 업그레이드</h2>
-            <div className="input-box">
-                <label>
-                    기업명:
-                    <input
-                        type="text"
-                        name="compName"
-                        value={formData.compName}
-                        onChange={handleInputChange}
-                    />
-                </label>
-            </div>
-            <div className="input-box">
-                <label>
-                    사업자번호:
-                    <input
-                        type="text"
-                        name="businessNum"
-                        value={formData.businessNum}
-                        onChange={handleInputChange}
-                    />
-                </label>
-            </div>
-            <div className="input-box">
-                <label>
-                    대표자명:
-                    <input
-                        type="text"
-                        name="representative"
-                        value={formData.representative}
-                        onChange={handleInputChange}
-                    />
-                </label>
-            </div>
-            <div className="input-box">
-                <label>
-                    기업주소:
-                    <input
-                        type="text"
-                        name="compAddress"
-                        value={formData.compAddress}
-                        onChange={handleInputChange}
-                    />
-                </label>
-            </div>
-            <div className="button-container">
-                <button onClick={handleUpgrade}>회원 업그레이드</button>
+        <div className="BusinessUpgrade-compo">
+            <div className="form-box">
+                <div className="title-box">
+                    <h2>기업 회원 전환 신청</h2>
+                </div>
+                <div className="input-box">
+                    <label>
+                        기업명:
+                        <input
+                            type="text"
+                            name="compName"
+                            value={formData.compName}
+                            onChange={handleInputChange}
+                        />
+                    </label>
+                </div>
+                <div className="input-box">
+                    <label>
+                        사업자번호:
+                        <input
+                            type="text"
+                            name="businessNum"
+                            value={formData.businessNum}
+                            onChange={handleInputChange}
+                        />
+                    </label>
+                </div>
+                <div className="input-box">
+                    <label>
+                        대표자명:
+                        <input
+                            type="text"
+                            name="representative"
+                            value={formData.representative}
+                            onChange={handleInputChange}
+                        />
+                    </label>
+                </div>
+                <div className="input-box">
+                    <label>
+                        기업주소:
+                        <input
+                            type="text"
+                            name="compAddress"
+                            value={formData.compAddress}
+                            onChange={handleInputChange}
+                        />
+                    </label>
+                </div>
+                <div className="button-container">
+                    <button onClick={handleUpgrade}>신청 제출</button>
+                </div>
             </div>
         </div>
     );

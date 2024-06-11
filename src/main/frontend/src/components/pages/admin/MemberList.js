@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import MemberEditModal from "./MemberEditModal";
 import "./MemberList.css";
+import { useNavigate } from "react-router";
 
-const MemberList = () => {
+const MemberList = ({ isLoggedIn, memberState }) => {
+    const navigate = useNavigate();
     useEffect(() => {
-        if (sessionStorage.getItem("state") !== "ADMIN") {
-            window.location.href = "/";
+        if (!isLoggedIn || memberState !== "ADMIN") {
+            navigate("/");
         }
     }, []);
     const [page, setPage] = useState(0);
@@ -77,7 +79,7 @@ const MemberList = () => {
         fetchMemberList();
     };
 
-    if (sessionStorage.getItem("state") !== "ADMIN") {
+    if (!isLoggedIn || memberState !== "ADMIN") {
         return null;
     }
 
@@ -119,6 +121,7 @@ const MemberList = () => {
                 <button onClick={() => handlePageChange(page + 1)} disabled={page === totalPages - 1}>다음</button>
             </div>
 
+            <div className="table">
             <table>
                 <thead>
                     <tr>
@@ -157,12 +160,13 @@ const MemberList = () => {
                                 {item.state === "NORMAL" && "일반회원"}
                             </td>
                             <td>
-                                <button onClick={() => handleEditClick(item)}>수정</button>
+                                <button className="modify" onClick={() => handleEditClick(item)}>수정</button>
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
+            </div>
             <h4>총 {total}명의 회원 조회됨</h4>
             {selectedMember && (
                 <MemberEditModal

@@ -5,14 +5,13 @@ import { Link } from "react-router-dom";
 import Pagination from "./Pagination";
 import Button from "../../baseComponents/Button";
 
-function NoticeList() {
+function NoticeList({memberState}) {
     const [notices, setNotices] = useState([]);
     const [search, setSearch] = useState("");
     const [statusFilter, setStatusFilter] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const [noticesPerPage] = useState(10);
     const [filteredNotices, setFilteredNotices] = useState([]);
-    const MemberState = sessionStorage.getItem("state");
 
     useEffect(() => {
         axios.get("/notices")
@@ -74,7 +73,7 @@ function NoticeList() {
                     </div>
                     <div className="count-write">
                         <span className="totalCount">총게시물:{filteredNotices.length}개</span>
-                        {MemberState === 'ADMIN' && (
+                        {memberState === 'ADMIN' && (
                                 <Button className="writeButton" text="글쓰기" link="notices/new" />
                         )}
                     </div>

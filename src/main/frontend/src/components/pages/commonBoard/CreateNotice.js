@@ -3,10 +3,8 @@ import CustomEditor from "./CustomEditor";
 import "./CreateNotice.css";
 import Button from "../../baseComponents/Button";
 
-function CreateNotice() {
+function CreateNotice({memberId, memberState}) {
     const [title, setTitle] = useState("");
-    const id = sessionStorage.getItem("id");
-    const MemberState = sessionStorage.getItem("state");
     const [state, setState] = useState("");
     const [content, setContent] = useState("");
     const [date, setDate] = useState(new Date());
@@ -37,7 +35,7 @@ function CreateNotice() {
     const handleSubmit = async () => {
         const data = {
             title,
-            id,
+            memberId,
             state,
             content,
             fileUrl,
@@ -67,8 +65,8 @@ function CreateNotice() {
         }
     };
 
-    // Only render the form if MemberState is "ADMIN"
-    if (MemberState !== "ADMIN") {
+    // Only render the form if memberState is "ADMIN"
+    if (memberState !== "ADMIN") {
         return (
             <div className="unauthorized-container">
                 <h1>접근 권한이 없습니다.</h1>
@@ -82,11 +80,11 @@ function CreateNotice() {
             <div className="title-haebin">
                 <label>제목:</label>
                 <div className="form-group">
-                    <input className="input-width-set" type="title" value={title} onChange={handleTitleChange} />
+                    <input className="input-wmemberIdth-set" type="title" value={title} onChange={handleTitleChange} />
                 </div>
             </div>
             <div className="form-group">
-                <label>작성자: {id}</label>
+                <label>작성자: {memberId}</label>
             </div>
             <div className="form-group">
                 <label>진행중:</label>

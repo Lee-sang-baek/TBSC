@@ -5,13 +5,15 @@ import { DateFormat } from "../../util/DateFormat";
 import VisualAssetManager from "./VisualAssetManager";
 import axios from "axios";
 import ContentsViewer from "../../pages/mypage/functionPage/Viewer";
+import { useNavigate } from "react-router";
 
-const SiteManagement = () => {
+const SiteManagement = ({ isLoggedIn, memberState }) => {
+    const navigate = useNavigate();
     useEffect(() => {
-        if (sessionStorage.getItem("state") !== "ADMIN") {
-            window.location.href = "/";
+        if (!isLoggedIn || memberState !== "ADMIN") {
+            navigate("/");
         }
-    }, [])
+    }, []);
     const [selectedSection, setSelectedSection] = useState("mainImage"); // 현재 선택된 섹션 상태
     const [isAssetManagerOpen, setIsAssetManagerOpen] = useState(false); // VisualAssetManager 창이 열려있는지 여부를 추적하는 상태
     const [isUpdateManagerOpen, setIsUpdateManagerOpen] = useState(0);
@@ -105,7 +107,7 @@ const SiteManagement = () => {
         }
     };
 
-    if (sessionStorage.getItem("state") !== "ADMIN") {
+    if (!isLoggedIn || memberState !== "ADMIN") {
         return null;
     }
 

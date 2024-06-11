@@ -105,6 +105,66 @@
         p {
             font-size: 3em;
         }
+
+        @media (max-width:900px) {
+            h1 {
+                font-size: 9em;
+            }
+        
+            h2 {
+                font-size: 8em;
+            }
+        
+            h3 {
+                font-size: 7em;
+            }
+        
+            h4 {
+                font-size: 6em;
+            }
+        
+            h5 {
+                font-size: 5em;
+            }
+        
+            h6 {
+                font-size: 4em;
+            }
+        
+            p {
+                font-size: 2.5em;
+            }
+        }
+
+        @media (max-width:700px) {
+            h1 {
+                font-size: 8em;
+            }
+        
+            h2 {
+                font-size: 7em;
+            }
+        
+            h3 {
+                font-size: 6em;
+            }
+        
+            h4 {
+                font-size: 5em;
+            }
+        
+            h5 {
+                font-size: 4em;
+            }
+        
+            h6 {
+                font-size: 3em;
+            }
+        
+            p {
+                font-size: 2em;
+            }
+        }
     
     }
 }

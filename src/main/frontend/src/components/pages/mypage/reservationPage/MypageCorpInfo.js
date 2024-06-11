@@ -6,8 +6,7 @@ import Viewer from "../functionPage/Viewer";
 import {useNavigate} from "react-router-dom";
 import NeedLoginForm from "../../../baseComponents/NeedLoginForm";
 
-const CorpInfo = (props) => {
-    const memberId = sessionStorage.getItem("id");
+const CorpInfo = ({ memberId, memberState }) => {
 
     const navigate = useNavigate();
 
@@ -27,7 +26,7 @@ const CorpInfo = (props) => {
     const [corpInfo, setCorpInfo] = useState({})
 
     useEffect(() => {
-        if (memberId) {
+        if (memberId && memberState !== "NORMAL") {
             getMemberInfo();
             getCorpInfo();
         }
@@ -66,6 +65,14 @@ const CorpInfo = (props) => {
         );
     };
 
+    if (memberState === "NORMAL") {
+        return (
+            <div className="ModiCorp-compo">
+                <h2>기업 회원이 아닙니다.</h2>
+            </div>
+        );
+    }
+
     const handleNavigate = () => {
         navigate(`/myPage/modify-corp`)
     };
@@ -78,17 +85,16 @@ const CorpInfo = (props) => {
                 <div className="corpContainer">
                     {(corpInfo !== "" && corpInfo !== "undefined") &&
                         <>
-                            <div className="corpHeader">
-                                <div className="corpTitle">
-                                    {corpInfo.title}
-                                </div>
-                            </div>
                             <div className="corpContent">
-                                <div className="corpImgContainer">
-                                    <img className="corpImg" src={`/registFile/${corpInfo.compImage}`} alt=""/>
+                                <div className="corpHeader">
+                                    <div className="corpImgContainer">
+                                        <img className="corpImg" src={`/registFile/${corpInfo.compImage}`} alt=""/>
+                                    </div>
                                 </div>
-
                                 <div className="corpInfo">
+                                    <div className="corpTitle">
+                                        <h2>{corpInfo.title}</h2>
+                                    </div>
                                     <div className="corpInfoTitle">
                                         <div className="corpWriter">
                                             <div className="writerName">작성자:</div>

@@ -4,9 +4,8 @@ import FacilityGuide from "../../facilityGuide/FacilityGuide";
 import axios from "axios";
 import {useNavigate, useParams} from "react-router-dom";
 
-const ModifyReserv = () => {
+const ModifyReserv = ({memberId}) => {
     const { index } = useParams();
-    const memberId = sessionStorage.getItem("id");
 
     const navigate = useNavigate();
 

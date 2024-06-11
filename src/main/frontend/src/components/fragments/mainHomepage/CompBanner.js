@@ -40,10 +40,7 @@ function CompBanner() {
                     {selectedDataset && selectedDataset.map((item, index) => (
                         <div key={index} className="slide">
                             <div className='back-box' style={{ 
-                                backgroundImage: `url("/uploads/${item.compImage}")`,
-                                backgroundSize: 'certain',
-                                backgroundPosition: 'center',
-                                backgroundRepeat: 'no-repeat'
+                                backgroundImage: `url("/uploads/${item.compImage}")`
                             }}>
                                 <div className='shape'>
                                     <p>{item.content && (<Viewer contents={item.content} isTag={false} />)}</p>

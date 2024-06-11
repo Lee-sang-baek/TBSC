@@ -55,6 +55,7 @@ const CompIntroPage = () => {
 
     return (
         <div className="CompIntroPage-compo">
+            <h2>기업 소개</h2>
             <div className="pagination">
                 {(registStartPage > 1) && (
                     <button onClick={handlePreviousGroup}>&laquo;</button>

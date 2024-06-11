@@ -11,7 +11,12 @@
     }
 
     .detail-header h1 {
-        margin-bottom: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .detail-meta {
+        border-bottom: 1px solid #ccc;
     }
 
     .detail-meta p {

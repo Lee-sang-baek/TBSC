@@ -3,14 +3,13 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import './CenterNewsList.css'; // Import the CSS file
 
-const CenterNewsList = () => {
+const CenterNewsList = ({ memberState }) => {
     const [news, setNews] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState('');
     const [filteredNews, setFilteredNews] = useState([]);
     const newsPerPage = 8;
     const navigate = useNavigate();
-    const MemberState = sessionStorage.getItem("state");
 
     useEffect(() => {
         fetchNews();
@@ -67,8 +66,8 @@ const CenterNewsList = () => {
         <div className="CenterNewsList-copo">
             <div className="container">
                 <div className="header">
-                    <h1>센터 소식</h1>
-                    {MemberState === "ADMIN" && (
+                    <h2>센터 소식</h2>
+                    {memberState === "ADMIN" && (
                         <button onClick={handleWriteClick}>글쓰기</button>
                     )}
                 </div>

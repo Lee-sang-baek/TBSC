@@ -5,9 +5,8 @@ import axios from "axios";
 import {useNavigate, useParams} from "react-router-dom";
 import baseImage from "../../../imgs/pngwing.com (1).png";
 
-const ModifyConsultant = () => {
+const ModifyConsultant = ({memberId}) => {
     const { num } = useParams();
-    const memberId = sessionStorage.getItem("id");
 
     const navigate = useNavigate();
 

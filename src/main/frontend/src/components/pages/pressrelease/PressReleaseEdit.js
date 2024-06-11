@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import './PressReleaseForm.css';
 
-const PressReleaseEdit = () => {
+const PressReleaseEdit = ({memberState}) => {
     const { num } = useParams();
     const [pressRelease, setPressRelease] = useState({
         title: '',
@@ -13,7 +13,6 @@ const PressReleaseEdit = () => {
     const [attachment, setAttachment] = useState(null);
     const [imagePreview, setImagePreview] = useState(null);
     const navigate = useNavigate();
-    const MemberState = sessionStorage.getItem("state");
 
     useEffect(() => {
         fetchPressRelease();
@@ -78,7 +77,7 @@ const PressReleaseEdit = () => {
     };
 
     // Check if the user is an ADMIN
-    if (MemberState !== "ADMIN") {
+    if (memberState !== "ADMIN") {
         return (
             <div className="PressReleaseForm-copo">
                 <h2>권한이 없습니다</h2>

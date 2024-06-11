@@ -6,6 +6,14 @@
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 
+    .center {
+        margin-top: 10%;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+
     .management-button {
         display: flex;
         flex-direction: row;
@@ -58,8 +66,9 @@
 
     .reservContainer {
         border-radius: 15px;
-        background: lightgrey;
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 50px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 26px -18px inset;
+        background: rgb(255, 255, 255);
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+        /* box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 50px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 26px -18px inset; */
 
         .reservHeader {
             .reservTitle {
@@ -87,7 +96,20 @@
             flex-direction: column;
         }
 
+        .reservTime {
+            display: flex;
+            flex-direction: column;
+
+            p {
+                margin: 0;
+            }
+        }
+
         .detailContent {
+            display: grid;
+            grid-template-columns: 2fr 1fr 2fr 1fr 1fr;
+            justify-items: center;
+
             .consultantTime {
                 display: flex;
                 flex-direction: column;

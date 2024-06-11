@@ -3,8 +3,8 @@ import axios from 'axios';
 import "./ConsultantForm.css"
 import NeedLoginForm from '../../baseComponents/NeedLoginForm';
 
-const ConsultantForm = () => {
-    const id = sessionStorage.getItem("id");
+const ConsultantForm = ({memberId}) => {
+
     const [formData, setFormData] = useState({
         compName: '',
         gender: '남',
@@ -19,7 +19,7 @@ const ConsultantForm = () => {
         difficulties: '',
         support: '',
         fileUrl: '',
-        id : id,
+        id : memberId,
     });
     const [file, setFile] = useState(null);
 
@@ -77,7 +77,7 @@ const ConsultantForm = () => {
             alert('신청 중 오류가 발생했습니다.');
         }
     };
-    if (!id) {
+    if (!memberId) {
         return (
             <NeedLoginForm />
         );

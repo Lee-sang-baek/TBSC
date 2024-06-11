@@ -4,7 +4,7 @@ import FacilityGuide from "../facilityGuide/FacilityGuide";
 import axios from "axios";
 import NeedLoginForm from '../../baseComponents/NeedLoginForm';
 
-const Rental = () => {
+const Rental = ({memberId}) => {
     const [startDate, setStartDate] = useState(new Date().toISOString().slice(0, 16));
     const [endDate, setEndDate] = useState(new Date().toISOString().slice(0, 16));
     const [gender, setGender] = useState('');
@@ -13,7 +13,6 @@ const Rental = () => {
     const [place, setPlace] = useState('');
     const [purpose, setPurpose] = useState('');
     const [prepare, setPrepare] = useState('');
-    const memberId = sessionStorage.getItem("id");
 
     const handlePlaceSelection = (placeName) => {
         setPlace(placeName);

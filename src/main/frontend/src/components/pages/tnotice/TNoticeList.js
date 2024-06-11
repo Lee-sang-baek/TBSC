@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import './TNoticeList.css';
 
-const TNoticeList = () => {
+const TNoticeList = ({memberState}) => {
     const [notices, setNotices] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState('');
@@ -11,7 +11,6 @@ const TNoticeList = () => {
     const noticesPerPage = 8; // 페이지당 게시글표시임
     const pagesPerGroup = 10; // 10페이지씩보이게
     const navigate = useNavigate();
-    const MemberState = sessionStorage.getItem("state");
 
     useEffect(() => {
         fetchNotices();
@@ -77,8 +76,8 @@ const TNoticeList = () => {
         <div className="TNoticeList-copo">
             <div className="container">
                 <div className="header">
-                    <h1>기업 홍보</h1>
-                    {MemberState === "ADMIN" && (
+                    <h2>기업 홍보</h2>
+                    {memberState === "ADMIN" && (
                         <button onClick={handleWriteClick}>글쓰기</button>
                     )}
                 </div>

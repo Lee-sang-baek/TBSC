@@ -6,11 +6,6 @@ import {Editor} from '@toast-ui/react-editor';
 import colorSyntax from '@toast-ui/editor-plugin-color-syntax';
 
 const VisualAssetManager = ({ asset, itemToEdit, close }) => {
-  useEffect(() => {
-    if (sessionStorage.getItem("state") !== "ADMIN") {
-        window.location.href = "/";
-    }
-  }, [])
 
   const [formData, setFormData] = useState({
     num: null,
@@ -119,15 +114,6 @@ const VisualAssetManager = ({ asset, itemToEdit, close }) => {
       alert("파일 업로드 및 추가 요청에 실패했습니다. 오류: " + error.message);
     }
   };
-
-  const handleFocus = () => {
-    console.log('Editor focused');
-  };
-  
-
-  if (sessionStorage.getItem("state") !== "ADMIN") {
-    return null;
-  }
 
   return (
     <div className="VisualAssetManager-compo">

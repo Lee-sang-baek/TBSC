@@ -6,6 +6,11 @@
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 
+    h2 {
+        margin-bottom: 5%;
+        text-align: center;
+    }
+
     .pagination {
         display: flex;
         justify-content: center;
@@ -40,31 +45,44 @@
         margin-top: 5%;
 
         .introDetailCard {
+            width: 100%;
+            height: 100%;
             background-color: #fff;
             border: 1px solid #ddd;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
-            display: flex;
-            height: 300px;
+            display: grid;
+            
+            grid-template-columns: 2fr 3fr;
             align-items: center;
-            flex-wrap: wrap;
+            justify-items: center;
+
+            @media (max-width:650px) {
+                display: flex;
+                flex-direction: column;
+            }
 
             .introDetailImage {
-                margin: 2%;
+                width: 300px;
+                height: 300px;
+                margin: 0 3%;
+                padding: 10px 0;
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                border-radius: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
 
-                > img {
-                    width: 300px;
-                    height: 100%;
+                img {              
+                    max-width: 300px;
+                    max-height: 300px;
+                    object-fit: fill;
                 }
             }
 
             .introDetailContent-box {
                 margin: 5%;
-                width: 40%;
-                position: relative;
-                right: -10%;
 
                 .introDetailTitle {
                     text-align: center;
@@ -81,6 +99,8 @@
                     overflow: auto;
                     height: 100px;
                     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                    border-radius: 10px;
+                    padding: 5px;
                 }
             }
         }

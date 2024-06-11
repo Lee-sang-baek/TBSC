@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './Sidebar.css'; // 스타일 파일
 import SideBanner from '../sideBanner/SideBanner';
+import { Link } from 'react-router-dom';
 
-const Sidebar = ({ type }) => {
+const Sidebar = ({ type, memberState }) => {
   const [menuItems, setMenuItems] = useState([]);
 
   useEffect(() => {
@@ -26,7 +27,7 @@ const Sidebar = ({ type }) => {
           ]
         }
       ]);
-    } else if (type === 'admin' && sessionStorage.getItem("state") === "ADMIN") {
+    } else if (type === 'admin' && memberState === "ADMIN") {
       setMenuItems([
         {
           type: 'main',
@@ -143,11 +144,11 @@ const Sidebar = ({ type }) => {
       {menuItems.map((menu, index) => (
         <div key={index} className={menu.type === 'main' ? 'main' : 'list'}>
             {menu.items.map((item, subIndex) => (
-              <a href={item.link} key={subIndex}>
+              <Link to={item.link} key={subIndex}>
                 <div>
                   {item.label}
                 </div>
-              </a>
+              </Link>
             ))}
         </div>
       ))}

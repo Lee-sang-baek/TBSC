@@ -3,11 +3,10 @@ import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import './PressReleaseDetail.css';
 
-const PressReleaseDetail = () => {
+const PressReleaseDetail = ({memberState}) => {
     const { num } = useParams();
     const [pressRelease, setPressRelease] = useState(null);
     const navigate = useNavigate();
-    const MemberState = sessionStorage.getItem("state");
 
     useEffect(() => {
         fetchPressRelease();
@@ -86,7 +85,7 @@ const PressReleaseDetail = () => {
                         <img src={`/uploads/${pressRelease.image}`} alt={pressRelease.title} />
                     </div>
                 )}
-                {MemberState === "ADMIN" && (
+                {memberState === "ADMIN" && (
                     <div className="detail-actions">
                         <button onClick={handleEdit}>수정</button>
                         <button onClick={handleDelete}>삭제</button>

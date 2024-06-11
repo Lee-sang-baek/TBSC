@@ -3,11 +3,10 @@ import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import './CenterNewsDetail.css';
 
-const CenterNewsDetail = () => {
+const CenterNewsDetail = ({memberState}) => {
     const { num } = useParams();
     const [centerNews, setCenterNews] = useState(null);
     const navigate = useNavigate();
-    const MemberState = sessionStorage.getItem("state");
 
     useEffect(() => {
         fetchCenterNews();
@@ -87,7 +86,7 @@ const CenterNewsDetail = () => {
                     </div>
                 )}
 
-                {MemberState === "ADMIN" && (
+                {memberState === "ADMIN" && (
                     <div className="detail-actions">
                         <button onClick={handleEdit}>수정</button>
                         <button onClick={handleDelete}>삭제</button>

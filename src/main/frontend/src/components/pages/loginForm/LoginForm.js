@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./LoginForm.css";
 
-const LoginForm = () => {
+const LoginForm = ({ isLoggedIn, setIsLoggedIn }) => {
     const navigate = useNavigate();
     const [loginForm, setLoginForm] = useState({
         id: "",
@@ -13,23 +13,22 @@ const LoginForm = () => {
     const onLogin = async (e) => {
         e.preventDefault();
 
-        axios.post("/login", loginForm)
-        .then(response => {
+        try {
+            const response = await axios.post("/login", loginForm);
             if (response.status === 200) {
-                console.log(response.data);
-                alert(response.data.id + "님 안녕하세요.")
-                sessionStorage.setItem("id", response.data.id);
-                sessionStorage.setItem("state", response.data.state);
-                navigate(-1);
-            } else {
-                alert("알 수 없는 오류")
+                const { token } = response.data;
+                // 토큰을 로컬 스토리지에 저장
+                localStorage.setItem("token", token);
+                setIsLoggedIn(true);
+                navigate(-1); // 로그인 성공 시 이전 페이지로 이동
             }
-        })
-        .catch(error => {
-            alert("아이디 또는 비밀번호를 확인해주세요.")
-            console.log(error.data);
-        });
-
+        } catch (error) {
+            if (error.response && error.response.status === 401) {
+                alert("아이디 또는 비밀번호를 확인해주세요.");
+            } else {
+                alert("알 수 없는 오류가 발생했습니다." + error);
+            }
+        }
     };
 
     const handleFindIdClick = () => {
@@ -48,7 +47,7 @@ const LoginForm = () => {
     }
 
     useEffect(() => {
-        if (sessionStorage.getItem("id") != null) {
+        if (isLoggedIn) {
             navigate('/');
         }
     }, []);
