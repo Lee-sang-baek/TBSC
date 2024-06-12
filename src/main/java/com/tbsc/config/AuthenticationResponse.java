@@ -1,13 +1,10 @@
 package com.tbsc.config;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
+@Getter
+@RequiredArgsConstructor
 public class AuthenticationResponse {
     private final String token;
-
-    public AuthenticationResponse(String token) {
-        this.token = token;
-    }
-
-    public String getToken() {
-        return token;
-    }
 }

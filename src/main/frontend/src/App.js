@@ -85,7 +85,7 @@ function App() {
         const checkLoginStatus = async () => {
             console.log("check");
             try {
-                const token = localStorage.getItem("token"); // 로컬 스토리지에서 토큰을 가져옴
+                const token = sessionStorage.getItem("token"); // 스토리지에서 토큰을 가져옴
                 if (token) {
                     // 토큰이 존재하면 로그인 상태로 설정
                     setIsLoggedIn(true);
@@ -129,7 +129,7 @@ function App() {
 
     const logout = async () => {
         try {
-            localStorage.removeItem("token"); // 로컬 스토리지에서 토큰을 제거
+            sessionStorage.removeItem("token"); // 로컬 스토리지에서 토큰을 제거
             setIsLoggedIn(false);
             setMemberId("");
             setMemberState("");
