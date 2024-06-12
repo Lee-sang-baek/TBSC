@@ -25,14 +25,14 @@ public class AccessLogController {
 
     @PostMapping("/log/add")
     public void logAccess(HttpServletRequest request, @RequestParam("id") String id) {
-        System.out.println("너가문제냐 설마");
-//        String path = request.getHeader("Referer");
-//        if (path.length() > 100) {
-//            System.out.println(path);
-//            return;
-//        }
-//        String ipAddress = request.getRemoteAddr();
-//        accessLogService.saveAccessLog(id, path, ipAddress);
+        // System.out.println("너가문제냐 설마");
+        String path = request.getHeader("Referer");
+        if (path.length() > 100) {
+            System.out.println(path);
+            return;
+        }
+        String ipAddress = request.getRemoteAddr();
+        accessLogService.saveAccessLog(id, path, ipAddress);
     }
 
 //    @PostMapping("/log/list")

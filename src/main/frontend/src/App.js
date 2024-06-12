@@ -106,7 +106,7 @@ function App() {
             }
         };
         checkLoginStatus();
-    }, [isLoggedIn]);
+    }, []);
 
     // useEffect(() => {
     //     const token = localStorage.getItem("token");
