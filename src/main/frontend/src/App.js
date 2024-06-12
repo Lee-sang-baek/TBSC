@@ -90,8 +90,8 @@ function App() {
                     // 토큰이 존재하면 로그인 상태로 설정
                     setIsLoggedIn(true);
                     axios.all([
-                        axios.get("/state", { headers: { 'Authorization': 'Bearer ' + token } }),
-                        axios.get("/id", { headers: { 'Authorization': 'Bearer ' + token } })
+                        axios.get("/api/state", { headers: { 'Authorization': 'Bearer ' + token } }),
+                        axios.get("/api/id", { headers: { 'Authorization': 'Bearer ' + token } })
                     ])
                     .then(axios.spread((stateRes, idRes) => {
                         setMemberState(stateRes.data);
@@ -145,7 +145,7 @@ function App() {
 
         <BrowserRouter>
             <div className="main">
-                <LogAccess/>
+                <LogAccess memberId={memberId}/>
                 <Header logout={logout} isLoggedIn={isLoggedIn} memberState={memberState}/>
 
                 <Routes>

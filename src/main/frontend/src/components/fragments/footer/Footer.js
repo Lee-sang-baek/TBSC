@@ -8,7 +8,7 @@ function Footer() {
     const location = useLocation();
     const [showRelatedSites, setShowRelatedSites] = useState(false); // 상태 변수 추가
     const create = () => {
-        axios.get("/create")
+        axios.get("/api/create")
             .then(response => {
                 alert(response.data);
             })

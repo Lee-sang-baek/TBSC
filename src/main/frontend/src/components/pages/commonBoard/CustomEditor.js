@@ -26,7 +26,7 @@ const CustomEditor = ({ initialContent, handleContentChange, initialFileUrl, han
             const formData = new FormData();
             formData.append("file", file);
 
-            fetch("/notices/upload", {
+            fetch("/api/notices/upload", {
                 method: "POST",
                 body: formData,
             })

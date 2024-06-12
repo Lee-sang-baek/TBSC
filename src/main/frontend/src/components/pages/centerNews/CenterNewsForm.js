@@ -35,7 +35,7 @@ const CenterNewsForm = ({ memberId, memberState }) => {
         }
 
         try {
-            await axios.post('/centernews/create', formData, {
+            await axios.post('/api/centernews/create', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },

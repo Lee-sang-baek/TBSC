@@ -17,11 +17,11 @@ function MainHomepage() {
     const [popupList, setPopupList] = useState([]);
 
     useEffect(() => {
-        axios.get("/mainImage")
+        axios.get("/api/mainImage")
         .then((res) => {
             setImageList(res.data);
         });
-        axios.get("/popup")
+        axios.get("/api/popup")
         .then((res) => {
             setPopupList(res.data);
         });

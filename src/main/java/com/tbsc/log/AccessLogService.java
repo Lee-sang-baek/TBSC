@@ -22,7 +22,7 @@ public class AccessLogService {
 
     public void saveAccessLog(String id, String path, String ipAddress) {
         AccessLog accessLog = new AccessLog();
-        if (id != null) {
+        if (id != null && !id.isEmpty()) {
 //            Member member = new Member();
 //            member.setId(id);
 //            accessLog.setMember(member);

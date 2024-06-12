@@ -74,7 +74,7 @@ function ModifyJobConsult({memberId}) {
     }, []);
 
     const getMemberInfo = () => {
-        axios.get(`/jobConsult/${num}`)
+        axios.get(`/api/jobConsult/${num}`)
             .then((res) => {
                 console.log(res.data);
                 setFormData(res.data);
@@ -86,7 +86,7 @@ function ModifyJobConsult({memberId}) {
 
     const submitForm = async () => {
         try {
-            const response = await axios.put(`/jobConsult/modify/${num}`, formData);
+            const response = await axios.put(`/api/jobConsult/modify/${num}`, formData);
             console.log(response.data);
             console.log(formData);
             alert(response.data);

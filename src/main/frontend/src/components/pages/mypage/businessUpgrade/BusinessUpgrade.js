@@ -25,7 +25,7 @@ const BusinessUpgrade = ({memberId, memberState}) => {
 
     const handleUpgrade = () => {
         // 기업 회원 업그레이드를 위한 요청을 보냄
-        axios.post("/member/compUpgrade", formData)
+        axios.post("/api/member/compUpgrade", formData)
             .then(response => {
                 alert(response.data);
                 navigate("/myPage");

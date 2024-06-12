@@ -37,26 +37,26 @@ const MyHome = ({ memberId, memberState }) => {
     }, [memberInfo]); // memberInfo가 변경될 때마다 실행됩니다.
 
     const getMemberInfo = () => {
-        axios.get(`/myPage/member/getMember?id=${memberId}`)
+        axios.get(`/api/myPage/member/getMember?id=${memberId}`)
             .then((res) => {
                 console.log(res.data);
                 setMemberInfo(res.data);
                 console.log(memberInfo);
             });
 
-        axios.get(`/rental/member/${memberId}`)
+        axios.get(`/api/rental/member/${memberId}`)
             .then((res) => {
                 console.log("setReserveList", res.data);
                 setReserveList(res.data);
             })
 
-        axios.get(`/consultants/member/${memberId}`)
+        axios.get(`/api/consultants/member/${memberId}`)
             .then((res) => {
                 console.log("setConsultantList", res.data);
                 setConsultantList(res.data);
             })
 
-        axios.get(`/jobConsult/list?memberId=${memberId}`)
+        axios.get(`/api/jobConsult/list?memberId=${memberId}`)
             .then((res) => {
                 console.log("setJobConsultList", res.data);
                 setJobConsultList(res.data);
@@ -76,7 +76,7 @@ const MyHome = ({ memberId, memberState }) => {
 
     // 예약 취소 버튼 클릭 시 호출되는 함수
     const cancelReservation = (num) => {
-        axios.delete(`/rental/delete/${num}`)
+        axios.delete(`/api/rental/delete/${num}`)
             .then((res) => {
                 console.log("Reservation cancelled successfully");
                 // 예약 정보를 다시 가져옵니다. (업데이트된 정보 반영)
@@ -88,7 +88,7 @@ const MyHome = ({ memberId, memberState }) => {
     };
 
     const cancelConsultant = (num) => {
-        axios.delete(`/consultants/delete/${num}`)
+        axios.delete(`/api/consultants/delete/${num}`)
             .then((res) => {
                 console.log("Consultant cancelled successfully");
                 // 예약 정보를 다시 가져옵니다. (업데이트된 정보 반영)
@@ -100,7 +100,7 @@ const MyHome = ({ memberId, memberState }) => {
     };
 
     const cancelJobConsult = (num) => {
-        axios.delete(`/jobConsult/delete/${num}`)
+        axios.delete(`/api/jobConsult/delete/${num}`)
             .then((res) => {
                 console.log("Consultant cancelled successfully");
                 // 예약 정보를 다시 가져옵니다. (업데이트된 정보 반영)

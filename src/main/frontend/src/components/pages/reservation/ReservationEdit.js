@@ -21,10 +21,10 @@ const ReservationEdit = ({memberState}) => {
 
     const fetchReservation = async () => {
         try {
-            const response = await axios.get(`/reservation/${num}`);
+            const response = await axios.get(`/api/reservation/${num}`);
             setReservation(response.data);
             if (response.data.image) {
-                setImagePreview(`/uploads/${response.data.image}`);
+                setImagePreview(`/api/uploads/${response.data.image}`);
             }
         } catch (error) {
             console.error("There was an error fetching the reservation!", error);
@@ -64,7 +64,7 @@ const ReservationEdit = ({memberState}) => {
         }
 
         try {
-            await axios.put(`/reservation/update/${num}`, formData, {
+            await axios.put(`/api/reservation/update/${num}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },

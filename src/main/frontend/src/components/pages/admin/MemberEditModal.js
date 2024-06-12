@@ -16,7 +16,7 @@ const MemberEditModal = ({ member, onClose, onUpdate, onDelete }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.put(`/admin/member/${member.id}`, formData)
+        axios.put(`/api/admin/member/${member.id}`, formData)
             .then(response => {
                 alert(response.data);
                 onUpdate();
@@ -28,7 +28,7 @@ const MemberEditModal = ({ member, onClose, onUpdate, onDelete }) => {
     };
 
     const handleDelete = () => {
-        axios.delete(`/admin/member/${member.id}`)
+        axios.delete(`/api/admin/member/${member.id}`)
             .then(response => {
                 alert(response.data);
                 onDelete();

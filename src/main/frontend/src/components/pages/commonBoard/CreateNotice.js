@@ -46,7 +46,7 @@ function CreateNotice({memberId, memberState}) {
         console.log("Submitting data:", data);
 
         try {
-            const response = await fetch("/notices/create", {
+            const response = await fetch("/api/notices/create", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

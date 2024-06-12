@@ -39,7 +39,7 @@ const ConsultantForm = ({memberId}) => {
         fileData.append('file', file);
 
         try {
-            const response = await axios.post('/consultants/upload', fileData, {
+            const response = await axios.post('/api/consultants/upload', fileData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
@@ -64,7 +64,7 @@ const ConsultantForm = ({memberId}) => {
         };
 
         try {
-            const response = await axios.post('/consultants/save', requestData, {
+            const response = await axios.post('/api/consultants/save', requestData, {
                 headers: {
                     'Content-Type': 'application/json',
                 },

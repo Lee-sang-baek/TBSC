@@ -15,7 +15,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 @RestController
-@RequestMapping("/reservation")
+@RequestMapping("/api/reservation")
 @RequiredArgsConstructor
 public class ReservationController {
 

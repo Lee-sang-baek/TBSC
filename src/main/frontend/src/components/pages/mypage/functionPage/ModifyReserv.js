@@ -16,7 +16,7 @@ const ModifyReserv = ({memberId}) => {
     }, [memberId]);
 
     const getMemberInfo = () => {
-        axios.get(`/rental/${index}`)
+        axios.get(`/api/rental/${index}`)
             .then((res) => {
                 console.log(res.data);
                 const selectedData = res.data;
@@ -110,7 +110,7 @@ const ModifyReserv = ({memberId}) => {
         };
 
         try {
-            const response = await axios.put(`/rental/${num}?memberId=${memberId}`, formData);
+            const response = await axios.put(`/api/rental/${num}?memberId=${memberId}`, formData);
             alert("대관예약이 업데이트되었습니다.");
             console.log('서버 응답:', response.data);
 

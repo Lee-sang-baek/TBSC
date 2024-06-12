@@ -17,7 +17,7 @@ function UpdateNotice({memberState}) {
 
     useEffect(() => {
         const fetchNotice = async () => {
-            const response = await fetch(`/notices/${num}`);
+            const response = await fetch(`/api/notices/${num}`);
             if (response.ok) {
                 const data = await response.json();
 

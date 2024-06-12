@@ -50,14 +50,14 @@ const ModiCorp = ({memberId, memberState}) => {
     }, [memberId]);
 
     const getMemberInfo = () => {
-        axios.get("/myPage/member/getMember?id=" + memberId)
+        axios.get("/api/myPage/member/getMember?id=" + memberId)
             .then((res) => {
                 setMemberInfo({...res.data});
             });
     };
 
     const getRegistInfo = () => {
-        axios.get("/registcomp/getComp?memberId=" + memberId)
+        axios.get("/api/registcomp/getComp?memberId=" + memberId)
             .then((res) => {
                 const {title, writer, compImage, corpName, content, num} = res.data;
                 setRegistInfo(res.data);
@@ -104,7 +104,7 @@ const ModiCorp = ({memberId, memberState}) => {
             const formData = new FormData();
             formData.append('image', blob);
 
-            const response = await fetch('/tui-editor/image-upload', {
+            const response = await fetch('/api/tui-editor/image-upload', {
                 method: 'POST',
                 body: formData,
             });
@@ -126,7 +126,7 @@ const ModiCorp = ({memberId, memberState}) => {
             const formDataToSend = new FormData();
             formDataToSend.append("file", selectedFile);
 
-            const uploadResponse = await axios.post(`/upload/registCorp`, formDataToSend, {
+            const uploadResponse = await axios.post(`/api/upload/registCorp`, formDataToSend, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
@@ -134,7 +134,7 @@ const ModiCorp = ({memberId, memberState}) => {
             imageFile = uploadResponse.data;
         }
         try {
-            await axios.post('/registcomp/create', {...formData, compImage: imageFile});
+            await axios.post('/api/registcomp/create', {...formData, compImage: imageFile});
             setFormData({});
             alert('기업 정보가 작성되었습니다');
             window.location.href = '/myPage/corp-info';
@@ -151,7 +151,7 @@ const ModiCorp = ({memberId, memberState}) => {
             const formDataToSend = new FormData();
             formDataToSend.append("file", selectedFile);
 
-            const uploadResponse = await axios.post(`/upload/registCorp`, formDataToSend, {
+            const uploadResponse = await axios.post(`/api/upload/registCorp`, formDataToSend, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
@@ -162,7 +162,7 @@ const ModiCorp = ({memberId, memberState}) => {
             imageFile = registInfo.compImage;
         }
         try {
-            await axios.put(`/registcomp/${registInfo.num}`, {...registInfo, compImage: imageFile});
+            await axios.put(`/api/registcomp/${registInfo.num}`, {...registInfo, compImage: imageFile});
             setFormData({});
             alert('기업 정보가 작성되었습니다');
             window.location.href = '/myPage/corp-info';

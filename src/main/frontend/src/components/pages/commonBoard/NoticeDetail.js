@@ -12,7 +12,7 @@ function NoticeDetail({memberState}) {
     useEffect(() => {
         const fetchNotice = async () => {
             try {
-                const response = await fetch(`/notices/${num}`);
+                const response = await fetch(`/api/notices/${num}`);
                 if (response.ok) {
                     const data = await response.json();
                     setNotice(data);
@@ -31,7 +31,7 @@ function NoticeDetail({memberState}) {
         const confirmDelete = window.confirm("정말로 이 공지를 삭제하시겠습니까?");
         if (confirmDelete) {
             try {
-                const response = await fetch(`/notices/delete/${num}`, {
+                const response = await fetch(`/api/notices/delete/${num}`, {
                     method: "DELETE",
                 });
                 if (response.ok) {
@@ -51,7 +51,7 @@ function NoticeDetail({memberState}) {
 
     const downloadFile = async (fileName) => {
         try {
-            const response = await axios.get(`/files/${fileName}`, {
+            const response = await axios.get(`/api/files/${fileName}`, {
                 responseType: 'blob',
             });
             const url = window.URL.createObjectURL(new Blob([response.data]));
@@ -87,7 +87,7 @@ function NoticeDetail({memberState}) {
                 <div className="content" dangerouslySetInnerHTML={{ __html: notice.content }}></div>
                 <div className="imgWidth">
                     {notice.imageUrl && (
-                        <img className="imgWidth" src={`/uploads/${notice.imageUrl}`} alt={notice.imageUrl} />
+                        <img className="imgWidth" src={`/api/uploads/${notice.imageUrl}`} alt={notice.imageUrl} />
                     )}
                 </div>
                 {memberState === 'ADMIN' && (

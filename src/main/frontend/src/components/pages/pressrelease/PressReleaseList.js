@@ -18,7 +18,7 @@ const PressReleaseList = ({memberState}) => {
 
     const fetchPressReleases = async () => {
         try {
-            const response = await axios.get('/pressrelease');
+            const response = await axios.get('/api/pressrelease');
             const sortedPressReleases = response.data.sort((a, b) => b.num - a.num);
             setPressReleases(sortedPressReleases);
             setFilteredPressReleases(sortedPressReleases);
@@ -101,7 +101,7 @@ const PressReleaseList = ({memberState}) => {
                         <div key={pressRelease.num} className="pressRelease-card">
                             {pressRelease.image && (
                                 <img
-                                    src={`/uploads/${pressRelease.image}`}
+                                    src={`/api/uploads/${pressRelease.image}`}
                                     alt={pressRelease.title}
                                 />
                             )}

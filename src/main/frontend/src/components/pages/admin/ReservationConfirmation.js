@@ -41,7 +41,7 @@ const ReservationConfirmation = ({ isLoggedIn, memberState }) => {
   const fetchReservations = async () => {
     if (reserveType === "Consultant") {
       await axios
-        .get(`/admin/consultant?page=${page}&size=${size}&state=${state}`)
+        .get(`/api/admin/consultant?page=${page}&size=${size}&state=${state}`)
         .then((response) => {
           setConsultants(response.data.content);
           setTotalPages(response.data.totalPages);
@@ -52,7 +52,7 @@ const ReservationConfirmation = ({ isLoggedIn, memberState }) => {
         });
     } else if (reserveType === "JobConsult") {
       await axios
-        .get(`/admin/jobConsult?page=${page}&size=${size}&state=${state}`)
+        .get(`/api/admin/jobConsult?page=${page}&size=${size}&state=${state}`)
         .then((response) => {
           setJobConsult(response.data.content);
           setTotalPages(response.data.totalPages);
@@ -63,7 +63,7 @@ const ReservationConfirmation = ({ isLoggedIn, memberState }) => {
         });
     } else if (reserveType === "Rental") {
       await axios
-        .get(`/admin/rental?page=${page}&size=${size}&state=${state}`)
+        .get(`/api/admin/rental?page=${page}&size=${size}&state=${state}`)
         .then((response) => {
           setRental(response.data.content);
           setTotalPages(response.data.totalPages);
@@ -81,7 +81,7 @@ const ReservationConfirmation = ({ isLoggedIn, memberState }) => {
 
   const handleStatusChange = async (type, num, newStatus) => {
     try {
-      await axios.put(`/admin/reserve/${type}/${num}/${newStatus}`);
+      await axios.put(`/api/admin/reserve/${type}/${num}/${newStatus}`);
       alert("예약 상태가 변경되었습니다. 이메일을 전송합니다.")
       fetchReservations();
     } catch (error) {

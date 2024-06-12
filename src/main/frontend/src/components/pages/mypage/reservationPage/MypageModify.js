@@ -71,7 +71,7 @@ const ModiInfo = ({memberId, memberState}) => {
 
 
     const getMemberInfo = () => {
-        axios.get(`member/getMember?id=${memberId}`)
+        axios.get(`/api/member/getMember?id=${memberId}`)
             .then((res) => {
                 console.log(res.data);
                 setMemberInfo(res.data);
@@ -134,7 +134,7 @@ const ModiInfo = ({memberId, memberState}) => {
 
         if (passwordMatch && isValidPhoneNum && (password.length >= 8)) {
             // 회원가입 데이터를 서버로 전송
-            axios.post("/member/membermodify", memberInfo)
+            axios.post("/api/member/membermodify", memberInfo)
                 .then(response => {
                     console.log(memberInfo);
                     alert(response.data);

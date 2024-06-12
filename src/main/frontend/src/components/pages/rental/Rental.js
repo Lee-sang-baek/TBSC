@@ -80,7 +80,7 @@ const Rental = ({memberId}) => {
         };
 
         try {
-            const response = await axios.post(`/rental/save?memberId=${memberId}`, formData);
+            const response = await axios.post(`/api/rental/save?memberId=${memberId}`, formData);
             alert("대관예약이 제출되었습니다.");
             console.log('서버 응답:', response.data);
             window.location.href = "/";

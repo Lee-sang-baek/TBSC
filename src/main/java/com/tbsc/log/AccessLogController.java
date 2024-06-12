@@ -2,6 +2,7 @@ package com.tbsc.log;
 
 import com.tbsc.member.Member;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,22 +17,22 @@ import java.util.List;
 import java.util.Objects;
 
 @RestController
-@RequestMapping("/admin/log")
+@RequestMapping("/api")
+@RequiredArgsConstructor
 public class AccessLogController {
 
-    @Autowired
-    private AccessLogService accessLogService;
+    private final AccessLogService accessLogService;
 
-    @PostMapping("/add")
-    public void logAccess(HttpServletRequest request) {
-        String id = (String) request.getSession().getAttribute("id");
-        String path = request.getHeader("Referer");
-        if (path.length() > 100) {
-            System.out.println(path);
-            return;
-        }
-        String ipAddress = request.getRemoteAddr();
-        accessLogService.saveAccessLog(id, path, ipAddress);
+    @PostMapping("/log/add")
+    public void logAccess(HttpServletRequest request, @RequestParam("id") String id) {
+        System.out.println("너가문제냐 설마");
+//        String path = request.getHeader("Referer");
+//        if (path.length() > 100) {
+//            System.out.println(path);
+//            return;
+//        }
+//        String ipAddress = request.getRemoteAddr();
+//        accessLogService.saveAccessLog(id, path, ipAddress);
     }
 
 //    @PostMapping("/log/list")
@@ -40,7 +41,7 @@ public class AccessLogController {
 //        return ResponseEntity.ok(logList);
 //    }
 
-    @GetMapping("/list") // 로그 정보 리스트 조회 (어드민전용)
+    @GetMapping("/admin/log/list") // 로그 정보 리스트 조회 (어드민전용)
     public ResponseEntity<Page<AccessLog>> logList(HttpServletRequest request,
                                                    @RequestParam("page") int page,
                                                    @RequestParam("size") int size,

@@ -14,7 +14,7 @@ const CenterNewsDetail = ({memberState}) => {
 
     const fetchCenterNews = async () => {
         try {
-            const response = await axios.get(`/centernews/${num}`);
+            const response = await axios.get(`/api/centernews/${num}`);
             setCenterNews(response.data);
         } catch (error) {
             console.error("에러", error);
@@ -28,7 +28,7 @@ const CenterNewsDetail = ({memberState}) => {
     const handleDelete = async () => {
         if (window.confirm("정말로 삭제 하시겠습니까?")) {
             try {
-                await axios.delete(`/centernews/delete/${num}`);
+                await axios.delete(`/api/api/centernews/delete/${num}`);
                 alert('삭제가 완료되었습니다.');
                 navigate('/centernews');
             } catch (error) {
@@ -39,7 +39,7 @@ const CenterNewsDetail = ({memberState}) => {
 
     const downloadFile = async (fileName) => {
         try {
-            const response = await axios.get(`/files/${fileName}`, {
+            const response = await axios.get(`/api/files/${fileName}`, {
                 responseType: 'blob',
             });
             const url = window.URL.createObjectURL(new Blob([response.data]));
@@ -82,7 +82,7 @@ const CenterNewsDetail = ({memberState}) => {
                 </div>
                 {centerNews.image && (
                     <div className="detail-image">
-                        <img src={`/uploads/${centerNews.image}`} alt={centerNews.title} />
+                        <img src={`/api/uploads/${centerNews.image}`} alt={centerNews.title} />
                     </div>
                 )}
 

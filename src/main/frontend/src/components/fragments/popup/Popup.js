@@ -39,7 +39,7 @@ const Popup = ({ item, setRandomPositionNearCenter }) => {
   return (
     <div className="Popup-compo" style={popupStyle} key={item.num}>
         
-        <img src={`/uploads/${item.image}`} alt={item.image} />
+        <img src={`/api/uploads/${item.image}`} alt={item.image} />
       
       <div className='btn'>
         <div onClick={handleCloseForADay} className='left'>

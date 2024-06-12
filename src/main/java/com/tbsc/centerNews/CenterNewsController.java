@@ -18,7 +18,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 @RestController
-@RequestMapping("/centernews")
+@RequestMapping("/api/centernews")
 @RequiredArgsConstructor
 public class CenterNewsController {
 

@@ -33,7 +33,7 @@ const CorpInfo = ({ memberId, memberState }) => {
     }, [memberId]); // memberId가 변경되면 getMemberInfo 함수를 호출합니다.
 
     const getMemberInfo = () => {
-        axios.get("/myPage/member/getMember?id=" + memberId)
+        axios.get("/api/myPage/member/getMember?id=" + memberId)
             .then((res) => {
                 console.log(res.data);
                 // setMemberInfo({...res.data})
@@ -41,7 +41,7 @@ const CorpInfo = ({ memberId, memberState }) => {
     };
 
     const getCorpInfo = () => {
-        axios.get("/registcomp/getComp?memberId=" + memberId)
+        axios.get("/api/registcomp/getComp?memberId=" + memberId)
             .then((res) => {
                 console.log(res.data);
                 setCorpInfo({...res.data})

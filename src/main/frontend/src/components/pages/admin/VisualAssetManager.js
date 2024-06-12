@@ -68,7 +68,7 @@ const VisualAssetManager = ({ asset, itemToEdit, close }) => {
         formDataToSend.append("file", formData.image);
 
         // axios를 이용해서 파일을 서버에 업로드합니다.
-        const uploadResponse = await axios.post(`/upload`, formDataToSend, {
+        const uploadResponse = await axios.post(`/api/upload`, formDataToSend, {
           headers: {
             "Content-Type": "multipart/form-data", // content type을 반드시 multipart/form-data로 설정해야 합니다.
           },
@@ -90,9 +90,9 @@ const VisualAssetManager = ({ asset, itemToEdit, close }) => {
 
       let addResponse;
       if (itemToEdit) {
-        addResponse = await axios.post(`/admin/${assetStr}/update`, dataToSend);
+        addResponse = await axios.post(`/api/admin/${assetStr}/update`, dataToSend);
       } else {
-        addResponse = await axios.post(`/admin/${assetStr}/add`, dataToSend);
+        addResponse = await axios.post(`/api/admin/${assetStr}/add`, dataToSend);
       }
 
       alert(addResponse.data);

@@ -33,7 +33,7 @@ const DeleteInfo = ({memberId}) => {
         console.log("Updated memberInfo:", memberInfo);
         // memberInfo가 업데이트 되면 여기에서 처리하면 됩니다.
         if (!memberInfo) {
-            axios.get("/logout")
+            axios.get("/api/logout")
                 .then(response => {
                     console.log(response.data);
                 });
@@ -46,7 +46,7 @@ const DeleteInfo = ({memberId}) => {
 
 
     const getMemberInfo = () => {
-        axios.get(`member/getMember?id=${memberId}`)
+        axios.get(`/api/member/getMember?id=${memberId}`)
             .then((res) => {
                 console.log(res.data);
                 setMemberInfo(res.data);
@@ -73,7 +73,7 @@ const DeleteInfo = ({memberId}) => {
 
         if (passwordMatch) {
             // 회원가입 데이터를 서버로 전송
-            axios.post("/member/memberDelete", memberInfo)
+            axios.post("/api/member/memberDelete", memberInfo)
                 .then(response => {
                     console.log(memberInfo);
 

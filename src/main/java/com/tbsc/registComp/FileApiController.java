@@ -11,7 +11,7 @@ import java.nio.file.Paths;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/tui-editor")
+@RequestMapping("/api/tui-editor")
 public class FileApiController {
     // 파일을 업로드할 디렉터리 경로
     private final String uploadDir = Paths.get("C:", "tbsc", "file", "tui-editor").toString();

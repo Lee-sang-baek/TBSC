@@ -35,7 +35,7 @@ const ReservationForm = ({ memberId, memberState }) => {
         }
 
         try {
-            await axios.post('/reservation/create', formData, {
+            await axios.post('/api/reservation/create', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },

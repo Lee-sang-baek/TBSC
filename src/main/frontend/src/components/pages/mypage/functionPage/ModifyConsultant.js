@@ -34,7 +34,7 @@ const ModifyConsultant = ({memberId}) => {
     }, [memberId]);
 
     const getConsultantInfo = () => {
-        axios.get(`/consultants/${num}`)
+        axios.get(`/api/consultants/${num}`)
             .then((res) => {
                 console.log(res.data);
                 setFormData(res.data)
@@ -66,7 +66,7 @@ const ModifyConsultant = ({memberId}) => {
         fileData.append('file', file);
 
         try {
-            const response = await axios.post('/consultants/upload', fileData, {
+            const response = await axios.post('/api/consultants/upload', fileData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
@@ -92,7 +92,7 @@ const ModifyConsultant = ({memberId}) => {
         };
 
         try {
-            const response = await axios.put(`/consultants/${num}?memberId=${memberId}`, requestData, {
+            const response = await axios.put(`/api/consultants/${num}?memberId=${memberId}`, requestData, {
                 headers: {
                     'Content-Type': 'application/json',
                 },

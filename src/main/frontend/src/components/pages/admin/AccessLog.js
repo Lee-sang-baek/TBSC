@@ -29,7 +29,7 @@ const AccessLog = ({ isLoggedIn, memberState }) => {
 
     const fetchLogList = () => {
         if (fromDate === "" || toDate === "") {
-            axios.get(`/admin/log/list?page=${page}&size=${size}&searchTerm=${searchTerm}&category=${category}&menu=${menu}&sort=${sortOrder}`)
+            axios.get(`/api/admin/log/list?page=${page}&size=${size}&searchTerm=${searchTerm}&category=${category}&menu=${menu}&sort=${sortOrder}`)
             .then(response => {
                 setLogList(response.data.content);
                 setTotalPages(response.data.totalPages);
@@ -39,7 +39,7 @@ const AccessLog = ({ isLoggedIn, memberState }) => {
                 console.error("로그 목록을 가져오는 중 에러 발생:", error);
             });
         } else {
-            axios.get(`/admin/log/list?page=${page}&size=${size}&searchTerm=${searchTerm}&category=${category}&menu=${menu}&sort=${sortOrder}&fromDate=${fromDate}&toDate=${toDate}`)
+            axios.get(`/api/admin/log/list?page=${page}&size=${size}&searchTerm=${searchTerm}&category=${category}&menu=${menu}&sort=${sortOrder}&fromDate=${fromDate}&toDate=${toDate}`)
             .then(response => {
                 setLogList(response.data.content);
                 setTotalPages(response.data.totalPages);
@@ -100,7 +100,7 @@ const AccessLog = ({ isLoggedIn, memberState }) => {
 
         // 모든 페이지의 데이터를 logListToDownload 배열에 추가
         for (let i = 0; i < totalPages; i++) {
-            axios.get(`/admin/log/list?page=${i}&size=${size}&searchTerm=${searchTerm}&category=${category}&menu=${menu}&sort=${sortOrder}`)
+            axios.get(`/api/admin/log/list?page=${i}&size=${size}&searchTerm=${searchTerm}&category=${category}&menu=${menu}&sort=${sortOrder}`)
             .then(response => {
                 allLogListToDownload.push(...response.data.content);
 

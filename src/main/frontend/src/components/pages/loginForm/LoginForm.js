@@ -14,7 +14,7 @@ const LoginForm = ({ isLoggedIn, setIsLoggedIn }) => {
         e.preventDefault();
 
         try {
-            const response = await axios.post("/login", loginForm);
+            const response = await axios.post("/api/login", loginForm);
             if (response.status === 200) {
                 const { token } = response.data;
                 // 토큰을 로컬 스토리지에 저장

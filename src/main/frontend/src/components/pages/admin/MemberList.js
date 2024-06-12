@@ -25,7 +25,7 @@ const MemberList = ({ isLoggedIn, memberState }) => {
     }, [page]);
 
     const fetchMemberList = () => {
-        axios.get(`/member/list?page=${page}&size=${size}&searchTerm=${searchTerm}&category=${category}`)
+        axios.get(`/api/member/list?page=${page}&size=${size}&searchTerm=${searchTerm}&category=${category}`)
             .then(response => {
                 setMemberList(response.data.content);
                 setTotalPages(response.data.totalPages);

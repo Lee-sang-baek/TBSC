@@ -1,10 +1,10 @@
 package com.tbsc.config;
 
-import com.tbsc.member.Member;
 import com.tbsc.member.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
@@ -16,6 +16,7 @@ import java.util.Collection;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/api")
 public class AuthenticationController {
 
     private final AuthenticationProvider authenticationProvider;
@@ -27,6 +28,7 @@ public class AuthenticationController {
         try {
             authenticationProvider.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getId(), authenticationRequest.getPassword()));
             final UserDetails userDetails = memberService.loadUserByUsername(authenticationRequest.getId());
+            System.out.println(userDetails.getUsername() + " is login.");
             final String token = jwtTokenUtil.generateToken(userDetails.getUsername());
             return ResponseEntity.ok(new AuthenticationResponse(token));
         } catch (UsernameNotFoundException e) {

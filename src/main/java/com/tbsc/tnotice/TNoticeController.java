@@ -14,7 +14,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 @RestController
-@RequestMapping("/tnotice")
+@RequestMapping("/api/tnotice")
 @RequiredArgsConstructor
 public class TNoticeController {
 

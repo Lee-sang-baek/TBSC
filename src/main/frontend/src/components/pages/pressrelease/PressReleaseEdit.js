@@ -20,10 +20,10 @@ const PressReleaseEdit = ({memberState}) => {
 
     const fetchPressRelease = async () => {
         try {
-            const response = await axios.get(`/pressrelease/${num}`);
+            const response = await axios.get(`/api/pressrelease/${num}`);
             setPressRelease(response.data);
             if (response.data.image) {
-                setImagePreview(`/uploads/${response.data.image}`);
+                setImagePreview(`/api/uploads/${response.data.image}`);
             }
         } catch (error) {
             console.error("There was an error fetching the pressRelease!", error);
@@ -63,7 +63,7 @@ const PressReleaseEdit = ({memberState}) => {
         }
 
         try {
-            await axios.put(`/pressrelease/update/${num}`, formData, {
+            await axios.put(`/api/pressrelease/update/${num}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },

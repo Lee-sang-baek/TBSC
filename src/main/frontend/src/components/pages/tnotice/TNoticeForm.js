@@ -25,7 +25,7 @@ const TNoticeForm = ({ memberId, memberState }) => {
         formData.append('notice', new Blob([JSON.stringify({ title, content, id })], { type: 'application/json' }));
 
         try {
-            await axios.post('/tnotice/create', formData, {
+            await axios.post('/api/tnotice/create', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },

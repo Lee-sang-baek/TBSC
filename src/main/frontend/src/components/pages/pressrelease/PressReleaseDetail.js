@@ -14,7 +14,7 @@ const PressReleaseDetail = ({memberState}) => {
 
     const fetchPressRelease = async () => {
         try {
-            const response = await axios.get(`/pressrelease/${num}`);
+            const response = await axios.get(`/api/pressrelease/${num}`);
             setPressRelease(response.data);
         } catch (error) {
             console.error("에러", error);
@@ -28,7 +28,7 @@ const PressReleaseDetail = ({memberState}) => {
     const handleDelete = async () => {
         if (window.confirm("정말로 삭제 하시겠습니까?")) {
             try {
-                await axios.delete(`/pressrelease/delete/${num}`);
+                await axios.delete(`/api/pressrelease/delete/${num}`);
                 alert('삭제가 완료되었습니다.');
                 navigate('/pressrelease');
             } catch (error) {
@@ -39,7 +39,7 @@ const PressReleaseDetail = ({memberState}) => {
 
     const downloadFile = async (fileName) => {
         try {
-            const response = await axios.get(`/files/${fileName}`, {
+            const response = await axios.get(`/api/files/${fileName}`, {
                 responseType: 'blob',
             });
             const url = window.URL.createObjectURL(new Blob([response.data]));
@@ -82,7 +82,7 @@ const PressReleaseDetail = ({memberState}) => {
                 </div>
                 {pressRelease.image && (
                     <div className="detail-image">
-                        <img src={`/uploads/${pressRelease.image}`} alt={pressRelease.title} />
+                        <img src={`/api/uploads/${pressRelease.image}`} alt={pressRelease.title} />
                     </div>
                 )}
                 {memberState === "ADMIN" && (

@@ -52,7 +52,7 @@ const SignUp = ({ isLoggedIn, isComp }) => {
     };
 
     const checkUserId = () => {
-        axios.get("/member/checkId?id=" + formData.id)
+        axios.get("/api/member/checkId?id=" + formData.id)
             .then(response => {
                 alert(response.data);
                 if (response.status === 200) {
@@ -66,7 +66,7 @@ const SignUp = ({ isLoggedIn, isComp }) => {
     };
 
     const checkEmail = () => {
-        axios.get("/member/checkEmail?email=" + formData.email)
+        axios.get("/api/member/checkEmail?email=" + formData.email)
             .then(response => {
                 alert(response.data);
                 if (response.status === 200) {
@@ -106,7 +106,7 @@ const SignUp = ({ isLoggedIn, isComp }) => {
 
     const requestPhoneVerification = () => {
         alert('인증번호가 전송되었습니다.')
-        axios.post('/sms/send', { phoneNumber: formData.phoneNum })
+        axios.post('/api/sms/send', { phoneNumber: formData.phoneNum })
             .catch(error => {
                 alert('인증번호 전송 실패: ' + error.message);
                 console.log("Phone Number: ", formData.phoneNum);
@@ -115,7 +115,7 @@ const SignUp = ({ isLoggedIn, isComp }) => {
     };
 
     const verifyCode = () => {
-        axios.post('/sms/verify', { phoneNumber: formData.phoneNum, verificationCode:formData.verificationCode })
+        axios.post('/api/sms/verify', { phoneNumber: formData.phoneNum, verificationCode:formData.verificationCode })
             .then(response => {
                 if (response.data === '인증 성공') {
                     setVerified(true);
@@ -171,12 +171,12 @@ const SignUp = ({ isLoggedIn, isComp }) => {
     const [message, setMessage] = useState('');
     const handleSendCode = () => {
         alert("인증번호가 발송되었습니다.")
-        axios.post('/auth/sendCode', { email: formData.email })
+        axios.post('/api/auth/sendCode', { email: formData.email })
             .catch(error => alert("인증번호 전송이 실패하였습니다."));
     };
 
     const handleEmailCode = () => {
-        axios.post('/auth/verifyCode', { email: formData.email, code: formData.emailCode })
+        axios.post('/api/auth/verifyCode', { email: formData.email, code: formData.emailCode })
             .then(response => {
                 setMessage(response.data);  // 서버로부터 받은 응답 메시지를 상태로 저장
                 alert(response.data);       // 사용자에게 서버 응답을 알림
@@ -241,7 +241,7 @@ const SignUp = ({ isLoggedIn, isComp }) => {
         } else {
             if (idAvailable && passwordMatch && emailAvailable && verified && isValidPhoneNum && ((formData.password).length >= 8)) {
                 // 회원가입 데이터를 서버로 전송
-                axios.post(isComp ? "/member/compSignup" : "/member/signup", formData)
+                axios.post(isComp ? "/api/member/compSignup" : "/api/member/signup", formData)
                     .then(response => {
                         alert(response.data);
                         console.log(response.data); // 회원가입 성공 시 처리

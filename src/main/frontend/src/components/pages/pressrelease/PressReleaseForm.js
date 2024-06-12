@@ -35,7 +35,7 @@ const PressReleaseForm = ({ memberId, memberState }) => {
         }
 
         try {
-            await axios.post('/pressrelease/create', formData, {
+            await axios.post('/api/pressrelease/create', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },

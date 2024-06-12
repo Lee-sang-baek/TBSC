@@ -19,7 +19,7 @@ const TNoticeEdit = ({memberState}) => {
 
     const fetchNotice = async () => {
         try {
-            const response = await axios.get(`/tnotice/${num}`);
+            const response = await axios.get(`/api/tnotice/${num}`);
             setNotice(response.data);
         } catch (error) {
             console.error("There was an error fetching the notice!", error);
@@ -47,7 +47,7 @@ const TNoticeEdit = ({memberState}) => {
         }
 
         try {
-            await axios.put(`/tnotice/update/${num}`, formData, {
+            await axios.put(`/api/tnotice/update/${num}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
@@ -90,7 +90,7 @@ const TNoticeEdit = ({memberState}) => {
                 {notice.image && (
                     <div className="detail-image">
                         <img
-                            src={`/uploads/${notice.image}`}
+                            src={`/api/uploads/${notice.image}`}
                             alt={notice.title}
                         />
                     </div>

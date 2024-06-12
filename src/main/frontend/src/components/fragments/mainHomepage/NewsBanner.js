@@ -12,7 +12,7 @@ const NoticeBanner = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
-        axios.get('/notices/banner')
+        axios.get('/api/notices/banner')
             .then((res) => {
                 setNotices(res.data);
             })
@@ -20,7 +20,7 @@ const NoticeBanner = () => {
                 console.error(err);
             });
 
-        axios.get('/centernews/banner')
+        axios.get('/api/centernews/banner')
             .then((res) => {
                 setCenterNews(res.data);
             })
@@ -28,7 +28,7 @@ const NoticeBanner = () => {
                 console.error(err);
             });
 
-        axios.get('/pressrelease/banner')
+        axios.get('/api/pressrelease/banner')
             .then((res) => {
                 setPressReleases(res.data);
             })

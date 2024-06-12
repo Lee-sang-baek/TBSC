@@ -14,7 +14,7 @@ function NoticeList({memberState}) {
     const [filteredNotices, setFilteredNotices] = useState([]);
 
     useEffect(() => {
-        axios.get("/notices")
+        axios.get("/api/notices")
             .then(res => {
                 const sortedNotices = res.data.sort((a, b) => b.num - a.num);
                 setNotices(sortedNotices);

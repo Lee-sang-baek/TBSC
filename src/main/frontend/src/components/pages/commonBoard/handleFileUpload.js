@@ -5,7 +5,7 @@ const handleFileUpload = async (e) => {
         formData.append("file", file);
 
         try {
-            const response = await fetch("/notices/upload", {
+            const response = await fetch("/api/notices/upload", {
                 method: "POST",
                 body: formData,
             });

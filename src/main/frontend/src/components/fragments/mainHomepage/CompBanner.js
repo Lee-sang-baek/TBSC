@@ -13,7 +13,7 @@ function CompBanner() {
     }, []);
 
     const getDataset = () => {
-        axios.get('/registcomp/list')
+        axios.get('/api/registcomp/list')
         .then((res) => {
             let list = res.data.length === 1 ? res.data.concat(res.data) : res.data;
             setSelectedDataset(list);
@@ -40,7 +40,7 @@ function CompBanner() {
                     {selectedDataset && selectedDataset.map((item, index) => (
                         <div key={index} className="slide">
                             <div className='back-box' style={{ 
-                                backgroundImage: `url("/uploads/${item.compImage}")`
+                                backgroundImage: `url("/api/uploads/${item.compImage}")`
                             }}>
                                 <div className='shape'>
                                     <p>{item.content && (<Viewer contents={item.content} isTag={false} />)}</p>

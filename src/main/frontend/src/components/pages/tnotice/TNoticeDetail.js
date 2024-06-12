@@ -14,7 +14,7 @@ const TNoticeDetail = ({memberState}) => {
 
     const fetchNotice = async () => {
         try {
-            const response = await axios.get(`/tnotice/${num}`);
+            const response = await axios.get(`/api/tnotice/${num}`);
             setNotice(response.data);
         } catch (error) {
             console.error("에러", error);
@@ -28,7 +28,7 @@ const TNoticeDetail = ({memberState}) => {
     const handleDelete = async () => {
         if (window.confirm("정말로 삭제 하시겠습니까?")) {
             try {
-                await axios.delete(`/tnotice/delete/${num}`);
+                await axios.delete(`/api/tnotice/delete/${num}`);
                 alert('삭제가 완료되었습니다.');
                 navigate('/tnotice');
             } catch (error) {
@@ -58,7 +58,7 @@ const TNoticeDetail = ({memberState}) => {
                 {notice.image && (
                     <div className="detail-image">
                         <img
-                            src={`/uploads/${notice.image}`}
+                            src={`/api/uploads/${notice.image}`}
                             alt={notice.title}
                         />
                     </div>

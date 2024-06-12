@@ -18,7 +18,7 @@ const SearchResult = () => {
 
     useEffect(() => {
         const fetchResults = async () => {
-            const response = await axios.get(`/search?title=${searchQuery}`);
+            const response = await axios.get(`/api/search?title=${searchQuery}`);
             setResults(response.data);
             setFilteredResults(response.data);
         };

@@ -26,7 +26,7 @@ const MemberManagement = ({ isLoggedIn, memberState }) => {
     }, [page, category, reload]);
 
     const fetchRequestList = () => {
-        axios.get(`/admin/memberRequest/list?page=${page}&size=${size}&category=${category}`)
+        axios.get(`/api/admin/memberRequest/list?page=${page}&size=${size}&category=${category}`)
             .then(response => {
                 setRequestList(response.data.content);
                 setTotalPages(response.data.totalPages);
@@ -49,7 +49,7 @@ const MemberManagement = ({ isLoggedIn, memberState }) => {
     };
 
     const handleApprove = (num) => {
-        axios.post(`/admin/memberRequest/${num}/approve`)
+        axios.post(`/api/admin/memberRequest/${num}/approve`)
             .then((response) => {
                 alert(response.data);
             })
@@ -60,7 +60,7 @@ const MemberManagement = ({ isLoggedIn, memberState }) => {
     }
 
     const handleDeny = (num) => {
-        axios.post(`/admin/memberRequest/${num}/deny`)
+        axios.post(`/api/admin/memberRequest/${num}/deny`)
             .then((response) => {
                 alert(response.data);
             })

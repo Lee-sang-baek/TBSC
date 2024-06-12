@@ -17,7 +17,7 @@ const CenterNewsList = ({ memberState }) => {
 
     const fetchNews = async () => {
         try {
-            const response = await axios.get('/centernews');
+            const response = await axios.get('/api/centernews');
             const sortedNews = response.data.sort((a, b) => b.num - a.num);
             setNews(sortedNews);
             setFilteredNews(sortedNews); // 초기에는 전체 뉴스를 설정
@@ -91,7 +91,7 @@ const CenterNewsList = ({ memberState }) => {
                         <div key={newsItem.num} className="news-card">
                             {newsItem.image && (
                                 <img
-                                    src={`/uploads/${newsItem.image}`}
+                                    src={`/api/uploads/${newsItem.image}`}
                                     alt={newsItem.title}
                                 />
                             )}

@@ -13,7 +13,7 @@ function SideBanner() {
     const [imageList, setImageList] = useState([]);
 
     useEffect(() => {
-        axios.get("/banner")
+        axios.get("/api/banner")
         .then((res) => {
             setImageList(res.data);
         });
@@ -82,7 +82,7 @@ function SideBanner() {
             <Slider {...settings} className="autoplay">
                 {modifiedImageList && modifiedImageList.map((item, index) => (
                     <div key={index} className='image-box'>
-                        <img src={`/uploads/${item.image}`} alt={item.title} />
+                        <img src={`/api/uploads/${item.image}`} alt={item.title} />
                         <div className='content-box'>
                             <ContentsViewer contents={item.content} isTag={true}/>
                         </div>

@@ -36,17 +36,17 @@ const SiteManagement = ({ isLoggedIn, memberState }) => {
     }, [size, mpage, ppage, bpage]);
 
     const loadList = () => {
-        axios.get(`/admin/mainImage/list?page=${mpage}&size=${size}`)
+        axios.get(`/api/admin/mainImage/list?page=${mpage}&size=${size}`)
         .then((res) => {
             setMainImageList(res.data.content);
             setMPages(res.data.totalPages);
         });
-        axios.get(`/admin/banner/list?page=${bpage}&size=${size}`)
+        axios.get(`/api/admin/banner/list?page=${bpage}&size=${size}`)
         .then((res) => {
             setBannerList(res.data.content);
             setBPages(res.data.totalPages);
         });
-        axios.get(`/admin/popup/list?page=${ppage}&size=${size}`)
+        axios.get(`/api/admin/popup/list?page=${ppage}&size=${size}`)
         .then((res) => {
             setPopupList(res.data.content);
             setPPages(res.data.totalPages);
@@ -92,7 +92,7 @@ const SiteManagement = ({ isLoggedIn, memberState }) => {
     const confirmDelete = () => {
         const assetStr = selectedSection;
         if (deleteItemId && assetStr) {
-            axios.get(`/admin/${assetStr}/remove?num=${deleteItemId}`)
+            axios.get(`/api/admin/${assetStr}/remove?num=${deleteItemId}`)
                 .then(() => {
                     alert("삭제 되었습니다.")
                     loadList();
@@ -211,7 +211,7 @@ const TableComponent = ({ asset, itemList, toggleUpdateManager, setDeleteItemId,
             <tbody>
                 {itemList.map((item, index) => (
                     <tr key={index}>
-                        <td><img src={`/uploads/${item.image}`} alt={item.image} /></td>
+                        <td><img src={`/api/uploads/${item.image}`} alt={item.image} /></td>
                         <td>{item.title}</td>
                         <td><ContentsViewer contents={item.content ? item.content : ""} isTag={false}/></td>
                         <td>

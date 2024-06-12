@@ -49,10 +49,10 @@ const FindPwd = () => {
 
     const handleSendCode = () => {
         if (isEmail) {
-            axios.get(`/member/isEmail?email=${formData.email}`)
+            axios.get(`/api/member/isEmail?email=${formData.email}`)
             .then((res) => {
                 alert("인증번호가 발송되었습니다.");
-                axios.post('/auth/sendCode', { email: formData.email })
+                axios.post('/api/auth/sendCode', { email: formData.email })
                     .catch(error => alert("인증번호 전송이 실패하였습니다."));
             })
             .catch((err) => {
@@ -62,14 +62,14 @@ const FindPwd = () => {
         } else {
             const phoneNumber = `${formData.areaCode}${formData.phoneNum1}${formData.phoneNum2}`;
             alert('인증번호가 전송되었습니다.');
-            axios.post('/sms/send', { phoneNumber })
+            axios.post('/api/sms/send', { phoneNumber })
                 .catch(error => alert('인증번호 전송 실패: ' + error.message));
         }
     };
 
     const handleVerification = () => {
         if (isEmail) {
-            axios.post('/auth/verifyCode', { email: formData.email, code: emailCode })
+            axios.post('/api/auth/verifyCode', { email: formData.email, code: emailCode })
                 .then(response => {
                     if (response.data === "인증되었습니다.") {
                         setVerificationStatus({ ...verificationStatus, emailVerified: true });
@@ -81,7 +81,7 @@ const FindPwd = () => {
                 .catch(error => alert("이메일 인증번호가 일치하지 않습니다."));
         } else {
             const phoneNumber = `${formData.areaCode}${formData.phoneNum1}${formData.phoneNum2}`;
-            axios.post('/sms/verify', { phoneNumber, verificationCode })
+            axios.post('/api/sms/verify', { phoneNumber, verificationCode })
                 .then(response => {
                     if (response.data === '인증 성공') {
                         setVerificationStatus({ ...verificationStatus, phoneVerified: true });
@@ -96,7 +96,7 @@ const FindPwd = () => {
 
     const verifyUserDetails = () => {
         const { id, name } = formData;
-        axios.post("/member/verify", { id, name })
+        axios.post("/api/member/verify", { id, name })
             .then(response => {
                 if (response.status === 200) {
                     setVerificationStatus({ ...verificationStatus, idVerified: true, nameVerified: true });
@@ -124,7 +124,7 @@ const FindPwd = () => {
             return;
         }
 
-        axios.post("/member/resetPassword", formData)
+        axios.post("/api/member/resetPassword", formData)
             .then(response => {
                 alert(response.data);
                 console.log(response.data);

@@ -16,7 +16,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 @RestController
-@RequestMapping("/pressrelease")
+@RequestMapping("/api/pressrelease")
 @RequiredArgsConstructor
 public class PressReleaseController {
 

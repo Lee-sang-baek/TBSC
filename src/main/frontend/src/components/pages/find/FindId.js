@@ -34,19 +34,19 @@ const FindId = () => {
     const handleSendCode = () => {
         if (isEmail) {
             alert("인증번호가 발송되었습니다.");
-            axios.post('/auth/sendCode', { email })
+            axios.post('/api/auth/sendCode', { email })
                 .catch(error => alert("인증번호 전송이 실패하였습니다."));
         } else {
             const phoneNumber = `${areaCode}${phoneNum1}${phoneNum2}`;
             alert('인증번호가 전송되었습니다.');
-            axios.post('/sms/send', { phoneNumber })
+            axios.post('/api/sms/send', { phoneNumber })
                 .catch(error => alert('인증번호 전송 실패: ' + error.message));
         }
     };
 
     const handleVerification = () => {
         if (isEmail) {
-            axios.post('/auth/verifyCode', { email, code: emailCode })
+            axios.post('/api/auth/verifyCode', { email, code: emailCode })
                 .then(response => {
                     setMessage(response.data);
                     alert(response.data);
@@ -57,7 +57,7 @@ const FindId = () => {
                 .catch(error => alert("이메일 인증번호가 일치하지 않습니다."));
         } else {
             const phoneNumber = `${areaCode}${phoneNum1}${phoneNum2}`;
-            axios.post('/sms/verify', { phoneNumber, verificationCode })
+            axios.post('/api/sms/verify', { phoneNumber, verificationCode })
                 .then(response => {
                     if (response.data === '인증 성공') {
                         setVerified(true);
@@ -77,7 +77,7 @@ const FindId = () => {
         }
 
         const data = isEmail ? { email } : { phoneNum: `${areaCode}${phoneNum1}${phoneNum2}` };
-        axios.post('/member/findId', data)
+        axios.post('/api/member/findId', data)
             .then(response => {
                 setFoundId(response.data);
                 alert(`아이디는 ${response.data}입니다.`);

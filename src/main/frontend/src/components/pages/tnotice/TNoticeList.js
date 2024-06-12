@@ -18,7 +18,7 @@ const TNoticeList = ({memberState}) => {
 
     const fetchNotices = async () => {
         try {
-            const response = await axios.get('/tnotice');
+            const response = await axios.get('/api/tnotice');
             const sortedNotices = response.data.sort((a, b) => b.num - a.num);
             setNotices(sortedNotices);
             setFilteredNotices(sortedNotices);
@@ -101,7 +101,7 @@ const TNoticeList = ({memberState}) => {
                         <div key={notice.num} className="notice-card">
                             {notice.image && (
                                 <img
-                                    src={`/uploads/${notice.image}`}
+                                    src={`/api/uploads/${notice.image}`}
                                     alt={notice.title}
                                 />
                             )}

@@ -20,7 +20,7 @@ const ReservationList = ({memberState}) => {
 
     const fetchReservations = async () => {
         try {
-            const response = await axios.get('/reservation');
+            const response = await axios.get('/api/reservation');
             const sortedReservations = response.data.sort((a, b) => b.num - a.num);
             setReservations(sortedReservations);
         } catch (error) {

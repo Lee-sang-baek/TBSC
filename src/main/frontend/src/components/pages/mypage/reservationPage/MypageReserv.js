@@ -59,19 +59,19 @@ const ReservDetails = ({ memberId }) => {
     }, [selectedSection, currentGroup, pagesPerGroup, consultantTotalPages, jobConsultTotalPages, rentalTotalPages]);
 
     const getReserve = () => {
-        axios.get(`/consultants/member/pageable/${memberId}?page=${currentPage - 1}`)
+        axios.get(`/api/consultants/member/pageable/${memberId}?page=${currentPage - 1}`)
             .then((res) => {
                 setConsultantList(res.data.content);
                 setConsultantTotalPages(res.data.totalPages);
                 setTotal(res.data.totalElements);
             });
-        axios.get(`/jobConsult/member/pageable/${memberId}?page=${currentPage - 1}`)
+        axios.get(`/api/jobConsult/member/pageable/${memberId}?page=${currentPage - 1}`)
             .then((res) => {
                 setJobConsultList(res.data.content);
                 setJobConsultTotalPages(res.data.totalPages);
                 setTotal(res.data.totalElements);
             });
-        axios.get(`/rental/member/pageable/${memberId}?page=${currentPage - 1}`)
+        axios.get(`/api/rental/member/pageable/${memberId}?page=${currentPage - 1}`)
             .then((res) => {
                 setRentalList(res.data.content);
                 setRentalTotalPages(res.data.totalPages);
@@ -83,7 +83,7 @@ const ReservDetails = ({ memberId }) => {
     const cancelReservation = () => {
 
         if (selectedSection === "consultant") {
-            axios.put(`/consultants/modify/${cancelReserve}`)
+            axios.put(`/api/consultants/modify/${cancelReserve}`)
                 .then((res) => {
                     console.log("Consultant cancelled successfully");
                     // 예약 정보를 다시 가져옵니다. (업데이트된 정보 반영)
@@ -95,7 +95,7 @@ const ReservDetails = ({ memberId }) => {
             setShowDeleteModal(false);
 
         } else if (selectedSection === "jobConsult") {
-            axios.put(`/jobConsult/cancle/${cancelReserve}`)
+            axios.put(`/api/jobConsult/cancle/${cancelReserve}`)
                 .then((res) => {
                     console.log("JobConsult cancelled successfully");
                     // 예약 정보를 다시 가져옵니다. (업데이트된 정보 반영)
@@ -107,7 +107,7 @@ const ReservDetails = ({ memberId }) => {
             setShowDeleteModal(false);
 
         } else if (selectedSection === "rental") {
-            axios.put(`/rental/modify/${cancelReserve}`)
+            axios.put(`/api/rental/modify/${cancelReserve}`)
                 .then((res) => {
                     console.log("Reservation cancelled successfully");
                     // 예약 정보를 다시 가져옵니다. (업데이트된 정보 반영)

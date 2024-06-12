@@ -23,7 +23,7 @@ const CompIntroPage = () => {
     const [isTag, setIsTag] = useState(true);
 
     useEffect(() => {
-        axios.get(`/registcomp/pageable?page=${currentPage - 1}`)
+        axios.get(`/api/registcomp/pageable?page=${currentPage - 1}`)
             .then((res) => {
                 console.log(res.data);
                 setCompInfoList(res.data);

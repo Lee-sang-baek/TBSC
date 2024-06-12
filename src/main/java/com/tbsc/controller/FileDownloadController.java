@@ -8,12 +8,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 @Controller
+@RequestMapping("/api")
 public class FileDownloadController {
 
     private static final String FILE_DIRECTORY = "C:\\tbsc\\file"; // 파일이 저장된 디렉토리 경로

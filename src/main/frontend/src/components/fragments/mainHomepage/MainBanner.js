@@ -8,7 +8,7 @@ const MainBanner = ({ settings, modifiedImageList }) => {
             <Slider {...settings} className="autoplay">
                 {modifiedImageList && modifiedImageList.map((item, index) => (
                     <div key={index} className='image-box'>
-                        <img src={`/uploads/${item.image}`} alt={item.title} />
+                        <img src={`/api/uploads/${item.image}`} alt={item.title} />
                         <div className='content-box'>
                             <ContentsViewer contents={item.content} />    
                         </div>

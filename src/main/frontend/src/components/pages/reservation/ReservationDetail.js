@@ -14,7 +14,7 @@ const ReservationDetail = ({memberState}) => {
 
     const fetchReservation = async () => {
         try {
-            const response = await axios.get(`/reservation/${num}`);
+            const response = await axios.get(`/api/reservation/${num}`);
             setReservation(response.data);
         } catch (error) {
             console.error("에러", error);
@@ -28,7 +28,7 @@ const ReservationDetail = ({memberState}) => {
     const handleDelete = async () => {
         if (window.confirm("정말로 삭제 하시겠습니까?")) {
             try {
-                await axios.delete(`/reservation/delete/${num}`);
+                await axios.delete(`/api/reservation/delete/${num}`);
                 alert('삭제가 완료되었습니다.');
                 navigate('/reservation');
             } catch (error) {
@@ -57,7 +57,7 @@ const ReservationDetail = ({memberState}) => {
                 </div>
                 {reservation.image && (
                     <div className="detail-image">
-                        <img src={`/uploads/${reservation.image}`} alt={reservation.title} />
+                        <img src={`/api/uploads/${reservation.image}`} alt={reservation.title} />
                     </div>
                 )}
                 {reservation.fileUrl && (

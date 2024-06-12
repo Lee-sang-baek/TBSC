@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/registcomp")
+@RequestMapping("/api/registcomp")
 public class RegistCompController {
 
     @Autowired

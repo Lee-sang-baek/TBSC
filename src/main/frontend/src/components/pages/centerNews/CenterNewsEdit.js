@@ -20,10 +20,10 @@ const CenterNewsEdit = ({memberState}) => {
 
     const fetchCenterNews = async () => {
         try {
-            const response = await axios.get(`/centernews/${num}`);
+            const response = await axios.get(`/api/centernews/${num}`);
             setCenterNews(response.data);
             if (response.data.image) {
-                setImagePreview(`/uploads/${response.data.image}`);
+                setImagePreview(`/api/uploads/${response.data.image}`);
             }
         } catch (error) {
             console.error("There was an error fetching the centerNews!", error);
@@ -63,7 +63,7 @@ const CenterNewsEdit = ({memberState}) => {
         }
 
         try {
-            await axios.put(`/centernews/update/${num}`, formData, {
+            await axios.put(`/api/centernews/update/${num}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
