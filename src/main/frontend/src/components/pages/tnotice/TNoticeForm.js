@@ -20,8 +20,9 @@ const TNoticeForm = ({ memberId, memberState }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData();
+        const id = memberId;
         formData.append('file', selectedFile);
-        formData.append('notice', new Blob([JSON.stringify({ title, content, memberId })], { type: 'application/json' }));
+        formData.append('notice', new Blob([JSON.stringify({ title, content, id })], { type: 'application/json' }));
 
         try {
             await axios.post('/tnotice/create', formData, {

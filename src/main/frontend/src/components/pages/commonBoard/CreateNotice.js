@@ -35,7 +35,7 @@ function CreateNotice({memberId, memberState}) {
     const handleSubmit = async () => {
         const data = {
             title,
-            memberId,
+            "id": memberId,
             state,
             content,
             fileUrl,

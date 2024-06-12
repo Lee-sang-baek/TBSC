@@ -25,7 +25,8 @@ const PressReleaseForm = ({ memberId, memberState }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData();
-        formData.append('pressRelease', new Blob([JSON.stringify({ title, content, member: { memberId } })], { type: 'application/json' }));
+        const id = memberId;
+        formData.append('pressRelease', new Blob([JSON.stringify({ title, content, member: { id } })], { type: 'application/json' }));
         if (selectedFile) {
             formData.append('file', selectedFile);
         }
