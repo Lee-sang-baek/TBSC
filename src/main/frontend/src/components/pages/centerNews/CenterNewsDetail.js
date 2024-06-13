@@ -28,7 +28,7 @@ const CenterNewsDetail = ({memberState}) => {
     const handleDelete = async () => {
         if (window.confirm("정말로 삭제 하시겠습니까?")) {
             try {
-                await axios.delete(`/api/api/centernews/delete/${num}`);
+                await axios.delete(`/api/centernews/delete/${num}`);
                 alert('삭제가 완료되었습니다.');
                 navigate('/centernews');
             } catch (error) {

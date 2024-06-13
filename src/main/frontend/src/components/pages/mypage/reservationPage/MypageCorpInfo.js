@@ -88,7 +88,7 @@ const CorpInfo = ({ memberId, memberState }) => {
                             <div className="corpContent">
                                 <div className="corpHeader">
                                     <div className="corpImgContainer">
-                                        <img className="corpImg" src={`/registFile/${corpInfo.compImage}`} alt=""/>
+                                        <img className="corpImg" src={`/api/registFile/${corpInfo.compImage}`} alt=""/>
                                     </div>
                                 </div>
                                 <div className="corpInfo">

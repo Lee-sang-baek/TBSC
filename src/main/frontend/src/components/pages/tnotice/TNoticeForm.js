@@ -18,6 +18,10 @@ const TNoticeForm = ({ memberId, memberState }) => {
     };
 
     const handleSubmit = async (e) => {
+        if (!selectedFile) {
+            alert("썸네일 이미지를 넣어주세요.");
+            return;
+        }
         e.preventDefault();
         const formData = new FormData();
         const id = memberId;
@@ -51,7 +55,7 @@ const TNoticeForm = ({ memberId, memberState }) => {
 
     return (
         <div className="TNoticeForm-copo">
-            <form onSubmit={handleSubmit}>
+            <form>
                 <input
                     type="text"
                     value={title}
@@ -76,11 +80,10 @@ const TNoticeForm = ({ memberId, memberState }) => {
                         type="file"
                         accept="image/*"
                         onChange={handleFileChange}
-                        required
                         style={{ display: 'none' }}
                     />
                 </label>
-                <button type="submit">글작성</button>
+                <button type="button" onClick={handleSubmit}>글작성</button>
             </form>
         </div>
     );

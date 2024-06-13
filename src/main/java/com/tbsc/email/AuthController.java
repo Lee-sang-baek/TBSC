@@ -25,7 +25,7 @@ public class AuthController {
         }
         String code = generateRandomCode(6);
         codeStorage.put(email, code);  // 이메일과 연결된 코드 저장
-        //emailService.sendSimpleMessage(email, "인증코드", "Code: " + code);
+        emailService.sendSimpleMessage(email, "인증코드", "Code: " + code);
         System.out.println("Code sent to: " + email + " Code: " + code); // 로그 출력
     }
 

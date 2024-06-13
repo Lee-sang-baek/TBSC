@@ -55,7 +55,7 @@
         cursor: pointer;
     }
     
-    button[type="submit"] {
+    button[type="button"] {
         background-color: #007bff;
         color: white;
     }

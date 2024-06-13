@@ -71,7 +71,7 @@ const ModiInfo = ({memberId, memberState}) => {
 
 
     const getMemberInfo = () => {
-        axios.get(`/api/member/getMember?id=${memberId}`)
+        axios.get(`/api/myPage/member/getMember?id=${memberId}`)
             .then((res) => {
                 console.log(res.data);
                 setMemberInfo(res.data);

@@ -82,7 +82,7 @@ const CompIntroPage = () => {
                 {compInfoList.content && compInfoList.content.map((reservation, index) => (
                     <div className="introDetailCard" key={index}>
                         <div className="introDetailImage">
-                            <img className="corpImg" src={`/registFile/${reservation.compImage}`} alt=""/>
+                            <img className="corpImg" src={`/api/registFile/${reservation.compImage}`} alt=""/>
                         </div>
 
                         <div className="introDetailContent-box">

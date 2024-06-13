@@ -5,6 +5,29 @@
     padding: 20px;
     width: 100%;
     margin: 4% 0;
+
+    .detail-image img{
+        width: 100%;
+        margin-top: 50px;
+    }
+
+    .image-input-label {
+        padding: 25px 0;
+        background-color: #007bff;
+        border-radius: 15px;
+        width: 100%;
+        height: 1px;
+        color: white;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+
+    }
+
+    .file-input-label {
+
+    }
 }
 
 .CreateNotice-compo .create-notice-container {

@@ -93,13 +93,13 @@ function App() {
                         axios.get("/api/state", { headers: { 'Authorization': 'Bearer ' + token } }),
                         axios.get("/api/id", { headers: { 'Authorization': 'Bearer ' + token } })
                     ])
-                    .then(axios.spread((stateRes, idRes) => {
-                        setMemberState(stateRes.data);
-                        setMemberId(idRes.data);
-                    }))
-                    .catch((err) => {
-                        console.error("요청 중 에러: ", err);
-                    });
+                        .then(axios.spread((stateRes, idRes) => {
+                            setMemberState(stateRes.data);
+                            setMemberId(idRes.data);
+                        }))
+                        .catch((err) => {
+                            console.error("요청 중 에러: ", err);
+                        });
                 }
             } catch (error) {
                 console.error("로그인 상태 확인 중 에러: ", error);
@@ -107,6 +107,33 @@ function App() {
         };
         checkLoginStatus();
     }, []);
+
+    useEffect(() => {
+        const checkLoginStatus = async () => {
+            console.log("check");
+            try {
+                const token = sessionStorage.getItem("token"); // 스토리지에서 토큰을 가져옴
+                if (token) {
+                    // 토큰이 존재하면 로그인 상태로 설정
+                    setIsLoggedIn(true);
+                    axios.all([
+                        axios.get("/api/state", { headers: { 'Authorization': 'Bearer ' + token } }),
+                        axios.get("/api/id", { headers: { 'Authorization': 'Bearer ' + token } })
+                    ])
+                        .then(axios.spread((stateRes, idRes) => {
+                            setMemberState(stateRes.data);
+                            setMemberId(idRes.data);
+                        }))
+                        .catch((err) => {
+                            console.error("요청 중 에러: ", err);
+                        });
+                }
+            } catch (error) {
+                console.error("로그인 상태 확인 중 에러: ", error);
+            }
+        };
+        checkLoginStatus();
+    }, [isLoggedIn]);
 
     // useEffect(() => {
     //     const token = localStorage.getItem("token");
@@ -322,7 +349,7 @@ function App() {
                     <Route path="/notices/new" element={
                         <div className="outter">
                             <Sidebar memberState={memberState} type="notices"/>
-                            <CreateNotice memberState={memberState}/>
+                            <CreateNotice memberId={memberId} memberState={memberState}/>
                         </div>
                     }/>
                     <Route path="/notices/update/:num" element={

@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
+import java.security.SignatureException;
 import java.util.Date;
 import java.util.function.Function;
 
@@ -26,7 +27,7 @@ public class JwtTokenUtil {
                 .compact();
     }
 
-    public String extractUsername(String token) {
+    public String extractUsername(String token) throws SignatureException {
         return extractClaim(token, Claims::getSubject);
     }
 
@@ -47,7 +48,7 @@ public class JwtTokenUtil {
         return extractExpiration(token).before(new Date());
     }
 
-    public boolean validateToken(String token, UserDetails userDetails) {
+    public boolean validateToken(String token, UserDetails userDetails) throws SignatureException {
         final String username = extractUsername(token);
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }

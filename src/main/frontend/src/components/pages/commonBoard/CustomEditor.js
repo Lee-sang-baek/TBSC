@@ -68,24 +68,27 @@ const CustomEditor = ({ initialContent, handleContentChange, initialFileUrl, han
                     />
                 </div>
             )}
+            <label className="image-input-label">
+                {imagePreview ? "이미지 변경" : "이미지 추가"}
+                <input
+                    type="file"
+                    onChange={(e) => handleFileUpload(e, true)}
+                    className="image-upload-input"
+                    style={{display: "none"}}
+                />
+            </label>
 
-            <input
-                type="file"
-                onChange={(e) => handleFileUpload(e, true)}
-                className="file-upload-input"
-                style={{position: 'relative', zIndex: 1000}}
-            />
-
-            <input
-                type="file"
-                onChange={(e) => handleFileUpload(e, false)}
-                className="file-upload-input"
-                style={{position: 'relative', zIndex: 1000}}
-            />
-
+            <label className="file-input-label">
+                <input
+                    type="file"
+                    onChange={(e) => handleFileUpload(e, false)}
+                    className="file-upload-input"
+                    style={{position: 'relative', zIndex: 1000}}
+                />
+            </label>
         </div>
 
-    );
+);
 };
 
 // Define Quill"s toolbar options

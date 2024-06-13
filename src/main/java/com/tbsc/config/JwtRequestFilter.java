@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.security.SignatureException;
 
 @Component
 @RequiredArgsConstructor
@@ -38,18 +39,24 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             // System.out.println("token:"+ jwtToken);
             try {
                 username = jwtTokenUtil.extractUsername(jwtToken);
+            } catch (SignatureException e) {
+                logger.error("만료된 토큰입니다.");
             } catch (IllegalArgumentException e) {
-                logger.error("Unable to get JWT Token");
+                logger.error("토큰을 가져올 수 없습니다.");
             }
         }
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
-            if (jwtTokenUtil.validateToken(jwtToken, userDetails)) {
-                UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
-                        new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-                usernamePasswordAuthenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+            try {
+                if (jwtTokenUtil.validateToken(jwtToken, userDetails)) {
+                    UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
+                            new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+                    usernamePasswordAuthenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                    SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+                }
+            } catch (SignatureException e) {
+                logger.error("만료된 토큰입니다.");
             }
         }
         chain.doFilter(request, response);

@@ -1,13 +1,17 @@
 package com.tbsc.controller;
 
+import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class WebController {
+public class WebController implements ErrorController {
 
-//    @RequestMapping(value = {"/{path:^(?!api$).*$}/**", "/{path:^(?!api$).*$}"})
-//    public String redirect() {
-//        return "forward:/index.html";
-//    }
+
+
+    @GetMapping({"/", "/error"})
+    public String index() {
+        return "index.html";
+    }
 }

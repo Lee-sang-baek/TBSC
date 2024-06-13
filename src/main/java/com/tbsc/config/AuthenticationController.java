@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.SignatureException;
 import java.util.Collection;
 
 @RestController
@@ -70,8 +71,12 @@ public class AuthenticationController {
     @GetMapping("/id")
     public ResponseEntity<String> getId(@RequestHeader("Authorization") String token) {
         token = token.split(" ")[1].trim();
-        String username = jwtTokenUtil.extractUsername(token);
-        return ResponseEntity.ok(username);
+        try {
+            String username = jwtTokenUtil.extractUsername(token);
+            return ResponseEntity.ok(username);
+        } catch (SignatureException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("만료된 토큰입니다");
+        }
     }
 
 //    private String retrieveStateByUsername(String username) {

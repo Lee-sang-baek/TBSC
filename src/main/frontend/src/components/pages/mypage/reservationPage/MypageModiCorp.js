@@ -111,7 +111,7 @@ const ModiCorp = ({memberId, memberState}) => {
 
             const filename = await response.text();
 
-            const imageUrl = `/tui-editor/image-print?filename=${filename}`;
+            const imageUrl = `/api/tui-editor/image-print?filename=${filename}`;
             callback(imageUrl, 'image alt attribute');
 
         } catch (error) {
@@ -214,7 +214,7 @@ const ModiCorp = ({memberId, memberState}) => {
                             {corpImage ? (
                                 <img className="corpImg" src={corpImage} alt=""/>
                             ) : (
-                                <img className="corpImg" src={registInfo.compImage ? `/registFile/${registInfo.compImage}` : baseImage} alt=""/>
+                                <img className="corpImg" src={registInfo.compImage ? `/api/registFile/${registInfo.compImage}` : baseImage} alt=""/>
                             )}
 
                             <label htmlFor="file">
