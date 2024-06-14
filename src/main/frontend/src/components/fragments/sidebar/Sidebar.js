@@ -9,7 +9,7 @@ const Sidebar = ({ type, memberState }) => {
   useEffect(() => {
 
     // 타입에 따라 메뉴 항목 설정
-    if (type === 'mypage') {
+    if (type === 'mypage' && (memberState === "COMP" || memberState === "ADMIN")) {
       setMenuItems([
         {
           type: 'main',
@@ -24,6 +24,22 @@ const Sidebar = ({ type, memberState }) => {
             { label: '예약 내역', link: "/myPage/reserve" },
             { label: '등록 기업 정보', link: "/myPage/corp-info" },
             { label: '기업 정보 수정', link: "/myPage/modify-corp" },
+          ]
+        }
+      ]);
+    } else if (type === 'mypage' && memberState === "NORMAL") {
+      setMenuItems([
+        {
+          type: 'main',
+          items: [
+            { label: '마이페이지', link: '/mypage' }
+          ]
+        },
+        {
+          type: 'list',
+          items: [
+            { label: '개인 정보 수정', link: "/myPage/modify-info" },
+            { label: '예약 내역', link: "/myPage/reserve" },
           ]
         }
       ]);
@@ -136,7 +152,7 @@ const Sidebar = ({ type, memberState }) => {
     } else {
       console.warn("Unhandled type value:", type);
     }
-  }, [type]); // 의존성 배열에 type 포함
+  }, [type, memberState]); // 의존성 배열에 type 포함
 
   return (
     <div className='side-box'>

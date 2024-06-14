@@ -53,8 +53,7 @@ public class ReserveManagementController {
         try {
             ReserveType reserveType = getReserveType(newStatus);
             String email = service.updateReservationState(type, num, reserveType);
-            // 이메일 잠시 잠금
-            // emailService.sendSimpleMessage(email, "test", "회원님의 예약 상태가 " + reserveType.korName + "으로 변경되었습니다.");
+            emailService.sendSimpleMessage(email, "광주관광기업지원센터", "회원님의 예약 상태가 " + reserveType.korName + "으로 변경되었습니다.");
             return ResponseEntity.ok().build();
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());

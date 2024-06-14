@@ -81,9 +81,9 @@ const ReservationConfirmation = ({ isLoggedIn, memberState }) => {
 
   const handleStatusChange = async (type, num, newStatus) => {
     try {
-      await axios.put(`/api/admin/reserve/${type}/${num}/${newStatus}`);
       alert("예약 상태가 변경되었습니다. 이메일을 전송합니다.")
-      fetchReservations();
+      await axios.put(`/api/admin/reserve/${type}/${num}/${newStatus}`);
+      await fetchReservations();
     } catch (error) {
       alert("에러 : " + error)
       console.error("Error updating reservation status:", error);

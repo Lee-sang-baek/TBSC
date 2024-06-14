@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams, useNavigate } from 'react-router-dom';
+import {useParams, useNavigate, Link} from 'react-router-dom';
 import './ReservationDetail.css';
 
 const ReservationDetail = ({memberState}) => {
@@ -21,9 +21,9 @@ const ReservationDetail = ({memberState}) => {
         }
     };
 
-    const handleEdit = () => {
-        navigate(`/reservation/update/${num}`);
-    };
+    // const handleEdit = () => {
+    //     navigate(`/reservation/update/${num}`);
+    // };
 
     const handleDelete = async () => {
         if (window.confirm("정말로 삭제 하시겠습니까?")) {
@@ -67,7 +67,9 @@ const ReservationDetail = ({memberState}) => {
                 )}
                 {memberState === "ADMIN" && (
                     <div className="detail-actions">
-                        <button onClick={handleEdit}>수정</button>
+                        <Link to={`/reservation/update/${num}`}>
+                            <button type="button">수정</button>
+                        </Link>
                         <button onClick={handleDelete}>삭제</button>
                     </div>
                 )}

@@ -74,7 +74,7 @@ function JobConsult({memberId}) {
 
     const submitForm = async () => {
         try {
-            const response = await axios.post('/jobConsult/add', formData);
+            const response = await axios.post('/api/jobConsult/add', formData);
             console.log(response.data);
             alert(response.data);
             // window.location.href = "/";

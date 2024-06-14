@@ -3,7 +3,7 @@ import "./DeleteInfo.css";
 import Button from "../../../baseComponents/Button";
 import axios from "axios";
 
-const DeleteInfo = ({memberId}) => {
+const DeleteInfo = ({ logout, memberId}) => {
     const [location, setLocation] = React.useState({...window.location});
 
     const [passwordMatch, setPasswordMatch] = useState(true);
@@ -29,24 +29,17 @@ const DeleteInfo = ({memberId}) => {
         }
     }, [memberId]); // memberId가 변경되면 getMemberInfo 함수를 호출합니다.
 
+    const [isOut, setIsOut] = useState(false);
+
     useEffect(() => {
-        console.log("Updated memberInfo:", memberInfo);
-        // memberInfo가 업데이트 되면 여기에서 처리하면 됩니다.
-        if (!memberInfo) {
-            axios.get("/api/logout")
-                .then(response => {
-                    console.log(response.data);
-                });
-            alert("계정 탈퇴처리 되었습니다.")
-            sessionStorage.removeItem("id");
-            sessionStorage.removeItem("state");
-            window.location.href = "/";
+        if (isOut) {
+            logout(isOut);
         }
-    }, [memberInfo]); // memberInfo가 변경될 때마다 실행됩니다.
+    }, [isOut]);
 
 
     const getMemberInfo = () => {
-        axios.get(`/api/member/getMember?id=${memberId}`)
+        axios.get(`/api/myPage/member/getMember?id=${memberId}`)
             .then((res) => {
                 console.log(res.data);
                 setMemberInfo(res.data);
@@ -76,8 +69,7 @@ const DeleteInfo = ({memberId}) => {
             axios.post("/api/member/memberDelete", memberInfo)
                 .then(response => {
                     console.log(memberInfo);
-
-                    window.location.reload();
+                    setIsOut(true);
                 })
                 .catch(error => {
                     alert(error.response.data);

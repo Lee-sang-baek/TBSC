@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import {useParams, useNavigate, Link} from "react-router-dom";
 import axios from "axios"; // Axios 임포트 추가
 import "./NoticeDetail.css";
 import Button from "../../baseComponents/Button";
@@ -92,8 +92,10 @@ function NoticeDetail({memberState}) {
                 </div>
                 {memberState === 'ADMIN' && (
                     <div className="btn-box">
-                        <button className="btns" link={`/notices/update/${num}`}>수정하기</button>
-                        <button className="btns" onClick={deleteNotice}>삭제하기</button>
+                        <Link to={`/notices/update/${num}`}>
+                            <button type="button" className="btns">수정하기</button>
+                        </Link>
+                        <button type="button" className="btns" onClick={deleteNotice}>삭제하기</button>
                     </div>
                 )}
         </div>

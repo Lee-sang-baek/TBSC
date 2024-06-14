@@ -83,14 +83,14 @@ function FacilityGuide({onSelectFacility, name}) {
     return (
         <div className="FacilityGuide-compo">
             <div className='content'>
-                <ul>
+                <div className="flex">
                     {Object.entries(facilitiesData).map(([id, data]) => (
-                        <li key={id} onClick={() => handleTabClick(id)}
-                            className={`tabMenu ${selectedFacility == id ? 'active' : ''}`}>
+                        <div key={id} onClick={() => handleTabClick(id)}
+                            className={`tabMenu ${selectedFacility === id ? 'active' : ''}`}>
                             <p>{data.name}</p>
-                        </li>
+                        </div>
                     ))}
-                </ul>
+                </div>
                 <div className="facility-display">
                     <img src={mainImage} alt="Main facility" className="main-image"/>
                     <div className="facility-description">

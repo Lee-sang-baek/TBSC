@@ -23,6 +23,7 @@ const ReservationEdit = ({memberState}) => {
         try {
             const response = await axios.get(`/api/reservation/${num}`);
             setReservation(response.data);
+            // console.log(response.data)
             if (response.data.image) {
                 setImagePreview(`/api/uploads/${response.data.image}`);
             }
@@ -79,15 +80,15 @@ const ReservationEdit = ({memberState}) => {
 
     if (memberState !== "ADMIN") {
         return (
-            <div className="ReservationEdit-copo">
+            <div className="ReservationEdit-compo">
                 <h2>권한이 없습니다</h2>
             </div>
         );
     }
 
     return (
-        <div className="ReservationEdit-copo">
-            <form onSubmit={handleSubmit}>
+        <div className="ReservationEdit-compo">
+            <div className="foform">
                 <input
                     type="text"
                     name="title"
@@ -125,8 +126,8 @@ const ReservationEdit = ({memberState}) => {
                         style={{ display: 'none' }}
                     />
                 </label>
-                <button type="submit">수정</button>
-            </form>
+                <button type="button" onClick={handleSubmit}>수정</button>
+            </div>
         </div>
     );
 };

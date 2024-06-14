@@ -154,14 +154,19 @@ function App() {
     //     }
     // }, [isLoggedIn]);
 
-    const logout = async () => {
+    const logout = async (isOut) => {
         try {
             sessionStorage.removeItem("token"); // 로컬 스토리지에서 토큰을 제거
             setIsLoggedIn(false);
             setMemberId("");
             setMemberState("");
-            alert("로그아웃 되었습니다.");
-            window.location.reload();
+            // if (isOut) {
+            //     alert("탈퇴 되었습니다.");
+            // } else {
+            //     alert("로그아웃 되었습니다.");
+            // }
+            isOut === true ? alert("탈퇴 되었습니다.") : alert("로그아웃 되었습니다.");
+            window.location.href = "/";
         } catch (error) {
             console.error("로그아웃 중 에러 발생:", error);
         }
@@ -255,7 +260,7 @@ function App() {
                     <Route path="/myPage/delete-info" element={
                         <div className="outter">
                             <Sidebar memberState={memberState} type="mypage"/>
-                            <DeleteInfo logout={logout} memberId={memberId} memberState={memberState}/>
+                            <DeleteInfo logout={(isOut) => logout(isOut)} memberId={memberId} memberState={memberState}/>
                         </div>
                     }/>
                     <Route path="myPage/modify-reserv/:index" element={

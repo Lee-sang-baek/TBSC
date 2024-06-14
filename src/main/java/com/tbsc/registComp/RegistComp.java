@@ -33,7 +33,7 @@ public class RegistComp {
     @Column(nullable = false, columnDefinition="LONGTEXT")
     private String content;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(referencedColumnName = "id", nullable = false)
     private Member member;
 

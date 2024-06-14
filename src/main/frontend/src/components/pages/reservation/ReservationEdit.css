@@ -1,5 +1,4 @@
-
-.ReservationEdit-copo {
+.ReservationEdit-compo {
     width: 87%;
     margin: 100px auto;
     background-color: #fff;
@@ -9,17 +8,21 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-}
-.ReservationEdit-copo {
-    form {
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-    }
 
-    form input[type="text"],
-    form textarea {
+    .image-preview img {
+        max-width: 100%;
+        border-radius: 4px;
+        margin-bottom: 20px;
+    }
+}
+
+.ReservationEdit-compo .foform {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    input[type="text"] {
         padding: 10px;
         margin-bottom: 20px;
         border: 1px solid #ccc;
@@ -27,11 +30,16 @@
         width: 98%;
     }
 
-    form textarea {
-        height: 200px;
+    textarea {
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 98%;
+        height: 300px;
     }
 
-    form .file-input-label {
+    .file-input-label {
         background-color: #007bff;
         color: #fff;
         padding: 10px 20px;
@@ -41,11 +49,11 @@
         margin-bottom: 20px;
     }
 
-    form .file-input-label input[type="file"] {
+    .file-input-label input[type="file"] {
         display: none;
     }
 
-    form button {
+    button {
         padding: 10px 20px;
         background-color: #007bff;
         color: #fff;
@@ -54,13 +62,7 @@
         cursor: pointer;
     }
 
-    form button:hover {
+    button:hover {
         background-color: #0056b3;
-    }
-
-    .image-preview img {
-        max-width: 100%;
-        border-radius: 4px;
-        margin-bottom: 20px;
     }
 }

@@ -14,4 +14,6 @@ public interface MemberRequestRepository extends JpaRepository<MemberRequest, Lo
     Optional<MemberRequest> findByNum(Long num);
 
     Optional<MemberRequest> findByMember(Member member);
+
+    void deleteByMember(Member member);
 }

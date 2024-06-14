@@ -36,7 +36,7 @@ function UpdateNotice({memberState}) {
         const data = { title, id, state, content, fileUrl, date };
 
         try {
-            const response = await fetch(`/notices/update/${num}`, {
+            const response = await fetch(`/api/notices/update/${num}`, {
                 method: "PUT", // Change this from "POST" to "PUT"
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data)

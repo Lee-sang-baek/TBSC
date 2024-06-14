@@ -1,5 +1,8 @@
 package com.tbsc.member;
 
+import com.tbsc.company.MemberRequestRepository;
+import com.tbsc.registComp.RegistComp;
+import com.tbsc.registComp.RegistCompRepository;
 import jakarta.persistence.criteria.Predicate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -14,6 +17,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
 import java.util.List;
@@ -25,6 +29,8 @@ import java.util.regex.Pattern;
 public class MemberService implements UserDetailsService {
 
     private final MemberRepository memberRepository;
+    private final RegistCompRepository registCompRepository;
+    private final MemberRequestRepository memberRequestRepository;
 
     // 비밀번호 일치 확인 메서드
     public boolean isPasswordMatch(String password, String confirmPassword) {
@@ -220,7 +226,7 @@ public class MemberService implements UserDetailsService {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("수정 중 오류가 발생했습니다.");
         }
     }
-
+    @Transactional
     public ResponseEntity<String> memberDelete(MemberDto memberDto, PasswordEncoder passwordEncoder) {
         // 비밀번호 일치 여부 확인
         if (!isPasswordMatch(memberDto.getPassword(), memberDto.getConfirmPassword())) {
@@ -228,10 +234,18 @@ public class MemberService implements UserDetailsService {
         }
 
         Optional<Member> oldMember = memberRepository.findById(memberDto.getId());
-        System.out.println(oldMember.get().getId());
+        if (oldMember.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("존재하지 않는 회원입니다.");
+        }
+        Member member = oldMember.get();
+
+
 
         try {
-            memberRepository.delete(oldMember.get());
+            memberRequestRepository.deleteByMember(member);
+            Optional<RegistComp> optionalRegistComp = registCompRepository.findByMember(member);
+            optionalRegistComp.ifPresent(registCompRepository::delete);
+            memberRepository.delete(member);
 
             return ResponseEntity.ok("삭제가 완료되었습니다.");
         } catch (Exception e) {
@@ -251,7 +265,15 @@ public class MemberService implements UserDetailsService {
     }
 
     public ResponseEntity<String> adminMemberRemove(String memberId) {
-        memberRepository.deleteById(memberId);
+        Optional<Member> oldMember = memberRepository.findById(memberId);
+        if (oldMember.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("존재하지 않는 회원입니다.");
+        }
+        Member member = oldMember.get();
+        Optional<RegistComp> optionalRegistComp = registCompRepository.findByMember(member);
+        optionalRegistComp.ifPresent(registCompRepository::delete);
+
+        memberRepository.delete(member);
         return ResponseEntity.ok(memberId + " 회원이 강제 탈퇴되었습니다.");
     }
 

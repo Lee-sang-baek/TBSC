@@ -245,7 +245,7 @@ const SignUp = ({ isLoggedIn, isComp }) => {
                     .then(response => {
                         alert(response.data);
                         console.log(response.data); // 회원가입 성공 시 처리
-                        window.location.reload();
+                        window.location.href = '/';
                     })
                     .catch(error => {
                         alert(error.response.data);

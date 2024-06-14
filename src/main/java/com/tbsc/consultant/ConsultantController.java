@@ -71,7 +71,7 @@ public class ConsultantController {
     }
 
     @PutMapping("/{num}")
-    public ResponseEntity<Consultant> updateConsultant(@PathVariable Long num, @RequestBody Consultant consultant, @RequestParam String memberId) {
+    public ResponseEntity<Consultant> updateConsultant(@PathVariable("num") Long num, @RequestBody Consultant consultant, @RequestParam("memberId") String memberId) {
         return consultantService.updateConsultant(num, consultant, memberId);
     }
 

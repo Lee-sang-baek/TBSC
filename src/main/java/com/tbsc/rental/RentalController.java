@@ -24,7 +24,7 @@ public class RentalController {
     }
 
     @PutMapping("/{num}")
-    public ResponseEntity<Rental> updateRental(@PathVariable Integer num, @RequestBody Rental rental, @RequestParam String memberId) {
+    public ResponseEntity<Rental> updateRental(@PathVariable("num") Integer num, @RequestBody Rental rental, @RequestParam("memberId") String memberId) {
         return rentalService.updateRental(num, rental, memberId);
     }
 
