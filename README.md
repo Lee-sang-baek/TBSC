@@ -36,7 +36,7 @@ Database
 MySQL  
 
 ## 팀원
-팀원 이상백 - PM  
-팀원 이해빈 - PL  
-팀원 우승주 - PA  
-팀원 김상식 - PA  
+이상백 - PM  
+이해빈 - PL  
+우승주 - PA  
+김상식 - PA  
