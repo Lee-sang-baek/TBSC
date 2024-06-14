@@ -1,5 +1,8 @@
 # 광주관광기업지원센터 홈페이지
 
+## 주소
+http://gtbsc.kro.kr:8090/
+
 ## 시연 영상
 https://youtu.be/uaI9F_CoFLs
 
