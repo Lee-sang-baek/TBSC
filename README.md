@@ -6,37 +6,37 @@
 
 ## 주요 기능
 ### 회원가입 및 인증
-휴대폰 인증과 이메일 인증을 통해 회원가입
-아이디 및 비밀번호 찾기 기능
+휴대폰 인증과 이메일 인증을 통해 회원가입  
+아이디 및 비밀번호 찾기 기능  
 
 ### 서비스 신청
-컨설팅 예약
-대관 예약
-일자리 상담 신청
-기존 이메일 신청 방식에서 홈페이지를 통한 신청으로 개선
+컨설팅 예약  
+대관 예약  
+일자리 상담 신청  
+기존 이메일 신청 방식에서 홈페이지를 통한 신청으로 개선  
 
 ### 관리자 기능
-메인, 사이드 베너 변경
-팝업 추가
-회원 관리
-접속 로그 관리
-신청 내역 조회
-승인 여부 결정
+메인, 사이드 베너 변경  
+팝업 추가  
+회원 관리  
+접속 로그 관리  
+신청 내역 조회  
+승인 여부 결정  
 
 ## 기술 스택
 ### Frontend
-React
-HTML, CSS, JavaScript
-Axios (API 통신)
+React  
+HTML, CSS, JavaScript  
+Axios (API 통신)  
 ### Backend
-Spring Boot
-Spring Security (인증 및 권한 관리)
-JPA (Java Persistence API)
-Database
-MySQL
+Spring Boot  
+Spring Security (인증 및 권한 관리)  
+JPA (Java Persistence API)  
+Database  
+MySQL  
 
 ## 팀원
-팀원 이상백 - PM
-팀원 이해빈 - PL
-팀원 우승주 - PA
-팀원 김상식 - PA
+팀원 이상백 - PM  
+팀원 이해빈 - PL  
+팀원 우승주 - PA  
+팀원 김상식 - PA  
