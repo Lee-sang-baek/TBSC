@@ -42,7 +42,7 @@ function CompBanner() {
                             <div className='back-box' style={{ 
                                 backgroundImage: `url("/api/uploads/${item.compImage}")`
                             }}>
-                                <div className='shape'>
+                                <div className='shape' style={{ width: "80%" }}>
                                     <p>{item.content && (<Viewer contents={item.content} isTag={false} />)}</p>
                                     <h4>{item.title} ({item.writer})</h4>
                                 </div>

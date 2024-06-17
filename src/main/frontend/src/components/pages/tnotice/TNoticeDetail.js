@@ -63,7 +63,7 @@ const TNoticeDetail = ({memberState}) => {
                         />
                     </div>
                 )}
-                {memberState === "ADMIN" && (
+                {(memberState === "ADMIN" || memberState === "COMP") && (
                     <div className="detail-actions">
                         <button onClick={handleEdit}>수정</button>
                         <button onClick={handleDelete}>삭제</button>

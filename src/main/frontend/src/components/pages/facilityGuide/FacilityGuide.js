@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import './FacilityGuide.css';
 import FacilityHeader from "./FacilityHeader";
 
 const facilitiesData = {

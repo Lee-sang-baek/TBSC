@@ -20,81 +20,81 @@
             div {
                 width: 100%;
                 height: 100%;
+
+                .shape {
+                    width: 80%;
+                    position: absolute;
+                    right: 0;
+                    display: flex;
+                    flex-direction: column;
+
+                    border-top-left-radius: 100%;
+                    border-bottom-left-radius: 100%;
+                    border-top-right-radius: 60px;
+                    border-bottom-right-radius: 60px;
+                    background-color: rgba(255, 255, 255, 0.7);
+                    z-index: 1000;
+                    align-items: stretch;
+                    justify-content: space-evenly;
+
+                    h2, h3, h4, p {
+                        padding-left: 50px;
+                        padding-right: 30px;
+                        margin: 0;
+                        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+                    }
+
+                    h2 {
+                        color: blue;
+                        font-size: 2em;
+                    }
+
+                    h4 {
+                        color: orangered;
+                    }
+
+                    h3, h4 {
+                        font-size: 1.5em;
+                    }
+
+                    p {
+                        font-size: 1.2em;
+                    }
+
+                    @media (max-width: 1200px) {
+                        h2 {
+                            font-size: 1.5em;
+                        }
+
+                        h3, h4 {
+                            font-size: 1em;
+                        }
+
+                        p {
+                            font-size: 0.8em;
+                        }
+                    }
+
+                    @media (max-width: 800px) {
+                        h2 {
+                            font-size: 1.2em;
+                        }
+
+                        h3, h4 {
+                            font-size: 0.8em;
+                        }
+
+                        p {
+                            font-size: 0.6em;
+                        }
+                    }
+                }
             }
         }
-    }
-    
-    .shape {
-        
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        
-        border-top-left-radius: 100%;
-        border-bottom-left-radius: 100%;
-        border-top-right-radius: 60px;
-        border-bottom-right-radius: 60px;
-        background-color: rgba(255, 255, 255, 0.7);
-        z-index: 1000;
-        align-items: stretch;
-        justify-content: space-evenly;
-
-        h2, h3, h4, p {
-            padding-left: 50px;
-            padding-right: 30px;
-            margin: 0;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-        }
-
-        h2 {
-            color: blue;
-            font-size: 2em;
-        }
-
-        h4 {
-            color: orangered;
-        }
-
-        h3, h4 {
-            font-size: 1.5em;
-        }
-
-        p {
-            font-size: 1.2em;
-        }
-
-        @media (max-width: 1200px) {
-            h2 {
-                font-size: 1.5em;
-            }
-
-            h3, h4 {
-                font-size: 1em;
-            }
-    
-            p {
-                font-size: 0.8em;
-            }
-        }
-
-        @media (max-width: 800px) {
-            h2 {
-                font-size: 1.2em;
-            }
-
-            h3, h4 {
-                font-size: 0.8em;
-            }
-    
-            p {
-                font-size: 0.6em;
-            }
-        }
-
-        
     }
 
     .back-box {
+        position: relative;
         border: 1px solid #ccc;
         border-radius: 30px;
     }

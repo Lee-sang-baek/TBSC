@@ -309,8 +309,14 @@ public class MemberService implements UserDetailsService {
         }
     }
 
-    public ResponseEntity<String> currentEmail(String email) {
-        Optional<Member> optionalMember = memberRepository.findByEmail(email);
-        return ResponseEntity.ok("");
+    public ResponseEntity<String> currentEmail(String email, String id) {
+        Optional<Member> optionalMember = memberRepository.findById(id);
+        if (optionalMember.isPresent()) {
+            if (optionalMember.get().getEmail().equals(email)) {
+                return ResponseEntity.ok("");
+            }
+        }
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("일치하지 않는 이메일 입니다.");
+
     }
 }

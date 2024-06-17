@@ -49,7 +49,7 @@ const FindPwd = () => {
 
     const handleSendCode = () => {
         if (isEmail) {
-            axios.get(`/api/member/isEmail?email=${formData.email}`)
+            axios.get(`/api/member/email?email=${formData.email}&id=${formData.id}`)
             .then((res) => {
                 alert("인증번호가 발송되었습니다.");
                 axios.post('/api/auth/sendCode', { email: formData.email })

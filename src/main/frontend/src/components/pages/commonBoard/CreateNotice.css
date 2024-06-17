@@ -12,6 +12,7 @@
     }
 
     .image-input-label {
+        margin-top: 50px;
         padding: 25px 0;
         background-color: #007bff;
         border-radius: 15px;
@@ -22,10 +23,6 @@
         align-items: center;
         text-align: center;
         justify-content: center;
-
-    }
-
-    .file-input-label {
 
     }
 }

@@ -371,11 +371,11 @@ const ModiInfo = ({memberId, memberState}) => {
                                onChange={handleChangePhone}/>
                         <span className="bar"></span>
                         <label className="label">
-                            <span className="label-char" style={{'--index': 0}}>B</span>
-                            <span className="label-char" style={{'--index': 1}}>i</span>
-                            <span className="label-char" style={{'--index': 2}}>r</span>
-                            <span className="label-char" style={{'--index': 3}}>t</span>
-                            <span className="label-char" style={{'--index': 4}}>h</span>
+                            <span className="label-char" style={{'--index': 0}}>P</span>
+                            <span className="label-char" style={{'--index': 1}}>h</span>
+                            <span className="label-char" style={{'--index': 2}}>o</span>
+                            <span className="label-char" style={{'--index': 3}}>n</span>
+                            <span className="label-char" style={{'--index': 4}}>e</span>
                         </label>
                     </div>
 

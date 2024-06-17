@@ -62,7 +62,8 @@ const PressReleaseForm = ({ memberId, memberState }) => {
 
     return (
         <div className="PressReleaseForm-copo">
-            <form onSubmit={handleSubmit}>
+            <h3>보도 자료 게시판</h3>
+            <form>
                 <input
                     type="text"
                     value={title}
@@ -98,7 +99,7 @@ const PressReleaseForm = ({ memberId, memberState }) => {
                         style={{ display: 'none' }}
                     />
                 </label>
-                <button type="submit">글작성</button>
+                <button type="button" onClick={handleSubmit}>글작성</button>
             </form>
         </div>
     );

@@ -77,7 +77,7 @@ const TNoticeList = ({memberState}) => {
             <div className="container">
                 <div className="header">
                     <h2>기업 홍보</h2>
-                    {memberState === "ADMIN" && (
+                    {(memberState === "ADMIN" || memberState === "COMP") && (
                         <button onClick={handleWriteClick}>글쓰기</button>
                     )}
                 </div>

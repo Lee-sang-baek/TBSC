@@ -62,7 +62,8 @@ const CenterNewsForm = ({ memberId, memberState }) => {
 
     return (
         <div className="CenterNewsForm-copo">
-            <form onSubmit={handleSubmit}>
+            <h3>센터 뉴스 게시판</h3>
+            <form>
                 <input
                     type="text"
                     value={title}
@@ -98,7 +99,7 @@ const CenterNewsForm = ({ memberId, memberState }) => {
                         style={{ display: 'none' }}
                     />
                 </label>
-                <button type="submit">글작성</button>
+                <button type="button" onClick={handleSubmit}>글작성</button>
             </form>
         </div>
     );

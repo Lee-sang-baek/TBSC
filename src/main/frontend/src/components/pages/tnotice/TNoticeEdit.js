@@ -61,7 +61,7 @@ const TNoticeEdit = ({memberState}) => {
     };
 
 
-    if (memberState !== "ADMIN") {
+    if (memberState !== "ADMIN" && memberState !== "COMP") {
         return (
             <div className="TNoticeForm-copo">
                 <h2>권한이 없습니다</h2>

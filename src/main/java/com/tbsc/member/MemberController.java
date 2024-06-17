@@ -55,8 +55,9 @@ public class MemberController {
     }
 
     @GetMapping("/member/email")
-    public ResponseEntity<String> isEmail(@RequestParam("email") String email) {
-        return memberService.currentEmail(email);
+    public ResponseEntity<String> isEmail(@RequestParam("email") String email,
+                                          @RequestParam("id") String id) {
+        return memberService.currentEmail(email, id);
     }
 
 
